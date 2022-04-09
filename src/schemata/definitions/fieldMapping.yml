@@ -1,0 +1,19 @@
+---
+title: Field Mapping
+type: object
+description: |
+  A field mapping is always required when a step defines its own fields.
+  The field mapping maps the global workflow fields to step internal
+  fields. During validation it will be ensured that the field types are
+  compatible.
+minProperties: 1
+propertyNames:
+  description: A valid field identifier defined by the workflow template.
+  $ref: '#/definitions/dynamicMemberName'
+additionalProperties:
+  description: A valid field identifier defined by the step.
+  $ref: '#/definitions/memberName'
+examples:
+  - workflowFieldA: stepField1
+    workflowFieldB: stepField2
+    '{{referenceToTheWorkflowField}}': stepField3

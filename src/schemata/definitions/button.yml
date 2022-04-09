@@ -1,0 +1,54 @@
+---
+type: object
+required:
+  - key
+  - label
+properties:
+  label:
+    description: |
+      The displayed label of the button.
+    type: string
+  color:
+    description: |
+      The color of the button. The value must be an accepted CSS color keyword or defined via the rgb() or hsl() functional notations. The organization theme colors can be referenced with `primary` and `secondary`. The color may also include an alpha-channel transparency value.
+    type: string
+    default: primary
+    examples:
+      - secondary
+      - hotpink
+      - '#FF69B4'
+      - 'rgb(100%, 41%, 71%)'
+      - 'hsl(330, 100%, 71%)'
+  variant:
+    description: |
+      The button variant. Contained buttons are high-emphasis, distinguished by their use of elevation and fill. They contain actions that are primary to their context. Outlined buttons are medium-emphasis buttons. Text buttons are typically used for less-pronounced actions.
+    type: string
+    enum:
+      - contained
+      - outlined
+      - text
+    default: contained
+  key:
+    $ref: '#/definitions/memberName'
+    description: |
+      A unique reference passed to a manual trigger that can be used in a `behaviors` definition to react to this button being clicked.
+
+      The `key` can be used as a button `id` if it is unique in the current context and `id` is not defined. For example, use the `key` to display the button inside markdown in the format `{{button|my-key}}`.
+  id:
+    $ref: '#/definitions/memberName'
+    description: |
+      Can be used to render the button inside markdown text. For example, when `id` is defined as `print`, the text may look like:
+
+      ```yml
+      Use this view to print the weight {{button|print}}.
+      ```
+  placement:
+    description: |
+      Buttons defined globally or at the step level of the template always have to be placed manually. Their `placement` setting is always considered to be `manual`.
+
+      Substep buttons with a setting of `default` will be automatically displayed at the very bottom of a substep in the order in which they are defined. When set to `manual`, a substep button has to be referenced inside the `description` markdown to be displayed.
+    type: string
+    enum:
+      - manual
+      - default
+    default: default

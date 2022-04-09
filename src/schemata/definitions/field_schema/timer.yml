@@ -1,0 +1,46 @@
+---
+type: object
+description: |
+  Defines a field of type `timer`.
+required: [type]
+properties:
+  type:
+    type: string
+    enum: [timer]
+  defaultDuration:
+    description: A fixed duration.
+    $ref: '#/definitions/duration'
+  showButtons:
+    type: boolean
+    default: true
+    description: A flag indicating whether to show the buttons.
+  showStartButton:
+    type: boolean
+    default: true
+    description: A flag indicating whether to show the start button.
+  showPauseButton:
+    type: boolean
+    default: true
+    description: A flag indicating whether to show the pause button.
+  showCancelButton:
+    type: boolean
+    default: true
+    description: A flag indicating whether to show the cancel button.
+  skipBehaviors:
+    type: boolean
+    default: false
+    description: |
+      A flag indicating whether to skip automatically creating behaviors to
+      handle buttons on the timer.
+  editable:
+    type: boolean
+    default: false
+    description: |
+      A flag indicating whether the duration can be manually adjusted at
+      runtime.
+  playSound:
+    type: boolean
+    default: false
+    description: |
+      A flag indicating whether the timer should trigger a sound when
+      going off. The sound can always be toggled at runtime.

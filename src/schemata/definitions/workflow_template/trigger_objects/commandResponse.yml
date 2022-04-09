@@ -1,0 +1,35 @@
+---
+type: object
+title: CommandResponse Options
+description: |
+  Options to a CommandResponse trigger.
+propertyNames:
+  enum:
+    - CommandResponse
+    - command_response
+    - COMMAND_RESPONSE
+    - OnCommandResponse
+    - on_command_response
+    - ON_COMMAND_RESPONSE
+additionalProperties:
+  type: object
+  required:
+    - device
+  properties:
+    device:
+      $ref: '#/definitions/memberName'
+      description: |
+        A reference to a field that is a relationship to a device.
+    command:
+      type: string
+      description: |
+        Restricts the trigger to specific commands, e.g. only trigger on a
+        `get_weight` response not on a response to `get_temperature`.
+      example: get_weight
+    status:
+      type: string
+      description: |
+        Restricts the trigger to specific status of the response, e.g. only
+        trigger once a command is `confirmed` or `completed`. Note that
+        you also have access to that information in the conditions.
+      example: completed

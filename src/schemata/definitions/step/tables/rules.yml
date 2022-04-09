@@ -1,0 +1,112 @@
+---
+type: array
+title: Table rules
+description: |
+  Rules can be leveraged to dynamically change both the behavior and appearance of a table.
+
+  When a rule condition is fulfilled, the `editable` and `selectable` behavior of cells, rows, columns, or tabs can be set. Likewise, the background color or text color can be changed to visualize a certain state or change of behavior to the user. For example:
+
+    - When a cell number value is negative, change the background color to red.
+    - When a cell number value is positive, change the background color to green, make it selectable, but no longer editable.
+    - When all cells in a column have no value, the column cells are not selectable or editable across all other tabs of the table.
+items:
+  type: object
+  description: |
+    The individual rules that will be applied to the table. Rules will be applied in the order specified in the template. Later rules will overwrite previous rules.
+  required:
+    - range
+    - apply
+  additionalProperties: false
+  properties:
+    range:
+      type: object
+      description: |
+        The range of columns, rows and tabs that the rules apply to. Use the [mathematical ellipsis notation](https://en.wikipedia.org/wiki/Ellipsis#In_mathematical_notation) to define a sequence of successive values from a start point to an end point inclusively. The range is zero-based, meaning its first entity is assigned the index 0.
+        You can specify one or multiple properties to define a selection of cells. Setting only the `rows` value, for example, would apply a given set of rules to all cells in the defined rows in all tabs. Including the `columns` and `tabs` settings would then narrow down that selection.
+      additionalProperties: false
+      minProperties: 1
+      properties:
+        columns:
+          type:
+            - string
+            - number
+        rows:
+          type:
+            - string
+            - number
+        tabs:
+          type:
+            - string
+            - integer
+      examples:
+        - |
+          range:
+            # sequence of 1, 2, 3, 4, 5
+            rows: 0,...,4
+            # only the fourth column
+            columns: 3
+    condition:
+      $ref: '#/definitions/script'
+      description: |
+        A script consisting of one or multiple conditions. The context of the script is defined by all fields and tables present in the workflow step, along with the `currentRow`, `currentCell`, and `currentTab` variables with their respective indexes.
+    apply:
+      type: object
+      description: |
+        The changes that are applied to cells, rows and tabs in the `range` if the `condition` is fulfilled.
+      additionalProperties: false
+      minProperties: 1
+      properties:
+        selectable:
+          type: boolean
+        editable:
+          type: boolean
+        backgroundColor:
+          type: string
+          description: |
+            The value must be a valid [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). Theme colors can be applied using the `error`, `warning`, `success` and `info` keywords. When choosing colors, also consider the default highlight styles of tables for cell and row selection to ensure sufficient contrast.
+        textColor:
+          type: string
+          description: |
+            The value must be a valid [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). Theme colors can be applied using the `error`, `warning`, `success` and `info` keywords. When choosing colors, also consider the default highlight styles of tables for cell and row selection to ensure sufficient contrast.
+        hintText:
+          type: string
+          description: |
+            The hint text that will be available for the user when the rules are applied.
+
+examples:
+  - |
+    range:
+      # Columns 1 to the last
+      columns: 0,...
+      # Rows from 4 to 10
+      rows: 3,...,9
+      # Only first tab
+      tabs: 0
+    condition: |
+      myReferenceField.experiments.firstExperiment.density < CELL_VALUE(table, tab, row, column - 1) &&  CELL_VALUE(table, tab, row, column - 1) <= myReferenceField.experiments.secondExperiment.density
+    apply:
+      editable: false
+      backgroundColor: rgb(0, 128, 0)
+      textColor: rgb(255, 255, 255)
+      hintText: I am a hint text
+  - |
+    range:
+      # Columns 1 and 4 to 6
+      columns: 0,3,...,5
+      # Rows 2 and 4 to 10
+      rows: 1,3,...,9
+      # Tabs 1 and 5 to 7
+      tabs: '0,4,...,6'
+    apply:
+      selectable: true
+      editable: true
+      backgroundColor: '#FF0000'
+      textColor: '#FFFFFF'
+  - range:
+      tabs: 2
+    condition: CELL_VALUE(table, tab, row, column - 1) > myReferenceField.density
+    apply:
+      selectable: true
+      editable: true
+      backgroundColor: green
+      textColor: white

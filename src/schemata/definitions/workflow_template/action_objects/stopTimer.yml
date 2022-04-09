@@ -1,0 +1,17 @@
+---
+type: object
+title: StopTimer Options
+description: |
+  Options to an StopTimer action.
+propertyNames:
+  enum:
+    - stop_timer
+    - STOP_TIMER
+    - StopTimer
+additionalProperties:
+  type: object
+  properties:
+    identifier:
+      type: string
+      description: |
+        Identifier of a timer.

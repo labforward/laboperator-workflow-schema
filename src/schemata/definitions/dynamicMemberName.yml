@@ -1,0 +1,12 @@
+---
+type: string
+title: Dynamic member name
+description: |
+  Dynamic member names allow to use field values for composing names in the field
+  mapping.
+minLength: 3
+maxLength: 120
+pattern: '^(?![-_])([a-zA-Z0-9])*(([-_]?{{([a-zA-Z0-9]+(?:[-_]?[a-zA-Z0-9]+)*)}})*|(?:[-_]?[a-zA-Z0-9]+))*$'
+examples:
+  - 'myField{{anotherField}}'
+  - '{{another-field}}-device'

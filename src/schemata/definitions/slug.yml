@@ -1,0 +1,9 @@
+---
+type: string
+title: Slug
+description: |
+  A URL compatible slug that can also be used as a reference elsewhere. By
+  default it will generated from the components name or uuid.
+pattern: ^[a-z0-9]+(?:[-_][a-z0-9]+)*$
+examples:
+  - my-premium-workflow

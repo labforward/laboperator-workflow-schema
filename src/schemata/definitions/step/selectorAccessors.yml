@@ -1,0 +1,26 @@
+---
+type: object
+minProperties: 1
+additionalProperties: false
+description: |
+  Define accessors for selector options. You can map the selector options to fields defined in a field.
+properties:
+  primary:
+    type: string
+    description: |
+      The primary text of the option.
+  secondary:
+    type: string
+    description: The secondary text of the option.
+  thumbnail:
+    type: string
+    description: |
+      The URL of the image that will be used as the thumbnail of the option.
+  value:
+    type: string
+    description: The value that will be used if the option is selected.
+  examples:
+    - primary: name
+      secondary: category.name
+      description: summary
+      thumbnail: category.image.url

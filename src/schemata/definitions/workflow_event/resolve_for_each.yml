@@ -1,0 +1,22 @@
+---
+type: object
+title: ResolveForEach Event
+description: |
+  The event of resolving a single iteration of `for-each` flow of steps.
+
+  The iteration will continue up to and including the last item in the source array.
+properties:
+  type:
+    enum:
+      - resolve_for_each
+  payload:
+    type: object
+    required:
+      - pointer
+      - iterator
+    properties:
+      pointer:
+        type: string
+        pattern: ^/flow/
+      iterator:
+        type: integer

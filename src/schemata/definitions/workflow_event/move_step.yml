@@ -1,0 +1,22 @@
+---
+type: object
+title: MoveStep Event
+description: |
+  The event of moving a step in a running dynamic template.
+  Only steps which are not yet started can be moved.
+properties:
+  type:
+    enum:
+      - move_step
+  payload:
+    type: object
+    require:
+      - from
+      - to
+    properties:
+      from:
+        type: string
+        pattern: ^/flow/
+      to:
+        type: string
+        pattern: ^/flow/

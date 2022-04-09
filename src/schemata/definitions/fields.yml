@@ -1,0 +1,15 @@
+---
+type: object
+title: Fields
+description: |
+  Fields are top-level and step-level variables in a workflow template. A field can be used to store and retrieve information during workflow execution.
+
+  A field can be assigned a schema to validate its value.
+
+  A field identifier, which is its key within the `fields` object, is considered unique in the context of a workflow. By definition a second occurrence of the same key will override the first occurrence. In markdown, fields can be referenced via their unique identifier:
+
+  `{{myStringField}}`
+propertyNames:
+  $ref: '#/definitions/memberName'
+additionalProperties:
+  $ref: '#/definitions/field'

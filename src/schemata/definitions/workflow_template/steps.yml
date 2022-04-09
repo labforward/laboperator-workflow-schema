@@ -1,0 +1,23 @@
+---
+type: object
+title: Steps Section Schema
+description: |
+  The `steps` section defines all steps used in a workflow. A step is a set
+  of closed activities and instructions. Steps can be defined outside of a
+  workflow and then be reused across different workflows.
+
+  The `steps` sections maps inline or external definitions to a key that
+  is unique within this workflow. That key or identifier must be unique among
+  the keys in the steps object. If a key is defined twice the later definition
+  overrides the previous.
+
+  Steps defined outside of this workflow template can use the fields defined
+  for this workflow by mapping them to the internally defined fields in the
+  workflow section of the workflow template.
+
+propertyNames:
+  $ref: '#/definitions/memberName'
+additionalProperties:
+  oneOf:
+    - $ref: '#/definitions/stepTemplate'
+    - $ref: '#/definitions/stepReference'

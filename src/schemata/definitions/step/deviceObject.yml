@@ -1,0 +1,18 @@
+---
+type: object
+title: Device Object Schema
+description: Used to pass arguments to an step device.
+maxProperties: 1
+minProperties: 1
+propertyNames:
+  $ref: '#/definitions/memberName'
+additionalProperties:
+  type: object
+  minProperties: 1
+  properties:
+    image:
+      type: string
+      format: uri-reference
+      description: |
+        A url to an image that should be displayed instead of the devices icon.
+      # REVIEW: extend to specify individual elements (e.g. a chart)?

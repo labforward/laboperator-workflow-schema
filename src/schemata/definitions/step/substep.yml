@@ -1,0 +1,131 @@
+---
+type: object
+title: Substeps Schema
+description: |
+  A substep is a single instruction of a step and can both content and actions
+  attached to it.
+required:
+  - primary
+additionalProperties: false
+properties:
+  primary:
+    type: string
+    maxLength: 200 # TODO: Check useful length limitation.
+    title: Primary Instruction
+    description: |
+      The primary line of instructions. Field values can be embedded by
+      enclosing a field identifier in double curly braces.
+    examples:
+      - Place {{sample}} on {{balance}}.
+
+  secondary:
+    type: string
+    maxLength: 100 # TODO: Check useful length limitation.
+    title: Secondary Instruction
+    description: The secondary line of instructions.
+    examples:
+      - Caution! {{sample}} is super expensive...
+
+  description:
+    title: Description
+    $ref: '#/definitions/markdown'
+    description: |
+      The description fields can be used to add details to the substep. As it
+      supports markdown, you can use basic formatting, links, tables and even
+      images.
+
+  expandDescription:
+    type: boolean
+    default: false
+    title: Initially expand the description?
+    description: |
+      A flag to indicate whether or not to show the entire description for
+      this substep right away.
+
+      The default is `false`, which will cause only the first line of the
+      description to be visible. Of course the user can always decide to
+      expand the description when required.
+
+      Not expanding the description by default keeps your workflow interface
+      clean and the user can get a good overview of the substeps, while an
+      expanded descriptoin will make sure an important notes or images you
+      might have put in the description will be shown.
+
+  confirm:
+    type: boolean
+    default: false
+    title: Show manual confirmation button?
+    description: Display a manual confirmation button to complete the substep.
+
+  inputs:
+    type: array
+    title: Substep Inputs
+    description: |
+      A list of fields to show inputs for on the substep. For each field the
+      substep will display an appropriate input component.
+
+      Use the title and description properties of the field schema to control
+      the label and help text of an input.
+    items: # NOTE: extend to spcify individual elements (e.g. a chart)?
+      $ref: '#/definitions/memberName'
+      description: The identifier of a field defined in the step.
+
+  buttons:
+    type: array
+    title: Substep Buttons
+    description: A list of buttons on the substep.
+    maxItems: 4
+    items:
+      $ref: '#/definitions/button'
+
+  devices:
+    type: array
+    title: Substep Devices
+    description: |
+      A list of fields to display as devices on the substep. For each device
+      the substep will display general information, status and activities such
+      as invoked commands.
+    items:
+      oneOf:
+        - $ref: '#/definitions/memberName'
+          description: |
+            The identifier of a field that is a device or channel relation.
+        - $ref: '#/definitions/step/deviceObject'
+
+  elements:
+    type: array
+    title: Substep Data Elements
+    description: |
+      Data elements allow to render data from device channels on the substep.
+    items:
+      $ref: '#/definitions/step/element'
+
+  timer:
+    title: Substep Timer
+    description: |
+      A timer to display on the substep. The timer can be started using
+      displayed buttons or using actions.
+      With no default_duration given or duration set to 00:00 it can be used
+      as a stop watch.
+
+      For full flexibility the timer can either implicitly define a field and
+      behaviors to handle the manual buttons or you can a define timer field
+      in the `/fields` section of the step or the workflow manually and
+      reference it here.
+
+      Behaviors to handle the buttons on the timer are automatically created
+      for you. To skip creation of these behaviors, pass the `skipBehavior`
+      flag to the timer definition.
+    oneOf:
+      - $ref: '#/definitions/memberName'
+      - $ref: '#/definitions/field_schema/timer'
+    examples:
+      - myTimer
+      - type: timer
+        defaultDuration: 2000
+
+  behaviors:
+    $ref: '#/definitions/workflow_template/behaviors'
+
+  selector:
+    $ref: '#/definitions/step/selector'

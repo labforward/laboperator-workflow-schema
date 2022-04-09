@@ -1,0 +1,23 @@
+---
+type: object
+title: ResolveWhile Event
+description: |
+  The event of resolving the condition in a `while` flow of steps.
+
+  If the condition in `while` resolves to a truthy value, the steps included in `do` will be unfolded.
+  Otherwise, the execution will break out of the `while` flow and continue to evaluate the next entry in the parent flow.
+properties:
+  type:
+    enum:
+      - resolve_while
+  payload:
+    type: object
+    required:
+      - pointer
+      - resolved
+    properties:
+      pointer:
+        type: string
+        pattern: ^/flow/
+      resolved:
+        type: boolean

@@ -1,0 +1,37 @@
+---
+type: object
+title: SelectCell Options
+description: |
+  Options to a SelectCell action.
+propertyNames:
+  enum:
+    - select_cell
+    - SELECT_CELL
+additionalProperties:
+  type: object
+  required:
+    - table
+    - value
+  properties:
+    table:
+      $ref: '#/definitions/memberName'
+      description: Identifier of the table
+    value:
+      $ref: '#/definitions/script'
+      description: |
+        Set the selected cell based on calculated value from signal and fields.
+
+        For example, if the signal come with the following structure:
+
+          {
+            'identifier' => 'myTable',
+            'data' => { 'pointer' => '/1/density' }
+          }
+
+        You can set the selected cell to the row on index 1 of column 'density' by
+        setting this property to 'data.pointer'.
+
+        For the selection to work, the calculated value must resolve to a json pointer
+        in the format of /[row-0-based-index]/[column-key]
+
+        To unset the selection, the calculated value must resolve to 'null'.

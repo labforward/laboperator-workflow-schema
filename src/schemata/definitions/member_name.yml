@@ -1,0 +1,37 @@
+---
+type: string
+title: Member Name
+description: |
+  A member name that is used as a reference elsewhere.
+  Allowed characters are lower "a" to "z", capital "A" to "Z", "0" to "9" and
+  "-" , "_". We recommend to consistently use either lowerCamelCase or
+  kebab-case. While snake_case is allowed, it has a chance of name collisions
+  with internal values.
+minLength: 3
+maxLength: 60
+pattern: ^[a-zA-Z0-9]+(?:[-_]?[a-zA-Z0-9]+)*$
+not:
+  enum:
+    - do
+    - else
+    - flow
+    - if
+    - loop
+    - parallel
+    - step
+    - substep
+    - type
+    - until
+    - when
+    - while
+    - workflow
+    - INTERNAL_STATE
+    - type
+    - substep
+    - data_point
+    - command_response
+examples:
+  - myField
+  - my-field
+  - transportSampleToShaker
+  - transport_sample_to_shaker

@@ -1,0 +1,13 @@
+---
+type: string
+title: HTTP status code
+description: |
+  A status code is the 3 digit code ranging from 1xx to 5xx that
+  will be present in the response
+minLength: 3
+maxLength: 3
+pattern: ^[1-5][0-9][0-9]$
+examples:
+  - '200' # ok
+  - '404' # not found
+  - '500' # internal server error

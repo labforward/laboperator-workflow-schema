@@ -1,0 +1,107 @@
+---
+type: object
+title: Element Schema
+description: |
+  Elements are used to display data points over a certain period.
+required:
+  - type
+properties:
+  type:
+    type: string
+    enum:
+      - BinaryState
+      - Button
+      - Clock
+      - ConsoleFeed
+      - Content
+      - DeviceChannelTable
+      - DeviceInfo
+      - Display
+      - FileTable
+      - Gauge
+      - GaugeControl
+      - JsonTable
+      - LineChart
+      - MultiState
+      - NumberInput
+      - Separator
+      - StringInput
+      - StringLog
+      - Switch
+      - Table
+      - Webcam
+      - WebPage
+    description: The type of the element.
+  elementLabel:
+    type: object
+    properties:
+      text:
+        type: string
+        description: Labels are displayed alongside the element and can help users better understand the displayed data.
+  height:
+    type: number
+    description: The fixed height of the element measured in pixels.
+  grid:
+    description: |
+      The responsive width of the element. The value is the number of columns that the element should occupy based on a 12-column grid layout.
+
+      There are 5 breakpoints allowing to define multiple width values for different screen sizes.
+
+      A single number may be provided and applied to all breakpoints if there is no reason to resize the element for different screen sizes.
+    oneOf:
+      - type: object
+        additionalProperties:
+          type: number
+          minimum: 1
+          maximum: 12
+        propertyNames:
+          enum:
+            - xs
+            - sm
+            - md
+            - lg
+            - xl
+      - type: number
+        minimum: 1
+        maximum: 12
+    examples:
+      - 6
+      - xs: 12
+        md: 6
+  oneOf:
+    - type: object
+      properties:
+        dataScope:
+          $ref: '#/definitions/memberName' # measurement field
+          description: Scope of a measurement
+    - type: object
+      properties:
+        scope:
+          $ref: '#/definitions/step/element_objects/scope'
+          description: Interval of time
+        inputChannels: # channels
+          type: array
+          items:
+            $ref: '#/definitions/step/element_objects/inputChannel'
+          description: List of channels
+  id:
+    description: |
+      Can be used to render the element inside text (e.g. substep description)
+      in the format {{element|memberName}}.
+      For example, when id is defined as "rotationGauge" the text may look like:
+
+      Use this view to monitor the stirring speed {{element|rotationGauge}}
+    $ref: '#/definitions/memberName'
+  placement:
+    description: |
+      When set to `manual` the element won't be displayed in the substep. To render the element it has to be referenced inside the description markdown: `{{element|rotationGauge}}`. Replace `rotationGauge` with the
+      value of the `id` property from your element definition.
+    type: string
+    enum:
+      - manual
+      - default
+  description:
+    type: string
+  settings:
+    description: Additional settings.
+    type: object

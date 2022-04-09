@@ -1,0 +1,14 @@
+---
+title: Field Values
+type: object
+description: |
+  Direct assignments of values to step fields. The values are evaluated
+  against the field schema during validation.
+minProperties: 1
+propertyNames:
+  description: A valid field identifier defined by the step.
+  $ref: '#/definitions/memberName'
+additionalProperties: true
+examples:
+  - stepField1: true
+    stepField2: '2014-03-08T23:21:27-10:00'

@@ -1,0 +1,14 @@
+---
+title: Duration
+description: |
+  An duration string parsable by [Chronic Duration](https://github.com/henrypoydar/chronic_duration).
+type: string
+examples:
+  - 12.4 secs
+  - '1:20'
+  - '1:20.51'
+  - '4:01:01'
+  - 3 mins 4 sec
+  - 2 hrs 20 min
+  - 2h20min
+  - two hours and twenty minutes

@@ -1,0 +1,15 @@
+---
+title: Actions Schema
+description: |
+  Actions can come as a simple identifier string or an object to pass options.
+  Either variant can be used as single action or a list of actions. A list of
+  actions will always be executed sequentially. A somehow erroneous action
+  will cause the consecutive actions not to be executed.
+oneOf:
+  - $ref: '#/definitions/workflow_template/actionIdentifier'
+  - $ref: '#/definitions/workflow_template/actionObject'
+  - type: array
+    items:
+      oneOf:
+        - $ref: '#/definitions/workflow_template/actionIdentifier'
+        - $ref: '#/definitions/workflow_template/actionObject'

@@ -1,0 +1,132 @@
+---
+type: string
+title: Markdown Formatted Content
+default: ''
+description: |
+  ## Markdown
+
+  Rich media content that can be formatted using [Markdown](https://en.wikipedia.org/wiki/Markdown).
+
+  For a general introduction to Markdown go to [Markdown Guide](https://www.markdownguide.org/getting-started/) or search for Markdown to find extensive resources online.
+
+  ## Laboperator Flavoured Markdown
+
+  Laboperator workflows extend Markdown with custom syntax to render
+  additional content.
+
+  ### Field References
+
+  Reference fields defined in your workflow to dynamically display their
+  current value.
+
+  __Syntax__
+  ```
+  {{(field|)<identifier>|<variant>}}
+  ```
+
+  _Note that the `field` type indicator can be omitted for brevity._
+
+  __Parameters__
+  | __identifier__ | The identifier of the field that is referenced |
+  | __variant__    | The reference variant. Should be one of `value`, `title`, `plain`. Defaults to `value`. |
+
+
+  __Example 1__
+  By default rendered values are highlighted against the background:
+  ```
+  Some text with an inline reference to {{myField}}.
+  ```
+
+  __Example 2__
+  You can render the title of a field instead of the value using the `title`
+  variant:
+  ```
+  The field _myField_ has the title {{myField|title}}.
+  ```
+
+  __Example 3__
+  Using the `plain` variant you can render the plain value of a field without
+  any highlights. This is for example useful for cleaner tables:
+  ```
+  | {{myField|title}} | {{anotherField|title}} |
+  | ----------------- | ---------------------- |
+  | {{myField|plain}} | {{anotherField|plain}} |
+  ```
+
+  ### Field Inputs
+
+  Render inputs for fields defined in your workflow.
+
+  __Syntax__
+  ```
+  {{field-input|<identifier>}}
+  # or
+  !{{<identifier>}}
+  ```
+
+  _Note that the `field-input` type indicator can be omitted for brevity, if the placeholder is prefixed with an exclamation mark (`!`)._
+
+  __Parameters__
+  | __identifier__ | The identifier of the field that is referenced |
+
+
+  __Example 1__
+  ```
+  Please enter the observed color of the substance:
+  !{{observedColor}}
+  ```
+
+  ### Grids
+
+  You can use the `%col` tag to organize content in a grid.
+
+  __Syntax__
+  ```
+  %col <container?> <card?> <breakpoint={1-12}?>
+    # content is indented by two spaces or one tab
+    content
+  ```
+
+  __Parameters__
+  | __container__ | An optional flag that should be set if additional `%col` tags are nested inside. See __Example 2__. |
+  | __card__ | An optional flag that can be set if the block should get a background. |
+  | __breakpoint__ | Breakpoints can be used to specifically set how many columns of a 12 column grid the block should span. See [Material UI Fluid Grids](https://material-ui.com/components/grid/#fluid-grids) for details. Possible breakpoints are `xs`, `sm`, `md`, `lg`, and `xl`. The value can be between `1` and `12`. |
+
+  __Example 1: Simple columns
+  ```
+  %col
+    This text is in one column.
+  %col
+    And this text in a second column next to it.
+
+
+  %col
+    This text is in a second row.
+  %col card
+    This text is in a second row in the second column and has a background
+  %col
+    This row can have a different number of columns. This is the third.
+  ```
+
+  __Example 2: Nested columns
+  ```
+  %col container card
+    %col
+      This is a the first column inside an outer block with background.
+    %col container
+      %col
+        We can nest this even further
+      %col
+        Allowing us to build complex layouts
+  ```
+
+  __Example 2: Breakpoints
+  ```
+  %col xs={12} md={6}
+    On a small screen this column fills up the whole width.
+
+    On a tablet in landscape it will only fill up half the screen and the two
+    blocks will show next to each other.
+  %col
+    This block will adjust to the first one automatically.
+  ```

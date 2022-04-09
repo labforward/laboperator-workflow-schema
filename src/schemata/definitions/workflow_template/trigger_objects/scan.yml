@@ -1,0 +1,28 @@
+---
+type: object
+title: Scan Options
+description: |
+  Options for a Scanner trigger. The application supports simulating a barcode scan by passing the 'simulateScanString' prop to the component.
+propertyNames:
+  enum:
+    - scan
+    - SCAN
+    - on_scan
+    - ON_SCAN
+additionalProperties:
+  type: object
+  required:
+    - pattern
+  properties:
+    pattern:
+      type: string
+      format: regex
+      description: |
+        The pattern will be matched with text to determine a valid barcode scan.
+      example: ^ID-[-A-Z0-9]
+      default: ^[-A-Z0-9]{4,}
+    caseSensitive:
+      type: boolean
+      description: |
+        Determines whether the search for a match is case-sensitive.
+      default: false

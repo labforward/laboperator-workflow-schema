@@ -1,0 +1,36 @@
+---
+type: object
+title: Alert Object
+description: |
+  Options to an Alert action.
+propertyNames:
+  enum:
+    - alert
+    - Alert
+    - ALERT
+additionalProperties:
+  type: object
+  required:
+    - title
+    - text
+  properties:
+    title:
+      type: string
+      description: |
+        A title to display on the alert.
+    text:
+      type: string
+      description: |
+        A text to display on the alert. Supports markdown formatting.
+    buttons:
+      type: array
+      description: |
+        A set maximum of three buttons to display on the alert. Any
+        button, will cause the alert modal to close. Remember to handle
+        the button key in a behavior.
+      default:
+        - label: OK
+          key: alert_confirmed
+      maxItems: 3
+      items:
+        $ref: '#/definitions/button'

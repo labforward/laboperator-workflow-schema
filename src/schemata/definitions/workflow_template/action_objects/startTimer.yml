@@ -1,0 +1,17 @@
+---
+type: object
+title: StartTimer Options
+description: |
+  Options to a StartTimer action.
+propertyNames:
+  enum:
+    - start_timer
+    - START_TIMER
+    - StartTimer
+additionalProperties:
+  type: object
+  properties:
+    identifier:
+      type: string
+      description: |
+        Identifier of a timer.

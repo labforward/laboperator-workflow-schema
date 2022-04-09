@@ -1,0 +1,145 @@
+---
+default: ''
+title: Script
+description: | # TODO: Add more docs on custom functions (qty calc)
+  A script that is evaluated and returns a value. The parsing and evaluation is based on [Dentaku](https://github.com/rubysolo/dentaku) and enhanced with custom capabilities.
+
+  Only strings will be evaluated as scripts, everything else will be treated as static values.
+
+  ## Built-in operators and functions
+
+  Detailed tests describing the script behaviors are available on the
+  [Denkatu Github Page](https://github.com/rubysolo/dentaku/blob/master/spec/calculator_spec.rb).
+
+  Math: `+`, `-`, `*`, `/`, `%`, `^`, `|`, `&`
+
+  Also, all functions from Ruby's Math module, including `SIN`, `COS`, `TAN`, etc.
+
+  Comparison: `<`, `>`, `<=`, `>=`, `<>`, `!=`, `=`,
+
+  Logic: `IF`, `AND`, `OR`, `NOT`, `SWITCH`
+
+  Numeric: `MIN`, `MAX`, `SUM`, `AVG`, `COUNT`, `ROUND`, `ROUNDDOWN`, `ROUNDUP`
+
+  Selections: `CASE` (syntax see [spec](https://github.com/rubysolo/dentaku/blob/master/spec/calculator_spec.rb#L472))
+
+  String: `LEFT`, `RIGHT`, `MID`, `LEN`, `FIND`, `SUBSTITUTE`, `CONCAT`, `CONTAINS`
+
+  Operator precedence follows that of any sane language.
+
+  ## Custom functions
+
+  To work with quantity field we have added the following custom functions:
+
+  ### AS_QTY
+  Parse a numeric value to a quantity with the given unit.
+
+  **Example**:
+  ```yml
+  value: AS_QTY(myNumericField, "mg")
+  ```
+
+  ### BASE
+  Returns the unit in SI base units of the given quantity.
+
+  **Example**:
+  ```yml
+  value: BASE(myQuantity)
+  ```
+
+  ### BASE_SCALAR
+  Returns the scalar in base units (SI)
+
+  **Example**:
+  ```yml
+  value: BASE_SCALAR(myQuantity)
+  ```
+
+  ### CELL_POINTER
+  Returns the JSON pointer for a table cell value based on a given table identifier and the zero-based row, column, and tab indexes.
+
+  **Examples**:
+  ```yml
+  # returns the JSON pointer for the second column, first row, third tab in `myTable`
+  CELL_POINTER('myTable', 0, 1, 2)
+  ```
+
+  ```yml
+  # returns the JSON pointer for the second row, second column in `myTable`
+  CELL_POINTER('myTable', 1, 1)
+  ```
+
+  ### CONVERT_TO
+  Converts the quantity to the target unit. Throws an error if the units
+  are not compatible.
+
+  **Example**:
+  ```yml
+  value: CONVERT_TO(myMgQuantity, 'kg')
+  ```
+
+  ### HASH
+  Create arbitrary hash object at run time
+
+  **Example**:
+  ```yml
+  value: HASH('a', 1, 'b', 2) # returns { "a" => 1, "b" => 2 }
+  ```
+
+  ### MERGE
+  Merge 2 arrays, or objects.
+
+  **Example**:
+  ```yml
+  value: MERGE(arr1, arr2)
+  ```
+
+  ### NOW
+  Returns the current date/time
+
+  **Examples**:
+  ```yml
+  value: NOW()
+  ```
+
+  ### SCALAR
+  Returns the scalar of the quantity without the unit.
+
+  **Example**:
+  ```yml
+  value: SCALAR(myMgQuantity)
+  ```
+
+  ### UNITS
+  Returns the unit part of the quantity without as a string.
+
+  **Example**:
+  ```yml
+  value: UNITS(myMgQuantity)
+  ```
+
+  ### VALUE_AT
+  Returns the value of a given pointer for the provided field.
+
+  **Examples**:
+  ```yml
+  VALUE_AT(myTableData, '/0/density')
+  ```
+  ```yml
+  VALUE_AT(myField, '/key/anotherKey')
+  ```
+
+  ### TIMES
+  Loop inside scripting for n number of times
+
+  **Example**:
+  ```yml
+  value: TIMES(n, index, HASH("index", index))
+  ```
+
+examples:
+  - field1 >= 100
+  - field1 * (field2 + field3)
+  - |
+    # return a static string
+    '"static string"'

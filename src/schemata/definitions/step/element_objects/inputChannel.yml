@@ -1,0 +1,18 @@
+---
+type: array
+title: Input Channels
+description: |
+  Input Channels
+item:
+  oneOf:
+    - ref: '#/definitions/memberName' # channels field
+    - type: object
+      required:
+        - device
+      properties:
+        device:
+          $ref: '#/definitions/memberName' # device field
+        channels:
+          type: array
+          item:
+            $ref: '#/definitions/memberName' # channel names

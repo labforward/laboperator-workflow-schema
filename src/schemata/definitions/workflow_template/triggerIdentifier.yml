@@ -1,0 +1,89 @@
+---
+type: string
+title: Trigger Identifier Schema
+enum:
+  # Run level triggers
+  - ON_RUN_PAUSE
+  - on_run_pause
+  - RUN_PAUSE
+  - run_pause
+
+  - ON_RUN_RESUME
+  - on_run_resume
+  - RUN_RESUME
+  - run_resume
+
+  - ON_RUN_COMPLETE
+  - on_run_complete
+  - RUN_COMPLETE
+  - run_complete
+
+  - ON_RUN_START
+  - on_run_start
+  - RUN_START
+  - run_start
+
+  - ON_RUN_LOCK
+  - on_run_lock
+  - RUN_LOCK
+  - run_lock
+
+  # Step level triggers
+  - ON_STEP_START
+  - on_step_start
+  - STEP_START
+  - step_start
+
+  - ON_STEP_COMPLETE
+  - on_step_complete
+  - STEP_COMPLETE
+  - step_complete
+
+  - ON_DEVICE_STATUS_UPDATE
+  - on_device_status_update
+  - DEVICE_STATUS_UPDATE
+  - device_status_update
+
+  # Substep lifecycle triggers
+  - ON_SUBSTEP_START
+  - on_substep_start
+  - SUBSTEP_START
+  - substep_start
+
+  - ON_SUBSTEP_COMPLETE
+  - on_substep_complete
+  - SUBSTEP_COMPLETE
+  - substep_complete
+
+  # Timer triggers
+  - ON_TIMER_START
+  - on_timer_start
+  - TIMER_START
+  - timer_start
+
+  - ON_TIMER_STOP
+  - on_timer_stop
+  - TIMER_STOP
+  - timer_stop
+
+  - ON_TIMER_RESET
+  - on_timer_reset
+  - TIMER_RESET
+  - timer_reset
+
+  - ON_TIMER_COMPLETE
+  - on_timer_complete
+  - TIMER_COMPLETE
+  - timer_complete
+
+  # Selector triggers
+  - ON_SELECTOR_CONFIRM
+  - on_selector_confirm
+  - SELECTOR_CONFIRM
+  - selector_confirm
+
+  # Scan Triggers
+  - ON_SCAN
+  - on_scan
+  - SCAN
+  - scan

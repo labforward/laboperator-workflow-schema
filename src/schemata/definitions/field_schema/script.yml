@@ -1,0 +1,29 @@
+---
+type: object
+description: |
+  Defines a field of type `script`. A script field can be used to do simple
+  calculations of boolean or numerical expressions and save the result to a
+  field.
+required: [type, script, result]
+properties:
+  type:
+    type: string
+    enum: [script, result]
+  script:
+    $ref: '#/definitions/script'
+    description: |
+      The script will be evaluated to determine the value of the field
+      whenever it is accessed.
+  readOnly:
+    description: |
+      Script fields are always read-only as their value is calculated.
+    const: true
+  result:
+    description: |
+      You can provide a schema for the result of the expression to have the
+      value validated.
+    oneOf:
+      - $ref: '#/definitions/jsonSchemaDraft7'
+      - $ref: '#/definitions/field_schema/quantity'
+      - $ref: '#/definitions/field_schema/relationship'
+      - $ref: '#/definitions/field_schema/timer'

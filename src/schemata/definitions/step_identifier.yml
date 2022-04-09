@@ -1,0 +1,20 @@
+---
+allOf:
+  - type: string
+    title: A step identifier
+    description: |
+      A valid step identifier that can be mapped to one of the keys of the
+      `steps` section of the workflow.
+    not:
+      type: string
+      enum:
+        - if
+        - then
+        - else
+        - parallel
+        - when
+        - while
+        - until
+        - loop
+        - do
+  - $ref: '#/definitions/memberName'

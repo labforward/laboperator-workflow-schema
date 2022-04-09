@@ -1,0 +1,59 @@
+---
+type: object
+title: For-Each Integer Flow
+description: |
+  An iteration flow of steps or nested flow control schemas.
+  The loop will be iterated up to the given limit of an iterator integer.
+required: [forEach, to, do]
+additionalProperties: false
+properties:
+  forEach:
+    $ref: '#/definitions/memberName'
+    description: |
+      An intermediate iterator field which holds the index of current iteration.
+      The field must be defined in the template as type `integer`.
+  step:
+    description: |
+      The number by which to increase or decrease the `forEach` iterator integer.
+    default: 1
+    oneOf:
+      - type: integer
+      - $ref: '#/definitions/memberName'
+  to:
+    description: |
+      The limit value at which the flow execution will break out of the loop.
+      The check will be done exclusively.
+
+      For example, given the following definition:
+
+      ```yml
+      forEach: iterator
+      to: 5
+      do: something
+      ```
+
+      The iteration will happens 5 times, during which the `iterator` field will be
+      assigned the value of 0,1,2,3, and 4 respectively.
+    oneOf:
+      - type: integer
+      - $ref: '#/definitions/memberName'
+  do:
+    $ref: '#/definitions/flow/flowControl'
+examples:
+  - forEach: iterator
+    to: 10
+    do:
+      - step1
+      - step2
+  - forEach: iterator
+    step: 2
+    to: 10
+    do:
+      - step1
+      - step2
+  - forEach: iterator
+    step: iterator # non-linear steps
+    to: boundary # also works with field references
+    do:
+      - step1
+      - step2

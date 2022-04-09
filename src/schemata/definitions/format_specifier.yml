@@ -1,0 +1,15 @@
+---
+type: string
+title: A string describing how to format a number for display.
+description: | # TODO: Add more docs quantity handling
+  Number formatting is based on the excellent
+  [d3-format](https://github.com/d3/d3-format) library. Head over to their
+  [docs](https://github.com/d3/d3-format#locale_format) for a full reference
+  and examples.
+
+  The formatting specifiers are based on Python 3's
+  [Format Specification Mini-Language](https://docs.python.org/3/library/string.html#format-specification-mini-language).
+
+  A typical fixed point precision of two digits behind the decimal could be
+  achieved with `.2f`.
+example: .2f

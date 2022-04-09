@@ -1,0 +1,38 @@
+---
+type: object
+title: Configuration Section Schema of a workflow template
+description: |
+  The configuration section of a workflow template holds general options for the
+  workflow display.
+
+  Step configurations will override workflow configuration.
+minProperties: 1
+additionalProperties: false
+properties:
+  navigationDelay:
+    allOf:
+      - $ref: '#/definitions/duration'
+      - default: 5s
+        description: |
+          The duration by which the automatic navigation to the next step is
+          delayed.
+  contextInfoSettings:
+    $ref: '#/definitions/context_info/contextInfoSettings'
+  reportHeader:
+    type: string
+    title: Header of the workflow report.
+    description: |
+      Used to add header information that will be generated in the workflow report. The information can contain
+      reference to information present in the workflow, like workflow template information, using the
+      double curly brackets notation (see examples).
+      Besides field identifiers, the following references are supported:
+      - workflow template keys. You can access values from any key inside the workflow template, as long as you pass the keys in the correct
+        hierarchy.
+      - run: information about the current workflow run
+    examples:
+      - '{{run.data.attributes.title}}'
+      - 'Workflow run {{run.data.attributes.title}} created at {{run.data.attributes.created_at}}'
+      - Experiment ABC123
+      - '{{template.info.title}}'
+  signature:
+    $ref: '#/definitions/config/signature'

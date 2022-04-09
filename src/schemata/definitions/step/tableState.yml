@@ -1,0 +1,13 @@
+---
+type: object
+title: Table State Schema
+description: |
+  Dynamic data that describes the current behavior of the table based on any data of changes.
+additionalProperties: false
+properties:
+  selectedRow:
+    type: string
+    description: The currently selected row.
+  selectedCell:
+    type: string
+    description: The currently selected cell.

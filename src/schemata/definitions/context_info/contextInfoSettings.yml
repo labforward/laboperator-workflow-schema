@@ -1,0 +1,52 @@
+---
+type: object
+title: Context information panel settings
+description: |
+  Configuration of the workflow context information.
+properties:
+  toggleButton:
+    type: object
+    title: Toggle button settings
+    description: Configuration of the toggle button which opens/closes the panel.
+    properties:
+      label:
+        description: Label of the button
+        type: string
+        default: Info
+        examples:
+          - Info
+  allowFullscreen:
+    title: Full-screen mode toggle
+    description: |
+      Switches the ability to expand the panel to the full screen height.
+    type: boolean
+    default: true
+  initialState:
+    type: object
+    title: Initial state of the context information panel
+    description: |
+      Determines the behavior of the context information panel when the workflow run execution view is opened.
+    properties:
+      open:
+        type: boolean
+        default: false
+      fullscreen:
+        type: boolean
+        default: false
+  contentPanel:
+    type: object
+    title: Content panel settings
+    description: |
+      Configuration of the panel.
+    properties:
+      color:
+        description: Background color.
+        type: string
+        default: '#f5f5f5'
+        examples:
+          - white
+          - '#210210'
+      height:
+        description: Height of opened panel in pixels.
+        type: number
+        default: 160

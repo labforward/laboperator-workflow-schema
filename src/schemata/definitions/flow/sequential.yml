@@ -1,0 +1,18 @@
+---
+type: array
+title: Sequential Flow
+description: |
+  A sequence steps or nested flow control schemas. In a sequential flow consecutive items will always be executed one after another. Therefore, a nested flow has to be completed before a consecutive item can be started. The sequential flow is the only implicit flow, meaning it does not have any key words or properties. It is typically used as the top-level flow control in a workflow.
+items:
+  $ref: '#/definitions/flow/flowControl'
+examples:
+  - - step1
+    - step2
+  - - step1
+    - step2:
+        option: value
+  - - step1
+    - while: condition
+      do:
+        - step2
+    - step3

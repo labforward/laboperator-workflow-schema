@@ -1,0 +1,21 @@
+---
+type: object
+title: Timer Start Options
+description: |
+  Options to a Timer Start trigger.
+propertyNames:
+  enum:
+    - ON_TIMER_START
+    - on_timer_start
+    - TIMER_START
+    - timer_start
+additionalProperties:
+  type: object
+  additionalProperties: true
+  required:
+    - identifier
+  properties:
+    identifier:
+      $ref: '#/definitions/memberName'
+      description: |
+        Identifier of a timer that initiates the trigger.

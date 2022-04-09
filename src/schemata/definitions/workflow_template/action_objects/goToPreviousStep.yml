@@ -1,0 +1,27 @@
+---
+type: object
+title: GoToPreviousStep Options
+description: |
+  Options to an GoToPreviousStep action.
+propertyNames:
+  enum:
+    - go_to_previous_step
+    - GO_TO_PREVIOUS_STEP
+    - GoToPreviousStep
+additionalProperties:
+  type: object
+  properties:
+    resetCurrent:
+      type: boolean
+      default: false
+      description: |
+        A boolean flag indicating that the current step should be reset as if
+        it had not started yet.
+    resetPrevious:
+      type: boolean
+      default: false
+      description: |
+        A boolean flag indicating that the previous step should be reset
+        before returning to it.
+    delay:
+      $ref: '#/definitions/duration'

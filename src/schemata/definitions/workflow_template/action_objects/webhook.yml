@@ -1,0 +1,112 @@
+---
+type: object
+title: Webhook Actions
+description: |
+  Options to set a webhook action
+propertyNames:
+  enum:
+    - webhook
+    - Webhook
+    - WEBHOOK
+additionalProperties:
+  type: object
+  required:
+    - url
+  properties:
+    url:
+      type: string
+      description: |
+        The URL that should be used in the webhook.
+    interceptors:
+      type: array
+      description: interceptors to be applied to the request
+      items:
+        oneOf:
+          - type: object
+            additionalProperties: false
+            properties:
+              s3:
+                type: object
+                additionalProperties: false
+                properties:
+                  secret_key:
+                    type: string
+                  access_key:
+                    type: string
+    headers:
+      type: object
+      description: |
+        The HTTP request headers
+      additionalProperties:
+        type: string
+    method:
+      type: string
+      enum:
+        - get
+        - put
+        - patch
+        - delete
+        - post # default
+        - head
+      description: |
+        The HTTP verb that will be used in the request
+      default: post
+    blocking:
+      type: boolean
+      description: |
+        Defines if the webhook action will block the subsequent steps
+      default: false
+    body:
+      type: string
+      description: |
+        The HTTP request body. You can add information about fields present in the workflow,
+        and non-field information as well, using {{myInformation}}.
+        Besides field identifiers, the following references are supported:
+          - workflow_step: The current step of the workflow.
+            Please refer to the API documentation for the keys available to use.
+          - workflow_run: The current workflow run.
+            Please refer to the API documentation for the keys available to use.
+          - signal: details of what triggered the action.
+            includes but not limited to:
+
+              - type: What triggered the action, e.g. StepStart, Manual, etc
+              - auth_token: Encoded reference to the active user access_tokens (applicable only in a SSO environment),
+                may be blank if the active user can not be determined
+              - pointer: Returns the pointer to the behavior that called the webhook
+                (reference to the path inside the workflow template being used).
+
+          - options: The options being used for the webhook action, i.e. URL, headers, handlers.
+
+      examples:
+        - |
+          reference to a workflow field named 'volumeField' with a value of '10ml':
+          {
+            "registered_value": {{volumeField}}
+          }
+          The example above will generate a request with the following body:
+          {
+            "registered_value": "10ml"
+          }
+        - |
+          reference to non-field information:
+          {
+            "stepPointer": {{workflow_step.pointer}}
+          }
+          The example above will generate a request with the following body:
+          {
+            "stepPointer": "/steps/externalStep"
+          }
+
+    onSuccess:
+      description: The handler for response status codes 2xx
+      $ref: '#/definitions/step/webhookHandler'
+    onError:
+      description: The handler for response status codes 5xx
+      $ref: '#/definitions/step/webhookHandler'
+    onCode:
+      description: |
+        Define a different handler for specific codes.
+      propertyNames:
+        $ref: '#/definitions/statusCode'
+      additionalProperties:
+        $ref: '#/definitions/step/webhookHandler'

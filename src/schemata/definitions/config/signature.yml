@@ -1,0 +1,33 @@
+---
+type: object
+title: Signature
+description: |
+  A flag indicating whether a workflow run can be signed.
+
+  Signatures can be applied to any run with at least one completed step by anyone who has access to the run.
+required: [enabled]
+properties:
+  enabled:
+    type: boolean
+    default: false
+    description: |
+      Specify whether the run can be signed.
+  intentions:
+    type: array
+    items:
+      type: object
+      additionalProperties: false
+      required:
+        - type
+        - message
+      properties:
+        type:
+          type: string
+          enum: [collaborator, reviewer]
+        message:
+          type: string
+          maxLength: 1000
+
+example:
+  - signature:
+      enabled: true

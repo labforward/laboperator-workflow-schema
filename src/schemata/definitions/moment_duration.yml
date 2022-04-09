@@ -1,0 +1,47 @@
+---
+title: Moment Duration
+description: |
+  Duration formatting is based on the momentjs
+  [momentjs](https://momentjs.com/) library. Head over to
+  [docs](https://momentjs.com/docs/#/durations/creating/) for a full
+  reference and examples.
+oneOf:
+  - type: array
+    item:
+      oneOf:
+        - type: string
+          enum:
+            - years
+            - y
+            - months
+            - M
+            - weeks
+            - w
+            - days
+            - d
+            - hours
+            - h
+            - minutes
+            - m
+            - seconds
+            - s
+            - milliseconds
+            - ms
+        - type: number
+  - type: number
+    description: Duration in milliseconds
+  - type: string
+    pattern: '^(-?)P(?=\d|T\d)(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)([DW]))?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$'
+    description: ISO 8601 durations
+  - type: object
+    propertyNames:
+      enum:
+        - seconds
+        - minutes
+        - hours
+        - days
+        - weeks
+        - months
+        - years
+    additionalProperties:
+      type: number

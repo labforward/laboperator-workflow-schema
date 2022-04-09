@@ -1,0 +1,29 @@
+---
+type: object
+title: While Flow
+description: |
+  A while loop flow of steps or nested flow control schemas. The while loop
+  will be repeated as long as a condition is met. The while loop will never be
+  executed if the conditions evaluates to false initially. Once the condition
+  evaluates to a falsy value the loop is broken and the while loop flow is
+  considered completed.
+required: [while, do]
+additionalProperties: false
+properties:
+  while:
+    $ref: '#/definitions/script'
+    description: |
+      The condition has access to all fields of the workflow. Any string
+      result or numerical result other then zero will be considered truthy and
+      trigger another iteration of the `do` flow. A falsy value will trigger
+      completion of the while loop flow.
+  do:
+    $ref: '#/definitions/flow/flowControl'
+examples:
+  - while: field1 > 100
+    do:
+      - step1
+      - step2
+
+  - while: field1 != field2
+    do: step3

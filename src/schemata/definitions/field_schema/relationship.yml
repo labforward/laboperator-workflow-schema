@@ -1,0 +1,36 @@
+---
+type: object
+description: |
+  Defines a field of type `relationship`.
+required: [type, resourceType]
+properties:
+  type:
+    type: string
+    enum: [relationship]
+  resourceType:
+    type: string
+    description: The type of resource referenced by this relationship.
+    enum:
+      - users
+      - devices
+      - measurements
+      - samples
+      - channels
+      - collections
+      - attachments
+  multiple:
+    type: boolean
+    default: false
+    description: |
+      A boolean flag indicating that multiple entities can be referenced.
+  filter:
+    $ref: '#/definitions/script'
+    description: |
+      A filter expression that allows to filter available resources further. A
+      resources attribute will be passed to the filter expression. Refer to
+      the resource object descriptions of the API for more information about
+      available attributes.
+    examples:
+      - device_class == 2000
+      - email ~= "@partner.company.com"
+      - unit == "mg"

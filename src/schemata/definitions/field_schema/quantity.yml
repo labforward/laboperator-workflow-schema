@@ -1,0 +1,19 @@
+---
+type: object
+description: |
+  Defines a field of type `quantity`. A quantity is a real number with a unit
+  represented as a string.
+required: [type]
+properties:
+  type:
+    type: string
+    enum: [quantity]
+  unit:  # TODO: Specify valid units.
+    type: string
+    description: When set the value of this field should match the given unit.
+  kind:  # TODO: Specify valid kinds.
+    type: string
+    description: |
+      When set the value of this field should match the given kind. `unit`
+      takes preference over the kind, thus `kind` will be ignored if `unit` is
+      set.

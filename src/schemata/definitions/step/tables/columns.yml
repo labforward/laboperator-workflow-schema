@@ -1,0 +1,78 @@
+---
+type: array
+title: Table column mapping schema
+description: |
+  A static array that defines the structure of a table by mapping keys from the source data to columns.
+
+  Each object in the source data represents an unordered collection of data. By default the order of columns in a table is therefore not fixed. In order to give a table a fixed column structure, it is required to map columns to specific keys.
+
+  Column mapping for table tabs takes precedence over the table-wide `columns` setting.
+items:
+  type: object
+  description: The properties of each individual column.
+  required:
+    - value
+    - label
+  properties:
+    value:
+      $ref: '#/definitions/jsonPointer'
+      description: |
+        The pointer to the value for each row in a column. The path is resolved relative to each row object.
+    label:
+      type: string
+      description: The display name of the column.
+    formatSpecifier:
+      $ref: '#/definitions/formatSpecifier'
+      description: |
+        A specifier describing number formatting for numeric field values. All other field value types will ignore this.
+    align:
+      type: string
+      default: left
+      description: |
+        The horizontal alignment of the cell values within a column.
+      enum:
+        - left
+        - center
+        - right
+    editable:
+      type: boolean
+      default: false
+      description: |
+        A flag indicating if cells in this column are editable. If no `ui:widget` is specified, the column cells will display a text input.
+    selectable:
+      type: boolean
+      description: |
+        A flag indicating if cells in this column are selectable. It takes precedence over the table-wide `selectable: ['cells']` setting. Row selection is not affected.
+    ui:widget:
+      type: string
+      default: textfield
+      enum:
+        - checkbox
+        - switch
+        - textfield
+    ui:options:
+      type: object
+      description: |
+        Configuration options for the UI widgets.
+      properties:
+        placeholder:
+          type: string
+          description: |
+            The short hint displayed in a text field before entering a value.
+        type:
+          type: string
+          default: text
+          description: |
+            The HTML5 input type of a text field.
+          enum:
+            - text
+            - number
+  example:
+    - label: Compound
+      value: name
+    - label: Density (g/cm³)
+      value: density
+      align: right
+    - label: Molar mass (g/mol)
+      value: molar_mass
+      align: right

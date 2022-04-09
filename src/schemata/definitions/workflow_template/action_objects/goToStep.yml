@@ -1,0 +1,29 @@
+---
+type: object
+title: GoToPreviousStep Options
+description: |
+  Options to an GoToStep action.
+propertyNames:
+  enum:
+    - go_to_step
+    - GO_TO_STEP
+    - GoToStep
+additionalProperties:
+  type: object
+  required:
+    - step
+  properties:
+    step:
+      type: integer
+      minimum: 1
+      description: |
+        The step number of the step to navigate to. This action only makes
+        sense for use with linear flows, with a static step number
+        distribution.
+    reset:
+      type: boolean
+      default: false
+      description: |
+        A boolean flag indicating that all intermediate steps should be reset.
+    delay:
+      $ref: '#/definitions/duration'
