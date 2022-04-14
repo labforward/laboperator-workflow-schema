@@ -1,0 +1,18 @@
+---
+type: object
+title: RemoveStep Event
+description: |
+  The event of removing a step from a running dynamic template.
+  Only steps which are not yet started can be removed
+properties:
+  type:
+    enum:
+      - remove_step
+  payload:
+    type: object
+    required:
+      - pointer
+    properties:
+      pointer:
+        type: string
+        pattern: ^/flow/

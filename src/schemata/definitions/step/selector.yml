@@ -1,0 +1,62 @@
+---
+type: object
+title: Selector Schema
+description: |
+  The schema of a selector. The options defined will be available
+  for selection in the substep during a workflow run. A selector can be customized
+  with different layouts, currently list or cards. They support both multi- and single-selection.
+  By overwriting the default behaviors they can be completely customized.
+additionalProperties: false
+required:
+  - options
+properties:
+  layout:
+    type: string
+    description: |
+      The layout of the selector. Supported layouts are list and cards.
+      You can change layouts during selection on the workflow run without affecting the value defined in the template.
+    enum:
+      - cards
+      - list
+    default: list
+
+  result:
+    description: Define the field that will receive the value of the selected option.
+    $ref: '#/definitions/memberName'
+
+  title:
+    type: string
+    description: The title of the selector.
+    default: Selection
+
+  description:
+    type: string
+    description: |
+      The description of the selector. Add any fancy description you want, we support __Markdown__!
+    default: Select one of the options below.
+
+  multiSelection:
+    type: boolean
+    description: Defines if the selector allows the selection of more than one option.
+    default: false
+
+  skipBehaviors:
+    type: boolean
+    description: |
+      Defines if the default behaviors of the substep should be skipped or not.
+      The default behavior of a selector is to set the value of the selected option(s) on the result field and complete the substep.
+      If you set this option to true, you need to add behaviors, either in the substep or step level, and one of the actions must be the SET_FIELD.
+    default: false
+
+  options:
+    oneOf:
+      - $ref: '#/definitions/memberName'
+      - $ref: '#/definitions/step/selectorOptions'
+      - type: object
+        minProperties: 1
+        maxProperties: 1
+        propertyNames:
+          $ref: '#/definitions/memberName'
+        additionalProperties:
+          oneOf:
+            - $ref: '#/definitions/step/selectorAccessors'

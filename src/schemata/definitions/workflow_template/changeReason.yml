@@ -1,0 +1,65 @@
+---
+title: Change Reason
+description: |
+  A flag indicating that overwriting an existing field value requires a reason and prompts the user with a reason dialog. The reason is recorded along with the new field value. If no reason is submitted, the field is not updated.
+
+  Updating a field that has no value with a value does not require a reason. A field update that changes the value to `null`, however, does require a reason. Consider the following example:
+
+      1. field has no value
+      2. update to `10`
+      3. update to `22` => reason required
+      4. update to `null` => reason required
+      5. update to `14`
+      6. update to `19` => reason required
+      7. user does not submit reason => field value is still `14`
+
+  A reason can be submitted programmatically as part of a `set_field` action, which would then not prompt the reason dialog to the user during workflow execution. See [Set Field schema](/schemas/definitions/workflow_template/action_objects/setField/) for more information.
+
+  For fields of type array or object the `changeReason` setting can be applied both at the top-level, meaning any partial update of an existing value requires a reason, or for individual items and properties only. Nested settings take precedence over higher-level settings.
+
+  A field update that requires a reason will always fail if no reason is provided.
+oneOf:
+  - type: boolean
+    description: |
+      A field flagged with the boolean `changeReason: true` setting uses the default `message` and `validation` settings for its reason dialog.
+  - type: object
+    minProperties: 1
+    additionalProperties: false
+    properties:
+      message:
+        type: string
+        maxLength: 1000
+        default: |
+          This field is flagged as an change reason field. To update the field with a new value, a reason must be submitted.
+        description: |
+          A message that appears in the reason dialog to provide additional information to the user and to make sure a valid reason is entered.
+
+          The default message is translated according to the user profile's language setting.
+      validation:
+        type: string
+        format: regex
+        default: ^(?!^(\S)(?:\s*\1)+$)(?:[ \t]*\S[ \t]*){5,}$
+        description: |
+          A regular expression pattern to validate user input in the reason dialog. A reason can only be submitted and the field updated, if the pattern matches. Reasons provided in the template via the `options` setting are always valid and do not have to match a pattern.
+
+          The default pattern matches five or more non-identical characters, excluding whitespace characters (spaces, tabs, line breaks).
+      options:
+        type: array
+        description: |
+          A list of reasons for the user to choose from in the reason dialog. When selected, any of the specified options is considered a valid reason and no additional user input is required.
+
+          This setting automatically adds one additional option of "Other" that, when selected, allows the user to enter a custom reason. A custom reason always needs to match the validation pattern.
+        items:
+          type: string
+          examples:
+            - Device did not function properly
+            - Balance did not reach stable weight
+            - Measurement failed
+example:
+  - changeReason:
+      message: |
+        Field update requires a reason. Please select one of the options or submit your own.
+      validation: ^\w.+\s.+
+      options:
+        - Solution factor too high
+        - Solution factor too low

@@ -1,0 +1,41 @@
+---
+type: string
+title: Action Identifier Schema
+enum:
+  # Step level actions
+  - COMPLETE_STEP
+  - complete_step
+
+  - REPEAT_STEP
+  - repeat_step
+
+  - GO_TO_PREVIOUS_STEP
+  - go_to_previous_step
+  - GoToPreviousStep
+
+  # Substep level actions
+  - START_SUBSTEP
+  - start_substep
+
+  - COMPLETE_SUBSTEP
+  - complete_substep
+
+  - REPEAT_SUBSTEP
+  - repeat_substep
+
+  # Time actions
+  - START_TIMER
+  - start_timer
+
+  - STOP_TIMER
+  - stop_timer
+
+  - RESET_TIMER
+  - reset_timer
+
+  - COMPLETE_TIMER
+  - complete_timer
+
+  # Alert actions
+  - CONFIRM_ALERT
+  - confirm_alert

@@ -1,0 +1,24 @@
+---
+type: object
+title: Page containing context information
+description: |
+  Pages displayed as workflow context information.
+properties:
+  required:
+    - title
+    - content
+  title:
+    type: string
+    title: Title
+    description: |
+      The displayed title of the page.
+    examples:
+      - Formula
+  content:
+    type: string
+    title: Main content
+    description: |
+      Display text, tables, fields values and media using Markdown.
+    default: ''
+    examples:
+      - 'Add a fancy slide content. It even supports __[Markdown](https://en.wikipedia.org/wiki/Markdown)__!'

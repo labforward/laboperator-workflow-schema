@@ -1,0 +1,57 @@
+---
+$schema: http://json-schema.org/draft-07/schema#
+$id: https://www.cubuslab.com/schemas/workflow_template_schema/version/1-0-0
+type: object
+title: The Workflow Template Schema
+description: |
+  A workflow template consists of five parts:
+  1. schema_version: Version of the template schema used.
+  2. info: General information about the workflow.
+  3. fields: Global context in this workflow.
+  4. steps: Definition of all unique steps that occur in the workflow.
+  5. flow: The flow of steps.
+required:
+  - schema_version
+  - info
+  - fields
+  - steps
+  - flow
+properties:
+  schema_version:
+    $ref: '#/definitions/schemaVersion'
+  info:
+    allOf:
+      - $ref: '#/definitions/info'
+      - required:
+          - version
+          - uuid
+        properties:
+          uuid:
+            $ref: '#/definitions/uuid'
+          version:
+            $ref: '#/definitions/version'
+  config:
+    $ref: '#/definitions/config/workflowConfig'
+  elements:
+    type: array
+    title: Data Elements
+    description: |
+      Data elements allow to render data from device channels on the substep.
+    items:
+      $ref: '#/definitions/step/element'
+  tables:
+    $ref: '#/definitions/step/tables'
+  buttons:
+    $ref: '#/definitions/buttons'
+  fields:
+    $ref: '#/definitions/fields'
+  steps:
+    $ref: '#/definitions/workflow_template/steps'
+  flow:
+    $ref: '#/definitions/workflow_template/flow'
+  contextInfo:
+    $ref: '#/definitions/contextInfo'
+  behaviors:
+    $ref: '#/definitions/workflow_template/behaviors'
+  secrets:
+    $ref: '#/definitions/secrets'

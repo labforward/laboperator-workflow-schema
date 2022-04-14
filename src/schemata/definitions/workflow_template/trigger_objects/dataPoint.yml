@@ -1,0 +1,29 @@
+---
+type: object
+title: DataPoint Options
+description: |
+  Options to a DataPoint trigger.
+propertyNames:
+  enum:
+    - DataPoint
+    - data_point
+    - DATA_POINT
+    - OnDataPoint
+    - on_data_point
+    - ON_DATA_POINT
+additionalProperties:
+  type: object
+  additionalProperties: true
+  required:
+    - device
+    - channel
+  properties:
+    device:
+      $ref: '#/definitions/memberName'
+      description: |
+        A reference to a field that is a relationship to a device.
+    channel:
+      type: string
+      description: |
+        Name of the channel that should be subscribed.
+      example: weight

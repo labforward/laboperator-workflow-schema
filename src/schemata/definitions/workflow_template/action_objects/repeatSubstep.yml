@@ -1,0 +1,23 @@
+---
+type: object
+title: RepeatSubstep Options
+description: |
+  Options to an RepeatSubstep action.
+propertyNames:
+  enum:
+    - repeat_substep
+    - REPEAT_SUBSTEP
+    - RepeatSubstep
+additionalProperties:
+  type: object
+  properties:
+    substep:
+      type: integer
+      description: |
+        Index of the substep from which on the step should be repeated. Substeps
+        are always indexed form 0. So to passing `substep: 0`, would repeat the
+        entire step.
+
+        If no option is passed the index is taken from the trigger, e.g. a
+        SubstepComplete trigger will repeat the just completed substep.
+      example: 1

@@ -1,0 +1,20 @@
+---
+type: object
+title: Tables Schema
+description: |
+  Tables display a collection of data in an ordered arrangement of rows and columns.
+
+  In markdown, tables can be referenced via their unique identifier:
+
+  `{{table|my_table}}`
+
+  Additionally, you can define the number of visible rows for the table body. Example:
+
+  `{{table|my_table|rows=3}}`
+
+  This will display the referenced table with the header row and its column labels, and the first three rows of the table body. Subsequent rows can be scrolled into view, while the table header remains in a fixed position. Limiting the number of visible rows is useful to save space on the UI for tables with many rows or when UI space is scarce in general. This setting prevents line breaks for all cell content in order to be able to calculate the height of the visible area. Consequently this comes with the potential trade-of of horizontal scrolling.
+
+propertyNames:
+  $ref: '#/definitions/memberName'
+additionalProperties:
+  $ref: '#/definitions/step/table'

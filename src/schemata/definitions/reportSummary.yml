@@ -1,0 +1,24 @@
+---
+type: string
+title: Information summary about the step that will be generated in the report.
+description: |
+  Used to add information that will be generated in the workflow report. The information can contain
+  reference to information present in the workflow, like fields, or workflow template information, using the
+  double curly brackets notation (see examples).
+  Besides field identifiers, the following references are supported:
+  - step: The step in which the reportSummary is contained. Please refer to the API documentation
+    for the keys available to use for step.
+  - template: You can access values from any key inside the workflow template, as long as you pass the keys in the correct
+    hierarchy.
+  - operator: The user who completed the step.
+maxLength: 5000
+examples:
+  - Substances mixed using stirrer {{deviceName}} for {{timerField}}.
+  - Experiment ABC123 used as baseline
+  - |
+    Using step information:
+    Step completed at {{step.data.attributes.completed_at}} by {{operator.data.attributes.full_name}}
+  - |
+    Using workflow template keys:
+    {{template.steps.myStepName.info.title}}: Repeated 3 times, as specified by instructions present
+    in ABC123 guidelines.

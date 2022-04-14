@@ -1,0 +1,35 @@
+---
+type: object
+title: Info Section Schema
+description: |
+  The info section of a workflow or step template holds general information
+  about the template.
+required:
+  - title
+properties:
+  title:
+    type: string
+    title: Title
+    description: |
+      A title that will be used as a display name to the workflow template.
+    examples:
+      - My Premium Workflow
+
+  description:
+    type: string
+    title: Description
+    default: ''
+    examples:
+      - 'Add a fancy description here. It even supports __[Markdown](https://en.wikipedia.org/wiki/Markdown)__!'
+
+  author:
+    $id: '#/definitions/author'
+
+  slug:
+    $id: '#/definitions/slug'
+
+  tags:
+    type: array
+    items:
+      type: string
+      maxLength: 50

@@ -1,0 +1,21 @@
+---
+type: object
+title: Timer Reset Options
+description: |
+  Options to a Timer Reset trigger.
+propertyNames:
+  enum:
+    - ON_TIMER_RESET
+    - on_timer_reset
+    - TIMER_RESET
+    - timer_reset
+additionalProperties:
+  type: object
+  additionalProperties: true
+  required:
+    - identifier
+  properties:
+    identifier:
+      $ref: '#/definitions/memberName'
+      description: |
+        Identifier of a timer that initiates the trigger.

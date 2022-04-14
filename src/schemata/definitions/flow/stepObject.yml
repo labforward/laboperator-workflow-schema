@@ -1,0 +1,25 @@
+---
+type: object
+title: A step call object
+description: |
+  A step call object is the more sophisticated variant of a step identifier
+  allowing to pass additional parameters to a step being called.
+maxProperties: 1
+minProperties: 1
+propertyNames:
+  $ref: '#/definitions/stepIdentifier'
+additionalProperties:
+  type: object
+  minProperties: 1
+  additionalProperties: false
+  properties:
+    title:
+      type: string
+      description: |
+        Overrides the step title of the step definition. This is useful to
+        customize the title of a generic step for each invocation when it is
+        reused multiple times during the workflow.
+    fields:
+      $ref: '#/definitions/fieldValues'
+    fieldMapping:
+      $ref: '#/definitions/fieldMapping'

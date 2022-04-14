@@ -1,0 +1,12 @@
+---
+type: array
+title: Behaviors Schema
+description: |
+  Behaviors provide means to define the behavior of a step. They can be used
+  to control devices, record results, wait for device responses, control flow
+  within a step and much more. The general scheme of a behavior is
+  `trigger` => `action`.
+
+  Behaviors are always treated as parallel independant definitions.
+items:
+  $ref: '#/definitions/workflow_template/behavior'

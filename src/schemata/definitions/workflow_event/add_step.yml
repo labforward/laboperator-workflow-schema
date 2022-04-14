@@ -1,0 +1,30 @@
+---
+type: object
+title: AddStep Event
+description: |
+  The event of adding a step to a running dynamic template.
+  The added step will be appended as the last step of the run.
+properties:
+  type:
+    enum:
+      - add_step
+  payload:
+    oneOf:
+      - type: object
+        description: Payload for externally defined step template
+        required:
+          - uuid
+          - version
+        properties:
+          uuid:
+            $ref: '#/definitions/uuid'
+          version:
+            $ref: '#/definitions/version'
+
+      - type: object
+        description: Payload of locally defined step template
+        required:
+          - step
+        properties:
+          step:
+            $ref: '#/definitions/memberName'

@@ -1,0 +1,21 @@
+---
+type: object
+title: Schema for a reference to an external step
+description: |
+  A reference to workflow step defined outside the workflow template.
+  Additional properties might be added to the reference for documentation
+  purposes. It is recommended to use the `$comment` property.
+required:
+  - uuid
+  - version
+additionalProperties: true
+properties:
+  uuid:
+    $ref: '#/definitions/uuid'
+  version:
+    $ref: '#/definitions/version'
+  missing:
+    type: boolean
+    default: false
+    description: |
+      Set to true if the external step failed to be found during workflow run

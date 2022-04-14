@@ -1,0 +1,41 @@
+---
+type: object
+title: Notify Object
+description: |
+  Options to an Notify action. In contrast to an alert the notification does
+  not interrupt the execution of a workflow and requires no user interaction.
+  It will only be shown to users that have the workflow open at the time of
+  the action being run.
+propertyNames:
+  enum:
+    - Notify
+    - notify
+    - NOTIFY
+additionalProperties:
+  type: object
+  required:
+    - text
+  properties:
+    text:
+      type: string
+      description: |
+        A text to display on the notification. Supports field value
+        interpolation using the double curly parentheses syntax `{{MyField}}`.
+    autoHideDuration:
+      type: number
+      default: 5000
+      description: |
+        Duration in milliseconds after which to hide the notification
+        automatically.
+    variant:
+      type: string
+      default: default
+      description: |
+        The alert variant will impact the color and signals different stages
+        of urgency or importance.
+      enum:
+        - default
+        - error
+        - info
+        - success
+        - warning

@@ -1,0 +1,17 @@
+---
+title: Triggers Schema
+description: |
+  Triggers can come as a simple identifier string or an object to pass options.
+  Either variant can be used as a single trigger or a list of triggers.
+  Different then actions, triggers are considered alternatives. Either of any
+  triggers could set the behavior in motion. While a behavior is in motion
+  other occurrences of triggers on that behavior will have no effect, so the
+  same behavior can not be triggered multiple times in parallel.
+oneOf:
+  - $ref: '#/definitions/workflow_template/triggerIdentifier'
+  - $ref: '#/definitions/workflow_template/triggerObject'
+  - type: array
+    items:
+      oneOf:
+        - $ref: '#/definitions/workflow_template/triggerIdentifier'
+        - $ref: '#/definitions/workflow_template/triggerObject'

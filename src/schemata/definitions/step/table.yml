@@ -1,0 +1,198 @@
+---
+type: object
+title: Table Schema
+required:
+  - data
+properties:
+  data:
+    $ref: '#/definitions/memberName'
+    description: |
+      The unique identifier of a field that contains the source data.
+
+      If configuration for `tabs` or `columns` is not specified, the data source is expected to be an array of objects. Each object represents one row in the table. The order of rows in the table is defined by the array indices. The object properties define the cell values within that row. For example, the following source data would result in a table with three columns and two rows:
+
+      ```yml
+      - name: acetic anhydride
+        density: 1.08
+        molar_mass: 102.09
+      - name: 2-Hydroxybenzoic acid
+        density: 1.44
+        molar_mass: 138.121
+      ```
+
+      Configuration for `tabs` or `columns` can be provided for mapping a data source that is not an array of objects.
+      With `tabs` you can split the source data into separate tables in separate tabs. Mapping on where to find the data for each tab must be defined in the `tabs.rows` setting.
+      The `columns` setting enables fine-grained control over the structure of a table and the formatting of cell values. If `columns` is not specified, rows must be represented by objects in the source data.
+
+      Examples for when the source data is:
+
+      1. Array of arrays:
+
+      - table configuration:
+
+        ```yml
+        columns:
+          - label: Name
+            value: '/name'
+          - label: Density
+            value: '/density'
+        tabs:
+          - rows: '/0'
+          - rows: '/1'
+        ```
+
+      - sample data:
+
+        ```yml
+        - - name: acetic anhydride
+            density: 1.08
+            molar_mass: 102.09
+          - name: 2-Hydroxybenzoic acid
+            density: 1.44
+            molar_mass: 138.121
+        - - name: salicylic acid
+            density: 1.44
+            molar_mass: 138.12
+          - name: 2,4,6-Trichlorphenol
+            density: 1,68
+            molar_mass: 197,45
+        ```
+
+      2. Array of objects:
+
+      - table configuration:
+
+        ```yml
+        columns:
+          - label: Name
+            value: /name
+          - label: Factor
+            value: /factor
+        tabs:
+          - rows: /0/determinations
+          - rows: /1/determinations
+        ```
+
+      - sample data:
+
+        ```yml
+        - name: First Dilution
+          determinations:
+            - name: acetic anhydride
+              factor: 2
+              weight: 102.09
+            - name: 2-Hydroxybenzoic acid
+              factor: 2
+              weight: 138.121
+        - name: Second Dilution
+          determinations:
+            - name: acetic anhydride
+              factor: 4
+              weight: 80.25
+            - name: 2-Hydroxybenzoic acid
+              factor: 4
+              weight: 108.457
+        ```
+    example: my_table_data
+  tabs:
+    type: array
+    description: |
+      A static array that defines the structure of tabs that contain separate tables.
+    items:
+      type: object
+      description: The properties of each individual tab.
+      required:
+        - rows
+      properties:
+        rows:
+          $ref: '#/definitions/jsonPointer'
+          description: |
+            The pointer to the array that holds the rows data for each tab. The path is resolved relative to the table `data` field.
+        label:
+          type: string
+          description: |
+            The display name of the tab. If no label is specified, the default `Tab #` label will be used, with `#` indicating the respective tab index.
+          default: 'Tab #'
+          examples:
+            - Weighing Experiment
+            - Dilution 1
+        selectable:
+          type: array
+          items:
+            type: string
+            enum:
+              - rows
+              - cells
+          description: |
+            Configures which table elements can be selected to trigger behaviors. It takes precedence over the table-wide `selectable` setting.
+        columns:
+          $ref: '#/definitions/step/tables/columns'
+        caption:
+          type: string
+          description: |
+            A caption functions like a heading for a table and provides information that can help users find and understand a table. It takes precedence over the table-wide `caption` setting.
+  dense:
+    type: boolean
+    default: false
+    description: |
+      Toggles a condensed appearance of a table with reduced spacing. If `textWrapping` is not disabled, rows will still increase in width in order to display long cell content with line breaks to avoid horizontal scrolling.
+  textWrapping:
+    type: boolean
+    default: true
+    description: |
+      Toggles line breaks inside table cells. If enabled, text will break into multiple lines so that it will fit into the available space and can be read from top to bottom without any horizontal scrolling.
+      Tables that are referenced in markdown with a flag to set the number of visible rows, i.e. `{{table|my_table|rows=3}}`, have text wrapping disabled by default.
+  borders:
+    type: boolean
+    default: false
+    description: |
+      Toggles borders around each cell. The default appearance of a table is a border below every row.
+  alternatingRowColor:
+    type: boolean
+    default: false
+    description: |
+      Toggles a background color on odd rows to improve readability.
+  caption:
+    type: string
+    description: |
+      A caption functions like a heading for a table and provides information that can help users find and understand a table.
+  selectable:
+    type: array
+    items:
+      type: string
+      enum:
+        - rows
+        - cells
+    description: |
+      Configures which table elements can be selected to trigger behaviors.
+  columns:
+    $ref: '#/definitions/step/tables/columns'
+  state:
+    $ref: '#/definitions/memberName'
+    description: |
+      The unique identifier of a field.
+
+      The state field will be created implicitly. The field name pattern consists of the table identifier and the string `_state`, joined end-to-end.
+
+      A custom state field needs to conform to the following schema:
+
+      ```yml
+      type: object
+      additionalProperties: false
+      properties:
+        selectedRow:
+          type: string
+          description: The currently selected row.
+        selectedCell:
+          type: string
+          description: The currently selected cell.
+      ```
+    example: myTable_state
+  skipBehaviors:
+    type: boolean
+    default: false
+    description: |
+      Toggles the automatic creation of behaviors for selecting table rows and cells
+
+  rules:
+    $ref: '#/definitions/step/tables/rules'

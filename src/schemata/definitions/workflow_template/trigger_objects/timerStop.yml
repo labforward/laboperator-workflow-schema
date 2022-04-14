@@ -1,0 +1,21 @@
+---
+type: object
+title: Timer Complete Options
+description: |
+  Options to a Timer Complete trigger.
+propertyNames:
+  enum:
+    - ON_TIMER_STOP
+    - on_timer_stop
+    - TIMER_STOP
+    - timer_stop
+additionalProperties:
+  type: object
+  additionalProperties: true
+  required:
+    - identifier
+  properties:
+    identifier:
+      $ref: '#/definitions/memberName'
+      description: |
+        Identifier of a timer that initiates the trigger.

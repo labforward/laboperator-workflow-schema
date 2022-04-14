@@ -1,0 +1,26 @@
+---
+type: object
+title: ResolveIf Event
+description: |
+  The event of resolving the condition in an `if` flow of steps.
+
+  If the condition resolves to a truthy value, the steps included in `then` will be unfolded.
+  Otherwise, the steps included in `else` will be unfolded.
+
+  If `else` is not specified in the `if` flow and the condition resolves to a falsy value,
+  no steps will be unfolded.
+properties:
+  type:
+    enum:
+      - resolve_if
+  payload:
+    type: object
+    required:
+      - pointer
+      - resolved
+    properties:
+      pointer:
+        type: string
+        pattern: ^/flow/
+      resolved:
+        type: boolean

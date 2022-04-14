@@ -1,0 +1,115 @@
+---
+type: object
+title: Set Field
+description: |
+  A Set Field action updates a field with a new value.
+propertyNames:
+  enum:
+    - set_field
+    - SET_FIELD
+    - SetField
+additionalProperties:
+  oneOf:
+    - type: object
+      required:
+        - field
+        - value
+      additionalProperties: false
+      properties:
+        field:
+          $ref: '#/definitions/memberName'
+          description: |
+            A reference to a field that is updated with a value when the action is triggered.
+        value:
+          $ref: '#/definitions/script'
+          description: |
+            A script that returns a value. The value type must match the type of the field that is referenced in the `field` setting. Different fields allow for different logical and arithmetical operations.
+        meta:
+          type: object
+          additionalProperties: false
+          properties:
+            reason:
+              description: |
+                A reason that is recorded along with a field update if the update requires a reason. See [Change Reason schema](/schemas/definitions/workflow_template/changeReason/) for more information.
+              type: string
+    - type: object
+      required:
+        - field
+        - patch
+      additionalProperties: false
+      properties:
+        field:
+          $ref: '#/definitions/memberName'
+          description: |
+            A reference to a field that is partially updated with a value when the action is triggered.
+        patch:
+          type: array
+          description: |
+            An array of JSON patch operations to be performed. The JSON Patch format can be used to avoid sending a whole document when only a part has changed. You can find more details at [jsonpatch.com](http://jsonpatch.com/).
+          items:
+            type: object
+            required:
+              - path
+              - op
+            properties:
+              path:
+                $ref: '#/definitions/script'
+                description: |
+                  A script that returns the pointer to the part of a field document that will be updated. The path is resolved relative to the field's value.
+              op:
+                type: string
+                enum:
+                  - add
+                  - remove
+                  - replace
+                  - copy
+                  - move
+                  - test
+                description: |
+                  Operation to be performed as defined by [the specification](http://jsonpatch.com/#operations).
+              value:
+                $ref: '#/definitions/script'
+                description: |
+                  A script that returns a value. The value type must match the type of the field that is referenced in the `field` setting. Different fields allow for different logical and arithmetical operations.
+              from:
+                $ref: '#/definitions/script'
+                description: |
+                  A script that returns the pointer to the part of a field document that is copied or moved. The path is resolved relative to the field's value.
+        meta:
+          type: object
+          additionalProperties: false
+          properties:
+            reason:
+              description: |
+                A reason that is recorded along with a field update if the update requires a reason. See [Change Reason schema](/schemas/definitions/workflow_template/changeReason/) for more information.
+              type: string
+
+examples:
+  - set_field:
+      field: resultField
+      value: data_point.value
+      meta:
+        reason: Field update via incoming data point from device weight channel
+  - set_field:
+      field: myTableData
+      patch:
+        - path: "'/0/molar_mass'"
+          value: 200
+          op: 'replace'
+        - path: "'/0/final_density'"
+          value: 'myDensity * 3'
+          op: 'replace'
+        - path: 'myField.myPointer'
+          value:
+            targetValue: 100
+            experimentId: 'abc123'
+          op: 'replace'
+        - path: "'/-'"
+          value:
+            density: 2 mg/ul
+            molar_mass: 100
+            type_here: it works
+          op: add
+        - path: "'/0'"
+          value: null
+          op: remove

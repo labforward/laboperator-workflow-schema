@@ -1,0 +1,19 @@
+---
+type: object
+description: |
+  Defines a field of type `file`.
+required: [type, mediaType]
+properties:
+  type:
+    type: string
+    enum: [file]
+  mediaType:
+    description: |
+      A single or list of accepted [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml).
+
+      Note: Not all Media Types out there might be supported.
+    oneOf:
+      - type: string
+      - type: array
+        items:
+          type: string

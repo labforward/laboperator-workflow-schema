@@ -1,0 +1,17 @@
+---
+type: object
+title: CompleteTimer Options
+description: |
+  Options to an CompleteTimer action.
+propertyNames:
+  enum:
+    - complete_timer
+    - COMPLETE_TIMER
+    - CompleteTimer
+additionalProperties:
+  type: object
+  properties:
+    identifier:
+      type: string
+      description: |
+        Identifier of a timer.

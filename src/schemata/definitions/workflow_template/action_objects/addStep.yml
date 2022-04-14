@@ -1,0 +1,40 @@
+---
+type: object
+title: AddStep Options
+description: |
+  Options to a AddStep action.
+propertyNames:
+  enum:
+    - AddStep
+    - add_step
+    - ADD_STEP
+additionalProperties:
+  oneOf:
+    - type: object
+      required:
+        - uuid
+        - version
+      additionalProperties: false
+      properties:
+        uuid:
+          $ref: '#/definitions/uuid'
+          description: A reference to a step template.
+        version:
+          $ref: '#/definitions/version'
+          description: Version on a step template.
+        fields:
+          $ref: '#/definitions/fieldValues'
+        fieldMapping:
+          $ref: '#/definitions/fieldMapping'
+
+    - type: object
+      required:
+        - step
+      additionalProperties: false
+      properties:
+        step:
+          $ref: '#/definitions/memberName'
+        fields:
+          $ref: '#/definitions/fieldValues'
+        fieldMapping:
+          $ref: '#/definitions/fieldMapping'

@@ -1,0 +1,15 @@
+---
+type: string
+title: JSON Pointer
+description: |
+  JSON Pointer is a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document as defined by [RFC6901](https://tools.ietf.org/html/rfc6901). It contains a sequence of zero or more reference tokens, each prefixed by a '/' character.
+examples:
+  - /
+  - /0/experiments
+  - /devices/2/weighing
+  - |
+    # Use '~1' to escape a '/''
+    /mass~1volume  # => for { "mass/volume": ... }
+  - |
+    # Use '~0' to escape a '~'
+    /sample~0dilutions  # => for { "sample~dilutions": ... }

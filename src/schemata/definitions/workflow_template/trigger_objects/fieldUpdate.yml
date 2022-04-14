@@ -1,0 +1,23 @@
+---
+type: object
+title: FieldUpdate Options
+description: |
+  Options to a FieldUpdate trigger.
+propertyNames:
+  enum:
+    - FieldUpdate
+    - field_update
+    - FIELD_UPDATE
+    - OnFieldUpdate
+    - on_field_update
+    - ON_FIELD_UPDATE
+additionalProperties:
+  type: object
+  additionalProperties: true
+  required:
+    - field
+  properties:
+    field:
+      $ref: '#/definitions/memberName'
+      description: |
+        A field identifier. Only updates to this field will fire the trigger.

@@ -1,0 +1,24 @@
+---
+type: object
+title: Manual Options
+description: |
+  Options to a Manual trigger.
+propertyNames:
+  enum:
+    - Manual
+    - manual
+    - MANUAL
+    - OnManual
+    - on_manual
+    - ON_MANUAL
+additionalProperties:
+  type: object
+  additionalProperties: true
+  required:
+    - key
+  properties:
+    key:
+      $ref: '#/definitions/memberName'
+      description: |
+        A key passed that is used to filter to react to a
+        button being assigned the same key.

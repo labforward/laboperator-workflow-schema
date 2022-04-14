@@ -1,0 +1,44 @@
+---
+type: object
+title: Update Resource
+description: |
+  An action to updates value of related resource.
+
+  For now, the action only support updating workflow run's title.
+propertyNames:
+  enum:
+    - update_resource
+    - UPDATE_RESOURCE
+    - UpdateResource
+additionalProperties:
+  allOf:
+    - type: object
+      required:
+        - id
+      properties:
+        id:
+          $ref: '#/definitions/script'
+          description: |
+            A script that must resolve to the id of the resource to be updated.
+    - oneOf:
+        - type: object
+          required:
+            - type
+            - attributes
+          properties:
+            type:
+              type: string
+              enum: [workflow_run]
+            attributes:
+              type: object
+              additionalProperties: false
+              properties:
+                title:
+                  $ref: '#/definitions/script'
+
+examples:
+  - update_resource:
+      id: workflow_run.data.id
+      type: workflow_run
+      attributes:
+        title: sampleField.name

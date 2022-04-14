@@ -1,0 +1,93 @@
+---
+type: object
+title: Scope
+description: |
+  Scope of time for displaying data points
+required:
+  - type
+  - params
+properties:
+  type:
+    type: 'string'
+    enum:
+      - limit
+      - duration
+      - range
+      - open_range
+allOf:
+  - if:
+    properties:
+      type:
+        const: limit
+    then:
+      properties:
+        params:
+          type: object
+          description: |
+            Fixed number of last data points that should be taken to the scope.
+          properties:
+            count:
+              type: number
+          examples:
+            - count: 1
+  - if:
+    properties:
+      type:
+        const: duration
+    then:
+      properties:
+        params:
+          $ref: '#/definitions/moment_duration'
+          description: Duration till present time.
+          examples:
+            - [2, minute]
+            - P2M
+            - seconds: 2
+              minutes: 2
+  - if:
+    properties:
+      type:
+        const: range
+    then:
+      properties:
+        params:
+          type: object
+          description: |
+            An interval from defined point in time till another specific moment or
+            till now if the last had not been defined.
+          required:
+            - start_at
+            - end_at
+          properties:
+            start_at:
+              oneOf:
+                - $ref: '#/definitions/memberName'
+                - $ref: '#/definitions/timestamp'
+            end_at:
+              oneOf:
+                - $ref: '#/definitions/memberName'
+                - $ref: '#/definitions/timestamp'
+          examples:
+            - start_at: 2020-03-03T07:07:26.000Z
+              end_at: 2020-03-03T08:15:26.000Z
+  - if:
+    properties:
+      type:
+        const: open_range
+    then:
+      properties:
+        params:
+          type: object
+          description: |
+            An interval from defined point in time till another specific moment or
+            till now if the last had not been defined.
+          required:
+            - start_at
+          properties:
+            start_at:
+              oneOf:
+                - $ref: '#/definitions/memberName'
+                - type: string
+                  pattern: '^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$'
+          examples:
+            - start_at: StartTimeField

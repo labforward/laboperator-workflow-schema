@@ -1,0 +1,17 @@
+---
+type: object
+title: ResetTimer Options
+description: |
+  Options to an ResetTimer action.
+propertyNames:
+  enum:
+    - reset_timer
+    - RESET_TIMER
+    - ResetTimer
+additionalProperties:
+  type: object
+  properties:
+    identifier:
+      type: string
+      description: |
+        Identifier of a timer.

@@ -1,0 +1,9 @@
+oneOf:
+  - $ref: '#/definitions/stepIdentifier'
+  - $ref: '#/definitions/flow/stepObject'
+  - $ref: '#/definitions/flow/sequential'
+  - $ref: '#/definitions/flow/if'
+  - $ref: '#/definitions/flow/loop'
+  - $ref: '#/definitions/flow/while'
+  - $ref: '#/definitions/flow/forEachArray'
+  - $ref: '#/definitions/flow/forEachInteger'

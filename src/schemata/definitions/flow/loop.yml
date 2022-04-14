@@ -1,0 +1,28 @@
+---
+type: object
+title: Loop Flow
+description: |
+  A loop flow of steps or nested flow control schemas. The loop will be
+  repeated until a condition is met. The loop will be executed at least once.
+  Once the condition evaluates to a truthy value the loop is broken and the
+  loop flow is considered completed.
+required: [loop, until]
+additionalProperties: false
+properties:
+  loop:
+    $ref: '#/definitions/flow/flowControl'
+  until:
+    $ref: '#/definitions/script'
+    description: |
+      The condition has access to all fields of the workflow. Any string
+      result or numerical result other then zero will be considered truthy and
+      trigger completion of the loop flow. A falsy value will trigger
+      another iteration of the `loop` workflow.
+examples:
+  - loop:
+      - step1
+      - step2
+    until: field1 > 100
+
+  - loop: step3
+    until: field1 != field2

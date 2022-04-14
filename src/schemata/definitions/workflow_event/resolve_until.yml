@@ -1,0 +1,23 @@
+---
+type: object
+title: ResolveUntil Event
+description: |
+  The event of resolving the condition in a `loop-until` flow of steps.
+
+  If the condition in `until` resolves to a falsy value, the steps included in `loop` will be unfolded.
+  Otherwise, the execution will break out of the `loop-until` flow and continue to evaluate the next entry in the parent flow.
+properties:
+  type:
+    enum:
+      - resolve_until
+  payload:
+    type: object
+    required:
+      - pointer
+      - resolved
+    properties:
+      pointer:
+        type: string
+        pattern: ^/flow/
+      resolved:
+        type: boolean

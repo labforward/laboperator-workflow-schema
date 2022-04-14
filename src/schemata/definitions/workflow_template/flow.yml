@@ -1,0 +1,5 @@
+---
+title: Flow
+description: |
+  A set of sequential steps that define the flow of the workflow. Each step can be configured with additional flow control mechanisms to support conditional execution and repetition.
+$ref: '#/definitions/flow/sequential'

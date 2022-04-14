@@ -1,0 +1,17 @@
+---
+type: object
+title: Context information of a workflow or a step
+description: |
+  Used to display contextual information related to the workflow or step.
+
+  Global contextual information is defined in a workflow template and displayed
+  in all steps.
+
+  Local contextual information is defined in a step template, or within a step
+  in a workflow template, and displayed only during that specific step.
+properties:
+  pages:
+    type: array
+    minItems: 1
+    items:
+      $ref: '#/definitions/context_info/contextInfoPage'

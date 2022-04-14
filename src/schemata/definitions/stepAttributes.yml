@@ -1,0 +1,38 @@
+---
+type: object
+title: The Workflow Step Template Schema
+description: |
+  A step is a closed set of activities and instructions. Steps can be defined
+  independent of a workflow and then be reused across different workflows.
+
+  A step descriptor file describes a workflow consisting of four parts:
+  1. info: General information about the workflow.
+  2. fields: Global context in this workflow.
+  3. steps: Definition of all unique steps that occur in the workflow.
+  4. workflow: The flow of steps and mapping of fields.
+required:
+  - substeps
+properties:
+  config:
+    $ref: '#/definitions/config/stepConfig'
+  fields:
+    description: |
+      In a step, fields are optional. If no fields are defined, the fields of
+      the workflow will be passed down to the step as they are. However, if
+      the step does define fields, the fields of the workflow have to be
+      actively mapped to be available and avoid name collisions.
+    $ref: '#/definitions/fields'
+  behaviors:
+    $ref: '#/definitions/workflow_template/behaviors'
+  substeps:
+    type: array
+    items:
+      $ref: '#/definitions/step/substep'
+  contextInfo:
+    $ref: '#/definitions/contextInfo'
+  reportSummary:
+    $ref: '#/definitions/reportSummary'
+  tables:
+    $ref: '#/definitions/step/tables'
+  buttons:
+    $ref: '#/definitions/buttons'

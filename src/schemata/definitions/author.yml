@@ -1,0 +1,24 @@
+---
+oneOf:
+  - type: object
+    title: Author with Email
+    description: An author object with name and email.
+    required:
+      - name
+      - email
+    properties:
+      name:
+        type: string
+        title: Name
+        examples:
+          - Max Mustermann
+      email:
+        type: string
+        format: email
+        title: Email
+        examples:
+          - max.mustermann@company.com
+
+  - type: string
+    title: Author
+    description: Simple string to display as author information.

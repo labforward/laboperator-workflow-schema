@@ -1,0 +1,8 @@
+---
+type: string
+title: UUID
+description: |
+  An RFC4122 compliant UUID.
+pattern: ([a-f0-9]{8}-?[a-f0-9]{4}-?[1-5][a-f0-9]{3}-?[89ab][a-f0-9]{3}-?[a-f0-9]{12}){1}
+examples:
+  - 645afc8c-a553-4657-a0da-d93cb98d158b

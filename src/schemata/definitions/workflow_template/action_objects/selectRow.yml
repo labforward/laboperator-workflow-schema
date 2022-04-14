@@ -1,0 +1,37 @@
+---
+type: object
+title: SelectRow Options
+description: |
+  Options to a SelectRow action
+propertyNames:
+  enum:
+    - select_row
+    - SELECT_ROW
+additionalProperties:
+  type: object
+  required:
+    - table
+    - value
+  properties:
+    table:
+      $ref: '#/definitions/memberName'
+      description: Identifier of the table
+    value:
+      $ref: '#/definitions/script'
+      description: |
+        Set the selected row based on calculated value from signal and fields.
+
+        For example, if the signal come with the following structure:
+
+          {
+            'identifier' => 'myTable',
+            'data' => { 'pointer' => '/1' }
+          }
+
+        You can set the row on index 1 (the second row on the table) to be selected by
+        setting this property to 'data.pointer'.
+
+        For the selection to work, the calculated value must resolve to a json pointer
+        in the format of /[row-0-based-index]
+
+        To unset the selection, the calculated value must resolve to 'null'.

@@ -1,0 +1,25 @@
+---
+type: array
+items:
+  type: object
+  description: A static array of options available for selection.
+  additionalProperties: false
+  required:
+    - primary
+    - value
+  properties:
+    primary:
+      type: string
+      description: |
+        The primary text of the option.
+    secondary:
+      type: string
+      description: The secondary text of the option.
+    thumbnail:
+      type: string
+      format: uri
+      description: |
+        The URL of the image that will be used as the thumbnail of the option.
+    value:
+      type: string
+      description: The value that will be used if the option is selected.
