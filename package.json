@@ -1,15 +1,11 @@
 {
-  "name": "@labforward/workspace",
+  "name": "@labforward/laboperator-workflow-schema",
   "version": "0.0.1",
-  "private": true,
   "description": "",
   "license": "Apache-2.0",
   "author": "labforward GmbH",
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "sort": "sort-package-json ./package.json packages/*/package.json"
+    "sort": "sort-package-json package.json"
   },
   "devDependencies": {
     "@labforward/config": "^0.0.2",
