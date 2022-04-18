@@ -5,15 +5,30 @@
   "license": "Apache-2.0",
   "author": "labforward GmbH",
   "scripts": {
+    "compile": "ts-node src/compile.ts",
+    "watch": "nodemon src/compile.ts",
     "sort": "sort-package-json package.json"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "workflow_template_schema.json",
+      "workflow_step_template_schema.json"
+    ]
   },
   "devDependencies": {
     "@labforward/config": "^0.0.2",
     "@labforward/eslint-config-node": "^0.0.2",
+    "@types/lodash": "^4.14.181",
+    "@types/node": "^17.0.23",
     "eslint": "^8.12.0",
+    "fast-glob": "^3.2.11",
+    "lodash": "^4.17.21",
+    "nodemon": "^2.0.15",
     "prettier": "^2.6.2",
     "sort-package-json": "^1.55.0",
-    "typescript": "^4.6.3"
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3",
+    "yaml": "^1.10.2"
   },
   "importSort": {
     ".js, .ts": {
