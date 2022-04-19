@@ -26,4 +26,5 @@ additionalProperties:
       type: string
       description: |
         Name of the channel that should be subscribed.
-      example: weight
+      examples:
+        - weight

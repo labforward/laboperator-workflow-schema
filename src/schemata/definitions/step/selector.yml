@@ -58,5 +58,4 @@ properties:
         propertyNames:
           $ref: '#/definitions/memberName'
         additionalProperties:
-          oneOf:
-            - $ref: '#/definitions/step/selectorAccessors'
+          $ref: '#/definitions/step/selectorAccessors'

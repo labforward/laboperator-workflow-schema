@@ -19,8 +19,8 @@ properties:
   value:
     type: string
     description: The value that will be used if the option is selected.
-  examples:
-    - primary: name
-      secondary: category.name
-      description: summary
-      thumbnail: category.image.url
+examples:
+  - primary: name
+    secondary: category.name
+    description: summary
+    thumbnail: category.image.url

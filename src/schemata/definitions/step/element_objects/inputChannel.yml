@@ -3,9 +3,9 @@ type: array
 title: Input Channels
 description: |
   Input Channels
-item:
+items:
   oneOf:
-    - ref: '#/definitions/memberName' # channels field
+    - $ref: '#/definitions/memberName' # channels field
     - type: object
       required:
         - device
@@ -14,5 +14,5 @@ item:
           $ref: '#/definitions/memberName' # device field
         channels:
           type: array
-          item:
+          items:
             $ref: '#/definitions/memberName' # channel names

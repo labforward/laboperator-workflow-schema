@@ -25,11 +25,13 @@ additionalProperties:
       description: |
         Restricts the trigger to specific commands, e.g. only trigger on a
         `get_weight` response not on a response to `get_temperature`.
-      example: get_weight
+      examples:
+        - get_weight
     status:
       type: string
       description: |
         Restricts the trigger to specific status of the response, e.g. only
         trigger once a command is `confirmed` or `completed`. Note that
         you also have access to that information in the conditions.
-      example: completed
+      examples:
+        - completed

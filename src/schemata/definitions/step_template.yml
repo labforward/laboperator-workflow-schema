@@ -14,7 +14,8 @@ required:
   - info
 allOf:
   - $ref: '#/definitions/stepAttributes'
-  - properties:
+  - type: object
+    properties:
       info:
         $ref: '#/definitions/info'
       secrets:

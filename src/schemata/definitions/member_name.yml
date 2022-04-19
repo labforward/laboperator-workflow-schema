@@ -26,8 +26,6 @@ not:
     - while
     - workflow
     - INTERNAL_STATE
-    - type
-    - substep
     - data_point
     - command_response
 examples:

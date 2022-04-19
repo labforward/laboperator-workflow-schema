@@ -1,5 +1,6 @@
 ---
 $schema: http://json-schema.org/draft-07/schema#
+$id: /laboperator/workflow_step_template_schema/1.0.1
 type: object
 title: The Workflow Step Template Schema
 description: |

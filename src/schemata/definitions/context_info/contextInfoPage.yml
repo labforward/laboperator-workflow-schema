@@ -3,10 +3,10 @@ type: object
 title: Page containing context information
 description: |
   Pages displayed as workflow context information.
+required:
+  - title
+  - content
 properties:
-  required:
-    - title
-    - content
   title:
     type: string
     title: Title
