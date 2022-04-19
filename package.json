@@ -15,6 +15,10 @@
       "workflow_step_template_schema.json"
     ]
   },
+  "dependencies": {
+    "ajv": "^8.11.0",
+    "ajv-formats": "^2.1.1"
+  },
   "devDependencies": {
     "@labforward/config": "^0.0.2",
     "@labforward/eslint-config-node": "^0.0.2",
