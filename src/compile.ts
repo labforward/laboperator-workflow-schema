@@ -44,14 +44,14 @@ const readFile = (filename: string) => {
 };
 
 const writeFile = (schema: Record<string, unknown>, name: string) => {
-  const filename = name.replace('root_', '').replace('yml', 'json');
-  const target = path.join(__dirname, filename);
+  const filename = name.replace('yml', 'json');
+  const target = path.join(__dirname, `/../dist/${filename}`);
 
   fs.writeFileSync(target, JSON.stringify(schema, null, 2));
 };
 
 const compileSchema = (filename: string) => {
-  const root = 'src/schemata';
+  const root = path.join(__dirname, 'schemata');
   const pathnames = glob.sync(['definitions/**/*.yml'], { cwd: root });
   const rootSchema = readFile(filename);
   const schema = assignMetaSchema(rootSchema);
@@ -68,5 +68,5 @@ const compileSchema = (filename: string) => {
   writeFile(schema, filename);
 };
 
-compileSchema('root_workflow_template_schema.yml');
-compileSchema('root_workflow_step_template_schema.yml');
+compileSchema('workflow_template_schema.yml');
+compileSchema('workflow_step_template_schema.yml');
