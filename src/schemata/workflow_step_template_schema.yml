@@ -16,13 +16,15 @@ required:
   - info
 allOf:
   - $ref: '#/definitions/stepAttributes'
-  - properties:
+  - type: object
+    properties:
       schema_version:
         $ref: '#/definitions/schemaVersion'
       info:
         allOf:
           - $ref: '#/definitions/info'
-          - required:
+          - type: object
+            required:
               - title
               - version
               - uuid
