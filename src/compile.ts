@@ -45,7 +45,7 @@ const readFile = (filename: string) => {
 
 const writeFile = (schema: Record<string, unknown>, name: string) => {
   const filename = name.replace('yml', 'json');
-  const target = path.join(__dirname, `/../dist/${filename}`);
+  const target = path.join(__dirname, `../dist/${filename}`);
 
   fs.writeFileSync(target, JSON.stringify(schema, null, 2));
 };
