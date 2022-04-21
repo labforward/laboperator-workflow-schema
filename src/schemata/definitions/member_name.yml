@@ -12,10 +12,13 @@ maxLength: 60
 pattern: ^[a-zA-Z0-9]+(?:[-_]?[a-zA-Z0-9]+)*$
 not:
   enum:
+    - command_response
+    - data_point
     - do
     - else
     - flow
     - if
+    - INTERNAL_STATE
     - loop
     - parallel
     - step
@@ -25,9 +28,6 @@ not:
     - when
     - while
     - workflow
-    - INTERNAL_STATE
-    - data_point
-    - command_response
 examples:
   - myField
   - my-field
