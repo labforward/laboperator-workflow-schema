@@ -1,10 +1,11 @@
 {
   "extends": "@labforward/config/tsconfig.json",
   "compilerOptions": {
+    "strictNullChecks": true,
     "esModuleInterop": true,
     "outDir": "dist",
     "rootDirs": ["src"],
     "baseUrl": "."
   },
-  "include": ["src/compile.ts"]
+  "include": ["src/**/*"]
 }

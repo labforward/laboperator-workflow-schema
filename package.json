@@ -4,14 +4,18 @@
   "description": "",
   "license": "Apache-2.0",
   "author": "labforward GmbH",
+  "main": "dist/validation.js",
   "scripts": {
+    "build": "del-cli dist && yarn build:schema && tsc -p tsconfig.build.json",
     "build:schema": "ts-node src/compile.ts",
-    "watch:schema": "nodemon src/compile.ts",
+    "dev": "nodemon src/compile.ts & nodemon src/validation.ts",
     "sort": "sort-package-json package.json"
   },
   "nodemonConfig": {
     "ignore": [
-      "dist/"
+      "dist/",
+      "workflow_template_schema.json",
+      "workflow_step_template_schema.json"
     ]
   },
   "dependencies": {

@@ -8,4 +8,5 @@ module.exports = {
     // Allow importing devDependencies.
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
+  ignorePatterns: ['dist'],
 };

@@ -1,0 +1,66 @@
+---
+schema_version: '0.0.1'
+info:
+  version: '1.0.0'
+  uuid: '8fc60467-f93a-4d2c-b6f3-84ec6e053496'
+  title: 'Alert'
+fields:
+  sample:
+    type: 'string'
+    defaultValue: 'Rock'
+behaviors:
+  - when:
+      manual:
+        key: alert-button-global
+    do:
+      - ALERT:
+          title: Global alert
+          text: This alert has been triggered by a global behavior! {{sample}}!
+steps:
+  stepOne:
+    info:
+      title: 'Show Alert'
+    substeps:
+      - primary: 'Now, look at this field {{sample}}! Great!'
+        expandDescription: true
+        description: |
+          !{{sample}}
+        buttons:
+          - label: Click me
+            key: alert-button
+          - label: Then click me
+            key: alert-button2
+        behaviors:
+          - when:
+              manual:
+                key: alert-button
+            do:
+              - ALERT:
+                  title: You clicked me
+                  text: This text explains what happened to {{sample}}!
+          - when:
+              manual:
+                key: alert-button2
+            do:
+              - ALERT:
+                  title: You clicked me
+                  text: This text explains what happened on the second step!
+                  buttons:
+                    - label: Fine
+                      key: custom_alert_confirmed
+          - when:
+              manual:
+                key: custom_alert_confirmed
+            do:
+              - complete_substep
+  stepTwo:
+    info:
+      title: 'Show Alert'
+    substeps:
+      - primary: 'Now, look at this field {{sample}}! Great!'
+        buttons:
+          - label: Click me
+            key: alert-button-global
+flow:
+  - stepOne
+  - stepTwo
