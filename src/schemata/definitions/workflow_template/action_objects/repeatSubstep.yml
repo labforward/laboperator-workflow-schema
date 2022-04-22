@@ -20,4 +20,3 @@ additionalProperties:
 
         If no option is passed the index is taken from the trigger, e.g. a
         SubstepComplete trigger will repeat the just completed substep.
-      example: 1

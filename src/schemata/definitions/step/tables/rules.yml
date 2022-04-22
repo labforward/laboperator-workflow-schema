@@ -27,17 +27,17 @@ items:
       minProperties: 1
       properties:
         columns:
-          type:
-            - string
-            - number
+          oneOf:
+            - type: string
+            - type: number
         rows:
-          type:
-            - string
-            - number
+          oneOf:
+            - type: string
+            - type: number
         tabs:
-          type:
-            - string
-            - integer
+          oneOf:
+            - type: string
+            - type: integer
       examples:
         - |
           range:

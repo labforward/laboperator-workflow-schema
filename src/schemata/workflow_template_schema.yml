@@ -1,6 +1,6 @@
 ---
 $schema: http://json-schema.org/draft-07/schema#
-$id: https://www.cubuslab.com/schemas/workflow_template_schema/version/1-0-0
+$id: /laboperator/workflow_template_schema/1.0.1
 type: object
 title: The Workflow Template Schema
 description: |
@@ -22,9 +22,10 @@ properties:
   info:
     allOf:
       - $ref: '#/definitions/info'
-      - required:
-          - version
-          - uuid
+      - type: object
+        required:
+            - version
+            - uuid
         properties:
           uuid:
             $ref: '#/definitions/uuid'

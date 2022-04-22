@@ -71,6 +71,11 @@ allOf:
       - $ref: '#/definitions/field_schema/script'
       - $ref: '#/definitions/field_schema/timer'
 examples:
+  - enumOptions:
+      type: string
+      enum:
+        - German
+        - English
   - multiLineText:
       type: string
       output: false

@@ -104,6 +104,7 @@ additionalProperties:
       description: The handler for response status codes 5xx
       $ref: '#/definitions/step/webhookHandler'
     onCode:
+      type: object
       description: |
         Define a different handler for specific codes.
       propertyNames:

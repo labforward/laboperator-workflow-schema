@@ -28,6 +28,6 @@ properties:
           type: string
           maxLength: 1000
 
-example:
+examples:
   - signature:
       enabled: true

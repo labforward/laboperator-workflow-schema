@@ -55,7 +55,7 @@ oneOf:
             - Device did not function properly
             - Balance did not reach stable weight
             - Measurement failed
-example:
+examples:
   - changeReason:
       message: |
         Field update requires a reason. Please select one of the options or submit your own.

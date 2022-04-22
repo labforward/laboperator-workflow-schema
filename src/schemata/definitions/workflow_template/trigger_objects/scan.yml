@@ -19,7 +19,8 @@ additionalProperties:
       format: regex
       description: |
         The pattern will be matched with text to determine a valid barcode scan.
-      example: ^ID-[-A-Z0-9]
+      examples:
+        - ^ID-[-A-Z0-9]
       default: ^[-A-Z0-9]{4,}
     caseSensitive:
       type: boolean

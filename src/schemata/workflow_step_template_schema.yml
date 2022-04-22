@@ -1,5 +1,6 @@
 ---
 $schema: http://json-schema.org/draft-07/schema#
+$id: /laboperator/workflow_step_template_schema/1.0.1
 type: object
 title: The Workflow Step Template Schema
 description: |
@@ -15,13 +16,15 @@ required:
   - info
 allOf:
   - $ref: '#/definitions/stepAttributes'
-  - properties:
+  - type: object
+    properties:
       schema_version:
         $ref: '#/definitions/schemaVersion'
       info:
         allOf:
           - $ref: '#/definitions/info'
-          - required:
+          - type: object
+            required:
               - title
               - version
               - uuid

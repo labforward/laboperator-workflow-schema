@@ -67,7 +67,7 @@ items:
           enum:
             - text
             - number
-  example:
+  examples:
     - label: Compound
       value: name
     - label: Density (g/cm³)

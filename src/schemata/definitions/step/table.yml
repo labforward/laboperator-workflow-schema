@@ -93,7 +93,8 @@ properties:
               factor: 4
               weight: 108.457
         ```
-    example: my_table_data
+    examples:
+      - my_table_data
   tabs:
     type: array
     description: |
@@ -187,7 +188,8 @@ properties:
           type: string
           description: The currently selected cell.
       ```
-    example: myTable_state
+    examples:
+      - myTable_state
   skipBehaviors:
     type: boolean
     default: false
