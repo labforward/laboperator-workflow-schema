@@ -11,6 +11,7 @@
     "dev": "nodemon src/compile.ts & nodemon src/validation.ts",
     "sort": "sort-package-json package.json",
     "test": "jest --runInBand",
+    "test:ci": "jest --ci --runInBand --reporters=default --reporters=jest-junit",
     "test:dev": "jest --runInBand --watch"
   },
   "nodemonConfig": {
@@ -35,6 +36,7 @@
     "eslint": "^8.12.0",
     "fast-glob": "^3.2.11",
     "jest": "^27.5.1",
+    "jest-junit": "^13.2.0",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.15",
     "prettier": "^2.6.2",
