@@ -13,5 +13,5 @@
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "editor.wordWrap": "wordWrapColumn",
-  "files.insertFinalNewline": true,
+  "files.insertFinalNewline": true
 }

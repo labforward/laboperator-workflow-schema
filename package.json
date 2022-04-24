@@ -1,7 +1,11 @@
 {
   "name": "@labforward/laboperator-workflow-schema",
   "version": "0.0.1",
-  "description": "",
+  "description": "Laboperator Workflow Schemas and template validation.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/labforward/laboperator-workflow-schema.git"
+  },
   "license": "Apache-2.0",
   "author": "labforward GmbH",
   "main": "dist/validation.js",
@@ -9,10 +13,20 @@
     "build": "del-cli dist && yarn build:schema && tsc -p tsconfig.build.json",
     "build:schema": "ts-node src/compile.ts",
     "dev": "nodemon src/compile.ts & nodemon src/validation.ts",
+    "format": "prettier --write 'src/**/*.{ts,js}'",
+    "lint": "eslint --fix 'src/**/*.{ts,js}'",
+    "pre-commit": "lint-staged",
+    "prepare": "husky install",
     "sort": "sort-package-json package.json",
     "test": "jest --runInBand",
     "test:ci": "jest --ci --runInBand --reporters=default --reporters=jest-junit",
     "test:dev": "jest --runInBand --watch"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,js}": [
+      "yarn format",
+      "yarn lint"
+    ]
   },
   "nodemonConfig": {
     "ignore": [
@@ -36,8 +50,10 @@
     "eslint": "^8.12.0",
     "eslint-plugin-jest": "^26.1.5",
     "fast-glob": "^3.2.11",
+    "husky": "^7.0.0",
     "jest": "^27.5.1",
     "jest-junit": "^13.2.0",
+    "lint-staged": "^12.4.0",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.15",
     "prettier": "^2.6.2",
