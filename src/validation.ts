@@ -1,17 +1,9 @@
 import addFormats from 'ajv-formats';
-import Ajv, { ValidateFunction } from 'ajv';
+import Ajv from 'ajv';
 
+import { Options, Validation } from './types';
 import workflowStepTemplate from './workflow_step_template_schema.json';
 import workflowTemplate from './workflow_template_schema.json';
-
-interface Options {
-  schema?: 'workflowTemplate' | 'workflowStepTemplate';
-}
-
-interface Validation {
-  schema: ValidateFunction['schema'];
-  errors: ValidateFunction['errors'];
-}
 
 const ajv = new Ajv({
   // Check all rules collecting all errors.
