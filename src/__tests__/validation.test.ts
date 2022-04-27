@@ -6,89 +6,91 @@ import validate from '@src/validation';
 import workflowStepTemplateSchema from '@src/workflow_step_template_schema.json';
 import workflowTemplateSchema from '@src/workflow_template_schema.json';
 
-describe('Workflow Template', () => {
-  it('should have all required properties', () => {
-    const { errors } = validate({});
-    const requiredProperties = [
-      'schema_version',
-      'info',
-      'fields',
-      'steps',
-      'flow',
-    ];
+describe('Schema validation', () => {
+  describe('Workflow Template', () => {
+    it('should have all required properties', () => {
+      const { errors } = validate({});
+      const requiredProperties = [
+        'schema_version',
+        'info',
+        'fields',
+        'steps',
+        'flow',
+      ];
 
-    expect(errors).toHaveLength(5);
+      expect(errors).toHaveLength(5);
 
-    (errors || []).forEach((err, index) => {
-      expect(err.schema).toEqual(requiredProperties);
-      expect(err.message).toBe(
-        `must have required property '${requiredProperties[index]}'`
-      );
-      expect(err).toHaveProperty(
-        'params.missingProperty',
-        requiredProperties[index]
-      );
+      (errors || []).forEach((err, index) => {
+        expect(err.schema).toEqual(requiredProperties);
+        expect(err.message).toBe(
+          `must have required property '${requiredProperties[index]}'`
+        );
+        expect(err).toHaveProperty(
+          'params.missingProperty',
+          requiredProperties[index]
+        );
+      });
+    });
+
+    it('should not require optional properties', () => {
+      const { errors } = validate(minimalTemplate);
+
+      expect(errors).toEqual(null);
+    });
+
+    it('should validate against the correct schema', () => {
+      const result1 = validate({});
+      const result2 = validate({}, { schema: 'workflowTemplate' });
+
+      expect(result1.schema).toEqual(workflowTemplateSchema);
+      expect(result2.schema).toEqual(workflowTemplateSchema);
+    });
+
+    it('should correctly validate a complex template', () => {
+      const { errors } = validate(template);
+
+      expect(errors).toEqual(null);
     });
   });
 
-  it('should not require optional properties', () => {
-    const { errors } = validate(minimalTemplate);
+  describe('Workflow Step Template', () => {
+    it('should have all required properties', () => {
+      const { errors } = validate({}, { schema: 'workflowStepTemplate' });
+      const requiredProperties = ['substeps', 'schema_version', 'info'];
 
-    expect(errors).toEqual(null);
-  });
+      expect(errors).toHaveLength(3);
 
-  it('should validate against the correct schema', () => {
-    const result1 = validate({});
-    const result2 = validate({}, { schema: 'workflowTemplate' });
-
-    expect(result1.schema).toEqual(workflowTemplateSchema);
-    expect(result2.schema).toEqual(workflowTemplateSchema);
-  });
-
-  it('should correctly validate a complex template', () => {
-    const { errors } = validate(template);
-
-    expect(errors).toEqual(null);
-  });
-});
-
-describe('Workflow Step Template', () => {
-  it('should have all required properties', () => {
-    const { errors } = validate({}, { schema: 'workflowStepTemplate' });
-    const requiredProperties = ['substeps', 'schema_version', 'info'];
-
-    expect(errors).toHaveLength(3);
-
-    (errors || []).forEach((err, index) => {
-      expect(err.message).toBe(
-        `must have required property '${requiredProperties[index]}'`
-      );
-      expect(err).toHaveProperty(
-        'params.missingProperty',
-        requiredProperties[index]
-      );
-    });
-  });
-
-  it('should not require optional properties', () => {
-    const { errors } = validate(minimalStepTemplate, {
-      schema: 'workflowStepTemplate',
+      (errors || []).forEach((err, index) => {
+        expect(err.message).toBe(
+          `must have required property '${requiredProperties[index]}'`
+        );
+        expect(err).toHaveProperty(
+          'params.missingProperty',
+          requiredProperties[index]
+        );
+      });
     });
 
-    expect(errors).toEqual(null);
-  });
+    it('should not require optional properties', () => {
+      const { errors } = validate(minimalStepTemplate, {
+        schema: 'workflowStepTemplate',
+      });
 
-  it('should validate against the correct schema', () => {
-    const { schema } = validate({}, { schema: 'workflowStepTemplate' });
-
-    expect(schema).toEqual(workflowStepTemplateSchema);
-  });
-
-  it('should correctly validate a complex step template', () => {
-    const { errors } = validate(stepTemplate, {
-      schema: 'workflowStepTemplate',
+      expect(errors).toEqual(null);
     });
 
-    expect(errors).toEqual(null);
+    it('should validate against the correct schema', () => {
+      const { schema } = validate({}, { schema: 'workflowStepTemplate' });
+
+      expect(schema).toEqual(workflowStepTemplateSchema);
+    });
+
+    it('should correctly validate a complex step template', () => {
+      const { errors } = validate(stepTemplate, {
+        schema: 'workflowStepTemplate',
+      });
+
+      expect(errors).toEqual(null);
+    });
   });
 });
