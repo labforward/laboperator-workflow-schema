@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - [[WFE-82]](https://labforward.atlassian.net/browse/WFE-82) [Documentation] Move schema files to dedicated repo
 - [[WFE-86]](https://labforward.atlassian.net/browse/WFE-86) [Documentation] Compile custom workflow (step) template schema
+- [[WFE-88]](https://labforward.atlassian.net/browse/WFE-88) [Documentation] Implement schema validation
 
 ### Changed
 

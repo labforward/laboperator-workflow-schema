@@ -4,14 +4,22 @@
   "description": "",
   "license": "Apache-2.0",
   "author": "labforward GmbH",
+  "main": "dist/validation.js",
   "scripts": {
+    "build": "del-cli dist && yarn build:schema && tsc -p tsconfig.build.json",
     "build:schema": "ts-node src/compile.ts",
-    "watch:schema": "nodemon src/compile.ts",
-    "sort": "sort-package-json package.json"
+    "dev": "nodemon src/compile.ts & nodemon src/validation.ts",
+    "sort": "sort-package-json package.json",
+    "test": "jest --runInBand",
+    "test:ci": "jest --ci --runInBand --reporters=default --reporters=jest-junit",
+    "test:dev": "jest --runInBand --watch"
   },
   "nodemonConfig": {
     "ignore": [
-      "dist/"
+      "dist/",
+      "__tests__/",
+      "workflow_template_schema.json",
+      "workflow_step_template_schema.json"
     ]
   },
   "dependencies": {
@@ -21,15 +29,20 @@
   "devDependencies": {
     "@labforward/config": "^0.0.2",
     "@labforward/eslint-config-node": "^0.0.2",
+    "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.181",
     "@types/node": "^17.0.23",
     "del-cli": "^4.0.1",
     "eslint": "^8.12.0",
+    "eslint-plugin-jest": "^26.1.5",
     "fast-glob": "^3.2.11",
+    "jest": "^27.5.1",
+    "jest-junit": "^13.2.0",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.15",
     "prettier": "^2.6.2",
     "sort-package-json": "^1.55.0",
+    "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.3",
     "yaml": "^1.10.2"

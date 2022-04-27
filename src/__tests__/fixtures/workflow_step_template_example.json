@@ -1,0 +1,134 @@
+{
+  "schema_version": "0.0.1",
+  "info": {
+    "version": "1.0.0",
+    "uuid": "b16e8146-d14e-4052-8ad8-0fd6d53d9ed0",
+    "title": "A Great Step",
+    "description": "Add a fancy description here. It even supports __Markdown__!\n",
+    "author": {
+      "name": "Max Mustermann",
+      "email": "max.mustermann@company.com"
+    },
+    "slug": "a-great-step"
+  },
+  "fields": {
+    "sample": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "powderDispenser": {
+      "type": "relationship",
+      "resourceType": "devices",
+      "prepare": true
+    }
+  },
+  "substeps": [
+    {
+      "primary": "Load a {{sample}} into the {{powderDispenser}}.",
+      "secondary": "Please, confirm when you are done.",
+      "confirm": true,
+      "timer": {
+        "type": "timer",
+        "defaultDuration": "5s"
+      }
+    },
+    {
+      "primary": "The sample will be gravimetrically placed in a {{target}} reaction tube.\n",
+      "devices": ["powderDispenser"],
+      "behaviors": [
+        {
+          "title": "Start gravimetrical measurement",
+          "when": "ON_SUBSTEP_START",
+          "do": [
+            {
+              "SEND_COMMAND": {
+                "device": "powderDose",
+                "command": "GET_GRAVIMETRICAL_MEASUREMENT",
+                "scope": "substep"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "primary": "Results after gravimetrical placement are recorded: {{actual}}\n",
+      "behaviors": [
+        {
+          "when": "ON_SUBSTEP_START",
+          "delay": "4s",
+          "do": [
+            {
+              "ALERT": {
+                "title": "Finished!",
+                "text": "We are done here."
+              }
+            },
+            "COMPLETE_SUBSTEP",
+            "COMPLETE_STEP"
+          ]
+        }
+      ]
+    },
+    {
+      "primary": "Send results to ELN",
+      "behaviors": [
+        {
+          "when": "ON_SUBSTEP_COMPLETE",
+          "do": [
+            {
+              "webhook": {
+                "url": "https://my_endpoint.com/webhook",
+                "method": "post",
+                "blocking": true,
+                "headers": {
+                  "content-type": "application/json"
+                },
+                "body": "body_value",
+                "onSuccess": {
+                  "processor": "json",
+                  "do": [
+                    {
+                      "SET_FIELD": {
+                        "field": "actual",
+                        "value": "data.value"
+                      }
+                    }
+                  ]
+                },
+                "onError": {
+                  "processor": "json",
+                  "do": ["REPEAT_SUBSTEP"]
+                },
+                "onCode": {
+                  "404": {
+                    "processor": "json",
+                    "do": [
+                      {
+                        "ALERT": {
+                          "title": "Not Found",
+                          "text": "Ensure that you're using a valid url / endpoint"
+                        }
+                      }
+                    ]
+                  },
+                  "418": {
+                    "processor": "json",
+                    "do": [
+                      {
+                        "ALERT": {
+                          "title": "I'm a teapot",
+                          "text": "For real! I'm a teapot"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
