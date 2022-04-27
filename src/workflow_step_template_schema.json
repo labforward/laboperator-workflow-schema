@@ -2162,7 +2162,7 @@
                   "description": "Configures which table elements can be selected to trigger behaviors. It takes precedence over the table-wide `selectable` setting.\n"
                 },
                 "columns": {
-                  "$ref": "#/definitions/step/tables/columns"
+                  "$ref": "#/definitions/step/table_attributes/columns"
                 },
                 "caption": {
                   "type": "string",
@@ -2207,7 +2207,7 @@
             "description": "Configures which table elements can be selected to trigger behaviors.\n"
           },
           "columns": {
-            "$ref": "#/definitions/step/tables/columns"
+            "$ref": "#/definitions/step/table_attributes/columns"
           },
           "state": {
             "$ref": "#/definitions/memberName",
@@ -2222,7 +2222,7 @@
             "description": "Toggles the automatic creation of behaviors for selecting table rows and cells\n"
           },
           "rules": {
-            "$ref": "#/definitions/step/tables/rules"
+            "$ref": "#/definitions/step/table_attributes/rules"
           }
         }
       },
@@ -2251,199 +2251,6 @@
         },
         "additionalProperties": {
           "$ref": "#/definitions/step/table"
-        },
-        "columns": {
-          "type": "array",
-          "title": "Table column mapping schema",
-          "description": "A static array that defines the structure of a table by mapping keys from the source data to columns.\n\nEach object in the source data represents an unordered collection of data. By default the order of columns in a table is therefore not fixed. In order to give a table a fixed column structure, it is required to map columns to specific keys.\n\nColumn mapping for table tabs takes precedence over the table-wide `columns` setting.\n",
-          "items": {
-            "type": "object",
-            "description": "The properties of each individual column.",
-            "required": [
-              "value",
-              "label"
-            ],
-            "properties": {
-              "value": {
-                "$ref": "#/definitions/jsonPointer",
-                "description": "The pointer to the value for each row in a column. The path is resolved relative to each row object.\n"
-              },
-              "label": {
-                "type": "string",
-                "description": "The display name of the column."
-              },
-              "formatSpecifier": {
-                "$ref": "#/definitions/formatSpecifier",
-                "description": "A specifier describing number formatting for numeric field values. All other field value types will ignore this.\n"
-              },
-              "align": {
-                "type": "string",
-                "default": "left",
-                "description": "The horizontal alignment of the cell values within a column.\n",
-                "enum": [
-                  "left",
-                  "center",
-                  "right"
-                ]
-              },
-              "editable": {
-                "type": "boolean",
-                "default": false,
-                "description": "A flag indicating if cells in this column are editable. If no `ui:widget` is specified, the column cells will display a text input.\n"
-              },
-              "selectable": {
-                "type": "boolean",
-                "description": "A flag indicating if cells in this column are selectable. It takes precedence over the table-wide `selectable: ['cells']` setting. Row selection is not affected.\n"
-              },
-              "ui:widget": {
-                "type": "string",
-                "default": "textfield",
-                "enum": [
-                  "checkbox",
-                  "switch",
-                  "textfield"
-                ]
-              },
-              "ui:options": {
-                "type": "object",
-                "description": "Configuration options for the UI widgets.\n",
-                "properties": {
-                  "placeholder": {
-                    "type": "string",
-                    "description": "The short hint displayed in a text field before entering a value.\n"
-                  },
-                  "type": {
-                    "type": "string",
-                    "default": "text",
-                    "description": "The HTML5 input type of a text field.\n",
-                    "enum": [
-                      "text",
-                      "number"
-                    ]
-                  }
-                }
-              }
-            },
-            "examples": [
-              {
-                "label": "Compound",
-                "value": "name"
-              },
-              {
-                "label": "Density (g/cm³)",
-                "value": "density",
-                "align": "right"
-              },
-              {
-                "label": "Molar mass (g/mol)",
-                "value": "molar_mass",
-                "align": "right"
-              }
-            ]
-          }
-        },
-        "rules": {
-          "type": "array",
-          "title": "Table rules",
-          "description": "Rules can be leveraged to dynamically change both the behavior and appearance of a table.\n\nWhen a rule condition is fulfilled, the `editable` and `selectable` behavior of cells, rows, columns, or tabs can be set. Likewise, the background color or text color can be changed to visualize a certain state or change of behavior to the user. For example:\n\n  - When a cell number value is negative, change the background color to red.\n  - When a cell number value is positive, change the background color to green, make it selectable, but no longer editable.\n  - When all cells in a column have no value, the column cells are not selectable or editable across all other tabs of the table.\n",
-          "items": {
-            "type": "object",
-            "description": "The individual rules that will be applied to the table. Rules will be applied in the order specified in the template. Later rules will overwrite previous rules.\n",
-            "required": [
-              "range",
-              "apply"
-            ],
-            "additionalProperties": false,
-            "properties": {
-              "range": {
-                "type": "object",
-                "description": "The range of columns, rows and tabs that the rules apply to. Use the [mathematical ellipsis notation](https://en.wikipedia.org/wiki/Ellipsis#In_mathematical_notation) to define a sequence of successive values from a start point to an end point inclusively. The range is zero-based, meaning its first entity is assigned the index 0.\nYou can specify one or multiple properties to define a selection of cells. Setting only the `rows` value, for example, would apply a given set of rules to all cells in the defined rows in all tabs. Including the `columns` and `tabs` settings would then narrow down that selection.\n",
-                "additionalProperties": false,
-                "minProperties": 1,
-                "properties": {
-                  "columns": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "type": "number"
-                      }
-                    ]
-                  },
-                  "rows": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "type": "number"
-                      }
-                    ]
-                  },
-                  "tabs": {
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "type": "integer"
-                      }
-                    ]
-                  }
-                },
-                "examples": [
-                  "range:\n  # sequence of 1, 2, 3, 4, 5\n  rows: 0,...,4\n  # only the fourth column\n  columns: 3\n"
-                ]
-              },
-              "condition": {
-                "$ref": "#/definitions/script",
-                "description": "A script consisting of one or multiple conditions. The context of the script is defined by all fields and tables present in the workflow step, along with the `currentRow`, `currentCell`, and `currentTab` variables with their respective indexes.\n"
-              },
-              "apply": {
-                "type": "object",
-                "description": "The changes that are applied to cells, rows and tabs in the `range` if the `condition` is fulfilled.\n",
-                "additionalProperties": false,
-                "minProperties": 1,
-                "properties": {
-                  "selectable": {
-                    "type": "boolean"
-                  },
-                  "editable": {
-                    "type": "boolean"
-                  },
-                  "backgroundColor": {
-                    "type": "string",
-                    "description": "The value must be a valid [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). Theme colors can be applied using the `error`, `warning`, `success` and `info` keywords. When choosing colors, also consider the default highlight styles of tables for cell and row selection to ensure sufficient contrast.\n"
-                  },
-                  "textColor": {
-                    "type": "string",
-                    "description": "The value must be a valid [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). Theme colors can be applied using the `error`, `warning`, `success` and `info` keywords. When choosing colors, also consider the default highlight styles of tables for cell and row selection to ensure sufficient contrast.\n"
-                  },
-                  "hintText": {
-                    "type": "string",
-                    "description": "The hint text that will be available for the user when the rules are applied.\n"
-                  }
-                }
-              }
-            }
-          },
-          "examples": [
-            "range:\n  # Columns 1 to the last\n  columns: 0,...\n  # Rows from 4 to 10\n  rows: 3,...,9\n  # Only first tab\n  tabs: 0\ncondition: |\n  myReferenceField.experiments.firstExperiment.density < CELL_VALUE(table, tab, row, column - 1) &&  CELL_VALUE(table, tab, row, column - 1) <= myReferenceField.experiments.secondExperiment.density\napply:\n  editable: false\n  backgroundColor: rgb(0, 128, 0)\n  textColor: rgb(255, 255, 255)\n  hintText: I am a hint text\n",
-            "range:\n  # Columns 1 and 4 to 6\n  columns: 0,3,...,5\n  # Rows 2 and 4 to 10\n  rows: 1,3,...,9\n  # Tabs 1 and 5 to 7\n  tabs: '0,4,...,6'\napply:\n  selectable: true\n  editable: true\n  backgroundColor: '#FF0000'\n  textColor: '#FFFFFF'\n",
-            {
-              "range": {
-                "tabs": 2
-              },
-              "condition": "CELL_VALUE(table, tab, row, column - 1) > myReferenceField.density",
-              "apply": {
-                "selectable": true,
-                "editable": true,
-                "backgroundColor": "green",
-                "textColor": "white"
-              }
-            }
-          ]
         }
       },
       "webhookHandler": {
@@ -2653,6 +2460,201 @@
                     ]
                   }
                 }
+              }
+            }
+          ]
+        }
+      },
+      "table_attributes": {
+        "columns": {
+          "type": "array",
+          "title": "Table column mapping schema",
+          "description": "A static array that defines the structure of a table by mapping keys from the source data to columns.\n\nEach object in the source data represents an unordered collection of data. By default the order of columns in a table is therefore not fixed. In order to give a table a fixed column structure, it is required to map columns to specific keys.\n\nColumn mapping for table tabs takes precedence over the table-wide `columns` setting.\n",
+          "items": {
+            "type": "object",
+            "description": "The properties of each individual column.",
+            "required": [
+              "value",
+              "label"
+            ],
+            "properties": {
+              "value": {
+                "$ref": "#/definitions/jsonPointer",
+                "description": "The pointer to the value for each row in a column. The path is resolved relative to each row object.\n"
+              },
+              "label": {
+                "type": "string",
+                "description": "The display name of the column."
+              },
+              "formatSpecifier": {
+                "$ref": "#/definitions/formatSpecifier",
+                "description": "A specifier describing number formatting for numeric field values. All other field value types will ignore this.\n"
+              },
+              "align": {
+                "type": "string",
+                "default": "left",
+                "description": "The horizontal alignment of the cell values within a column.\n",
+                "enum": [
+                  "left",
+                  "center",
+                  "right"
+                ]
+              },
+              "editable": {
+                "type": "boolean",
+                "default": false,
+                "description": "A flag indicating if cells in this column are editable. If no `ui:widget` is specified, the column cells will display a text input.\n"
+              },
+              "selectable": {
+                "type": "boolean",
+                "description": "A flag indicating if cells in this column are selectable. It takes precedence over the table-wide `selectable: ['cells']` setting. Row selection is not affected.\n"
+              },
+              "ui:widget": {
+                "type": "string",
+                "default": "textfield",
+                "enum": [
+                  "checkbox",
+                  "switch",
+                  "textfield"
+                ]
+              },
+              "ui:options": {
+                "type": "object",
+                "description": "Configuration options for the UI widgets.\n",
+                "properties": {
+                  "placeholder": {
+                    "type": "string",
+                    "description": "The short hint displayed in a text field before entering a value.\n"
+                  },
+                  "type": {
+                    "type": "string",
+                    "default": "text",
+                    "description": "The HTML5 input type of a text field.\n",
+                    "enum": [
+                      "text",
+                      "number"
+                    ]
+                  }
+                }
+              }
+            },
+            "examples": [
+              {
+                "label": "Compound",
+                "value": "name"
+              },
+              {
+                "label": "Density (g/cm³)",
+                "value": "density",
+                "align": "right"
+              },
+              {
+                "label": "Molar mass (g/mol)",
+                "value": "molar_mass",
+                "align": "right"
+              }
+            ]
+          }
+        },
+        "rules": {
+          "type": "array",
+          "title": "Table rules",
+          "description": "Rules can be leveraged to dynamically change both the behavior and appearance of a table.\n\nWhen a rule condition is fulfilled, the `editable` and `selectable` behavior of cells, rows, columns, or tabs can be set. Likewise, the background color or text color can be changed to visualize a certain state or change of behavior to the user. For example:\n\n  - When a cell number value is negative, change the background color to red.\n  - When a cell number value is positive, change the background color to green, make it selectable, but no longer editable.\n  - When all cells in a column have no value, the column cells are not selectable or editable across all other tabs of the table.\n",
+          "items": {
+            "type": "object",
+            "description": "The individual rules that will be applied to the table. Rules will be applied in the order specified in the template. Later rules will overwrite previous rules.\n",
+            "required": [
+              "range",
+              "apply"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "range": {
+                "type": "object",
+                "description": "The range of columns, rows and tabs that the rules apply to. Use the [mathematical ellipsis notation](https://en.wikipedia.org/wiki/Ellipsis#In_mathematical_notation) to define a sequence of successive values from a start point to an end point inclusively. The range is zero-based, meaning its first entity is assigned the index 0.\nYou can specify one or multiple properties to define a selection of cells. Setting only the `rows` value, for example, would apply a given set of rules to all cells in the defined rows in all tabs. Including the `columns` and `tabs` settings would then narrow down that selection.\n",
+                "additionalProperties": false,
+                "minProperties": 1,
+                "properties": {
+                  "columns": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "rows": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "tabs": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "integer"
+                      }
+                    ]
+                  }
+                },
+                "examples": [
+                  "range:\n  # sequence of 1, 2, 3, 4, 5\n  rows: 0,...,4\n  # only the fourth column\n  columns: 3\n"
+                ]
+              },
+              "condition": {
+                "$ref": "#/definitions/script",
+                "description": "A script consisting of one or multiple conditions. The context of the script is defined by all fields and tables present in the workflow step, along with the `currentRow`, `currentCell`, and `currentTab` variables with their respective indexes.\n"
+              },
+              "apply": {
+                "type": "object",
+                "description": "The changes that are applied to cells, rows and tabs in the `range` if the `condition` is fulfilled.\n",
+                "additionalProperties": false,
+                "minProperties": 1,
+                "properties": {
+                  "selectable": {
+                    "type": "boolean"
+                  },
+                  "editable": {
+                    "type": "boolean"
+                  },
+                  "backgroundColor": {
+                    "type": "string",
+                    "description": "The value must be a valid [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). Theme colors can be applied using the `error`, `warning`, `success` and `info` keywords. When choosing colors, also consider the default highlight styles of tables for cell and row selection to ensure sufficient contrast.\n"
+                  },
+                  "textColor": {
+                    "type": "string",
+                    "description": "The value must be a valid [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). Theme colors can be applied using the `error`, `warning`, `success` and `info` keywords. When choosing colors, also consider the default highlight styles of tables for cell and row selection to ensure sufficient contrast.\n"
+                  },
+                  "hintText": {
+                    "type": "string",
+                    "description": "The hint text that will be available for the user when the rules are applied.\n"
+                  }
+                }
+              }
+            }
+          },
+          "examples": [
+            "range:\n  # Columns 1 to the last\n  columns: 0,...\n  # Rows from 4 to 10\n  rows: 3,...,9\n  # Only first tab\n  tabs: 0\ncondition: |\n  myReferenceField.experiments.firstExperiment.density < CELL_VALUE(table, tab, row, column - 1) &&  CELL_VALUE(table, tab, row, column - 1) <= myReferenceField.experiments.secondExperiment.density\napply:\n  editable: false\n  backgroundColor: rgb(0, 128, 0)\n  textColor: rgb(255, 255, 255)\n  hintText: I am a hint text\n",
+            "range:\n  # Columns 1 and 4 to 6\n  columns: 0,3,...,5\n  # Rows 2 and 4 to 10\n  rows: 1,3,...,9\n  # Tabs 1 and 5 to 7\n  tabs: '0,4,...,6'\napply:\n  selectable: true\n  editable: true\n  backgroundColor: '#FF0000'\n  textColor: '#FFFFFF'\n",
+            {
+              "range": {
+                "tabs": 2
+              },
+              "condition": "CELL_VALUE(table, tab, row, column - 1) > myReferenceField.density",
+              "apply": {
+                "selectable": true,
+                "editable": true,
+                "backgroundColor": "green",
+                "textColor": "white"
               }
             }
           ]

@@ -15,7 +15,7 @@ var ajv = new ajv_1.default({
     // Include reference to the part of the schema and validated data in errors.
     verbose: true,
     // Custom keywords that are not part of the JSON schema draft
-    keywords: ['columns', 'rules'],
+    // keywords: ['columns', 'rules'],
     // Skip iterating over enumerable prototype properties.
     ownProperties: true,
 });
