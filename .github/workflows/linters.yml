@@ -1,0 +1,19 @@
+name: Linters
+
+on:
+  pull_request:
+    branches-ignore:
+      - 'main'
+jobs:
+  eslint:
+    if: github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: yarn install
+      - name: eslint
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          eslint_flags: 'src/**/*.{ts,js}'
