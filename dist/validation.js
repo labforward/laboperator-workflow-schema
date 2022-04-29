@@ -14,8 +14,6 @@ var ajv = new ajv_1.default({
     allowUnionTypes: true,
     // Include reference to the part of the schema and validated data in errors.
     verbose: true,
-    // Custom keywords that are not part of the JSON schema draft
-    // keywords: ['columns', 'rules'],
     // Skip iterating over enumerable prototype properties.
     ownProperties: true,
 });
