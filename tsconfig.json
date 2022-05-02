@@ -2,6 +2,7 @@
   "extends": "@labforward/config/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "declaration": true,
     "esModuleInterop": true,
     "outDir": "dist",
     "paths": {
