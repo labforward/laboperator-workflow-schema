@@ -1,0 +1,32 @@
+type: string
+title: Resource tag
+description: |
+  This should map to the tag of the resources we have in our API/V2 documentatio
+enum:
+  - applications
+  - attachments
+  - authentications
+  - automations
+  - channels
+  - collections
+  - command_executions
+  - comments
+  - connectors
+  - custom_attributes
+  - dashboards
+  - data_points
+  - device_classes
+  - device_drivers
+  - device_types
+  - devices
+  - measurements
+  - organisations
+  - samples
+  - secrets
+  - signatures
+  - webhook_logs
+  - webhook_subscriptions
+  - workflow_events
+  - workflow_fields
+  - workflow_runs
+  - workflow_steps
