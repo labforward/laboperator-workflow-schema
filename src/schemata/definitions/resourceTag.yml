@@ -1,10 +1,9 @@
 type: string
 title: Resource tag
 description: |
-  This should map to the tag of the resources we have in our API/V2 documentatio
+  This should map to the tag of the resources we have in our API documentation
 enum:
   - applications
-  - attachments
   - authentications
   - automations
   - channels
@@ -19,14 +18,32 @@ enum:
   - device_drivers
   - device_types
   - devices
+  - events
+  - exports
+  - groups
   - measurements
+  - notification_settings
+  - notification_triggers
+  - notifications
+  - organisation_memberships
   - organisations
+  - permissions
+  - ports
+  - protonotifications
+  - roles
   - samples
+  - secret_accesses
   - secrets
   - signatures
+  - smart_views
+  - update_requests
+  - users
+  - versions
   - webhook_logs
   - webhook_subscriptions
   - workflow_events
   - workflow_fields
   - workflow_runs
+  - workflow_step_templates
   - workflow_steps
+  - workflow_templates

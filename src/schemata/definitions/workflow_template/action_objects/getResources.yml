@@ -1,8 +1,8 @@
 ---
 type: object
-title: Query Resources
+title: Get Resources
 description: |
-  An action to make queries on the API/V2 resources 
+  An action to filter related API resources.
 propertyNames:
   enum:
     - get_resources
@@ -30,10 +30,10 @@ additionalProperties:
     blocking:
       type: boolean
       description: |
-        Defines if the query action will block the subsequent steps
+        Determines if the query action will block subsequent steps.
       default: false
 
-example:
+examples:
   - getResources:
       tag: workflow_runs
       filter:
