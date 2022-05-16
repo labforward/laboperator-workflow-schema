@@ -818,6 +818,57 @@
                 "Using workflow template keys:\n{{template.steps.myStepName.info.title}}: Repeated 3 times, as specified by instructions present\nin ABC123 guidelines.\n"
             ]
         },
+        "resourceTag": {
+            "type": "string",
+            "title": "Resource tag",
+            "description": "This should map to the tag of the resources we have in our API documentation\n",
+            "enum": [
+                "applications",
+                "authentications",
+                "automations",
+                "channels",
+                "collections",
+                "command_executions",
+                "comments",
+                "connectors",
+                "custom_attributes",
+                "dashboards",
+                "data_points",
+                "device_classes",
+                "device_drivers",
+                "device_types",
+                "devices",
+                "events",
+                "exports",
+                "groups",
+                "measurements",
+                "notification_settings",
+                "notification_triggers",
+                "notifications",
+                "organisation_memberships",
+                "organisations",
+                "permissions",
+                "ports",
+                "protonotifications",
+                "roles",
+                "samples",
+                "secret_accesses",
+                "secrets",
+                "signatures",
+                "smart_views",
+                "update_requests",
+                "users",
+                "versions",
+                "webhook_logs",
+                "webhook_subscriptions",
+                "workflow_events",
+                "workflow_fields",
+                "workflow_runs",
+                "workflow_step_templates",
+                "workflow_steps",
+                "workflow_templates"
+            ]
+        },
         "schemaVersion": {
             "title": "Schema Version",
             "description": "Valid Workflow Template Schema Version\n",
@@ -2942,6 +2993,9 @@
                         "$ref": "#/definitions/workflow_template/action_objects/completeTimer"
                     },
                     {
+                        "$ref": "#/definitions/workflow_template/action_objects/getResources"
+                    },
+                    {
                         "$ref": "#/definitions/workflow_template/action_objects/goToPreviousStep"
                     },
                     {
@@ -3379,6 +3433,72 @@
                             }
                         }
                     }
+                },
+                "getResources": {
+                    "type": "object",
+                    "title": "Get Resources",
+                    "description": "An action to filter related API resources.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "get_resources",
+                            "GetResources",
+                            "GET_RESOURCES"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                            "tag"
+                        ],
+                        "properties": {
+                            "tag": {
+                                "$ref": "#/definitions/resourceTag"
+                            },
+                            "filter": {
+                                "type": "object",
+                                "propertyNames": {
+                                    "$ref": "#/definitions/resourceTag"
+                                }
+                            },
+                            "page": {
+                                "type": "object",
+                                "propertyNames": {
+                                    "$ref": "#/definitions/resourceTag"
+                                }
+                            },
+                            "sort": {
+                                "type": "object",
+                                "propertyNames": {
+                                    "$ref": "#/definitions/resourceTag"
+                                }
+                            },
+                            "blocking": {
+                                "type": "boolean",
+                                "description": "Determines if the query action will block subsequent steps.\n",
+                                "default": false
+                            }
+                        }
+                    },
+                    "examples": [
+                        {
+                            "getResources": {
+                                "tag": "workflow_runs",
+                                "filter": {
+                                    "workflow_runs": {
+                                        "workflow_template_id": "workflow_run.data.attributes.workflow_template_id"
+                                    }
+                                },
+                                "page": {
+                                    "workflow_runs": {
+                                        "size": 20
+                                    }
+                                },
+                                "sort": {
+                                    "workflow_runs": "-created_at"
+                                }
+                            }
+                        }
+                    ]
                 },
                 "goToPreviousStep": {
                     "type": "object",

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import fs from 'node:fs';
-import path from 'node:path';
+import fs from 'fs';
+import path from 'path';
 
 import { camelCase, head, last, omit, set } from 'lodash';
 import glob from 'fast-glob';
