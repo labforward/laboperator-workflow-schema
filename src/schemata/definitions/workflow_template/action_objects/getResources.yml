@@ -1,0 +1,46 @@
+---
+type: object
+title: Get Resources
+description: |
+  An action to filter related API resources.
+propertyNames:
+  enum:
+    - get_resources
+    - GetResources
+    - GET_RESOURCES
+additionalProperties:
+  type: object
+  required:
+    - tag
+  properties:
+    tag:
+      $ref: '#/definitions/resourceTag'
+    filter:
+      type: object
+      propertyNames:
+        $ref: '#/definitions/resourceTag'
+    page: 
+      type: object
+      propertyNames:
+        $ref: '#/definitions/resourceTag'
+    sort: 
+      type: object
+      propertyNames:
+        $ref: '#/definitions/resourceTag'
+    blocking:
+      type: boolean
+      description: |
+        Determines if the query action will block subsequent steps.
+      default: false
+
+examples:
+  - getResources:
+      tag: workflow_runs
+      filter:
+        workflow_runs:
+          workflow_template_id: workflow_run.data.attributes.workflow_template_id
+      page:
+        workflow_runs:
+          size: 20
+      sort:
+        workflow_runs: "-created_at"

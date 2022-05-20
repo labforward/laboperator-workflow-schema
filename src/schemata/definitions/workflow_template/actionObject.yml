@@ -6,6 +6,7 @@ oneOf:
   - $ref: '#/definitions/workflow_template/action_objects/addStep'
   - $ref: '#/definitions/workflow_template/action_objects/alert'
   - $ref: '#/definitions/workflow_template/action_objects/completeTimer'
+  - $ref: '#/definitions/workflow_template/action_objects/getResources'
   - $ref: '#/definitions/workflow_template/action_objects/goToPreviousStep'
   - $ref: '#/definitions/workflow_template/action_objects/goToStep'
   - $ref: '#/definitions/workflow_template/action_objects/notify'
