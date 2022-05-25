@@ -821,7 +821,7 @@
     "resourceTag": {
       "type": "string",
       "title": "Resource tag",
-      "description": "This should map to the tag of the resources we have in our API/V2 documentation\n",
+      "description": "This should map to the tag of the resources we have in our API documentation\n",
       "enum": [
         "automations",
         "channels",
