@@ -821,22 +821,15 @@
         "resourceTag": {
             "type": "string",
             "title": "Resource tag",
-            "description": "This should map to the tag of the resources we have in our API documentation\n",
+            "description": "This should map to the tag of the resources we have in our API/V2 documentation\n",
             "enum": [
-                "applications",
-                "authentications",
                 "automations",
                 "channels",
                 "collections",
                 "command_executions",
-                "comments",
                 "connectors",
                 "custom_attributes",
                 "dashboards",
-                "data_points",
-                "device_classes",
-                "device_drivers",
-                "device_types",
                 "devices",
                 "events",
                 "exports",
@@ -845,21 +838,13 @@
                 "notification_settings",
                 "notification_triggers",
                 "notifications",
-                "organisation_memberships",
-                "organisations",
-                "permissions",
                 "ports",
                 "protonotifications",
                 "roles",
                 "samples",
-                "secret_accesses",
-                "secrets",
-                "signatures",
                 "smart_views",
-                "update_requests",
                 "users",
                 "versions",
-                "webhook_logs",
                 "webhook_subscriptions",
                 "workflow_events",
                 "workflow_fields",
@@ -871,7 +856,7 @@
         },
         "schemaVersion": {
             "title": "Schema Version",
-            "description": "Valid Workflow Template Schema Version\n",
+            "description": "A valid Workflow Template schema version.",
             "type": "string",
             "enum": [
                 "0.0.1",
@@ -883,7 +868,7 @@
                 "1.0.0",
                 "1.0.1"
             ],
-            "default": "1.0.0"
+            "default": "1.0.1"
         },
         "script": {
             "default": "",
@@ -3476,6 +3461,18 @@
                                 "type": "boolean",
                                 "description": "Determines if the query action will block subsequent steps.\n",
                                 "default": false
+                            },
+                            "onSuccess": {
+                                "description": "The handler for filtered querying response",
+                                "type": "object",
+                                "required": [
+                                    "do"
+                                ],
+                                "properties": {
+                                    "do": {
+                                        "$ref": "#/definitions/workflow_template/actions"
+                                    }
+                                }
                             }
                         }
                     },
@@ -3495,6 +3492,16 @@
                                 },
                                 "sort": {
                                     "workflow_runs": "-created_at"
+                                },
+                                "onSuccess": {
+                                    "do": [
+                                        {
+                                            "set_field": {
+                                                "field": "sampleField",
+                                                "value": "response.data"
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }
