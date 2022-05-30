@@ -18,6 +18,16 @@ aliases:
 #   COMMANDS
 # --------------------
 commands:
+  build_schema:
+    steps:
+      - run:
+          name: Build schema
+          command: |
+            yarn build && \
+            if [[ `git status --porcelain` ]]; then \
+            echo "🚨 Make sure to build the schema after making changes to the definitions."
+            exit 1; \
+            fi
   run_jest:
     steps:
       - run:
@@ -66,6 +76,7 @@ jobs:
       - restore_yarn_cache
       - install_dependencies
       - save_yarn_cache
+      - build_schema
       - run_jest
       - store_jest_results
       - store_jest_artifacts
