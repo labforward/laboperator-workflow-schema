@@ -32,6 +32,13 @@ additionalProperties:
       description: |
         Determines if the query action will block subsequent steps.
       default: false
+    onSuccess:
+      description: The handler for filtered querying response
+      type: object
+      required: [do]
+      properties:
+        do:
+          $ref: '#/definitions/workflow_template/actions'
 
 examples:
   - getResources:
@@ -44,3 +51,8 @@ examples:
           size: 20
       sort:
         workflow_runs: "-created_at"
+      onSuccess:
+        do:
+          - set_field:
+              field: sampleField
+              value: response.data
