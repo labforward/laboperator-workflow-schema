@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - [[CUB-4303]](https://labforward.atlassian.net/browse/CUB-4303) [Workflows] Update get resources template schema
+
 ### Deprecated
 
 ### Removed

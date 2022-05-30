@@ -6,7 +6,6 @@
 ### Manual PR Checklist
 
 - [ ] CHANGELOG entry added
-- [ ] I ran the build command after making changes to the schema
 - [ ] Test coverage added
 - [ ] Licenses checked
 - [ ] All related Jira tickets added to PR title
