@@ -818,9 +818,45 @@
         "Using workflow template keys:\n{{template.steps.myStepName.info.title}}: Repeated 3 times, as specified by instructions present\nin ABC123 guidelines.\n"
       ]
     },
+    "resourceTag": {
+      "type": "string",
+      "title": "Resource tag",
+      "description": "This should map to the tag of the resources we have in our API documentation\n",
+      "enum": [
+        "automations",
+        "channels",
+        "collections",
+        "command_executions",
+        "connectors",
+        "custom_attributes",
+        "dashboards",
+        "devices",
+        "events",
+        "exports",
+        "groups",
+        "measurements",
+        "notification_settings",
+        "notification_triggers",
+        "notifications",
+        "ports",
+        "protonotifications",
+        "roles",
+        "samples",
+        "smart_views",
+        "users",
+        "versions",
+        "webhook_subscriptions",
+        "workflow_events",
+        "workflow_fields",
+        "workflow_runs",
+        "workflow_step_templates",
+        "workflow_steps",
+        "workflow_templates"
+      ]
+    },
     "schemaVersion": {
       "title": "Schema Version",
-      "description": "Valid Workflow Template Schema Version\n",
+      "description": "A valid Workflow Template schema version.",
       "type": "string",
       "enum": [
         "0.0.1",
@@ -832,7 +868,7 @@
         "1.0.0",
         "1.0.1"
       ],
-      "default": "1.0.0"
+      "default": "1.0.1"
     },
     "script": {
       "default": "",
@@ -2942,6 +2978,9 @@
             "$ref": "#/definitions/workflow_template/action_objects/completeTimer"
           },
           {
+            "$ref": "#/definitions/workflow_template/action_objects/getResources"
+          },
+          {
             "$ref": "#/definitions/workflow_template/action_objects/goToPreviousStep"
           },
           {
@@ -3379,6 +3418,94 @@
               }
             }
           }
+        },
+        "getResources": {
+          "type": "object",
+          "title": "Get Resources",
+          "description": "An action to filter related API resources.\n",
+          "propertyNames": {
+            "enum": [
+              "get_resources",
+              "GetResources",
+              "GET_RESOURCES"
+            ]
+          },
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "tag"
+            ],
+            "properties": {
+              "tag": {
+                "$ref": "#/definitions/resourceTag"
+              },
+              "filter": {
+                "type": "object",
+                "propertyNames": {
+                  "$ref": "#/definitions/resourceTag"
+                }
+              },
+              "page": {
+                "type": "object",
+                "propertyNames": {
+                  "$ref": "#/definitions/resourceTag"
+                }
+              },
+              "sort": {
+                "type": "object",
+                "propertyNames": {
+                  "$ref": "#/definitions/resourceTag"
+                }
+              },
+              "blocking": {
+                "type": "boolean",
+                "description": "Determines if the query action will block subsequent steps.\n",
+                "default": false
+              },
+              "onSuccess": {
+                "description": "The handler for filtered querying response",
+                "type": "object",
+                "required": [
+                  "do"
+                ],
+                "properties": {
+                  "do": {
+                    "$ref": "#/definitions/workflow_template/actions"
+                  }
+                }
+              }
+            }
+          },
+          "examples": [
+            {
+              "getResources": {
+                "tag": "workflow_runs",
+                "filter": {
+                  "workflow_runs": {
+                    "workflow_template_id": "workflow_run.data.attributes.workflow_template_id"
+                  }
+                },
+                "page": {
+                  "workflow_runs": {
+                    "size": 20
+                  }
+                },
+                "sort": {
+                  "workflow_runs": "-created_at"
+                },
+                "onSuccess": {
+                  "do": [
+                    {
+                      "set_field": {
+                        "field": "sampleField",
+                        "value": "response.data"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
         },
         "goToPreviousStep": {
           "type": "object",

@@ -1,0 +1,34 @@
+type: string
+title: Resource tag
+description: |
+  This should map to the tag of the resources we have in our API documentation
+enum:
+  - automations
+  - channels
+  - collections
+  - command_executions
+  - connectors
+  - custom_attributes
+  - dashboards
+  - devices
+  - events
+  - exports
+  - groups
+  - measurements
+  - notification_settings
+  - notification_triggers
+  - notifications
+  - ports
+  - protonotifications
+  - roles
+  - samples
+  - smart_views
+  - users
+  - versions
+  - webhook_subscriptions
+  - workflow_events
+  - workflow_fields
+  - workflow_runs
+  - workflow_step_templates
+  - workflow_steps
+  - workflow_templates

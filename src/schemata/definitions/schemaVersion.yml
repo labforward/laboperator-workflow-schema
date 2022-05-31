@@ -1,7 +1,6 @@
 ---
 title: Schema Version
-description: |
-  Valid Workflow Template Schema Version
+description: A valid Workflow Template schema version.
 type: string
 enum:
   - 0.0.1
@@ -12,4 +11,4 @@ enum:
   - 0.0.6
   - 1.0.0
   - 1.0.1
-default: 1.0.0
+default: 1.0.1
