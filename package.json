@@ -50,7 +50,7 @@
     "copyfiles": "^2.4.1",
     "del-cli": "^4.0.1",
     "eslint": "^8.16.0",
-    "eslint-plugin-jest": "^26.4.5",
+    "eslint-plugin-jest": "^26.4.6",
     "fast-glob": "^3.2.11",
     "husky": "^8.0.1",
     "jest": "^27.5.1",
