@@ -6,6 +6,9 @@ module.exports = {
       files: ['**/__tests__/**/*.test.ts'],
       plugins: ['jest'],
       extends: ['plugin:jest/recommended'],
+      rules: {
+        'max-nested-callbacks': 'off',
+      },
     },
   ],
   parserOptions: {
