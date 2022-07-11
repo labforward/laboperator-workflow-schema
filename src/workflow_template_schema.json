@@ -1603,7 +1603,7 @@
       "if": {
         "type": "object",
         "title": "If-Then-Else  Flow",
-        "description": "A conditional flow of steps or nested flow control schemas. In the well\nknown if-then-else fashion a conditional flow through the workflow can be\nimplemented.\n",
+        "description": "A conditional flow of steps or nested flow control schemas. In the well known if-then-else fashion a conditional flow through the workflow can be implemented.\n",
         "required": [
           "if",
           "then"
@@ -1612,7 +1612,7 @@
         "properties": {
           "if": {
             "$ref": "#/definitions/script",
-            "description": "The condition has access to all fields of the workflow. Any string\nresult or numerical result other then zero will be considered truthy and\ntrigger execution of the `then` workflow. A falsy value will trigger\nexecution of the `else` workflow.\n"
+            "description": "The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.\n"
           },
           "then": {
             "$ref": "#/definitions/flow/flowControl"
@@ -1639,7 +1639,7 @@
       "loop": {
         "type": "object",
         "title": "Loop Flow",
-        "description": "A loop flow of steps or nested flow control schemas. The loop will be\nrepeated until a condition is met. The loop will be executed at least once.\nOnce the condition evaluates to a truthy value the loop is broken and the\nloop flow is considered completed.\n",
+        "description": "A loop flow of steps or nested flow control schemas. The loop will be repeated until a condition is met. The loop will be executed at least once. Once the condition evaluates to a truthy value the loop is broken and the loop flow is considered completed.\n",
         "required": [
           "loop",
           "until"
@@ -1651,7 +1651,7 @@
           },
           "until": {
             "$ref": "#/definitions/script",
-            "description": "The condition has access to all fields of the workflow. Any string\nresult or numerical result other then zero will be considered truthy and\ntrigger completion of the loop flow. A falsy value will trigger\nanother iteration of the `loop` workflow.\n"
+            "description": "The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.\n"
           }
         },
         "examples": [
@@ -1730,7 +1730,7 @@
       "while": {
         "type": "object",
         "title": "While Flow",
-        "description": "A while loop flow of steps or nested flow control schemas. The while loop\nwill be repeated as long as a condition is met. The while loop will never be\nexecuted if the conditions evaluates to false initially. Once the condition\nevaluates to a falsy value the loop is broken and the while loop flow is\nconsidered completed.\n",
+        "description": "A while loop flow of steps or nested flow control schemas. The while loop will be repeated as long as a condition is met. The while loop will never be executed if the conditions evaluates to false initially. Once the condition evaluates to a falsy value the loop is broken and the while loop flow is considered completed.\n",
         "required": [
           "while",
           "do"
@@ -1739,7 +1739,7 @@
         "properties": {
           "while": {
             "$ref": "#/definitions/script",
-            "description": "The condition has access to all fields of the workflow. Any string\nresult or numerical result other then zero will be considered truthy and\ntrigger another iteration of the `do` flow. A falsy value will trigger\ncompletion of the while loop flow.\n"
+            "description": "The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.\n"
           },
           "do": {
             "$ref": "#/definitions/flow/flowControl"

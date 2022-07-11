@@ -2,10 +2,7 @@
 type: object
 title: Loop Flow
 description: |
-  A loop flow of steps or nested flow control schemas. The loop will be
-  repeated until a condition is met. The loop will be executed at least once.
-  Once the condition evaluates to a truthy value the loop is broken and the
-  loop flow is considered completed.
+  A loop flow of steps or nested flow control schemas. The loop will be repeated until a condition is met. The loop will be executed at least once. Once the condition evaluates to a truthy value the loop is broken and the loop flow is considered completed.
 required: [loop, until]
 additionalProperties: false
 properties:
@@ -14,10 +11,7 @@ properties:
   until:
     $ref: '#/definitions/script'
     description: |
-      The condition has access to all fields of the workflow. Any string
-      result or numerical result other then zero will be considered truthy and
-      trigger completion of the loop flow. A falsy value will trigger
-      another iteration of the `loop` workflow.
+      The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.
 examples:
   - loop:
       - step1

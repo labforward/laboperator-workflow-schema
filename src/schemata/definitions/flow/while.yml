@@ -2,21 +2,14 @@
 type: object
 title: While Flow
 description: |
-  A while loop flow of steps or nested flow control schemas. The while loop
-  will be repeated as long as a condition is met. The while loop will never be
-  executed if the conditions evaluates to false initially. Once the condition
-  evaluates to a falsy value the loop is broken and the while loop flow is
-  considered completed.
+  A while loop flow of steps or nested flow control schemas. The while loop will be repeated as long as a condition is met. The while loop will never be executed if the conditions evaluates to false initially. Once the condition evaluates to a falsy value the loop is broken and the while loop flow is considered completed.
 required: [while, do]
 additionalProperties: false
 properties:
   while:
     $ref: '#/definitions/script'
     description: |
-      The condition has access to all fields of the workflow. Any string
-      result or numerical result other then zero will be considered truthy and
-      trigger another iteration of the `do` flow. A falsy value will trigger
-      completion of the while loop flow.
+      The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.
   do:
     $ref: '#/definitions/flow/flowControl'
 examples:
