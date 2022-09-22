@@ -9,7 +9,7 @@ description: |
   with internal values.
 minLength: 3
 maxLength: 60
-pattern: ^[a-zA-Z0-9]+(?:[-_]?[a-zA-Z0-9]+)*$
+pattern: (?=^.{3,60}$)(^[a-zA-Z0-9]+(?:[-_]?[a-zA-Z0-9]+)*$)
 not:
   enum:
     - command_response
