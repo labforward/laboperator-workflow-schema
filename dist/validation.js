@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/* eslint-disable @typescript-eslint/no-explicit-any */
 var ajv_formats_1 = __importDefault(require("ajv-formats"));
 var ajv_1 = __importDefault(require("ajv"));
 var workflow_step_template_schema_json_1 = __importDefault(require("./workflow_step_template_schema.json"));
@@ -42,7 +43,7 @@ var validateWorkflowStepTemplate = function (data) {
     return result;
 };
 /**
- * @param {Object} data The data to validate against a specific schema.
+ * @param {*} data The data to validate against a specific schema.
  * @param {'workflowTemplate'|'workflowStepTemplate'} [options.schema] The schema to validate against.
  *
  * @returns {Object} An object with the respective schema and validation errors.
