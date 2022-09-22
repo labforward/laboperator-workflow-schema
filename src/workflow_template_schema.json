@@ -715,7 +715,7 @@
       "description": "A member name that is used as a reference elsewhere.\nAllowed characters are lower \"a\" to \"z\", capital \"A\" to \"Z\", \"0\" to \"9\" and\n\"-\" , \"_\". We recommend to consistently use either lowerCamelCase or\nkebab-case. While snake_case is allowed, it has a chance of name collisions\nwith internal values.\n",
       "minLength": 3,
       "maxLength": 60,
-      "pattern": "^[a-zA-Z0-9]+(?:[-_]?[a-zA-Z0-9]+)*$",
+      "pattern": "(?=^.{3,60}$)(^[a-zA-Z0-9]+(?:[-_]?[a-zA-Z0-9]+)*$)",
       "not": {
         "enum": [
           "command_response",
