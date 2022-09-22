@@ -22,7 +22,7 @@ addFormats(ajv);
 const validateTemplate = ajv.compile(workflowTemplate);
 const validateStepTemplate = ajv.compile(workflowStepTemplate);
 
-const validateWorkflowTemplate = (data: Record<string, unknown>) => {
+const validateWorkflowTemplate = (data: unknown) => {
   const isValid = validateTemplate(data);
   const result: Validation = {
     schema: validateTemplate.schema,
@@ -34,7 +34,7 @@ const validateWorkflowTemplate = (data: Record<string, unknown>) => {
   return result;
 };
 
-const validateWorkflowStepTemplate = (data: Record<string, unknown>) => {
+const validateWorkflowStepTemplate = (data: unknown) => {
   const isValid = validateStepTemplate(data);
   const result: Validation = {
     schema: validateStepTemplate.schema,
@@ -47,13 +47,13 @@ const validateWorkflowStepTemplate = (data: Record<string, unknown>) => {
 };
 
 /**
- * @param {Object} data The data to validate against a specific schema.
+ * @param {?} data The data to validate against a specific schema.
  * @param {'workflowTemplate'|'workflowStepTemplate'} [options.schema] The schema to validate against.
  *
  * @returns {Object} An object with the respective schema and validation errors.
  */
 const validate = (
-  data: Record<string, unknown>,
+  data: unknown,
   { schema = 'workflowTemplate' }: Options = {}
 ) => {
   if (schema === 'workflowTemplate') {
