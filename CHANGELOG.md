@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - [[CUB-4303]](https://labforward.atlassian.net/browse/CUB-4303) [Workflows] Update get resources template schema
 - [[CUB-245]](https://labforward.atlassian.net/browse/WFE-245) [Documentation] Assert min and max character length in member name regex pattern
+- [[CUB-4487]](https://labforward.atlassian.net/browse/CUB-4487) [Workflows] Remove maxItems from step buttons
 
 ### Deprecated
 

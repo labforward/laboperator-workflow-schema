@@ -2093,7 +2093,6 @@
             "type": "array",
             "title": "Substep Buttons",
             "description": "A list of buttons on the substep.",
-            "maxItems": 4,
             "items": {
               "$ref": "#/definitions/button"
             }
