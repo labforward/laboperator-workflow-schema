@@ -6,7 +6,6 @@ description: |
   workflow display.
 
   Step configurations will override workflow configurations.
-minProperties: 1
 additionalProperties: false
 properties:
   navigationDelay:
