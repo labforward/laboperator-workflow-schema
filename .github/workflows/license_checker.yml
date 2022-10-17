@@ -1,7 +1,7 @@
 name: License Checker
 on:
   pull_request:
-    branches: [main]
+    branches: [develop]
 jobs:
   license-check:
     runs-on: ubuntu-latest
