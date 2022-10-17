@@ -12,7 +12,7 @@ jobs:
           node-version: 16.x
       - name: Authenticate with GitHub package registry
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.ACCESS_TOKEN }}" >> ~/.npmrc
-      - run: npm install --production
+      - run: npm install --only=production --ignore-scripts
       - name: Check licenses
         uses: tangro/actions-license-check@v1.0.7
         with:
