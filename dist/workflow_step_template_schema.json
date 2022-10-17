@@ -1098,7 +1098,6 @@
                 "type": "object",
                 "title": "Configuration Section Schema of a step",
                 "description": "The configuration section of a step template holds general options for the\nworkflow display.\n\nStep configurations will override workflow configurations.\n",
-                "minProperties": 1,
                 "additionalProperties": false,
                 "properties": {
                     "navigationDelay": {
@@ -1118,7 +1117,6 @@
                 "type": "object",
                 "title": "Configuration Section Schema of a workflow template",
                 "description": "The configuration section of a workflow template holds general options for the\nworkflow display.\n\nStep configurations will override workflow configuration.\n",
-                "minProperties": 1,
                 "additionalProperties": false,
                 "properties": {
                     "navigationDelay": {
@@ -2093,7 +2091,6 @@
                         "type": "array",
                         "title": "Substep Buttons",
                         "description": "A list of buttons on the substep.",
-                        "maxItems": 4,
                         "items": {
                             "$ref": "#/definitions/button"
                         }
