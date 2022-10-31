@@ -49,7 +49,7 @@
     "@types/node": "^18.11.8",
     "copyfiles": "^2.4.1",
     "del-cli": "^5.0.0",
-    "eslint": "^8.25.0",
+    "eslint": "^8.26.0",
     "eslint-plugin-jest": "^27.1.1",
     "fast-glob": "^3.2.12",
     "husky": "^8.0.1",
