@@ -137,6 +137,22 @@ description: | # TODO: Add more docs on custom functions (qty calc)
   value: TIMES(n, index, HASH("index", index))
   ```
 
+  ### UPCASE
+  Returns the uppercase of the provided field value
+
+  **Example**:
+  ```yml
+  value: UPCASE(myStringField)
+  ```
+
+  ### DOWNCASE
+  Returns the lowercase of the provided field value
+
+  **Example**:
+  ```yml
+  value: DOWNCASE(myStringField)
+  ```
+
 examples:
   - field1 >= 100
   - field1 * (field2 + field3)
