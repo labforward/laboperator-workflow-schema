@@ -59,7 +59,7 @@
     "lint-staged": "^13.1.0",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.20",
-    "prettier": "^2.8.3",
+    "prettier": "^2.8.4",
     "sort-package-json": "^2.4.1",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.9.1",
