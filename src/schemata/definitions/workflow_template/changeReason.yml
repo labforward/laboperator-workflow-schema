@@ -30,7 +30,7 @@ oneOf:
         type: string
         maxLength: 1000
         default: |
-          This field is flagged as an change reason field. To update the field with a new value, a reason must be submitted.
+          This field is flagged as a change reason field. To update the field with a new value, a reason must be submitted.
         description: |
           A message that appears in the reason dialog to provide additional information to the user and to make sure a valid reason is entered.
 

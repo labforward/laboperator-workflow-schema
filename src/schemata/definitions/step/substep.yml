@@ -1,6 +1,6 @@
 ---
 type: object
-title: Substeps Schema
+title: Substep Schema
 description: |
   A substep is a single instruction of a step and can both content and actions
   attached to it.

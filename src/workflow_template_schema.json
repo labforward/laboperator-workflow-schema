@@ -2061,7 +2061,7 @@
       },
       "substep": {
         "type": "object",
-        "title": "Substeps Schema",
+        "title": "Substep Schema",
         "description": "A substep is a single instruction of a step and can both content and actions\nattached to it.\n",
         "required": [
           "primary"
@@ -3104,7 +3104,7 @@
               "message": {
                 "type": "string",
                 "maxLength": 1000,
-                "default": "This field is flagged as an change reason field. To update the field with a new value, a reason must be submitted.\n",
+                "default": "This field is flagged as a change reason field. To update the field with a new value, a reason must be submitted.\n",
                 "description": "A message that appears in the reason dialog to provide additional information to the user and to make sure a valid reason is entered.\n\nThe default message is translated according to the user profile's language setting.\n"
               },
               "validation": {
