@@ -1,7 +1,7 @@
 ---
 title: Field
 description: |
-  This schema describes a field's value. A valid field schema is either a valid JSON schema as per [Draft 7](http://json-schema.org/draft-07/schema#) or one of our custom field types. Some additional properties are allowed at the top level.
+  A valid field schema is either a valid JSON schema as per [Draft 7](http://json-schema.org/draft-07/schema#) or one of our custom field types. Some additional properties are allowed at the top level.
 allOf:
   - type: object
     properties:
@@ -24,26 +24,26 @@ allOf:
             type: boolean
             default: true
             description: |
-              A flag that toggles the display label of a boolean field.
+              A flag indicating whether a field of type `boolean` has a display label. Setting this to `false` will display either only a checkbox or switch control element, without any visible label.
       readOnly:
         type: boolean
         default: false
         description: |
-          A boolean flag indicating whether a field can be updated once the workflow run has been started.
+          A flag indicating whether a field can be updated once the workflow run has been started.
       prepare:
         type: boolean
         default: false
         description: |
-          A boolean flag indicating whether a field should be assigned a value before workflow execution can be started.
+          A flag indicating whether a field must be assigned a value before workflow execution can be started.
 
-          Setting both the `prepare` and the `hidden` flag results in a validation error.
+          Setting both the `prepare` and the `hidden` flag to `true` results in a validation error, because it would not be possible to start workflow execution.
       hidden:
         type: boolean
         default: false
         description: |
-          A boolean flag indicating whether a field is hidden from the user. A hidden field can still be explicitly referenced as, for example, the source data for a table or in the description of a substep and thereby have a visual representation.
+          A flag indicating whether a field is hidden from the user. A hidden field can still be explicitly referenced as, for example, the source data for a table or in the description of a substep and thereby have a visual representation.
 
-          Setting both the `hidden` and the `prepare` flag results in a validation error.
+           Setting both the `prepare` and the `hidden` flag to `true` results in a validation error, because it would not be possible to start workflow execution.
       defaultValue:
         description: |
           Assign a default value to a field. Fields without a default value that also don't require a value to be assigned via the `prepare` flag are empty at the start of a workflow execution.
@@ -51,16 +51,16 @@ allOf:
         type: boolean
         default: true
         description: |
-          A boolean flag indicating whether a field should be included in the output of a workflow run export.
+          A boolean flag indicating whether a field is included in the output of a workflow run export.
       formatSpecifier:
         $ref: '#/definitions/formatSpecifier'
         description: |
-          A specifier describing number formatting for numeric field types. All other field types ignore this flag.
+          A specifier describing number formatting for fields of type` number`, `integer`, and `quantity`. All other field types ignore this flag.
       group:
         type: string
         maxLength: 50
         description: |
-          A flag that is used to group fields during the workflow preparation stage. The `group` string is used as a display name. Fields with the same group name are displayed together in the order of definition. All fields without a specified group are displayed together separately without a display name.
+          A flag that is used to group fields during the workflow preparation stage. Fields with the same group name are displayed together in the order of definition. All fields without a specified group are displayed separately.
       changeReason:
         $ref: '#/definitions/workflow_template/changeReason'
   - oneOf:
@@ -71,34 +71,34 @@ allOf:
       - $ref: '#/definitions/field_schema/script'
       - $ref: '#/definitions/field_schema/timer'
 examples:
-  - enumOptions:
-      type: string
-      enum:
-        - German
-        - English
-  - multiLineText:
-      type: string
-      output: false
-      group: Analyst Notes
-      ui:widget: textarea
-  - switchField:
-      type: boolean
-      ui:widget: switch
-      ui:options:
-        label: false
-  - complexField:
-      type: array
-      hidden: true
-      items:
-        type: object
-        properties:
-          weight:
-            type: number
-          name:
-            type: ['string', 'null']
-            changeReason: true
-      defaultValue:
-        - weight: 12
-          name: Sample 1
-        - weight: 17
-          name: Sample 2
+  # enum options
+  - type: string
+    enum:
+      - German
+      - English
+  # multi-line text
+  - type: string
+    output: false
+    group: Analyst Notes
+    ui:widget: textarea
+  # switch toggle
+  - type: boolean
+    ui:widget: switch
+    ui:options:
+      label: false
+  # complex data type field
+  - type: array
+    hidden: true
+    items:
+      type: object
+      properties:
+        weight:
+          type: number
+        name:
+          type: ['string', 'null']
+          changeReason: true
+    defaultValue:
+      - weight: 12
+        name: Sample 1
+      - weight: 17
+        name: Sample 2
