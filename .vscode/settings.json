@@ -13,5 +13,25 @@
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "editor.wordWrap": "wordWrapColumn",
-  "files.insertFinalNewline": true
+  "files.insertFinalNewline": true,
+  "json.schemas": [
+    {
+      "fileMatch": ["/*.template.json", "/template.json"],
+      "url": "./dist/workflow_template_schema.json"
+    },
+    {
+      "fileMatch": ["/*.step-template.json", "/step-template.json"],
+      "url": "./dist/workflow_step_template_schema.json"
+    }
+  ],
+  "yaml.schemas": {
+    "./dist/workflow_template_schema.json": [
+      "/*.template.yml",
+      "/template.yml"
+    ],
+    "./dist/workflow_step_template_schema.json": [
+      "/*.step-template.yml",
+      "/step-template.yml"
+    ]
+  }
 }
