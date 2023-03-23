@@ -450,7 +450,7 @@
         },
         "field": {
             "title": "Field",
-            "description": "This schema describes a field's value. A valid field schema is either a valid JSON schema as per [Draft 7](http://json-schema.org/draft-07/schema#) or one of our custom field types. Some additional properties are allowed at the top level.\n",
+            "description": "A valid field schema is either a valid JSON schema as per [Draft 7](http://json-schema.org/draft-07/schema#) or one of our custom field types. Some additional properties are allowed at the top level.\n",
             "allOf": [
                 {
                     "type": "object",
@@ -471,24 +471,24 @@
                                 "label": {
                                     "type": "boolean",
                                     "default": true,
-                                    "description": "A flag that toggles the display label of a boolean field.\n"
+                                    "description": "A flag indicating whether a field of type `boolean` has a display label. Setting this to `false` will display either only a checkbox or switch control element, without any visible label.\n"
                                 }
                             }
                         },
                         "readOnly": {
                             "type": "boolean",
                             "default": false,
-                            "description": "A boolean flag indicating whether a field can be updated once the workflow run has been started.\n"
+                            "description": "A flag indicating whether a field can be updated once the workflow run has been started.\n"
                         },
                         "prepare": {
                             "type": "boolean",
                             "default": false,
-                            "description": "A boolean flag indicating whether a field should be assigned a value before workflow execution can be started.\n\nSetting both the `prepare` and the `hidden` flag results in a validation error.\n"
+                            "description": "A flag indicating whether a field must be assigned a value before workflow execution can be started.\n\nSetting both the `prepare` and the `hidden` flag to `true` results in a validation error, because it would not be possible to start workflow execution.\n"
                         },
                         "hidden": {
                             "type": "boolean",
                             "default": false,
-                            "description": "A boolean flag indicating whether a field is hidden from the user. A hidden field can still be explicitly referenced as, for example, the source data for a table or in the description of a substep and thereby have a visual representation.\n\nSetting both the `hidden` and the `prepare` flag results in a validation error.\n"
+                            "description": "A flag indicating whether a field is hidden from the user. A hidden field can still be explicitly referenced as, for example, the source data for a table or in the description of a substep and thereby have a visual representation.\n\n Setting both the `prepare` and the `hidden` flag to `true` results in a validation error, because it would not be possible to start workflow execution.\n"
                         },
                         "defaultValue": {
                             "description": "Assign a default value to a field. Fields without a default value that also don't require a value to be assigned via the `prepare` flag are empty at the start of a workflow execution.\n"
@@ -496,16 +496,16 @@
                         "output": {
                             "type": "boolean",
                             "default": true,
-                            "description": "A boolean flag indicating whether a field should be included in the output of a workflow run export.\n"
+                            "description": "A boolean flag indicating whether a field is included in the output of a workflow run export.\n"
                         },
                         "formatSpecifier": {
                             "$ref": "#/definitions/formatSpecifier",
-                            "description": "A specifier describing number formatting for numeric field types. All other field types ignore this flag.\n"
+                            "description": "A specifier describing number formatting for fields of type` number`, `integer`, and `quantity`. All other field types ignore this flag.\n"
                         },
                         "group": {
                             "type": "string",
                             "maxLength": 50,
-                            "description": "A flag that is used to group fields during the workflow preparation stage. The `group` string is used as a display name. Fields with the same group name are displayed together in the order of definition. All fields without a specified group are displayed together separately without a display name.\n"
+                            "description": "A flag that is used to group fields during the workflow preparation stage. Fields with the same group name are displayed together in the order of definition. All fields without a specified group are displayed separately.\n"
                         },
                         "changeReason": {
                             "$ref": "#/definitions/workflow_template/changeReason"
@@ -535,6 +535,106 @@
                     ]
                 }
             ],
+            "examples": [
+                {
+                    "type": "string",
+                    "enum": [
+                        "German",
+                        "English"
+                    ]
+                },
+                {
+                    "type": "string",
+                    "output": false,
+                    "group": "Analyst Notes",
+                    "ui:widget": "textarea"
+                },
+                {
+                    "type": "boolean",
+                    "ui:widget": "switch",
+                    "ui:options": {
+                        "label": false
+                    }
+                },
+                {
+                    "type": "array",
+                    "hidden": true,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "weight": {
+                                "type": "number"
+                            },
+                            "name": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "changeReason": true
+                            }
+                        }
+                    },
+                    "defaultValue": [
+                        {
+                            "weight": 12,
+                            "name": "Sample 1"
+                        },
+                        {
+                            "weight": 17,
+                            "name": "Sample 2"
+                        }
+                    ]
+                }
+            ]
+        },
+        "fieldMapping": {
+            "title": "Field Mapping",
+            "type": "object",
+            "description": "A field mapping is always required when a step defines its own fields.\nThe field mapping maps the global workflow fields to step internal\nfields. During validation it will be ensured that the field types are\ncompatible.\n",
+            "minProperties": 1,
+            "propertyNames": {
+                "description": "A valid field identifier defined by the workflow template.",
+                "$ref": "#/definitions/dynamicMemberName"
+            },
+            "additionalProperties": {
+                "description": "A valid field identifier defined by the step.",
+                "$ref": "#/definitions/memberName"
+            },
+            "examples": [
+                {
+                    "workflowFieldA": "stepField1",
+                    "workflowFieldB": "stepField2",
+                    "{{referenceToTheWorkflowField}}": "stepField3"
+                }
+            ]
+        },
+        "fieldValues": {
+            "title": "Field Values",
+            "type": "object",
+            "description": "Direct assignments of values to step fields. The values are evaluated\nagainst the field schema during validation.\n",
+            "minProperties": 1,
+            "propertyNames": {
+                "description": "A valid field identifier defined by the step.",
+                "$ref": "#/definitions/memberName"
+            },
+            "additionalProperties": true,
+            "examples": [
+                {
+                    "stepField1": true,
+                    "stepField2": "2014-03-08T23:21:27-10:00"
+                }
+            ]
+        },
+        "fields": {
+            "type": "object",
+            "title": "Fields",
+            "description": "Fields are top-level and step-level variables in a workflow template. A field can be used to store and retrieve information during workflow execution.\n\nFields of type array and object can be assigned a schema to validate its value.\n\nA field identifier, which is its key within the `fields` object, is considered unique in the context of a workflow. By definition a second occurrence of the same key will override the first occurrence. In markdown, fields can be referenced via their unique identifier: `{{myStringField}}`\n",
+            "propertyNames": {
+                "$ref": "#/definitions/memberName"
+            },
+            "additionalProperties": {
+                "$ref": "#/definitions/field"
+            },
             "examples": [
                 {
                     "enumOptions": {
@@ -595,61 +695,13 @@
                 }
             ]
         },
-        "fieldMapping": {
-            "title": "Field Mapping",
-            "type": "object",
-            "description": "A field mapping is always required when a step defines its own fields.\nThe field mapping maps the global workflow fields to step internal\nfields. During validation it will be ensured that the field types are\ncompatible.\n",
-            "minProperties": 1,
-            "propertyNames": {
-                "description": "A valid field identifier defined by the workflow template.",
-                "$ref": "#/definitions/dynamicMemberName"
-            },
-            "additionalProperties": {
-                "description": "A valid field identifier defined by the step.",
-                "$ref": "#/definitions/memberName"
-            },
-            "examples": [
-                {
-                    "workflowFieldA": "stepField1",
-                    "workflowFieldB": "stepField2",
-                    "{{referenceToTheWorkflowField}}": "stepField3"
-                }
-            ]
-        },
-        "fieldValues": {
-            "title": "Field Values",
-            "type": "object",
-            "description": "Direct assignments of values to step fields. The values are evaluated\nagainst the field schema during validation.\n",
-            "minProperties": 1,
-            "propertyNames": {
-                "description": "A valid field identifier defined by the step.",
-                "$ref": "#/definitions/memberName"
-            },
-            "additionalProperties": true,
-            "examples": [
-                {
-                    "stepField1": true,
-                    "stepField2": "2014-03-08T23:21:27-10:00"
-                }
-            ]
-        },
-        "fields": {
-            "type": "object",
-            "title": "Fields",
-            "description": "Fields are top-level and step-level variables in a workflow template. A field can be used to store and retrieve information during workflow execution.\n\nA field can be assigned a schema to validate its value.\n\nA field identifier, which is its key within the `fields` object, is considered unique in the context of a workflow. By definition a second occurrence of the same key will override the first occurrence. In markdown, fields can be referenced via their unique identifier:\n\n`{{myStringField}}`\n",
-            "propertyNames": {
-                "$ref": "#/definitions/memberName"
-            },
-            "additionalProperties": {
-                "$ref": "#/definitions/field"
-            }
-        },
         "formatSpecifier": {
             "type": "string",
-            "title": "A string describing how to format a number for display.",
-            "description": "Number formatting is based on the excellent\n[d3-format](https://github.com/d3/d3-format) library. Head over to their\n[docs](https://github.com/d3/d3-format#locale_format) for a full reference\nand examples.\n\nThe formatting specifiers are based on Python 3's\n[Format Specification Mini-Language](https://docs.python.org/3/library/string.html#format-specification-mini-language).\n\nA typical fixed point precision of two digits behind the decimal could be\nachieved with `.2f`.\n",
+            "title": "Format Specifier",
+            "description": "A format specifier is a string describing how to format a number for display. It is based on the excellent [d3-format](https://github.com/d3/d3-format) library. For example, a typical fixed point precision of two digits behind the decimal point is achieved with `.2f`. Visit their [official documentation](https://github.com/d3/d3-format#locale_format) for a complete reference and examples.\n\nNote that a format specifier only affects the display value of a field. If the field is used as an interactive control element in the workflow, the user input will not be formatted.\n\nA format specifier can also be defined for a field of type [quantity](/schemas/definitions/field_schema/quantity/).\n",
             "examples": [
-                "2f"
+                ".6f",
+                ".3%"
             ]
         },
         "info": {
@@ -856,7 +908,7 @@
         },
         "schemaVersion": {
             "title": "Schema Version",
-            "description": "A valid Workflow Template schema version.",
+            "description": "A valid Workflow schema version.",
             "type": "string",
             "enum": [
                 "0.0.1",
@@ -3130,14 +3182,12 @@
                 ],
                 "examples": [
                     {
-                        "changeReason": {
-                            "message": "Field update requires a reason. Please select one of the options or submit your own.\n",
-                            "validation": "^\\w.+\\s.+",
-                            "options": [
-                                "Solution factor too high",
-                                "Solution factor too low"
-                            ]
-                        }
+                        "message": "Field update requires a reason. Please select one of the options or submit your own.\n",
+                        "validation": "^\\w.+\\s.+",
+                        "options": [
+                            "Solution factor too high",
+                            "Solution factor too low"
+                        ]
                     }
                 ]
             },

@@ -56,10 +56,10 @@ oneOf:
             - Balance did not reach stable weight
             - Measurement failed
 examples:
-  - changeReason:
-      message: |
-        Field update requires a reason. Please select one of the options or submit your own.
-      validation: ^\w.+\s.+
-      options:
-        - Solution factor too high
-        - Solution factor too low
+  - message: |
+      Field update requires a reason. Please select one of the options or submit your own.
+    validation: ^\w.+\s.+
+    options:
+      - Solution factor too high
+      - Solution factor too low
+      
