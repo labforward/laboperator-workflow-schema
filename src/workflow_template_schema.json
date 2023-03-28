@@ -1354,7 +1354,7 @@
       },
       "quantity": {
         "type": "object",
-        "description": "Defines a field of type `quantity`. A quantity is a real number with a unit\nrepresented as a string.\n\nA quantity of a matching unit, but a different magnitude will be converted automatically.\n",
+        "description": "Defines a field of type `quantity`. A quantity is a real number with a unit represented as a string. A quantity of a matching unit, but different magnitude, will be converted automatically.\n",
         "required": [
           "type"
         ],
@@ -1367,7 +1367,7 @@
           },
           "unit": {
             "type": "string",
-            "description": "When set the value of this field should match the given unit.\n\nFull list of supported units can be found [here](https://raw.githubusercontent.com/gentooboontoo/js-quantities/master/src/quantities/definitions.js)\n",
+            "description": "If a unit is specified, the value of the field should match that unit.\n\nSee the list of [supported units](https://github.com/gentooboontoo/js-quantities/blob/master/src/quantities/definitions.js).\n",
             "examples": [
               "mm",
               "sqft",
@@ -1379,7 +1379,7 @@
           },
           "kind": {
             "type": "string",
-            "description": "When set the value of this field should match the given kind. `unit`\ntakes preference over the kind, thus `kind` will be ignored if `unit` is\nset.\n\nFull list of supported kinds of quantities can be found [here](https://raw.githubusercontent.com/gentooboontoo/js-quantities/master/src/quantities/kind.js)\n",
+            "description": "If a kind is specified, the value of the field should match that kind. The `unit` setting takes precedence over `kind`, thus `kind` will be ignored if `unit` is set.\n\nSee the list of [supported kinds](https://github.com/gentooboontoo/js-quantities/blob/master/src/quantities/kind.js).\n",
             "examples": [
               "length",
               "area",
