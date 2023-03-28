@@ -1312,18 +1312,8 @@
                         ]
                     },
                     "mediaType": {
-                        "description": "A single or list of accepted [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml).\n\nNote: Not all Media Types out there might be supported.\n",
-                        "oneOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                }
-                            }
-                        ]
+                        "description": "The media format of the specific file. Kindly see the accepted [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml).\n\nNote: Not all Media Types out there might be supported.\n",
+                        "type": "string"
                     }
                 }
             },

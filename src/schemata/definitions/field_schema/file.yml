@@ -9,11 +9,7 @@ properties:
     enum: [file]
   mediaType:
     description: |
-      A single or list of accepted [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml).
+      The media format of the specific file. Kindly see the accepted [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml).
 
       Note: Not all Media Types out there might be supported.
-    oneOf:
-      - type: string
-      - type: array
-        items:
-          type: string
+    type: string
