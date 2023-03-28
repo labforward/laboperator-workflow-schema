@@ -1329,7 +1329,7 @@
       },
       "quantity": {
         "type": "object",
-        "description": "Defines a field of type `quantity`. A quantity is a real number with a unit\nrepresented as a string.\n",
+        "description": "Defines a field of type `quantity`. A quantity is a real number with a unit\nrepresented as a string.\n\nA quantity of a matching unit, but a different magnitude will be converted automatically.\n",
         "required": [
           "type"
         ],
@@ -1342,13 +1342,47 @@
           },
           "unit": {
             "type": "string",
-            "description": "When set the value of this field should match the given unit."
+            "description": "When set the value of this field should match the given unit.\n\nFull list of supported units can be found [here](https://raw.githubusercontent.com/gentooboontoo/js-quantities/master/src/quantities/definitions.js)\n",
+            "examples": [
+              "mm",
+              "sqft",
+              "millilitres",
+              "hPa",
+              "mA",
+              "Ohm"
+            ]
           },
           "kind": {
             "type": "string",
-            "description": "When set the value of this field should match the given kind. `unit`\ntakes preference over the kind, thus `kind` will be ignored if `unit` is\nset.\n"
+            "description": "When set the value of this field should match the given kind. `unit`\ntakes preference over the kind, thus `kind` will be ignored if `unit` is\nset.\n\nFull list of supported kinds of quantities can be found [here](https://raw.githubusercontent.com/gentooboontoo/js-quantities/master/src/quantities/kind.js)\n",
+            "examples": [
+              "length",
+              "area",
+              "volume",
+              "pressure",
+              "current",
+              "resistance"
+            ]
           }
-        }
+        },
+        "examples": [
+          {
+            "type": "quantity",
+            "defaultValue": {
+              "number": 120,
+              "unit": "mm"
+            },
+            "unit": "mm"
+          },
+          {
+            "type": "quantity",
+            "defaultValue": {
+              "number": 1431000,
+              "unit": "Ohm"
+            },
+            "kind": "resistance"
+          }
+        ]
       },
       "relationship": {
         "type": "object",

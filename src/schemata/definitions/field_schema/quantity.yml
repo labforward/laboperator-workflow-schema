@@ -3,17 +3,49 @@ type: object
 description: |
   Defines a field of type `quantity`. A quantity is a real number with a unit
   represented as a string.
+
+  A quantity of a matching unit, but a different magnitude will be converted automatically.
 required: [type]
 properties:
   type:
     type: string
     enum: [quantity]
-  unit:  # TODO: Specify valid units.
+  unit:
     type: string
-    description: When set the value of this field should match the given unit.
-  kind:  # TODO: Specify valid kinds.
+    description: |
+      When set the value of this field should match the given unit.
+
+      Full list of supported units can be found [here](https://raw.githubusercontent.com/gentooboontoo/js-quantities/master/src/quantities/definitions.js)
+    examples:
+      - mm
+      - sqft
+      - millilitres
+      - hPa
+      - mA
+      - Ohm
+  kind:
     type: string
     description: |
       When set the value of this field should match the given kind. `unit`
       takes preference over the kind, thus `kind` will be ignored if `unit` is
       set.
+
+      Full list of supported kinds of quantities can be found [here](https://raw.githubusercontent.com/gentooboontoo/js-quantities/master/src/quantities/kind.js)
+    examples:
+      - length
+      - area
+      - volume
+      - pressure
+      - current
+      - resistance
+examples:
+  - type: quantity
+    defaultValue:
+      number: 120
+      unit: mm
+    unit: mm
+  - type: quantity
+    defaultValue:
+      number: 1.431e6
+      unit: Ohm
+    kind: resistance
