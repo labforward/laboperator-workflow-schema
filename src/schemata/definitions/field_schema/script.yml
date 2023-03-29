@@ -1,29 +1,47 @@
 ---
 type: object
 description: |
-  Defines a field of type `script`. A script field can be used to do simple
-  calculations of boolean or numerical expressions and save the result to a
-  field.
+  Defines a field of type `script`. The result of the script evaluation determines the field's value. See the [Script schema](/schemas/definitions/script) for more information on writing expressions and examples.
 required: [type, script, result]
 properties:
   type:
     type: string
-    enum: [script, result]
+    enum: [script]
   script:
     $ref: '#/definitions/script'
     description: |
       The script will be evaluated to determine the value of the field
       whenever it is accessed.
   readOnly:
+    type: boolean
     description: |
       Script fields are always read-only as their value is calculated.
     const: true
   result:
     description: |
-      You can provide a schema for the result of the expression to have the
-      value validated.
-    oneOf:
-      - $ref: '#/definitions/jsonSchemaDraft7'
-      - $ref: '#/definitions/field_schema/quantity'
-      - $ref: '#/definitions/field_schema/relationship'
-      - $ref: '#/definitions/field_schema/timer'
+      A schema to validate the returned value of the script.
+    allOf:
+      - type: object
+        required: [type]
+      - oneOf:
+          - $ref: '#/definitions/jsonSchemaDraft7'
+          - $ref: '#/definitions/field_schema/quantity'
+          - $ref: '#/definitions/field_schema/relationship'
+          - $ref: '#/definitions/field_schema/timer'
+    examples:
+      - type: quantity
+        unit: mg
+      - type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: number
+            vendor:
+              type: string
+examples:
+  - type: script
+    script: (weight + 10) / 2
+    result:
+      type: quantity
+      unit: mg
