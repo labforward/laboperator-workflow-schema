@@ -1312,7 +1312,7 @@
                         ]
                     },
                     "mediaType": {
-                        "description": "The media format of the specific file. Kindly see the accepted [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml).\n\nNote: Not all Media Types out there might be supported.\n",
+                        "description": "A [media type](https://www.iana.org/assignments/media-types/media-types.xhtml) is a two-part identifier for file formats and format contents. Note that not all possible media types might be supported.\n",
                         "type": "string"
                     }
                 }
