@@ -1337,20 +1337,20 @@
                         ]
                     },
                     "mediaType": {
-                        "description": "A single or list of accepted [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml).\n\nNote: Not all Media Types out there might be supported.\n",
-                        "oneOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                }
-                            }
-                        ]
+                        "description": "A [media type](https://www.iana.org/assignments/media-types/media-types.xhtml) is a two-part identifier for file formats and format contents. Note that not all possible media types might be supported.\n",
+                        "type": "string"
                     }
-                }
+                },
+                "examples": [
+                    {
+                        "type": "file",
+                        "mediaType": "application/pdf"
+                    },
+                    {
+                        "type": "file",
+                        "mediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    }
+                ]
             },
             "quantity": {
                 "type": "object",

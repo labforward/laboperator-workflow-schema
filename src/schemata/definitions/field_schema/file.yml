@@ -9,11 +9,10 @@ properties:
     enum: [file]
   mediaType:
     description: |
-      A single or list of accepted [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml).
-
-      Note: Not all Media Types out there might be supported.
-    oneOf:
-      - type: string
-      - type: array
-        items:
-          type: string
+      A [media type](https://www.iana.org/assignments/media-types/media-types.xhtml) is a two-part identifier for file formats and format contents. Note that not all possible media types might be supported.
+    type: string
+examples:
+  - type: file
+    mediaType: application/pdf
+  - type: file
+    mediaType: application/vnd.openxmlformats-officedocument.wordprocessingml.document
