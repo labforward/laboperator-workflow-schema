@@ -1454,7 +1454,7 @@
       },
       "script": {
         "type": "object",
-        "description": "Defines a field of type `script`. A script field can be used to do simple\ncalculations of boolean or numerical expressions and save the result to a\nfield.\n",
+        "description": "Defines a field of type `script`. The result of the script evaluation determines the field's value. See the [Script schema](/schemas/definitions/script) for more information on writing expressions and examples.\n",
         "required": [
           "type",
           "script",
@@ -1464,8 +1464,7 @@
           "type": {
             "type": "string",
             "enum": [
-              "script",
-              "result"
+              "script"
             ]
           },
           "script": {
@@ -1473,27 +1472,68 @@
             "description": "The script will be evaluated to determine the value of the field\nwhenever it is accessed.\n"
           },
           "readOnly": {
+            "type": "boolean",
             "description": "Script fields are always read-only as their value is calculated.\n",
             "const": true
           },
           "result": {
-            "description": "You can provide a schema for the result of the expression to have the\nvalue validated.\n",
-            "oneOf": [
+            "description": "A schema to validate the returned value of the script.\n",
+            "allOf": [
               {
-                "$ref": "#/definitions/jsonSchemaDraft7"
+                "type": "object",
+                "required": [
+                  "type"
+                ]
               },
               {
-                "$ref": "#/definitions/field_schema/quantity"
+                "oneOf": [
+                  {
+                    "$ref": "#/definitions/jsonSchemaDraft7"
+                  },
+                  {
+                    "$ref": "#/definitions/field_schema/quantity"
+                  },
+                  {
+                    "$ref": "#/definitions/field_schema/relationship"
+                  },
+                  {
+                    "$ref": "#/definitions/field_schema/timer"
+                  }
+                ]
+              }
+            ],
+            "examples": [
+              {
+                "type": "quantity",
+                "unit": "mg"
               },
               {
-                "$ref": "#/definitions/field_schema/relationship"
-              },
-              {
-                "$ref": "#/definitions/field_schema/timer"
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "vendor": {
+                      "type": "string"
+                    }
+                  }
+                }
               }
             ]
           }
-        }
+        },
+        "examples": [
+          {
+            "type": "script",
+            "script": "(weight + 10) / 2",
+            "result": {
+              "type": "quantity",
+              "unit": "mg"
+            }
+          }
+        ]
       },
       "timer": {
         "type": "object",
