@@ -9,7 +9,7 @@ properties:
     enum: [file]
   mediaType:
     description: |
-      A [media type](https://www.iana.org/assignments/media-types/media-types.xhtml) is a two-part identifier for file formats and format contents. Note that not all possible media types might be supported.
+      A [media type](https://www.iana.org/assignments/media-types/media-types.xhtml) is an identifier for file formats and format contents. Note that not all possible media types might be supported.
     type: string
 examples:
   - type: file
