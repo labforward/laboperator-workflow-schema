@@ -13,3 +13,11 @@ node_modules/
 
 # Misc
 *.log
+template.json
+template.yml
+*.template.json
+*.template.yml
+step-template.json
+step-template.yml
+*.step-template.json
+*.step-template.yml
