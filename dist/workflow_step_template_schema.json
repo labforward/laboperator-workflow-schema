@@ -429,6 +429,9 @@
             "allOf": [
                 {
                     "type": "object",
+                    "required": [
+                        "type"
+                    ],
                     "properties": {
                         "ui:widget": {
                             "type": "string",
@@ -471,11 +474,11 @@
                         "output": {
                             "type": "boolean",
                             "default": true,
-                            "description": "A boolean flag indicating whether a field is included in the output of a workflow run export.\n"
+                            "description": "A flag indicating whether a field is included in the output of a workflow run export.\n"
                         },
                         "formatSpecifier": {
                             "$ref": "#/definitions/formatSpecifier",
-                            "description": "A specifier describing number formatting for fields of type` number`, `integer`, and `quantity`. All other field types ignore this flag.\n"
+                            "description": "A specifier describing number formatting for fields of type `number`, `integer`, and `quantity`. All other field types ignore this flag.\n"
                         },
                         "group": {
                             "type": "string",
@@ -894,8 +897,7 @@
                 "0.0.6",
                 "1.0.0",
                 "1.0.1"
-            ],
-            "default": "1.0.1"
+            ]
         },
         "script": {
             "default": "",
@@ -1312,7 +1314,7 @@
                         ]
                     },
                     "mediaType": {
-                        "description": "A [media type](https://www.iana.org/assignments/media-types/media-types.xhtml) is a two-part identifier for file formats and format contents. Note that not all possible media types might be supported.\n",
+                        "description": "A [media type](https://www.iana.org/assignments/media-types/media-types.xhtml) is an identifier for file formats and format contents. Note that not all possible media types might be supported.\n",
                         "type": "string"
                     }
                 },
@@ -1329,9 +1331,37 @@
             },
             "quantity": {
                 "type": "object",
-                "description": "Defines a field of type `quantity`. A quantity is a real number with a unit represented as a string. A quantity of a matching unit, but different magnitude, will be converted automatically.\n",
+                "description": "Defines a field of type `quantity`. A quantity is a real number with a unit represented as a string. Compatible units of a given kind will be converted automatically.\n",
                 "required": [
                     "type"
+                ],
+                "oneOf": [
+                    {
+                        "required": [
+                            "unit"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "kind"
+                        ]
+                    },
+                    {
+                        "not": {
+                            "anyOf": [
+                                {
+                                    "required": [
+                                        "unit"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "kind"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
                 ],
                 "properties": {
                     "type": {
@@ -1342,7 +1372,7 @@
                     },
                     "unit": {
                         "type": "string",
-                        "description": "If a unit is specified, the value of the field should match that unit.\n\nSee the list of [supported units](https://github.com/gentooboontoo/js-quantities/blob/master/src/quantities/definitions.js).\n",
+                        "description": "If a unit is specified, the value of the field should match that unit. You may only define a unit or kind, not both.\n\nSee the list of [supported units](https://github.com/gentooboontoo/js-quantities/blob/master/src/quantities/definitions.js).\n",
                         "examples": [
                             "mm",
                             "sqft",
@@ -1354,7 +1384,7 @@
                     },
                     "kind": {
                         "type": "string",
-                        "description": "If a kind is specified, the value of the field should match that kind. The `unit` setting takes precedence over `kind`, thus `kind` will be ignored if `unit` is set.\n\nSee the list of [supported kinds](https://github.com/gentooboontoo/js-quantities/blob/master/src/quantities/kind.js).\n",
+                        "description": "If a kind is specified, the value of the field should match that kind. You may only define a unit or kind, not both.\n\nSee the list of [supported kinds](https://github.com/gentooboontoo/js-quantities/blob/master/src/quantities/kind.js).\n",
                         "examples": [
                             "length",
                             "area",
@@ -3191,7 +3221,7 @@
             },
             "changeReason": {
                 "title": "Change Reason",
-                "description": "A flag indicating that overwriting an existing field value requires a reason and prompts the user with a reason dialog. The reason is recorded along with the new field value. If no reason is submitted, the field is not updated.\n\nUpdating a field that has no value with a value does not require a reason. A field update that changes the value to `null`, however, does require a reason. Consider the following example:\n\n    1. field has no value\n    2. update to `10`\n    3. update to `22` => reason required\n    4. update to `null` => reason required\n    5. update to `14`\n    6. update to `19` => reason required\n    7. user does not submit reason => field value is still `14`\n\nA reason can be submitted programmatically as part of a `set_field` action, which would then not prompt the reason dialog to the user during workflow execution. See [Set Field schema](/schemas/definitions/workflow_template/action_objects/setField/) for more information.\n\nFor fields of type array or object the `changeReason` setting can be applied both at the top-level, meaning any partial update of an existing value requires a reason, or for individual items and properties only. Nested settings take precedence over higher-level settings.\n\nA field update that requires a reason will always fail if no reason is provided.\n",
+                "description": "A flag indicating whether subsequent field updates require a reason and prompt the user with a reason dialog. The first update to a field's value never requires a reason, any further updates always do. Consider the following example:\n\n    1. field has no value\n    2. update to `10`\n    3. update to `22` => reason required\n    4. update to `null` => reason required\n    5. update to `14` => reason required\n    6. user does not submit reason => field value is still `null`\n\nA reason can be submitted programmatically as part of a `set_field` action, which would then not prompt the reason dialog to the user during workflow execution. See [Set Field schema](/schemas/definitions/workflow_template/action_objects/setField/) for more information.\n\nFor fields of type array or object the `changeReason` setting can be applied both at the top-level, meaning any partial update of an existing value requires a reason, or for individual items and properties only. Nested settings take precedence over higher-level settings.\n\nA field update that requires a reason will always fail if no reason is provided.\n",
                 "oneOf": [
                     {
                         "type": "boolean",
