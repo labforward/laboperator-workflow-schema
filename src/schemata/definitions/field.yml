@@ -4,6 +4,7 @@ description: |
   A valid field schema is either a valid JSON schema as per [Draft 7](http://json-schema.org/draft-07/schema#) or one of our custom field types. Some additional properties are allowed at the top level.
 allOf:
   - type: object
+    required: [type]
     properties:
       ui:widget:
         type: string
@@ -51,11 +52,11 @@ allOf:
         type: boolean
         default: true
         description: |
-          A boolean flag indicating whether a field is included in the output of a workflow run export.
+          A flag indicating whether a field is included in the output of a workflow run export.
       formatSpecifier:
         $ref: '#/definitions/formatSpecifier'
         description: |
-          A specifier describing number formatting for fields of type` number`, `integer`, and `quantity`. All other field types ignore this flag.
+          A specifier describing number formatting for fields of type `number`, `integer`, and `quantity`. All other field types ignore this flag.
       group:
         type: string
         maxLength: 50

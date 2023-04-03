@@ -1,17 +1,14 @@
 ---
 title: Change Reason
 description: |
-  A flag indicating that overwriting an existing field value requires a reason and prompts the user with a reason dialog. The reason is recorded along with the new field value. If no reason is submitted, the field is not updated.
-
-  Updating a field that has no value with a value does not require a reason. A field update that changes the value to `null`, however, does require a reason. Consider the following example:
+  A flag indicating whether subsequent field updates require a reason and prompt the user with a reason dialog. The first update to a field's value never requires a reason, any further updates always do. Consider the following example:
 
       1. field has no value
       2. update to `10`
       3. update to `22` => reason required
       4. update to `null` => reason required
-      5. update to `14`
-      6. update to `19` => reason required
-      7. user does not submit reason => field value is still `14`
+      5. update to `14` => reason required
+      6. user does not submit reason => field value is still `null`
 
   A reason can be submitted programmatically as part of a `set_field` action, which would then not prompt the reason dialog to the user during workflow execution. See [Set Field schema](/schemas/definitions/workflow_template/action_objects/setField/) for more information.
 

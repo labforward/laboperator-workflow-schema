@@ -1,8 +1,15 @@
 ---
 type: object
 description: |
-  Defines a field of type `quantity`. A quantity is a real number with a unit represented as a string. A quantity of a matching unit, but different magnitude, will be converted automatically.
+  Defines a field of type `quantity`. A quantity is a real number with a unit represented as a string. Compatible units of a given kind will be converted automatically.
 required: [type]
+oneOf:
+  - required: ['unit']
+  - required: ['kind']
+  - not:
+      anyOf:
+        - required: ['unit']
+        - required: ['kind']
 properties:
   type:
     type: string
@@ -10,7 +17,7 @@ properties:
   unit:
     type: string
     description: |
-      If a unit is specified, the value of the field should match that unit.
+      If a unit is specified, the value of the field should match that unit. You may only define a unit or kind, not both.
 
       See the list of [supported units](https://github.com/gentooboontoo/js-quantities/blob/master/src/quantities/definitions.js).
     examples:
@@ -23,7 +30,7 @@ properties:
   kind:
     type: string
     description: |
-      If a kind is specified, the value of the field should match that kind. The `unit` setting takes precedence over `kind`, thus `kind` will be ignored if `unit` is set.
+      If a kind is specified, the value of the field should match that kind. You may only define a unit or kind, not both.
       
       See the list of [supported kinds](https://github.com/gentooboontoo/js-quantities/blob/master/src/quantities/kind.js).
     examples:
