@@ -1,22 +1,27 @@
 ---
 type: object
-title: The Workflow Step Template Schema
+title: Step
 description: |
-  A step is a closed set of activities and instructions. Steps can be defined
-  independent of a workflow and then be reused across different workflows.
-
-  A step descriptor file describes a workflow consisting of four parts:
-  1. info: General information about the workflow.
-  2. fields: Global context in this workflow.
-  3. steps: Definition of all unique steps that occur in the workflow.
-  4. workflow: The flow of steps and mapping of fields.
-required:
-  - info
+  A step is a closed set of activities and instructions.
+required: [info]
 allOf:
   - $ref: '#/definitions/stepAttributes'
   - type: object
     properties:
       info:
-        $ref: '#/definitions/info'
+        type: object
+        required: [title]
+        additionalProperties: false
+        properties:
+          title:
+            type: string
+            description: |
+              The display name of the step in Laboperator.
+            examples:
+              - Tare Balance
+          description:
+            type: string
+            description: |
+              A descriptive summary of the step.
       secrets:
         $ref: '#/definitions/secrets'
