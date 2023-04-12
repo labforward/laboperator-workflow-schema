@@ -1629,7 +1629,7 @@
       },
       "timer": {
         "type": "object",
-        "description": "Defines a field of type `timer`.\n",
+        "description": "Defines a field of type `timer`. Timers are used to measure time or execute time-controlled actions within a Workflow Run.\n\nTimers have two possible modes of operation: countdown and stopwatch.\n\nIn **countdown** mode, the timer will run for a specified duration, and fire a `on_timer_complete` Trigger upon completion.\nIn **stopwatch** mode, the timer measures time until it is stopped, either manually or through a Behavior.\n\nTimer fields can be assigned to individual substeps by passing the field identifier to the `timer` property.\n",
         "required": [
           "type"
         ],
@@ -1641,33 +1641,33 @@
             ]
           },
           "defaultDuration": {
-            "description": "A fixed duration.",
+            "description": "The default value set on the timer upon starting the workflow. If this is defined, the timer will run in countdown mode, unless the value is reset during workflow execution.\n\nThe initial value of the timer can also be set using the `defaultValue` property. If both are defined, `defaultValue` will overwrite the value set in `defaultDuration`.\n",
             "$ref": "#/definitions/duration",
-            "markdownDescription": "A fixed duration.\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
+            "markdownDescription": "The default value set on the timer upon starting the workflow. If this is defined, the timer will run in countdown mode, unless the value is reset during workflow execution.\n\nThe initial value of the timer can also be set using the `defaultValue` property. If both are defined, `defaultValue` will overwrite the value set in `defaultDuration`.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
           },
           "showButtons": {
             "type": "boolean",
-            "default": true,
-            "description": "A flag indicating whether to show the buttons.",
-            "markdownDescription": "A flag indicating whether to show the buttons.\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
+            "default": false,
+            "description": "A flag indicating whether to show all the buttons to control the timer. When this property is set to `true`, it will take precedence over the flags for individual buttons.\n",
+            "markdownDescription": "A flag indicating whether to show all the buttons to control the timer. When this property is set to `true`, it will take precedence over the flags for individual buttons.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
           },
           "showStartButton": {
             "type": "boolean",
-            "default": true,
-            "description": "A flag indicating whether to show the start button.",
-            "markdownDescription": "A flag indicating whether to show the start button.\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
+            "default": false,
+            "description": "A flag indicating whether to show the start button.\n",
+            "markdownDescription": "A flag indicating whether to show the start button.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
           },
-          "showPauseButton": {
+          "showStopButton": {
             "type": "boolean",
-            "default": true,
-            "description": "A flag indicating whether to show the pause button.",
-            "markdownDescription": "A flag indicating whether to show the pause button.\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
+            "default": false,
+            "description": "A flag indicating whether to show the stop button.\n",
+            "markdownDescription": "A flag indicating whether to show the stop button.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
           },
-          "showCancelButton": {
+          "showResetButton": {
             "type": "boolean",
-            "default": true,
-            "description": "A flag indicating whether to show the cancel button.",
-            "markdownDescription": "A flag indicating whether to show the cancel button.\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
+            "default": false,
+            "description": "A flag indicating whether to show the reset button.\n",
+            "markdownDescription": "A flag indicating whether to show the reset button.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
           },
           "skipBehaviors": {
             "type": "boolean",
@@ -1688,7 +1688,7 @@
             "markdownDescription": "A flag indicating whether the timer should trigger a sound when\ngoing off. The sound can always be toggled at runtime.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
           }
         },
-        "markdownDescription": "Defines a field of type `timer`.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
+        "markdownDescription": "Defines a field of type `timer`. Timers are used to measure time or execute time-controlled actions within a Workflow Run.\n\nTimers have two possible modes of operation: countdown and stopwatch.\n\nIn **countdown** mode, the timer will run for a specified duration, and fire a `on_timer_complete` Trigger upon completion.\nIn **stopwatch** mode, the timer measures time until it is stopped, either manually or through a Behavior.\n\nTimer fields can be assigned to individual substeps by passing the field identifier to the `timer` property.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
       }
     },
     "flow": {
