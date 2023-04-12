@@ -2,7 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { camelCase, head, last, omit, set } from 'lodash';
+import { camelCase, head, isPlainObject, last, omit, set } from 'lodash';
 import glob from 'fast-glob';
 import yaml from 'yaml';
 
@@ -50,6 +50,29 @@ const writeFile = (schema: Record<string, unknown>, name: string) => {
   fs.writeFileSync(target, JSON.stringify(schema, null, 2));
 };
 
+/**
+ * On hover documentation is based on the standard `description` field. In order
+ * to provide rich text formatting within VS Code we can add a custom field.
+ *
+ * https://code.visualstudio.com/docs/languages/json#_use-rich-formatting-in-hovers
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const addMarkdownDescription = (obj: Record<string, any>) => {
+  for (const key in obj) {
+    if (key === 'description' && typeof obj[key] === 'string') {
+      const parsed = obj.description.replace(
+        /\]\(\/schemas/,
+        '](https://schema.laboperator.com/schemas'
+      );
+
+      // eslint-disable-next-line no-param-reassign
+      obj.markdownDescription = parsed;
+    } else if (isPlainObject(obj[key])) {
+      addMarkdownDescription(obj[key]);
+    }
+  }
+};
+
 const compileSchema = (filename: string) => {
   const root = path.join(__dirname, 'schemata');
   const pathnames = glob.sync(['definitions/**/*.yml'], { cwd: root });
@@ -65,6 +88,7 @@ const compileSchema = (filename: string) => {
     set(schema, propertyPath, definition);
   });
 
+  addMarkdownDescription(schema);
   writeFile(schema, filename);
 };
 
