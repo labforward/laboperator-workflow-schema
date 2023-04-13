@@ -17,6 +17,16 @@ var ajv = new ajv_1.default({
     // Skip iterating over enumerable prototype properties.
     ownProperties: true,
 });
+/**
+ * Allow custom keyword that enables rich formatting for on hover documentation
+ * in VS Code. See compilation script for implementation details.
+ *
+ * https://code.visualstudio.com/docs/languages/json#_use-rich-formatting-in-hovers
+ */
+ajv.addKeyword({
+    keyword: 'markdownDescription',
+    schemaType: 'string',
+});
 // https://github.com/ajv-validator/ajv-formats
 (0, ajv_formats_1.default)(ajv);
 var validateTemplate = ajv.compile(workflow_template_schema_json_1.default);

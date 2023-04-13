@@ -331,7 +331,8 @@
       "properties": {
         "label": {
           "description": "The displayed label of the button.\n",
-          "type": "string"
+          "type": "string",
+          "markdownDescription": "The displayed label of the button.\n"
         },
         "color": {
           "description": "The color of the button. The value must be an accepted CSS color keyword or defined via the rgb() or hsl() functional notations. The organization theme colors can be referenced with `primary` and `secondary`. The color may also include an alpha-channel transparency value.\n",
@@ -343,7 +344,8 @@
             "#FF69B4",
             "rgb(100%, 41%, 71%)",
             "hsl(330, 100%, 71%)"
-          ]
+          ],
+          "markdownDescription": "The color of the button. The value must be an accepted CSS color keyword or defined via the rgb() or hsl() functional notations. The organization theme colors can be referenced with `primary` and `secondary`. The color may also include an alpha-channel transparency value.\n"
         },
         "variant": {
           "description": "The button variant. Contained buttons are high-emphasis, distinguished by their use of elevation and fill. They contain actions that are primary to their context. Outlined buttons are medium-emphasis buttons. Text buttons are typically used for less-pronounced actions.\n",
@@ -353,15 +355,18 @@
             "outlined",
             "text"
           ],
-          "default": "contained"
+          "default": "contained",
+          "markdownDescription": "The button variant. Contained buttons are high-emphasis, distinguished by their use of elevation and fill. They contain actions that are primary to their context. Outlined buttons are medium-emphasis buttons. Text buttons are typically used for less-pronounced actions.\n"
         },
         "key": {
           "$ref": "#/definitions/memberName",
-          "description": "A unique reference passed to a manual trigger that can be used in a `behaviors` definition to react to this button being clicked.\n\nThe `key` can be used as a button `id` if it is unique in the current context and `id` is not defined. For example, use the `key` to display the button inside markdown in the format `{{button|my-key}}`.\n"
+          "description": "A unique reference passed to a manual trigger that can be used in a `behaviors` definition to react to this button being clicked.\n\nThe `key` can be used as a button `id` if it is unique in the current context and `id` is not defined. For example, use the `key` to display the button inside markdown in the format `{{button|my-key}}`.\n",
+          "markdownDescription": "A unique reference passed to a manual trigger that can be used in a `behaviors` definition to react to this button being clicked.\n\nThe `key` can be used as a button `id` if it is unique in the current context and `id` is not defined. For example, use the `key` to display the button inside markdown in the format `{{button|my-key}}`.\n"
         },
         "id": {
           "$ref": "#/definitions/memberName",
-          "description": "Can be used to render the button inside markdown text. For example, when `id` is defined as `print`, the text may look like:\n\n```yml\nUse this view to print the weight {{button|print}}.\n```\n"
+          "description": "Can be used to render the button inside markdown text. For example, when `id` is defined as `print`, the text may look like:\n\n```yml\nUse this view to print the weight {{button|print}}.\n```\n",
+          "markdownDescription": "Can be used to render the button inside markdown text. For example, when `id` is defined as `print`, the text may look like:\n\n```yml\nUse this view to print the weight {{button|print}}.\n```\n"
         },
         "placement": {
           "description": "Buttons defined globally or at the step level of the template always have to be placed manually. Their `placement` setting is always considered to be `manual`.\n\nSubstep buttons with a setting of `default` will be automatically displayed at the very bottom of a substep in the order in which they are defined. When set to `manual`, a substep button has to be referenced inside the `description` markdown to be displayed.\n",
@@ -370,7 +375,8 @@
             "manual",
             "default"
           ],
-          "default": "default"
+          "default": "default",
+          "markdownDescription": "Buttons defined globally or at the step level of the template always have to be placed manually. Their `placement` setting is always considered to be `manual`.\n\nSubstep buttons with a setting of `default` will be automatically displayed at the very bottom of a substep in the order in which they are defined. When set to `manual`, a substep button has to be referenced inside the `description` markdown to be displayed.\n"
         }
       }
     },
@@ -380,7 +386,8 @@
       "description": "Buttons allow users to trigger actions with a single tap.\n\nButtons defined at the workflow or step level can be used anywhere in the workflow or step respectively. Use its unique `key` or `id` value to reference a button inside markdown:\n\n`{{button|member-name}}`\n\nWhen defined at the substep level of a template, buttons automatically appear at the very bottom of the substep in the order in which they are defined. To manually place a substep button in the above shown format its `placement` setting must be set to `manual`.\n",
       "items": {
         "$ref": "#/definitions/button"
-      }
+      },
+      "markdownDescription": "Buttons allow users to trigger actions with a single tap.\n\nButtons defined at the workflow or step level can be used anywhere in the workflow or step respectively. Use its unique `key` or `id` value to reference a button inside markdown:\n\n`{{button|member-name}}`\n\nWhen defined at the substep level of a template, buttons automatically appear at the very bottom of the substep in the order in which they are defined. To manually place a substep button in the above shown format its `placement` setting must be set to `manual`.\n"
     },
     "contextInfo": {
       "type": "object",
@@ -394,7 +401,8 @@
             "$ref": "#/definitions/context_info/contextInfoPage"
           }
         }
-      }
+      },
+      "markdownDescription": "Used to display contextual information related to the workflow or step.\n\nGlobal contextual information is defined in a workflow template and displayed\nin all steps.\n\nLocal contextual information is defined in a step template, or within a step\nin a workflow template, and displayed only during that specific step.\n"
     },
     "duration": {
       "title": "Duration",
@@ -409,7 +417,8 @@
         "2 hrs 20 min",
         "2h20min",
         "two hours and twenty minutes"
-      ]
+      ],
+      "markdownDescription": "An duration string parsable by [Chronic Duration](https://github.com/henrypoydar/chronic_duration).\n"
     },
     "dynamicMemberName": {
       "type": "string",
@@ -421,7 +430,8 @@
       "examples": [
         "myField{{anotherField}}",
         "{{another-field}}-device"
-      ]
+      ],
+      "markdownDescription": "Dynamic member names allow to use field values for composing names in the field mapping.\n"
     },
     "field": {
       "title": "Field",
@@ -563,7 +573,8 @@
             }
           ]
         }
-      ]
+      ],
+      "markdownDescription": "A valid field schema is either a valid JSON schema as per [Draft 7](http://json-schema.org/draft-07/schema#) or one of our custom field types. Some additional properties are allowed at the top level.\n"
     },
     "fieldMapping": {
       "title": "Field Mapping",
@@ -572,11 +583,13 @@
       "minProperties": 1,
       "propertyNames": {
         "description": "A valid field identifier defined by the workflow template.",
-        "$ref": "#/definitions/dynamicMemberName"
+        "$ref": "#/definitions/dynamicMemberName",
+        "markdownDescription": "A valid field identifier defined by the workflow template."
       },
       "additionalProperties": {
         "description": "A valid field identifier defined by the step.",
-        "$ref": "#/definitions/memberName"
+        "$ref": "#/definitions/memberName",
+        "markdownDescription": "A valid field identifier defined by the step."
       },
       "examples": [
         {
@@ -584,7 +597,8 @@
           "workflowFieldB": "stepField2",
           "{{referenceToTheWorkflowField}}": "stepField3"
         }
-      ]
+      ],
+      "markdownDescription": "A field mapping is always required when a step defines its own fields.\nThe field mapping maps the global workflow fields to step internal\nfields. During validation it will be ensured that the field types are\ncompatible.\n"
     },
     "fieldValues": {
       "title": "Field Values",
@@ -593,7 +607,8 @@
       "minProperties": 1,
       "propertyNames": {
         "description": "A valid field identifier defined by the step.",
-        "$ref": "#/definitions/memberName"
+        "$ref": "#/definitions/memberName",
+        "markdownDescription": "A valid field identifier defined by the step."
       },
       "additionalProperties": true,
       "examples": [
@@ -601,7 +616,8 @@
           "stepField1": true,
           "stepField2": "2014-03-08T23:21:27-10:00"
         }
-      ]
+      ],
+      "markdownDescription": "Direct assignments of values to step fields. The values are evaluated\nagainst the field schema during validation.\n"
     },
     "fields": {
       "type": "object",
@@ -671,7 +687,8 @@
             ]
           }
         }
-      ]
+      ],
+      "markdownDescription": "Fields are top-level and step-level variables in a workflow template. A field can be used to store and retrieve information during workflow execution.\n\nFields of type array and object can be assigned a schema to validate its value.\n\nA field identifier, which is its key within the `fields` object, is considered unique in the context of a workflow. By definition a second occurrence of the same key will override the first occurrence. In markdown, fields can be referenced via their unique identifier: `{{myStringField}}`\n"
     },
     "formatSpecifier": {
       "type": "string",
@@ -680,7 +697,8 @@
       "examples": [
         ".6f",
         ".3%"
-      ]
+      ],
+      "markdownDescription": "A format specifier is a string describing how to format a number for display. It is based on the excellent [d3-format](https://github.com/d3/d3-format) library. For example, a typical fixed point precision of two digits behind the decimal point is achieved with `.2f`. Visit their [official documentation](https://github.com/d3/d3-format#locale_format) for a complete reference and examples.\n\nNote that a format specifier only affects the display value of a field. If the field is used as an interactive control element in the workflow, the user input will not be formatted.\n\nA format specifier can also be defined for a field of type [quantity](https://schema.laboperator.com/schemas/definitions/field_schema/quantity/).\n"
     },
     "info": {
       "type": "object",
@@ -696,7 +714,8 @@
           "description": "A title that will be used as a display name to the workflow template.\n",
           "examples": [
             "My Premium Workflow"
-          ]
+          ],
+          "markdownDescription": "A title that will be used as a display name to the workflow template.\n"
         },
         "description": {
           "type": "string",
@@ -719,7 +738,8 @@
             "maxLength": 50
           }
         }
-      }
+      },
+      "markdownDescription": "The info section of a workflow or step template holds general information\nabout the template.\n"
     },
     "jsonPointer": {
       "type": "string",
@@ -731,13 +751,15 @@
         "/devices/2/weighing",
         "# Use '~1' to escape a '/''\n/mass~1volume  # => for { \"mass/volume\": ... }\n",
         "# Use '~0' to escape a '~'\n/sample~0dilutions  # => for { \"sample~dilutions\": ... }\n"
-      ]
+      ],
+      "markdownDescription": "JSON Pointer is a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document as defined by [RFC6901](https://tools.ietf.org/html/rfc6901). It contains a sequence of zero or more reference tokens, each prefixed by a '/' character.\n"
     },
     "markdown": {
       "type": "string",
       "title": "Markdown Formatted Content",
       "default": "",
-      "description": "## Markdown\n\nRich media content that can be formatted using [Markdown](https://en.wikipedia.org/wiki/Markdown).\n\nFor a general introduction to Markdown go to [Markdown Guide](https://www.markdownguide.org/getting-started/) or search for Markdown to find extensive resources online.\n\n## Laboperator Flavoured Markdown\n\nLaboperator workflows extend Markdown with custom syntax to render\nadditional content.\n\n### Field References\n\nReference fields defined in your workflow to dynamically display their\ncurrent value.\n\n__Syntax__\n```\n{{(field|)<identifier>|<variant>}}\n```\n\n_Note that the `field` type indicator can be omitted for brevity._\n\n__Parameters__\n| __identifier__ | The identifier of the field that is referenced |\n| __variant__    | The reference variant. Should be one of `value`, `title`, `plain`. Defaults to `value`. |\n\n\n__Example 1__\nBy default rendered values are highlighted against the background:\n```\nSome text with an inline reference to {{myField}}.\n```\n\n__Example 2__\nYou can render the title of a field instead of the value using the `title`\nvariant:\n```\nThe field _myField_ has the title {{myField|title}}.\n```\n\n__Example 3__\nUsing the `plain` variant you can render the plain value of a field without\nany highlights. This is for example useful for cleaner tables:\n```\n| {{myField|title}} | {{anotherField|title}} |\n| ----------------- | ---------------------- |\n| {{myField|plain}} | {{anotherField|plain}} |\n```\n\n### Field Inputs\n\nRender inputs for fields defined in your workflow.\n\n__Syntax__\n```\n{{field-input|<identifier>}}\n# or\n!{{<identifier>}}\n```\n\n_Note that the `field-input` type indicator can be omitted for brevity, if the placeholder is prefixed with an exclamation mark (`!`)._\n\n__Parameters__\n| __identifier__ | The identifier of the field that is referenced |\n\n\n__Example 1__\n```\nPlease enter the observed color of the substance:\n!{{observedColor}}\n```\n\n### Grids\n\nYou can use the `%col` tag to organize content in a grid.\n\n__Syntax__\n```\n%col <container?> <card?> <breakpoint={1-12}?>\n  # content is indented by two spaces or one tab\n  content\n```\n\n__Parameters__\n| __container__ | An optional flag that should be set if additional `%col` tags are nested inside. See __Example 2__. |\n| __card__ | An optional flag that can be set if the block should get a background. |\n| __breakpoint__ | Breakpoints can be used to specifically set how many columns of a 12 column grid the block should span. See [Material UI Fluid Grids](https://material-ui.com/components/grid/#fluid-grids) for details. Possible breakpoints are `xs`, `sm`, `md`, `lg`, and `xl`. The value can be between `1` and `12`. |\n\n__Example 1: Simple columns\n```\n%col\n  This text is in one column.\n%col\n  And this text in a second column next to it.\n\n\n%col\n  This text is in a second row.\n%col card\n  This text is in a second row in the second column and has a background\n%col\n  This row can have a different number of columns. This is the third.\n```\n\n__Example 2: Nested columns\n```\n%col container card\n  %col\n    This is a the first column inside an outer block with background.\n  %col container\n    %col\n      We can nest this even further\n    %col\n      Allowing us to build complex layouts\n```\n\n__Example 2: Breakpoints\n```\n%col xs={12} md={6}\n  On a small screen this column fills up the whole width.\n\n  On a tablet in landscape it will only fill up half the screen and the two\n  blocks will show next to each other.\n%col\n  This block will adjust to the first one automatically.\n```\n"
+      "description": "## Markdown\n\nRich media content that can be formatted using [Markdown](https://en.wikipedia.org/wiki/Markdown).\n\nFor a general introduction to Markdown go to [Markdown Guide](https://www.markdownguide.org/getting-started/) or search for Markdown to find extensive resources online.\n\n## Laboperator Flavoured Markdown\n\nLaboperator workflows extend Markdown with custom syntax to render\nadditional content.\n\n### Field References\n\nReference fields defined in your workflow to dynamically display their\ncurrent value.\n\n__Syntax__\n```\n{{(field|)<identifier>|<variant>}}\n```\n\n_Note that the `field` type indicator can be omitted for brevity._\n\n__Parameters__\n| __identifier__ | The identifier of the field that is referenced |\n| __variant__    | The reference variant. Should be one of `value`, `title`, `plain`. Defaults to `value`. |\n\n\n__Example 1__\nBy default rendered values are highlighted against the background:\n```\nSome text with an inline reference to {{myField}}.\n```\n\n__Example 2__\nYou can render the title of a field instead of the value using the `title`\nvariant:\n```\nThe field _myField_ has the title {{myField|title}}.\n```\n\n__Example 3__\nUsing the `plain` variant you can render the plain value of a field without\nany highlights. This is for example useful for cleaner tables:\n```\n| {{myField|title}} | {{anotherField|title}} |\n| ----------------- | ---------------------- |\n| {{myField|plain}} | {{anotherField|plain}} |\n```\n\n### Field Inputs\n\nRender inputs for fields defined in your workflow.\n\n__Syntax__\n```\n{{field-input|<identifier>}}\n# or\n!{{<identifier>}}\n```\n\n_Note that the `field-input` type indicator can be omitted for brevity, if the placeholder is prefixed with an exclamation mark (`!`)._\n\n__Parameters__\n| __identifier__ | The identifier of the field that is referenced |\n\n\n__Example 1__\n```\nPlease enter the observed color of the substance:\n!{{observedColor}}\n```\n\n### Grids\n\nYou can use the `%col` tag to organize content in a grid.\n\n__Syntax__\n```\n%col <container?> <card?> <breakpoint={1-12}?>\n  # content is indented by two spaces or one tab\n  content\n```\n\n__Parameters__\n| __container__ | An optional flag that should be set if additional `%col` tags are nested inside. See __Example 2__. |\n| __card__ | An optional flag that can be set if the block should get a background. |\n| __breakpoint__ | Breakpoints can be used to specifically set how many columns of a 12 column grid the block should span. See [Material UI Fluid Grids](https://material-ui.com/components/grid/#fluid-grids) for details. Possible breakpoints are `xs`, `sm`, `md`, `lg`, and `xl`. The value can be between `1` and `12`. |\n\n__Example 1: Simple columns\n```\n%col\n  This text is in one column.\n%col\n  And this text in a second column next to it.\n\n\n%col\n  This text is in a second row.\n%col card\n  This text is in a second row in the second column and has a background\n%col\n  This row can have a different number of columns. This is the third.\n```\n\n__Example 2: Nested columns\n```\n%col container card\n  %col\n    This is a the first column inside an outer block with background.\n  %col container\n    %col\n      We can nest this even further\n    %col\n      Allowing us to build complex layouts\n```\n\n__Example 2: Breakpoints\n```\n%col xs={12} md={6}\n  On a small screen this column fills up the whole width.\n\n  On a tablet in landscape it will only fill up half the screen and the two\n  blocks will show next to each other.\n%col\n  This block will adjust to the first one automatically.\n```\n",
+      "markdownDescription": "## Markdown\n\nRich media content that can be formatted using [Markdown](https://en.wikipedia.org/wiki/Markdown).\n\nFor a general introduction to Markdown go to [Markdown Guide](https://www.markdownguide.org/getting-started/) or search for Markdown to find extensive resources online.\n\n## Laboperator Flavoured Markdown\n\nLaboperator workflows extend Markdown with custom syntax to render\nadditional content.\n\n### Field References\n\nReference fields defined in your workflow to dynamically display their\ncurrent value.\n\n__Syntax__\n```\n{{(field|)<identifier>|<variant>}}\n```\n\n_Note that the `field` type indicator can be omitted for brevity._\n\n__Parameters__\n| __identifier__ | The identifier of the field that is referenced |\n| __variant__    | The reference variant. Should be one of `value`, `title`, `plain`. Defaults to `value`. |\n\n\n__Example 1__\nBy default rendered values are highlighted against the background:\n```\nSome text with an inline reference to {{myField}}.\n```\n\n__Example 2__\nYou can render the title of a field instead of the value using the `title`\nvariant:\n```\nThe field _myField_ has the title {{myField|title}}.\n```\n\n__Example 3__\nUsing the `plain` variant you can render the plain value of a field without\nany highlights. This is for example useful for cleaner tables:\n```\n| {{myField|title}} | {{anotherField|title}} |\n| ----------------- | ---------------------- |\n| {{myField|plain}} | {{anotherField|plain}} |\n```\n\n### Field Inputs\n\nRender inputs for fields defined in your workflow.\n\n__Syntax__\n```\n{{field-input|<identifier>}}\n# or\n!{{<identifier>}}\n```\n\n_Note that the `field-input` type indicator can be omitted for brevity, if the placeholder is prefixed with an exclamation mark (`!`)._\n\n__Parameters__\n| __identifier__ | The identifier of the field that is referenced |\n\n\n__Example 1__\n```\nPlease enter the observed color of the substance:\n!{{observedColor}}\n```\n\n### Grids\n\nYou can use the `%col` tag to organize content in a grid.\n\n__Syntax__\n```\n%col <container?> <card?> <breakpoint={1-12}?>\n  # content is indented by two spaces or one tab\n  content\n```\n\n__Parameters__\n| __container__ | An optional flag that should be set if additional `%col` tags are nested inside. See __Example 2__. |\n| __card__ | An optional flag that can be set if the block should get a background. |\n| __breakpoint__ | Breakpoints can be used to specifically set how many columns of a 12 column grid the block should span. See [Material UI Fluid Grids](https://material-ui.com/components/grid/#fluid-grids) for details. Possible breakpoints are `xs`, `sm`, `md`, `lg`, and `xl`. The value can be between `1` and `12`. |\n\n__Example 1: Simple columns\n```\n%col\n  This text is in one column.\n%col\n  And this text in a second column next to it.\n\n\n%col\n  This text is in a second row.\n%col card\n  This text is in a second row in the second column and has a background\n%col\n  This row can have a different number of columns. This is the third.\n```\n\n__Example 2: Nested columns\n```\n%col container card\n  %col\n    This is a the first column inside an outer block with background.\n  %col container\n    %col\n      We can nest this even further\n    %col\n      Allowing us to build complex layouts\n```\n\n__Example 2: Breakpoints\n```\n%col xs={12} md={6}\n  On a small screen this column fills up the whole width.\n\n  On a tablet in landscape it will only fill up half the screen and the two\n  blocks will show next to each other.\n%col\n  This block will adjust to the first one automatically.\n```\n"
     },
     "memberName": {
       "type": "string",
@@ -771,7 +793,8 @@
         "my-field",
         "transportSampleToShaker",
         "transport_sample_to_shaker"
-      ]
+      ],
+      "markdownDescription": "A member name that is used as a reference elsewhere.\nAllowed characters are lower \"a\" to \"z\", capital \"A\" to \"Z\", \"0\" to \"9\" and\n\"-\" , \"_\". We recommend to consistently use either lowerCamelCase or\nkebab-case. While snake_case is allowed, it has a chance of name collisions\nwith internal values.\n"
     },
     "momentDuration": {
       "title": "Moment Duration",
@@ -834,7 +857,8 @@
             "type": "number"
           }
         }
-      ]
+      ],
+      "markdownDescription": "Duration formatting is based on the momentjs\n[momentjs](https://momentjs.com/) library. Head over to\n[docs](https://momentjs.com/docs/#/durations/creating/) for a full\nreference and examples.\n"
     },
     "reportSummary": {
       "type": "string",
@@ -846,7 +870,8 @@
         "Experiment ABC123 used as baseline",
         "Using step information:\nStep completed at {{step.data.attributes.completed_at}} by {{operator.data.attributes.full_name}}\n",
         "Using workflow template keys:\n{{template.steps.myStepName.info.title}}: Repeated 3 times, as specified by instructions present\nin ABC123 guidelines.\n"
-      ]
+      ],
+      "markdownDescription": "Used to add information that will be generated in the workflow report. The information can contain\nreference to information present in the workflow, like fields, or workflow template information, using the\ndouble curly brackets notation (see examples).\nBesides field identifiers, the following references are supported:\n- step: The step in which the reportSummary is contained. Please refer to the API documentation\n  for the keys available to use for step.\n- template: You can access values from any key inside the workflow template, as long as you pass the keys in the correct\n  hierarchy.\n- operator: The user who completed the step.\n"
     },
     "resourceTag": {
       "type": "string",
@@ -882,7 +907,8 @@
         "workflow_step_templates",
         "workflow_steps",
         "workflow_templates"
-      ]
+      ],
+      "markdownDescription": "This should map to the tag of the resources we have in our API documentation\n"
     },
     "schemaVersion": {
       "title": "Schema Version",
@@ -897,7 +923,8 @@
         "0.0.6",
         "1.0.0",
         "1.0.1"
-      ]
+      ],
+      "markdownDescription": "A valid Workflow schema version."
     },
     "script": {
       "default": "",
@@ -907,7 +934,8 @@
         "field1 >= 100",
         "field1 * (field2 + field3)",
         "# return a static string\n'\"static string\"'\n"
-      ]
+      ],
+      "markdownDescription": "A script that is evaluated and returns a value. The parsing and evaluation is based on [Dentaku](https://github.com/rubysolo/dentaku) and enhanced with custom capabilities.\n\nOnly strings will be evaluated as scripts, everything else will be treated as static values.\n\n## Built-in operators and functions\n\nDetailed tests describing the script behaviors are available on the\n[Denkatu Github Page](https://github.com/rubysolo/dentaku/blob/master/spec/calculator_spec.rb).\n\nMath: `+`, `-`, `*`, `/`, `%`, `^`, `|`, `&`\n\nAlso, all functions from Ruby's Math module, including `SIN`, `COS`, `TAN`, etc.\n\nComparison: `<`, `>`, `<=`, `>=`, `<>`, `!=`, `=`,\n\nLogic: `IF`, `AND`, `OR`, `NOT`, `SWITCH`\n\nNumeric: `MIN`, `MAX`, `SUM`, `AVG`, `COUNT`, `ROUND`, `ROUNDDOWN`, `ROUNDUP`\n\nSelections: `CASE` (syntax see [spec](https://github.com/rubysolo/dentaku/blob/master/spec/calculator_spec.rb#L472))\n\nString: `LEFT`, `RIGHT`, `MID`, `LEN`, `FIND`, `SUBSTITUTE`, `CONCAT`, `CONTAINS`\n\nOperator precedence follows that of any sane language.\n\n## Custom functions\n\nTo work with quantity field we have added the following custom functions:\n\n### AS_QTY\nParse a numeric value to a quantity with the given unit.\n\n**Example**:\n```yml\nvalue: AS_QTY(myNumericField, \"mg\")\n```\n\n### BASE\nReturns the unit in SI base units of the given quantity.\n\n**Example**:\n```yml\nvalue: BASE(myQuantity)\n```\n\n### BASE_SCALAR\nReturns the scalar in base units (SI)\n\n**Example**:\n```yml\nvalue: BASE_SCALAR(myQuantity)\n```\n\n### CELL_POINTER\nReturns the JSON pointer for a table cell value based on a given table identifier and the zero-based row, column, and tab indexes.\n\n**Examples**:\n```yml\n# returns the JSON pointer for the second column, first row, third tab in `myTable`\nCELL_POINTER('myTable', 0, 1, 2)\n```\n\n```yml\n# returns the JSON pointer for the second row, second column in `myTable`\nCELL_POINTER('myTable', 1, 1)\n```\n\n### CONVERT_TO\nConverts the quantity to the target unit. Throws an error if the units\nare not compatible.\n\n**Example**:\n```yml\nvalue: CONVERT_TO(myMgQuantity, 'kg')\n```\n\n### HASH\nCreate arbitrary hash object at run time\n\n**Example**:\n```yml\nvalue: HASH('a', 1, 'b', 2) # returns { \"a\" => 1, \"b\" => 2 }\n```\n\n### MERGE\nMerge 2 arrays, or objects.\n\n**Example**:\n```yml\nvalue: MERGE(arr1, arr2)\n```\n\n### NOW\nReturns the current date/time\n\n**Examples**:\n```yml\nvalue: NOW()\n```\n\n### SCALAR\nReturns the scalar of the quantity without the unit.\n\n**Example**:\n```yml\nvalue: SCALAR(myMgQuantity)\n```\n\n### UNITS\nReturns the unit part of the quantity without as a string.\n\n**Example**:\n```yml\nvalue: UNITS(myMgQuantity)\n```\n\n### VALUE_AT\nReturns the value of a given pointer for the provided field.\n\n**Examples**:\n```yml\nVALUE_AT(myTableData, '/0/density')\n```\n```yml\nVALUE_AT(myField, '/key/anotherKey')\n```\n\n### TIMES\nLoop inside scripting for n number of times\n\n**Example**:\n```yml\nvalue: TIMES(n, index, HASH(\"index\", index))\n```\n\n### UPCASE\nReturns the uppercase of the provided field value\n\n**Example**:\n```yml\nvalue: UPCASE(myStringField)\n```\n\n### DOWNCASE\nReturns the lowercase of the provided field value\n\n**Example**:\n```yml\nvalue: DOWNCASE(myStringField)\n```\n"
     },
     "secret": {
       "type": "object",
@@ -921,11 +949,13 @@
             "organisation"
           ],
           "default": "personal",
-          "description": "A flag indicating the type of secret that is accepted. Personal secrets can only be accessed by the user who created them. Organization secrets can only be created by administrators and are accessible to every member of the organization.\n"
+          "description": "A flag indicating the type of secret that is accepted. Personal secrets can only be accessed by the user who created them. Organization secrets can only be created by administrators and are accessible to every member of the organization.\n",
+          "markdownDescription": "A flag indicating the type of secret that is accepted. Personal secrets can only be accessed by the user who created them. Organization secrets can only be created by administrators and are accessible to every member of the organization.\n"
         },
         "description": {
           "type": "string",
-          "description": "The secret description is displayed before the workflow run is started. It is strongly recommended to provide a description to help users understand exactly what kind of secret value is required in order to successfully execute the workflow.\n"
+          "description": "The secret description is displayed before the workflow run is started. It is strongly recommended to provide a description to help users understand exactly what kind of secret value is required in order to successfully execute the workflow.\n",
+          "markdownDescription": "The secret description is displayed before the workflow run is started. It is strongly recommended to provide a description to help users understand exactly what kind of secret value is required in order to successfully execute the workflow.\n"
         }
       }
     },
@@ -938,7 +968,8 @@
       },
       "additionalProperties": {
         "$ref": "#/definitions/secret"
-      }
+      },
+      "markdownDescription": "Secrets are sensitive information that should not be stored in workflow fields, for example passwords or API tokens.\n\nSecrets can be referenced in workflow behaviors via their unique identifier:\n\n`{{secrets.SECRET_KEY}}`\n"
     },
     "slug": {
       "type": "string",
@@ -947,7 +978,8 @@
       "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
       "examples": [
         "my-premium-workflow"
-      ]
+      ],
+      "markdownDescription": "A URL compatible slug that can also be used as a reference elsewhere. By\ndefault it will generated from the components name or uuid.\n"
     },
     "statusCode": {
       "type": "string",
@@ -960,7 +992,8 @@
         "200",
         "404",
         "500"
-      ]
+      ],
+      "markdownDescription": "A status code is the 3 digit code ranging from 1xx to 5xx that\nwill be present in the response\n"
     },
     "stepAttributes": {
       "type": "object",
@@ -975,7 +1008,8 @@
         },
         "fields": {
           "description": "In a step, fields are optional. If no fields are defined, the fields of\nthe workflow will be passed down to the step as they are. However, if\nthe step does define fields, the fields of the workflow have to be\nactively mapped to be available and avoid name collisions.\n",
-          "$ref": "#/definitions/fields"
+          "$ref": "#/definitions/fields",
+          "markdownDescription": "In a step, fields are optional. If no fields are defined, the fields of\nthe workflow will be passed down to the step as they are. However, if\nthe step does define fields, the fields of the workflow have to be\nactively mapped to be available and avoid name collisions.\n"
         },
         "behaviors": {
           "$ref": "#/definitions/workflow_template/behaviors"
@@ -998,7 +1032,8 @@
         "buttons": {
           "$ref": "#/definitions/buttons"
         }
-      }
+      },
+      "markdownDescription": "A step is a closed set of activities and instructions. Steps can be defined\nindependent of a workflow and then be reused across different workflows.\n\nA step descriptor file describes a workflow consisting of four parts:\n1. info: General information about the workflow.\n2. fields: Global context in this workflow.\n3. steps: Definition of all unique steps that occur in the workflow.\n4. workflow: The flow of steps and mapping of fields.\n"
     },
     "stepIdentifier": {
       "allOf": [
@@ -1045,9 +1080,11 @@
         "missing": {
           "type": "boolean",
           "default": false,
-          "description": "Set to true if the external step failed to be found during workflow run\n"
+          "description": "Set to true if the external step failed to be found during workflow run\n",
+          "markdownDescription": "Set to true if the external step failed to be found during workflow run\n"
         }
-      }
+      },
+      "markdownDescription": "A reference to workflow step defined outside the workflow template.\nAdditional properties might be added to the reference for documentation\npurposes. It is recommended to use the `$comment` property.\n"
     },
     "stepTemplate": {
       "type": "object",
@@ -1071,7 +1108,8 @@
             }
           }
         }
-      ]
+      ],
+      "markdownDescription": "A step is a closed set of activities and instructions. Steps can be defined\nindependent of a workflow and then be reused across different workflows.\n\nA step descriptor file describes a workflow consisting of four parts:\n1. info: General information about the workflow.\n2. fields: Global context in this workflow.\n3. steps: Definition of all unique steps that occur in the workflow.\n4. workflow: The flow of steps and mapping of fields.\n"
     },
     "timestamp": {
       "title": "timestamp",
@@ -1080,7 +1118,8 @@
       "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$",
       "examples": [
         "2020-03-23T18:26:44Z"
-      ]
+      ],
+      "markdownDescription": "Representation of dates and times.\n"
     },
     "uuid": {
       "type": "string",
@@ -1089,7 +1128,8 @@
       "pattern": "([a-f0-9]{8}-?[a-f0-9]{4}-?[1-5][a-f0-9]{3}-?[89ab][a-f0-9]{3}-?[a-f0-9]{12}){1}",
       "examples": [
         "645afc8c-a553-4657-a0da-d93cb98d158b"
-      ]
+      ],
+      "markdownDescription": "An RFC4122 compliant UUID.\n"
     },
     "version": {
       "type": "string",
@@ -1099,7 +1139,8 @@
       "examples": [
         "1.0.0"
       ],
-      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(-(0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(\\.(0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\\+[0-9a-zA-Z-]+(\\.[0-9a-zA-Z-]+)*)?$"
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(-(0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(\\.(0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\\+[0-9a-zA-Z-]+(\\.[0-9a-zA-Z-]+)*)?$",
+      "markdownDescription": "A version that is a valid version tag according to the\n[Semantic Versioning 2.0.0](https://semver.org) Specification. We\nencourage you to follow the SemVer guidelines:\n\nGiven a version number MAJOR.MINOR.PATCH, increment the:\n\n1. MAJOR version when you make incompatible API changes,\n2. MINOR version when you add functionality in a backwards-compatible\n   manner, and\n3. PATCH version when you make backwards-compatible bug fixes.\n"
     },
     "config": {
       "signature": {
@@ -1113,7 +1154,8 @@
           "enabled": {
             "type": "boolean",
             "default": false,
-            "description": "Specify whether the run can be signed.\n"
+            "description": "Specify whether the run can be signed.\n",
+            "markdownDescription": "Specify whether the run can be signed.\n"
           },
           "intentions": {
             "type": "array",
@@ -1146,7 +1188,8 @@
               "enabled": true
             }
           }
-        ]
+        ],
+        "markdownDescription": "A flag indicating whether a workflow run can be signed.\n\nSignatures can be applied to any run with at least one completed step by anyone who has access to the run.\n"
       },
       "stepConfig": {
         "type": "object",
@@ -1165,7 +1208,8 @@
               }
             ]
           }
-        }
+        },
+        "markdownDescription": "The configuration section of a step template holds general options for the\nworkflow display.\n\nStep configurations will override workflow configurations.\n"
       },
       "workflowConfig": {
         "type": "object",
@@ -1196,12 +1240,14 @@
               "Workflow run {{run.data.attributes.title}} created at {{run.data.attributes.created_at}}",
               "Experiment ABC123",
               "{{template.info.title}}"
-            ]
+            ],
+            "markdownDescription": "Used to add header information that will be generated in the workflow report. The information can contain\nreference to information present in the workflow, like workflow template information, using the\ndouble curly brackets notation (see examples).\nBesides field identifiers, the following references are supported:\n- workflow template keys. You can access values from any key inside the workflow template, as long as you pass the keys in the correct\n  hierarchy.\n- run: information about the current workflow run\n"
           },
           "signature": {
             "$ref": "#/definitions/config/signature"
           }
-        }
+        },
+        "markdownDescription": "The configuration section of a workflow template holds general options for the\nworkflow display.\n\nStep configurations will override workflow configuration.\n"
       }
     },
     "context_info": {
@@ -1220,7 +1266,8 @@
             "description": "The displayed title of the page.\n",
             "examples": [
               "Formula"
-            ]
+            ],
+            "markdownDescription": "The displayed title of the page.\n"
           },
           "content": {
             "type": "string",
@@ -1229,9 +1276,11 @@
             "default": "",
             "examples": [
               "Add a fancy slide content. It even supports __[Markdown](https://en.wikipedia.org/wiki/Markdown)__!"
-            ]
+            ],
+            "markdownDescription": "Display text, tables, fields values and media using Markdown.\n"
           }
-        }
+        },
+        "markdownDescription": "Pages displayed as workflow context information.\n"
       },
       "contextInfoSettings": {
         "type": "object",
@@ -1249,15 +1298,18 @@
                 "default": "Info",
                 "examples": [
                   "Info"
-                ]
+                ],
+                "markdownDescription": "Label of the button"
               }
-            }
+            },
+            "markdownDescription": "Configuration of the toggle button which opens/closes the panel."
           },
           "allowFullscreen": {
             "title": "Full-screen mode toggle",
             "description": "Switches the ability to expand the panel to the full screen height.\n",
             "type": "boolean",
-            "default": true
+            "default": true,
+            "markdownDescription": "Switches the ability to expand the panel to the full screen height.\n"
           },
           "initialState": {
             "type": "object",
@@ -1272,7 +1324,8 @@
                 "type": "boolean",
                 "default": false
               }
-            }
+            },
+            "markdownDescription": "Determines the behavior of the context information panel when the workflow run execution view is opened.\n"
           },
           "contentPanel": {
             "type": "object",
@@ -1286,16 +1339,20 @@
                 "examples": [
                   "white",
                   "#210210"
-                ]
+                ],
+                "markdownDescription": "Background color."
               },
               "height": {
                 "description": "Height of opened panel in pixels.",
                 "type": "number",
-                "default": 160
+                "default": 160,
+                "markdownDescription": "Height of opened panel in pixels."
               }
-            }
+            },
+            "markdownDescription": "Configuration of the panel.\n"
           }
-        }
+        },
+        "markdownDescription": "Configuration of the workflow context information.\n"
       }
     },
     "field_schema": {
@@ -1315,7 +1372,8 @@
           },
           "mediaType": {
             "description": "A [media type](https://www.iana.org/assignments/media-types/media-types.xhtml) is an identifier for file formats and format contents. Note that not all possible media types might be supported.\n",
-            "type": "string"
+            "type": "string",
+            "markdownDescription": "A [media type](https://www.iana.org/assignments/media-types/media-types.xhtml) is an identifier for file formats and format contents. Note that not all possible media types might be supported.\n"
           }
         },
         "examples": [
@@ -1327,7 +1385,8 @@
             "type": "file",
             "mediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
           }
-        ]
+        ],
+        "markdownDescription": "Defines a field of type `file`.\n"
       },
       "quantity": {
         "type": "object",
@@ -1380,7 +1439,8 @@
               "hPa",
               "mA",
               "Ohm"
-            ]
+            ],
+            "markdownDescription": "If a unit is specified, the value of the field should match that unit. You may only define a unit or kind, not both.\n\nSee the list of [supported units](https://github.com/gentooboontoo/js-quantities/blob/master/src/quantities/definitions.js).\n"
           },
           "kind": {
             "type": "string",
@@ -1392,7 +1452,8 @@
               "pressure",
               "current",
               "resistance"
-            ]
+            ],
+            "markdownDescription": "If a kind is specified, the value of the field should match that kind. You may only define a unit or kind, not both.\n\nSee the list of [supported kinds](https://github.com/gentooboontoo/js-quantities/blob/master/src/quantities/kind.js).\n"
           }
         },
         "examples": [
@@ -1412,7 +1473,8 @@
             },
             "kind": "resistance"
           }
-        ]
+        ],
+        "markdownDescription": "Defines a field of type `quantity`. A quantity is a real number with a unit represented as a string. Compatible units of a given kind will be converted automatically.\n"
       },
       "relationship": {
         "type": "object",
@@ -1439,12 +1501,14 @@
               "channels",
               "collections",
               "attachments"
-            ]
+            ],
+            "markdownDescription": "The type of resource referenced by this relationship."
           },
           "multiple": {
             "type": "boolean",
             "default": false,
-            "description": "A boolean flag indicating that multiple entities can be referenced.\n"
+            "description": "A boolean flag indicating that multiple entities can be referenced.\n",
+            "markdownDescription": "A boolean flag indicating that multiple entities can be referenced.\n"
           },
           "filter": {
             "$ref": "#/definitions/script",
@@ -1453,9 +1517,11 @@
               "device_class == 2000",
               "email ~= \"@partner.company.com\"",
               "unit == \"mg\""
-            ]
+            ],
+            "markdownDescription": "A filter expression that allows to filter available resources further. A\nresources attribute will be passed to the filter expression. Refer to\nthe resource object descriptions of the API for more information about\navailable attributes.\n"
           }
-        }
+        },
+        "markdownDescription": "Defines a field of type `relationship`.\n"
       },
       "script": {
         "type": "object",
@@ -1474,12 +1540,14 @@
           },
           "script": {
             "$ref": "#/definitions/script",
-            "description": "The script will be evaluated to determine the value of the field\nwhenever it is accessed.\n"
+            "description": "The script will be evaluated to determine the value of the field\nwhenever it is accessed.\n",
+            "markdownDescription": "The script will be evaluated to determine the value of the field\nwhenever it is accessed.\n"
           },
           "readOnly": {
             "type": "boolean",
             "description": "Script fields are always read-only as their value is calculated.\n",
-            "const": true
+            "const": true,
+            "markdownDescription": "Script fields are always read-only as their value is calculated.\n"
           },
           "result": {
             "description": "A schema to validate the returned value of the script.\n",
@@ -1526,7 +1594,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "markdownDescription": "A schema to validate the returned value of the script.\n"
           }
         },
         "examples": [
@@ -1538,7 +1607,8 @@
               "unit": "mg"
             }
           }
-        ]
+        ],
+        "markdownDescription": "Defines a field of type `script`. The result of the script evaluation determines the field's value. See the [Script schema](https://schema.laboperator.com/schemas/definitions/script) for more information on writing expressions and examples.\n"
       },
       "timer": {
         "type": "object",
@@ -1555,44 +1625,53 @@
           },
           "defaultDuration": {
             "description": "A fixed duration.",
-            "$ref": "#/definitions/duration"
+            "$ref": "#/definitions/duration",
+            "markdownDescription": "A fixed duration."
           },
           "showButtons": {
             "type": "boolean",
             "default": true,
-            "description": "A flag indicating whether to show the buttons."
+            "description": "A flag indicating whether to show the buttons.",
+            "markdownDescription": "A flag indicating whether to show the buttons."
           },
           "showStartButton": {
             "type": "boolean",
             "default": true,
-            "description": "A flag indicating whether to show the start button."
+            "description": "A flag indicating whether to show the start button.",
+            "markdownDescription": "A flag indicating whether to show the start button."
           },
           "showPauseButton": {
             "type": "boolean",
             "default": true,
-            "description": "A flag indicating whether to show the pause button."
+            "description": "A flag indicating whether to show the pause button.",
+            "markdownDescription": "A flag indicating whether to show the pause button."
           },
           "showCancelButton": {
             "type": "boolean",
             "default": true,
-            "description": "A flag indicating whether to show the cancel button."
+            "description": "A flag indicating whether to show the cancel button.",
+            "markdownDescription": "A flag indicating whether to show the cancel button."
           },
           "skipBehaviors": {
             "type": "boolean",
             "default": false,
-            "description": "A flag indicating whether to skip automatically creating behaviors to\nhandle buttons on the timer.\n"
+            "description": "A flag indicating whether to skip automatically creating behaviors to\nhandle buttons on the timer.\n",
+            "markdownDescription": "A flag indicating whether to skip automatically creating behaviors to\nhandle buttons on the timer.\n"
           },
           "editable": {
             "type": "boolean",
             "default": false,
-            "description": "A flag indicating whether the duration can be manually adjusted at\nruntime.\n"
+            "description": "A flag indicating whether the duration can be manually adjusted at\nruntime.\n",
+            "markdownDescription": "A flag indicating whether the duration can be manually adjusted at\nruntime.\n"
           },
           "playSound": {
             "type": "boolean",
             "default": false,
-            "description": "A flag indicating whether the timer should trigger a sound when\ngoing off. The sound can always be toggled at runtime.\n"
+            "description": "A flag indicating whether the timer should trigger a sound when\ngoing off. The sound can always be toggled at runtime.\n",
+            "markdownDescription": "A flag indicating whether the timer should trigger a sound when\ngoing off. The sound can always be toggled at runtime.\n"
           }
-        }
+        },
+        "markdownDescription": "Defines a field of type `timer`.\n"
       }
     },
     "flow": {
@@ -1637,11 +1716,13 @@
         "properties": {
           "forEach": {
             "$ref": "#/definitions/memberName",
-            "description": "An intermediate iterator field which holds the index of the current array item.\nThe field must be defined in the template as type `integer`.\n"
+            "description": "An intermediate iterator field which holds the index of the current array item.\nThe field must be defined in the template as type `integer`.\n",
+            "markdownDescription": "An intermediate iterator field which holds the index of the current array item.\nThe field must be defined in the template as type `integer`.\n"
           },
           "in": {
             "$ref": "#/definitions/memberName",
-            "description": "A source data field which will be iterated upon.\nThe field must be defined as type `array` in the template.\nModifications to the array length or item order during or after the iteration is not supported\nand will lead to undefined behavior.\n"
+            "description": "A source data field which will be iterated upon.\nThe field must be defined as type `array` in the template.\nModifications to the array length or item order during or after the iteration is not supported\nand will lead to undefined behavior.\n",
+            "markdownDescription": "A source data field which will be iterated upon.\nThe field must be defined as type `array` in the template.\nModifications to the array length or item order during or after the iteration is not supported\nand will lead to undefined behavior.\n"
           },
           "do": {
             "$ref": "#/definitions/flow/flowControl"
@@ -1656,7 +1737,8 @@
               "step2"
             ]
           }
-        ]
+        ],
+        "markdownDescription": "An iteration flow of steps or nested flow control schemas.\nThe loop will be iterated once per item in a given source array.\n"
       },
       "forEachInteger": {
         "type": "object",
@@ -1671,7 +1753,8 @@
         "properties": {
           "forEach": {
             "$ref": "#/definitions/memberName",
-            "description": "An intermediate iterator field which holds the index of current iteration.\nThe field must be defined in the template as type `integer`.\n"
+            "description": "An intermediate iterator field which holds the index of current iteration.\nThe field must be defined in the template as type `integer`.\n",
+            "markdownDescription": "An intermediate iterator field which holds the index of current iteration.\nThe field must be defined in the template as type `integer`.\n"
           },
           "step": {
             "description": "The number by which to increase or decrease the `forEach` iterator integer.\n",
@@ -1683,7 +1766,8 @@
               {
                 "$ref": "#/definitions/memberName"
               }
-            ]
+            ],
+            "markdownDescription": "The number by which to increase or decrease the `forEach` iterator integer.\n"
           },
           "to": {
             "description": "The limit value at which the flow execution will break out of the loop.\nThe check will be done exclusively.\n\nFor example, given the following definition:\n\n```yml\nforEach: iterator\nto: 5\ndo: something\n```\n\nThe iteration will happens 5 times, during which the `iterator` field will be\nassigned the value of 0,1,2,3, and 4 respectively.\n",
@@ -1694,7 +1778,8 @@
               {
                 "$ref": "#/definitions/memberName"
               }
-            ]
+            ],
+            "markdownDescription": "The limit value at which the flow execution will break out of the loop.\nThe check will be done exclusively.\n\nFor example, given the following definition:\n\n```yml\nforEach: iterator\nto: 5\ndo: something\n```\n\nThe iteration will happens 5 times, during which the `iterator` field will be\nassigned the value of 0,1,2,3, and 4 respectively.\n"
           },
           "do": {
             "$ref": "#/definitions/flow/flowControl"
@@ -1727,7 +1812,8 @@
               "step2"
             ]
           }
-        ]
+        ],
+        "markdownDescription": "An iteration flow of steps or nested flow control schemas.\nThe loop will be iterated up to the given limit of an iterator integer.\n"
       },
       "if": {
         "type": "object",
@@ -1741,7 +1827,8 @@
         "properties": {
           "if": {
             "$ref": "#/definitions/script",
-            "description": "The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.\n"
+            "description": "The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.\n",
+            "markdownDescription": "The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.\n"
           },
           "then": {
             "$ref": "#/definitions/flow/flowControl"
@@ -1763,7 +1850,8 @@
             "if": "field1 != field2",
             "then": "step3"
           }
-        ]
+        ],
+        "markdownDescription": "A conditional flow of steps or nested flow control schemas. In the well known if-then-else fashion a conditional flow through the workflow can be implemented.\n"
       },
       "loop": {
         "type": "object",
@@ -1780,7 +1868,8 @@
           },
           "until": {
             "$ref": "#/definitions/script",
-            "description": "The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.\n"
+            "description": "The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.\n",
+            "markdownDescription": "The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.\n"
           }
         },
         "examples": [
@@ -1795,7 +1884,8 @@
             "loop": "step3",
             "until": "field1 != field2"
           }
-        ]
+        ],
+        "markdownDescription": "A loop flow of steps or nested flow control schemas. The loop will be repeated until a condition is met. The loop will be executed at least once. Once the condition evaluates to a truthy value the loop is broken and the loop flow is considered completed.\n"
       },
       "sequential": {
         "type": "array",
@@ -1827,7 +1917,8 @@
             },
             "step3"
           ]
-        ]
+        ],
+        "markdownDescription": "A sequence steps or nested flow control schemas. In a sequential flow consecutive items will always be executed one after another. Therefore, a nested flow has to be completed before a consecutive item can be started. The sequential flow is the only implicit flow, meaning it does not have any key words or properties. It is typically used as the top-level flow control in a workflow.\n"
       },
       "stepObject": {
         "type": "object",
@@ -1845,7 +1936,8 @@
           "properties": {
             "title": {
               "type": "string",
-              "description": "Overrides the step title of the step definition. This is useful to\ncustomize the title of a generic step for each invocation when it is\nreused multiple times during the workflow.\n"
+              "description": "Overrides the step title of the step definition. This is useful to\ncustomize the title of a generic step for each invocation when it is\nreused multiple times during the workflow.\n",
+              "markdownDescription": "Overrides the step title of the step definition. This is useful to\ncustomize the title of a generic step for each invocation when it is\nreused multiple times during the workflow.\n"
             },
             "fields": {
               "$ref": "#/definitions/fieldValues"
@@ -1854,7 +1946,8 @@
               "$ref": "#/definitions/fieldMapping"
             }
           }
-        }
+        },
+        "markdownDescription": "A step call object is the more sophisticated variant of a step identifier\nallowing to pass additional parameters to a step being called.\n"
       },
       "while": {
         "type": "object",
@@ -1868,7 +1961,8 @@
         "properties": {
           "while": {
             "$ref": "#/definitions/script",
-            "description": "The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.\n"
+            "description": "The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.\n",
+            "markdownDescription": "The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.\n"
           },
           "do": {
             "$ref": "#/definitions/flow/flowControl"
@@ -1886,7 +1980,8 @@
             "while": "field1 != field2",
             "do": "step3"
           }
-        ]
+        ],
+        "markdownDescription": "A while loop flow of steps or nested flow control schemas. The while loop will be repeated as long as a condition is met. The while loop will never be executed if the conditions evaluates to false initially. Once the condition evaluates to a falsy value the loop is broken and the while loop flow is considered completed.\n"
       }
     },
     "step": {
@@ -1906,10 +2001,12 @@
             "image": {
               "type": "string",
               "format": "uri-reference",
-              "description": "A url to an image that should be displayed instead of the devices icon.\n"
+              "description": "A url to an image that should be displayed instead of the devices icon.\n",
+              "markdownDescription": "A url to an image that should be displayed instead of the devices icon.\n"
             }
           }
-        }
+        },
+        "markdownDescription": "Used to pass arguments to an step device."
       },
       "element": {
         "type": "object",
@@ -1987,20 +2084,23 @@
               "Webcam",
               "WebPage"
             ],
-            "description": "The type of the element."
+            "description": "The type of the element.",
+            "markdownDescription": "The type of the element."
           },
           "elementLabel": {
             "type": "object",
             "properties": {
               "text": {
                 "type": "string",
-                "description": "Labels are displayed alongside the element and can help users better understand the displayed data."
+                "description": "Labels are displayed alongside the element and can help users better understand the displayed data.",
+                "markdownDescription": "Labels are displayed alongside the element and can help users better understand the displayed data."
               }
             }
           },
           "height": {
             "type": "number",
-            "description": "The fixed height of the element measured in pixels."
+            "description": "The fixed height of the element measured in pixels.",
+            "markdownDescription": "The fixed height of the element measured in pixels."
           },
           "grid": {
             "description": "The responsive width of the element. The value is the number of columns that the element should occupy based on a 12-column grid layout.\n\nThere are 5 breakpoints allowing to define multiple width values for different screen sizes.\n\nA single number may be provided and applied to all breakpoints if there is no reason to resize the element for different screen sizes.\n",
@@ -2027,23 +2127,27 @@
                 "minimum": 1,
                 "maximum": 12
               }
-            ]
+            ],
+            "markdownDescription": "The responsive width of the element. The value is the number of columns that the element should occupy based on a 12-column grid layout.\n\nThere are 5 breakpoints allowing to define multiple width values for different screen sizes.\n\nA single number may be provided and applied to all breakpoints if there is no reason to resize the element for different screen sizes.\n"
           },
           "dataScope": {
             "type": "object",
             "$ref": "#/definitions/memberName",
-            "description": "Scope of a measurement"
+            "description": "Scope of a measurement",
+            "markdownDescription": "Scope of a measurement"
           },
           "inputChannels": {
             "type": "array",
             "items": {
               "$ref": "#/definitions/step/element_objects/inputChannel"
             },
-            "description": "List of channels"
+            "description": "List of channels",
+            "markdownDescription": "List of channels"
           },
           "id": {
             "description": "Can be used to render the element inside text (e.g. substep description)\nin the format {{element|memberName}}.\nFor example, when id is defined as \"rotationGauge\" the text may look like:\n\nUse this view to monitor the stirring speed {{element|rotationGauge}}\n",
-            "$ref": "#/definitions/memberName"
+            "$ref": "#/definitions/memberName",
+            "markdownDescription": "Can be used to render the element inside text (e.g. substep description)\nin the format {{element|memberName}}.\nFor example, when id is defined as \"rotationGauge\" the text may look like:\n\nUse this view to monitor the stirring speed {{element|rotationGauge}}\n"
           },
           "placement": {
             "description": "When set to `manual` the element won't be displayed in the substep. To render the element it has to be referenced inside the description markdown: `{{element|rotationGauge}}`. Replace `rotationGauge` with the\nvalue of the `id` property from your element definition.\n",
@@ -2051,16 +2155,19 @@
             "enum": [
               "manual",
               "default"
-            ]
+            ],
+            "markdownDescription": "When set to `manual` the element won't be displayed in the substep. To render the element it has to be referenced inside the description markdown: `{{element|rotationGauge}}`. Replace `rotationGauge` with the\nvalue of the `id` property from your element definition.\n"
           },
           "description": {
             "type": "string"
           },
           "settings": {
             "description": "Additional settings.",
-            "type": "object"
+            "type": "object",
+            "markdownDescription": "Additional settings."
           }
-        }
+        },
+        "markdownDescription": "Elements are used to display data points over a certain period.\n"
       },
       "selector": {
         "type": "object",
@@ -2078,31 +2185,37 @@
               "cards",
               "list"
             ],
-            "default": "list"
+            "default": "list",
+            "markdownDescription": "The layout of the selector. Supported layouts are list and cards.\nYou can change layouts during selection on the workflow run without affecting the value defined in the template.\n"
           },
           "result": {
             "description": "Define the field that will receive the value of the selected option.",
-            "$ref": "#/definitions/memberName"
+            "$ref": "#/definitions/memberName",
+            "markdownDescription": "Define the field that will receive the value of the selected option."
           },
           "title": {
             "type": "string",
             "description": "The title of the selector.",
-            "default": "Selection"
+            "default": "Selection",
+            "markdownDescription": "The title of the selector."
           },
           "description": {
             "type": "string",
             "description": "The description of the selector. Add any fancy description you want, we support __Markdown__!\n",
-            "default": "Select one of the options below."
+            "default": "Select one of the options below.",
+            "markdownDescription": "The description of the selector. Add any fancy description you want, we support __Markdown__!\n"
           },
           "multiSelection": {
             "type": "boolean",
             "description": "Defines if the selector allows the selection of more than one option.",
-            "default": false
+            "default": false,
+            "markdownDescription": "Defines if the selector allows the selection of more than one option."
           },
           "skipBehaviors": {
             "type": "boolean",
             "description": "Defines if the default behaviors of the substep should be skipped or not.\nThe default behavior of a selector is to set the value of the selected option(s) on the result field and complete the substep.\nIf you set this option to true, you need to add behaviors, either in the substep or step level, and one of the actions must be the SET_FIELD.\n",
-            "default": false
+            "default": false,
+            "markdownDescription": "Defines if the default behaviors of the substep should be skipped or not.\nThe default behavior of a selector is to set the value of the selected option(s) on the result field and complete the substep.\nIf you set this option to true, you need to add behaviors, either in the substep or step level, and one of the actions must be the SET_FIELD.\n"
           },
           "options": {
             "oneOf": [
@@ -2125,7 +2238,8 @@
               }
             ]
           }
-        }
+        },
+        "markdownDescription": "The schema of a selector. The options defined will be available\nfor selection in the substep during a workflow run. A selector can be customized\nwith different layouts, currently list or cards. They support both multi- and single-selection.\nBy overwriting the default behaviors they can be completely customized.\n"
       },
       "selectorAccessors": {
         "type": "object",
@@ -2135,19 +2249,23 @@
         "properties": {
           "primary": {
             "type": "string",
-            "description": "The primary text of the option.\n"
+            "description": "The primary text of the option.\n",
+            "markdownDescription": "The primary text of the option.\n"
           },
           "secondary": {
             "type": "string",
-            "description": "The secondary text of the option."
+            "description": "The secondary text of the option.",
+            "markdownDescription": "The secondary text of the option."
           },
           "thumbnail": {
             "type": "string",
-            "description": "The URL of the image that will be used as the thumbnail of the option.\n"
+            "description": "The URL of the image that will be used as the thumbnail of the option.\n",
+            "markdownDescription": "The URL of the image that will be used as the thumbnail of the option.\n"
           },
           "value": {
             "type": "string",
-            "description": "The value that will be used if the option is selected."
+            "description": "The value that will be used if the option is selected.",
+            "markdownDescription": "The value that will be used if the option is selected."
           }
         },
         "examples": [
@@ -2157,7 +2275,8 @@
             "description": "summary",
             "thumbnail": "category.image.url"
           }
-        ]
+        ],
+        "markdownDescription": "Define accessors for selector options. You can map the selector options to fields defined in a field.\n"
       },
       "selectorOptions": {
         "type": "array",
@@ -2172,22 +2291,27 @@
           "properties": {
             "primary": {
               "type": "string",
-              "description": "The primary text of the option.\n"
+              "description": "The primary text of the option.\n",
+              "markdownDescription": "The primary text of the option.\n"
             },
             "secondary": {
               "type": "string",
-              "description": "The secondary text of the option."
+              "description": "The secondary text of the option.",
+              "markdownDescription": "The secondary text of the option."
             },
             "thumbnail": {
               "type": "string",
               "format": "uri",
-              "description": "The URL of the image that will be used as the thumbnail of the option.\n"
+              "description": "The URL of the image that will be used as the thumbnail of the option.\n",
+              "markdownDescription": "The URL of the image that will be used as the thumbnail of the option.\n"
             },
             "value": {
               "type": "string",
-              "description": "The value that will be used if the option is selected."
+              "description": "The value that will be used if the option is selected.",
+              "markdownDescription": "The value that will be used if the option is selected."
             }
-          }
+          },
+          "markdownDescription": "A static array of options available for selection."
         }
       },
       "substep": {
@@ -2206,7 +2330,8 @@
             "description": "The primary line of instructions. Field values can be embedded by\nenclosing a field identifier in double curly braces.\n",
             "examples": [
               "Place {{sample}} on {{balance}}."
-            ]
+            ],
+            "markdownDescription": "The primary line of instructions. Field values can be embedded by\nenclosing a field identifier in double curly braces.\n"
           },
           "secondary": {
             "type": "string",
@@ -2215,24 +2340,28 @@
             "description": "The secondary line of instructions.",
             "examples": [
               "Caution! {{sample}} is super expensive..."
-            ]
+            ],
+            "markdownDescription": "The secondary line of instructions."
           },
           "description": {
             "title": "Description",
             "$ref": "#/definitions/markdown",
-            "description": "The description fields can be used to add details to the substep. As it\nsupports markdown, you can use basic formatting, links, tables and even\nimages.\n"
+            "description": "The description fields can be used to add details to the substep. As it\nsupports markdown, you can use basic formatting, links, tables and even\nimages.\n",
+            "markdownDescription": "The description fields can be used to add details to the substep. As it\nsupports markdown, you can use basic formatting, links, tables and even\nimages.\n"
           },
           "expandDescription": {
             "type": "boolean",
             "default": false,
             "title": "Initially expand the description?",
-            "description": "A flag to indicate whether or not to show the entire description for\nthis substep right away.\n\nThe default is `false`, which will cause only the first line of the\ndescription to be visible. Of course the user can always decide to\nexpand the description when required.\n\nNot expanding the description by default keeps your workflow interface\nclean and the user can get a good overview of the substeps, while an\nexpanded descriptoin will make sure an important notes or images you\nmight have put in the description will be shown.\n"
+            "description": "A flag to indicate whether or not to show the entire description for\nthis substep right away.\n\nThe default is `false`, which will cause only the first line of the\ndescription to be visible. Of course the user can always decide to\nexpand the description when required.\n\nNot expanding the description by default keeps your workflow interface\nclean and the user can get a good overview of the substeps, while an\nexpanded descriptoin will make sure an important notes or images you\nmight have put in the description will be shown.\n",
+            "markdownDescription": "A flag to indicate whether or not to show the entire description for\nthis substep right away.\n\nThe default is `false`, which will cause only the first line of the\ndescription to be visible. Of course the user can always decide to\nexpand the description when required.\n\nNot expanding the description by default keeps your workflow interface\nclean and the user can get a good overview of the substeps, while an\nexpanded descriptoin will make sure an important notes or images you\nmight have put in the description will be shown.\n"
           },
           "confirm": {
             "type": "boolean",
             "default": false,
             "title": "Show manual confirmation button?",
-            "description": "Display a manual confirmation button to complete the substep."
+            "description": "Display a manual confirmation button to complete the substep.",
+            "markdownDescription": "Display a manual confirmation button to complete the substep."
           },
           "inputs": {
             "type": "array",
@@ -2240,8 +2369,10 @@
             "description": "A list of fields to show inputs for on the substep. For each field the\nsubstep will display an appropriate input component.\n\nUse the title and description properties of the field schema to control\nthe label and help text of an input.\n",
             "items": {
               "$ref": "#/definitions/memberName",
-              "description": "The identifier of a field defined in the step."
-            }
+              "description": "The identifier of a field defined in the step.",
+              "markdownDescription": "The identifier of a field defined in the step."
+            },
+            "markdownDescription": "A list of fields to show inputs for on the substep. For each field the\nsubstep will display an appropriate input component.\n\nUse the title and description properties of the field schema to control\nthe label and help text of an input.\n"
           },
           "buttons": {
             "type": "array",
@@ -2249,7 +2380,8 @@
             "description": "A list of buttons on the substep.",
             "items": {
               "$ref": "#/definitions/button"
-            }
+            },
+            "markdownDescription": "A list of buttons on the substep."
           },
           "devices": {
             "type": "array",
@@ -2265,7 +2397,8 @@
                   "$ref": "#/definitions/step/deviceObject"
                 }
               ]
-            }
+            },
+            "markdownDescription": "A list of fields to display as devices on the substep. For each device\nthe substep will display general information, status and activities such\nas invoked commands.\n"
           },
           "elements": {
             "type": "array",
@@ -2273,7 +2406,8 @@
             "description": "Data elements allow to render data from device channels on the substep.\n",
             "items": {
               "$ref": "#/definitions/step/element"
-            }
+            },
+            "markdownDescription": "Data elements allow to render data from device channels on the substep.\n"
           },
           "timer": {
             "title": "Substep Timer",
@@ -2292,7 +2426,8 @@
                 "type": "timer",
                 "defaultDuration": 2000
               }
-            ]
+            ],
+            "markdownDescription": "A timer to display on the substep. The timer can be started using\ndisplayed buttons or using actions.\nWith no default_duration given or duration set to 00:00 it can be used\nas a stop watch.\n\nFor full flexibility the timer can either implicitly define a field and\nbehaviors to handle the manual buttons or you can a define timer field\nin the `/fields` section of the step or the workflow manually and\nreference it here.\n\nBehaviors to handle the buttons on the timer are automatically created\nfor you. To skip creation of these behaviors, pass the `skipBehavior`\nflag to the timer definition.\n"
           },
           "behaviors": {
             "$ref": "#/definitions/workflow_template/behaviors"
@@ -2300,7 +2435,8 @@
           "selector": {
             "$ref": "#/definitions/step/selector"
           }
-        }
+        },
+        "markdownDescription": "A substep is a single instruction of a step and can both content and actions\nattached to it.\n"
       },
       "table": {
         "type": "object",
@@ -2314,7 +2450,8 @@
             "description": "The unique identifier of a field that contains the source data.\n\nIf configuration for `tabs` or `columns` is not specified, the data source is expected to be an array of objects. Each object represents one row in the table. The order of rows in the table is defined by the array indices. The object properties define the cell values within that row. For example, the following source data would result in a table with three columns and two rows:\n\n```yml\n- name: acetic anhydride\n  density: 1.08\n  molar_mass: 102.09\n- name: 2-Hydroxybenzoic acid\n  density: 1.44\n  molar_mass: 138.121\n```\n\nConfiguration for `tabs` or `columns` can be provided for mapping a data source that is not an array of objects.\nWith `tabs` you can split the source data into separate tables in separate tabs. Mapping on where to find the data for each tab must be defined in the `tabs.rows` setting.\nThe `columns` setting enables fine-grained control over the structure of a table and the formatting of cell values. If `columns` is not specified, rows must be represented by objects in the source data.\n\nExamples for when the source data is:\n\n1. Array of arrays:\n\n- table configuration:\n\n  ```yml\n  columns:\n    - label: Name\n      value: '/name'\n    - label: Density\n      value: '/density'\n  tabs:\n    - rows: '/0'\n    - rows: '/1'\n  ```\n\n- sample data:\n\n  ```yml\n  - - name: acetic anhydride\n      density: 1.08\n      molar_mass: 102.09\n    - name: 2-Hydroxybenzoic acid\n      density: 1.44\n      molar_mass: 138.121\n  - - name: salicylic acid\n      density: 1.44\n      molar_mass: 138.12\n    - name: 2,4,6-Trichlorphenol\n      density: 1,68\n      molar_mass: 197,45\n  ```\n\n2. Array of objects:\n\n- table configuration:\n\n  ```yml\n  columns:\n    - label: Name\n      value: /name\n    - label: Factor\n      value: /factor\n  tabs:\n    - rows: /0/determinations\n    - rows: /1/determinations\n  ```\n\n- sample data:\n\n  ```yml\n  - name: First Dilution\n    determinations:\n      - name: acetic anhydride\n        factor: 2\n        weight: 102.09\n      - name: 2-Hydroxybenzoic acid\n        factor: 2\n        weight: 138.121\n  - name: Second Dilution\n    determinations:\n      - name: acetic anhydride\n        factor: 4\n        weight: 80.25\n      - name: 2-Hydroxybenzoic acid\n        factor: 4\n        weight: 108.457\n  ```\n",
             "examples": [
               "my_table_data"
-            ]
+            ],
+            "markdownDescription": "The unique identifier of a field that contains the source data.\n\nIf configuration for `tabs` or `columns` is not specified, the data source is expected to be an array of objects. Each object represents one row in the table. The order of rows in the table is defined by the array indices. The object properties define the cell values within that row. For example, the following source data would result in a table with three columns and two rows:\n\n```yml\n- name: acetic anhydride\n  density: 1.08\n  molar_mass: 102.09\n- name: 2-Hydroxybenzoic acid\n  density: 1.44\n  molar_mass: 138.121\n```\n\nConfiguration for `tabs` or `columns` can be provided for mapping a data source that is not an array of objects.\nWith `tabs` you can split the source data into separate tables in separate tabs. Mapping on where to find the data for each tab must be defined in the `tabs.rows` setting.\nThe `columns` setting enables fine-grained control over the structure of a table and the formatting of cell values. If `columns` is not specified, rows must be represented by objects in the source data.\n\nExamples for when the source data is:\n\n1. Array of arrays:\n\n- table configuration:\n\n  ```yml\n  columns:\n    - label: Name\n      value: '/name'\n    - label: Density\n      value: '/density'\n  tabs:\n    - rows: '/0'\n    - rows: '/1'\n  ```\n\n- sample data:\n\n  ```yml\n  - - name: acetic anhydride\n      density: 1.08\n      molar_mass: 102.09\n    - name: 2-Hydroxybenzoic acid\n      density: 1.44\n      molar_mass: 138.121\n  - - name: salicylic acid\n      density: 1.44\n      molar_mass: 138.12\n    - name: 2,4,6-Trichlorphenol\n      density: 1,68\n      molar_mass: 197,45\n  ```\n\n2. Array of objects:\n\n- table configuration:\n\n  ```yml\n  columns:\n    - label: Name\n      value: /name\n    - label: Factor\n      value: /factor\n  tabs:\n    - rows: /0/determinations\n    - rows: /1/determinations\n  ```\n\n- sample data:\n\n  ```yml\n  - name: First Dilution\n    determinations:\n      - name: acetic anhydride\n        factor: 2\n        weight: 102.09\n      - name: 2-Hydroxybenzoic acid\n        factor: 2\n        weight: 138.121\n  - name: Second Dilution\n    determinations:\n      - name: acetic anhydride\n        factor: 4\n        weight: 80.25\n      - name: 2-Hydroxybenzoic acid\n        factor: 4\n        weight: 108.457\n  ```\n"
           },
           "tabs": {
             "type": "array",
@@ -2328,7 +2465,8 @@
               "properties": {
                 "rows": {
                   "$ref": "#/definitions/jsonPointer",
-                  "description": "The pointer to the array that holds the rows data for each tab. The path is resolved relative to the table `data` field.\n"
+                  "description": "The pointer to the array that holds the rows data for each tab. The path is resolved relative to the table `data` field.\n",
+                  "markdownDescription": "The pointer to the array that holds the rows data for each tab. The path is resolved relative to the table `data` field.\n"
                 },
                 "label": {
                   "type": "string",
@@ -2337,7 +2475,8 @@
                   "examples": [
                     "Weighing Experiment",
                     "Dilution 1"
-                  ]
+                  ],
+                  "markdownDescription": "The display name of the tab. If no label is specified, the default `Tab #` label will be used, with `#` indicating the respective tab index.\n"
                 },
                 "selectable": {
                   "type": "array",
@@ -2348,41 +2487,50 @@
                       "cells"
                     ]
                   },
-                  "description": "Configures which table elements can be selected to trigger behaviors. It takes precedence over the table-wide `selectable` setting.\n"
+                  "description": "Configures which table elements can be selected to trigger behaviors. It takes precedence over the table-wide `selectable` setting.\n",
+                  "markdownDescription": "Configures which table elements can be selected to trigger behaviors. It takes precedence over the table-wide `selectable` setting.\n"
                 },
                 "columns": {
                   "$ref": "#/definitions/step/table_attributes/columns"
                 },
                 "caption": {
                   "type": "string",
-                  "description": "A caption functions like a heading for a table and provides information that can help users find and understand a table. It takes precedence over the table-wide `caption` setting.\n"
+                  "description": "A caption functions like a heading for a table and provides information that can help users find and understand a table. It takes precedence over the table-wide `caption` setting.\n",
+                  "markdownDescription": "A caption functions like a heading for a table and provides information that can help users find and understand a table. It takes precedence over the table-wide `caption` setting.\n"
                 }
-              }
-            }
+              },
+              "markdownDescription": "The properties of each individual tab."
+            },
+            "markdownDescription": "A static array that defines the structure of tabs that contain separate tables.\n"
           },
           "dense": {
             "type": "boolean",
             "default": false,
-            "description": "Toggles a condensed appearance of a table with reduced spacing. If `textWrapping` is not disabled, rows will still increase in width in order to display long cell content with line breaks to avoid horizontal scrolling.\n"
+            "description": "Toggles a condensed appearance of a table with reduced spacing. If `textWrapping` is not disabled, rows will still increase in width in order to display long cell content with line breaks to avoid horizontal scrolling.\n",
+            "markdownDescription": "Toggles a condensed appearance of a table with reduced spacing. If `textWrapping` is not disabled, rows will still increase in width in order to display long cell content with line breaks to avoid horizontal scrolling.\n"
           },
           "textWrapping": {
             "type": "boolean",
             "default": true,
-            "description": "Toggles line breaks inside table cells. If enabled, text will break into multiple lines so that it will fit into the available space and can be read from top to bottom without any horizontal scrolling.\nTables that are referenced in markdown with a flag to set the number of visible rows, i.e. `{{table|my_table|rows=3}}`, have text wrapping disabled by default.\n"
+            "description": "Toggles line breaks inside table cells. If enabled, text will break into multiple lines so that it will fit into the available space and can be read from top to bottom without any horizontal scrolling.\nTables that are referenced in markdown with a flag to set the number of visible rows, i.e. `{{table|my_table|rows=3}}`, have text wrapping disabled by default.\n",
+            "markdownDescription": "Toggles line breaks inside table cells. If enabled, text will break into multiple lines so that it will fit into the available space and can be read from top to bottom without any horizontal scrolling.\nTables that are referenced in markdown with a flag to set the number of visible rows, i.e. `{{table|my_table|rows=3}}`, have text wrapping disabled by default.\n"
           },
           "borders": {
             "type": "boolean",
             "default": false,
-            "description": "Toggles borders around each cell. The default appearance of a table is a border below every row.\n"
+            "description": "Toggles borders around each cell. The default appearance of a table is a border below every row.\n",
+            "markdownDescription": "Toggles borders around each cell. The default appearance of a table is a border below every row.\n"
           },
           "alternatingRowColor": {
             "type": "boolean",
             "default": false,
-            "description": "Toggles a background color on odd rows to improve readability.\n"
+            "description": "Toggles a background color on odd rows to improve readability.\n",
+            "markdownDescription": "Toggles a background color on odd rows to improve readability.\n"
           },
           "caption": {
             "type": "string",
-            "description": "A caption functions like a heading for a table and provides information that can help users find and understand a table.\n"
+            "description": "A caption functions like a heading for a table and provides information that can help users find and understand a table.\n",
+            "markdownDescription": "A caption functions like a heading for a table and provides information that can help users find and understand a table.\n"
           },
           "selectable": {
             "type": "array",
@@ -2393,7 +2541,8 @@
                 "cells"
               ]
             },
-            "description": "Configures which table elements can be selected to trigger behaviors.\n"
+            "description": "Configures which table elements can be selected to trigger behaviors.\n",
+            "markdownDescription": "Configures which table elements can be selected to trigger behaviors.\n"
           },
           "columns": {
             "$ref": "#/definitions/step/table_attributes/columns"
@@ -2403,12 +2552,14 @@
             "description": "The unique identifier of a field.\n\nThe state field will be created implicitly. The field name pattern consists of the table identifier and the string `_state`, joined end-to-end.\n\nA custom state field needs to conform to the following schema:\n\n```yml\ntype: object\nadditionalProperties: false\nproperties:\n  selectedRow:\n    type: string\n    description: The currently selected row.\n  selectedCell:\n    type: string\n    description: The currently selected cell.\n```\n",
             "examples": [
               "myTable_state"
-            ]
+            ],
+            "markdownDescription": "The unique identifier of a field.\n\nThe state field will be created implicitly. The field name pattern consists of the table identifier and the string `_state`, joined end-to-end.\n\nA custom state field needs to conform to the following schema:\n\n```yml\ntype: object\nadditionalProperties: false\nproperties:\n  selectedRow:\n    type: string\n    description: The currently selected row.\n  selectedCell:\n    type: string\n    description: The currently selected cell.\n```\n"
           },
           "skipBehaviors": {
             "type": "boolean",
             "default": false,
-            "description": "Toggles the automatic creation of behaviors for selecting table rows and cells\n"
+            "description": "Toggles the automatic creation of behaviors for selecting table rows and cells\n",
+            "markdownDescription": "Toggles the automatic creation of behaviors for selecting table rows and cells\n"
           },
           "rules": {
             "$ref": "#/definitions/step/table_attributes/rules"
@@ -2423,13 +2574,16 @@
         "properties": {
           "selectedRow": {
             "type": "string",
-            "description": "The currently selected row."
+            "description": "The currently selected row.",
+            "markdownDescription": "The currently selected row."
           },
           "selectedCell": {
             "type": "string",
-            "description": "The currently selected cell."
+            "description": "The currently selected cell.",
+            "markdownDescription": "The currently selected cell."
           }
-        }
+        },
+        "markdownDescription": "Dynamic data that describes the current behavior of the table based on any data of changes.\n"
       },
       "tables": {
         "type": "object",
@@ -2440,7 +2594,8 @@
         },
         "additionalProperties": {
           "$ref": "#/definitions/step/table"
-        }
+        },
+        "markdownDescription": "Tables display a collection of data in an ordered arrangement of rows and columns.\n\nIn markdown, tables can be referenced via their unique identifier:\n\n`{{table|my_table}}`\n\nAdditionally, you can define the number of visible rows for the table body. Example:\n\n`{{table|my_table|rows=3}}`\n\nThis will display the referenced table with the header row and its column labels, and the first three rows of the table body. Subsequent rows can be scrolled into view, while the table header remains in a fixed position. Limiting the number of visible rows is useful to save space on the UI for tables with many rows or when UI space is scarce in general. This setting prevents line breaks for all cell content in order to be able to calculate the height of the visible area. Consequently this comes with the potential trade-of of horizontal scrolling.\n"
       },
       "webhookHandler": {
         "type": "object",
@@ -2456,12 +2611,14 @@
             "type": "string",
             "enum": [
               "json"
-            ]
+            ],
+            "markdownDescription": "Type of processor needed for handling the response"
           },
           "do": {
             "$ref": "#/definitions/workflow_template/actions"
           }
-        }
+        },
+        "markdownDescription": "The general schema of a webhook handler always consists of a `processor`\nand an `action`. Currently the processor supported is json\n"
       },
       "element_objects": {
         "inputChannel": {
@@ -2491,7 +2648,8 @@
                 }
               }
             ]
-          }
+          },
+          "markdownDescription": "Input Channels\n"
         },
         "scope": {
           "type": "object",
@@ -2651,7 +2809,8 @@
                 }
               }
             }
-          ]
+          ],
+          "markdownDescription": "Scope of time for displaying data points\n"
         }
       },
       "table_attributes": {
@@ -2669,15 +2828,18 @@
             "properties": {
               "value": {
                 "$ref": "#/definitions/jsonPointer",
-                "description": "The pointer to the value for each row in a column. The path is resolved relative to each row object.\n"
+                "description": "The pointer to the value for each row in a column. The path is resolved relative to each row object.\n",
+                "markdownDescription": "The pointer to the value for each row in a column. The path is resolved relative to each row object.\n"
               },
               "label": {
                 "type": "string",
-                "description": "The display name of the column."
+                "description": "The display name of the column.",
+                "markdownDescription": "The display name of the column."
               },
               "formatSpecifier": {
                 "$ref": "#/definitions/formatSpecifier",
-                "description": "A specifier describing number formatting for numeric field values. All other field value types will ignore this.\n"
+                "description": "A specifier describing number formatting for numeric field values. All other field value types will ignore this.\n",
+                "markdownDescription": "A specifier describing number formatting for numeric field values. All other field value types will ignore this.\n"
               },
               "align": {
                 "type": "string",
@@ -2687,16 +2849,19 @@
                   "left",
                   "center",
                   "right"
-                ]
+                ],
+                "markdownDescription": "The horizontal alignment of the cell values within a column.\n"
               },
               "editable": {
                 "type": "boolean",
                 "default": false,
-                "description": "A flag indicating if cells in this column are editable. If no `ui:widget` is specified, the column cells will display a text input.\n"
+                "description": "A flag indicating if cells in this column are editable. If no `ui:widget` is specified, the column cells will display a text input.\n",
+                "markdownDescription": "A flag indicating if cells in this column are editable. If no `ui:widget` is specified, the column cells will display a text input.\n"
               },
               "selectable": {
                 "type": "boolean",
-                "description": "A flag indicating if cells in this column are selectable. It takes precedence over the table-wide `selectable: ['cells']` setting. Row selection is not affected.\n"
+                "description": "A flag indicating if cells in this column are selectable. It takes precedence over the table-wide `selectable: ['cells']` setting. Row selection is not affected.\n",
+                "markdownDescription": "A flag indicating if cells in this column are selectable. It takes precedence over the table-wide `selectable: ['cells']` setting. Row selection is not affected.\n"
               },
               "ui:widget": {
                 "type": "string",
@@ -2713,7 +2878,8 @@
                 "properties": {
                   "placeholder": {
                     "type": "string",
-                    "description": "The short hint displayed in a text field before entering a value.\n"
+                    "description": "The short hint displayed in a text field before entering a value.\n",
+                    "markdownDescription": "The short hint displayed in a text field before entering a value.\n"
                   },
                   "type": {
                     "type": "string",
@@ -2722,9 +2888,11 @@
                     "enum": [
                       "text",
                       "number"
-                    ]
+                    ],
+                    "markdownDescription": "The HTML5 input type of a text field.\n"
                   }
-                }
+                },
+                "markdownDescription": "Configuration options for the UI widgets.\n"
               }
             },
             "examples": [
@@ -2742,8 +2910,10 @@
                 "value": "molar_mass",
                 "align": "right"
               }
-            ]
-          }
+            ],
+            "markdownDescription": "The properties of each individual column."
+          },
+          "markdownDescription": "A static array that defines the structure of a table by mapping keys from the source data to columns.\n\nEach object in the source data represents an unordered collection of data. By default the order of columns in a table is therefore not fixed. In order to give a table a fixed column structure, it is required to map columns to specific keys.\n\nColumn mapping for table tabs takes precedence over the table-wide `columns` setting.\n"
         },
         "rules": {
           "type": "array",
@@ -2797,11 +2967,13 @@
                 },
                 "examples": [
                   "range:\n  # sequence of 1, 2, 3, 4, 5\n  rows: 0,...,4\n  # only the fourth column\n  columns: 3\n"
-                ]
+                ],
+                "markdownDescription": "The range of columns, rows and tabs that the rules apply to. Use the [mathematical ellipsis notation](https://en.wikipedia.org/wiki/Ellipsis#In_mathematical_notation) to define a sequence of successive values from a start point to an end point inclusively. The range is zero-based, meaning its first entity is assigned the index 0.\nYou can specify one or multiple properties to define a selection of cells. Setting only the `rows` value, for example, would apply a given set of rules to all cells in the defined rows in all tabs. Including the `columns` and `tabs` settings would then narrow down that selection.\n"
               },
               "condition": {
                 "$ref": "#/definitions/script",
-                "description": "A script consisting of one or multiple conditions. The context of the script is defined by all fields and tables present in the workflow step, along with the `currentRow`, `currentCell`, and `currentTab` variables with their respective indexes.\n"
+                "description": "A script consisting of one or multiple conditions. The context of the script is defined by all fields and tables present in the workflow step, along with the `currentRow`, `currentCell`, and `currentTab` variables with their respective indexes.\n",
+                "markdownDescription": "A script consisting of one or multiple conditions. The context of the script is defined by all fields and tables present in the workflow step, along with the `currentRow`, `currentCell`, and `currentTab` variables with their respective indexes.\n"
               },
               "apply": {
                 "type": "object",
@@ -2817,19 +2989,24 @@
                   },
                   "backgroundColor": {
                     "type": "string",
-                    "description": "The value must be a valid [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). Theme colors can be applied using the `error`, `warning`, `success` and `info` keywords. When choosing colors, also consider the default highlight styles of tables for cell and row selection to ensure sufficient contrast.\n"
+                    "description": "The value must be a valid [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). Theme colors can be applied using the `error`, `warning`, `success` and `info` keywords. When choosing colors, also consider the default highlight styles of tables for cell and row selection to ensure sufficient contrast.\n",
+                    "markdownDescription": "The value must be a valid [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). Theme colors can be applied using the `error`, `warning`, `success` and `info` keywords. When choosing colors, also consider the default highlight styles of tables for cell and row selection to ensure sufficient contrast.\n"
                   },
                   "textColor": {
                     "type": "string",
-                    "description": "The value must be a valid [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). Theme colors can be applied using the `error`, `warning`, `success` and `info` keywords. When choosing colors, also consider the default highlight styles of tables for cell and row selection to ensure sufficient contrast.\n"
+                    "description": "The value must be a valid [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). Theme colors can be applied using the `error`, `warning`, `success` and `info` keywords. When choosing colors, also consider the default highlight styles of tables for cell and row selection to ensure sufficient contrast.\n",
+                    "markdownDescription": "The value must be a valid [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). Theme colors can be applied using the `error`, `warning`, `success` and `info` keywords. When choosing colors, also consider the default highlight styles of tables for cell and row selection to ensure sufficient contrast.\n"
                   },
                   "hintText": {
                     "type": "string",
-                    "description": "The hint text that will be available for the user when the rules are applied.\n"
+                    "description": "The hint text that will be available for the user when the rules are applied.\n",
+                    "markdownDescription": "The hint text that will be available for the user when the rules are applied.\n"
                   }
-                }
+                },
+                "markdownDescription": "The changes that are applied to cells, rows and tabs in the `range` if the `condition` is fulfilled.\n"
               }
-            }
+            },
+            "markdownDescription": "The individual rules that will be applied to the table. Rules will be applied in the order specified in the template. Later rules will overwrite previous rules.\n"
           },
           "examples": [
             "range:\n  # Columns 1 to the last\n  columns: 0,...\n  # Rows from 4 to 10\n  rows: 3,...,9\n  # Only first tab\n  tabs: 0\ncondition: |\n  myReferenceField.experiments.firstExperiment.density < CELL_VALUE(table, tab, row, column - 1) &&  CELL_VALUE(table, tab, row, column - 1) <= myReferenceField.experiments.secondExperiment.density\napply:\n  editable: false\n  backgroundColor: rgb(0, 128, 0)\n  textColor: rgb(255, 255, 255)\n  hintText: I am a hint text\n",
@@ -2846,7 +3023,8 @@
                 "textColor": "white"
               }
             }
-          ]
+          ],
+          "markdownDescription": "Rules can be leveraged to dynamically change both the behavior and appearance of a table.\n\nWhen a rule condition is fulfilled, the `editable` and `selectable` behavior of cells, rows, columns, or tabs can be set. Likewise, the background color or text color can be changed to visualize a certain state or change of behavior to the user. For example:\n\n  - When a cell number value is negative, change the background color to red.\n  - When a cell number value is positive, change the background color to green, make it selectable, but no longer editable.\n  - When all cells in a column have no value, the column cells are not selectable or editable across all other tabs of the table.\n"
         }
       }
     },
@@ -2893,7 +3071,8 @@
               }
             ]
           }
-        }
+        },
+        "markdownDescription": "The event of adding a step to a running dynamic template.\nThe added step will be appended as the last step of the run.\n"
       },
       "moveStep": {
         "type": "object",
@@ -2922,7 +3101,8 @@
               }
             }
           }
-        }
+        },
+        "markdownDescription": "The event of moving a step in a running dynamic template.\nOnly steps which are not yet started can be moved.\n"
       },
       "removeStep": {
         "type": "object",
@@ -2946,7 +3126,8 @@
               }
             }
           }
-        }
+        },
+        "markdownDescription": "The event of removing a step from a running dynamic template.\nOnly steps which are not yet started can be removed\n"
       },
       "resolveForEach": {
         "type": "object",
@@ -2974,7 +3155,8 @@
               }
             }
           }
-        }
+        },
+        "markdownDescription": "The event of resolving a single iteration of `for-each` flow of steps.\n\nThe iteration will continue up to and including the last item in the source array.\n"
       },
       "resolveIf": {
         "type": "object",
@@ -3002,7 +3184,8 @@
               }
             }
           }
-        }
+        },
+        "markdownDescription": "The event of resolving the condition in an `if` flow of steps.\n\nIf the condition resolves to a truthy value, the steps included in `then` will be unfolded.\nOtherwise, the steps included in `else` will be unfolded.\n\nIf `else` is not specified in the `if` flow and the condition resolves to a falsy value,\nno steps will be unfolded.\n"
       },
       "resolveUntil": {
         "type": "object",
@@ -3030,7 +3213,8 @@
               }
             }
           }
-        }
+        },
+        "markdownDescription": "The event of resolving the condition in a `loop-until` flow of steps.\n\nIf the condition in `until` resolves to a falsy value, the steps included in `loop` will be unfolded.\nOtherwise, the execution will break out of the `loop-until` flow and continue to evaluate the next entry in the parent flow.\n"
       },
       "resolveWhile": {
         "type": "object",
@@ -3058,7 +3242,8 @@
               }
             }
           }
-        }
+        },
+        "markdownDescription": "The event of resolving the condition in a `while` flow of steps.\n\nIf the condition in `while` resolves to a truthy value, the steps included in `do` will be unfolded.\nOtherwise, the execution will break out of the `while` flow and continue to evaluate the next entry in the parent flow.\n"
       }
     },
     "workflow_template": {
@@ -3150,7 +3335,8 @@
           {
             "$ref": "#/definitions/workflow_template/action_objects/webhook"
           }
-        ]
+        ],
+        "markdownDescription": "Used to pass arguments to an action."
       },
       "actions": {
         "title": "Actions Schema",
@@ -3175,7 +3361,8 @@
               ]
             }
           }
-        ]
+        ],
+        "markdownDescription": "Actions can come as a simple identifier string or an object to pass options.\nEither variant can be used as single action or a list of actions. A list of\nactions will always be executed sequentially. A somehow erroneous action\nwill cause the consecutive actions not to be executed.\n"
       },
       "behavior": {
         "type": "object",
@@ -3190,18 +3377,21 @@
           "title": {
             "type": "string",
             "maxLength": 200,
-            "description": "A title mostly for better readability of the step schema.\n"
+            "description": "A title mostly for better readability of the step schema.\n",
+            "markdownDescription": "A title mostly for better readability of the step schema.\n"
           },
           "when": {
             "$ref": "#/definitions/workflow_template/triggers"
           },
           "delay": {
             "description": "Wait a given duration before evaluating conditions and executing actions.\n",
-            "$ref": "#/definitions/duration"
+            "$ref": "#/definitions/duration",
+            "markdownDescription": "Wait a given duration before evaluating conditions and executing actions.\n"
           },
           "and": {
             "description": "A condition that can access fields, and trigger information.\n",
-            "$ref": "#/definitions/script"
+            "$ref": "#/definitions/script",
+            "markdownDescription": "A condition that can access fields, and trigger information.\n"
           },
           "do": {
             "$ref": "#/definitions/workflow_template/actions"
@@ -3209,7 +3399,8 @@
           "else": {
             "$ref": "#/definitions/workflow_template/actions"
           }
-        }
+        },
+        "markdownDescription": "The general scheme of a behavior always consists of a `trigger` and an\n`action`. It is extended by the use of conditions, delays, alternative\nactions, multiple triggers and multiple actions.\n"
       },
       "behaviors": {
         "type": "array",
@@ -3217,7 +3408,8 @@
         "description": "Behaviors provide means to define the behavior of a step. They can be used\nto control devices, record results, wait for device responses, control flow\nwithin a step and much more. The general scheme of a behavior is\n`trigger` => `action`.\n\nBehaviors are always treated as parallel independant definitions.\n",
         "items": {
           "$ref": "#/definitions/workflow_template/behavior"
-        }
+        },
+        "markdownDescription": "Behaviors provide means to define the behavior of a step. They can be used\nto control devices, record results, wait for device responses, control flow\nwithin a step and much more. The general scheme of a behavior is\n`trigger` => `action`.\n\nBehaviors are always treated as parallel independant definitions.\n"
       },
       "changeReason": {
         "title": "Change Reason",
@@ -3268,12 +3460,14 @@
               "Solution factor too low"
             ]
           }
-        ]
+        ],
+        "markdownDescription": "A flag indicating whether subsequent field updates require a reason and prompt the user with a reason dialog. The first update to a field's value never requires a reason, any further updates always do. Consider the following example:\n\n    1. field has no value\n    2. update to `10`\n    3. update to `22` => reason required\n    4. update to `null` => reason required\n    5. update to `14` => reason required\n    6. user does not submit reason => field value is still `null`\n\nA reason can be submitted programmatically as part of a `set_field` action, which would then not prompt the reason dialog to the user during workflow execution. See [Set Field schema](https://schema.laboperator.com/schemas/definitions/workflow_template/action_objects/setField/) for more information.\n\nFor fields of type array or object the `changeReason` setting can be applied both at the top-level, meaning any partial update of an existing value requires a reason, or for individual items and properties only. Nested settings take precedence over higher-level settings.\n\nA field update that requires a reason will always fail if no reason is provided.\n"
       },
       "flow": {
         "title": "Flow",
         "description": "A set of sequential steps that define the flow of the workflow. Each step can be configured with additional flow control mechanisms to support conditional execution and repetition.\n",
-        "$ref": "#/definitions/flow/sequential"
+        "$ref": "#/definitions/flow/sequential",
+        "markdownDescription": "A set of sequential steps that define the flow of the workflow. Each step can be configured with additional flow control mechanisms to support conditional execution and repetition.\n"
       },
       "steps": {
         "type": "object",
@@ -3291,7 +3485,8 @@
               "$ref": "#/definitions/stepReference"
             }
           ]
-        }
+        },
+        "markdownDescription": "The `steps` section defines all steps used in a workflow. A step is a set\nof closed activities and instructions. Steps can be defined outside of a\nworkflow and then be reused across different workflows.\n\nThe `steps` sections maps inline or external definitions to a key that\nis unique within this workflow. That key or identifier must be unique among\nthe keys in the steps object. If a key is defined twice the later definition\noverrides the previous.\n\nSteps defined outside of this workflow template can use the fields defined\nfor this workflow by mapping them to the internally defined fields in the\nworkflow section of the workflow template.\n"
       },
       "triggerIdentifier": {
         "type": "string",
@@ -3395,7 +3590,8 @@
           {
             "$ref": "#/definitions/workflow_template/trigger_objects/timerStop"
           }
-        ]
+        ],
+        "markdownDescription": "Used to pass arguments to a trigger."
       },
       "triggers": {
         "title": "Triggers Schema",
@@ -3420,7 +3616,8 @@
               ]
             }
           }
-        ]
+        ],
+        "markdownDescription": "Triggers can come as a simple identifier string or an object to pass options.\nEither variant can be used as a single trigger or a list of triggers.\nDifferent then actions, triggers are considered alternatives. Either of any\ntriggers could set the behavior in motion. While a behavior is in motion\nother occurrences of triggers on that behavior will have no effect, so the\nsame behavior can not be triggered multiple times in parallel.\n"
       },
       "action_objects": {
         "addStep": {
@@ -3479,7 +3676,8 @@
                 }
               }
             ]
-          }
+          },
+          "markdownDescription": "Options to a AddStep action.\n"
         },
         "alert": {
           "type": "object",
@@ -3501,11 +3699,13 @@
             "properties": {
               "title": {
                 "type": "string",
-                "description": "A title to display on the alert.\n"
+                "description": "A title to display on the alert.\n",
+                "markdownDescription": "A title to display on the alert.\n"
               },
               "text": {
                 "type": "string",
-                "description": "A text to display on the alert. Supports markdown formatting.\n"
+                "description": "A text to display on the alert. Supports markdown formatting.\n",
+                "markdownDescription": "A text to display on the alert. Supports markdown formatting.\n"
               },
               "buttons": {
                 "type": "array",
@@ -3519,10 +3719,12 @@
                 "maxItems": 3,
                 "items": {
                   "$ref": "#/definitions/button"
-                }
+                },
+                "markdownDescription": "A set maximum of three buttons to display on the alert. Any\nbutton, will cause the alert modal to close. Remember to handle\nthe button key in a behavior.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to an Alert action.\n"
         },
         "completeTimer": {
           "type": "object",
@@ -3540,10 +3742,12 @@
             "properties": {
               "identifier": {
                 "type": "string",
-                "description": "Identifier of a timer.\n"
+                "description": "Identifier of a timer.\n",
+                "markdownDescription": "Identifier of a timer.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to an CompleteTimer action.\n"
         },
         "getResources": {
           "type": "object",
@@ -3586,7 +3790,8 @@
               "blocking": {
                 "type": "boolean",
                 "description": "Determines if the query action will block subsequent steps.\n",
-                "default": false
+                "default": false,
+                "markdownDescription": "Determines if the query action will block subsequent steps.\n"
               },
               "onSuccess": {
                 "description": "The handler for filtered querying response",
@@ -3598,7 +3803,8 @@
                   "do": {
                     "$ref": "#/definitions/workflow_template/actions"
                   }
-                }
+                },
+                "markdownDescription": "The handler for filtered querying response"
               }
             }
           },
@@ -3631,7 +3837,8 @@
                 }
               }
             }
-          ]
+          ],
+          "markdownDescription": "An action to filter related API resources.\n"
         },
         "goToPreviousStep": {
           "type": "object",
@@ -3650,18 +3857,21 @@
               "resetCurrent": {
                 "type": "boolean",
                 "default": false,
-                "description": "A boolean flag indicating that the current step should be reset as if\nit had not started yet.\n"
+                "description": "A boolean flag indicating that the current step should be reset as if\nit had not started yet.\n",
+                "markdownDescription": "A boolean flag indicating that the current step should be reset as if\nit had not started yet.\n"
               },
               "resetPrevious": {
                 "type": "boolean",
                 "default": false,
-                "description": "A boolean flag indicating that the previous step should be reset\nbefore returning to it.\n"
+                "description": "A boolean flag indicating that the previous step should be reset\nbefore returning to it.\n",
+                "markdownDescription": "A boolean flag indicating that the previous step should be reset\nbefore returning to it.\n"
               },
               "delay": {
                 "$ref": "#/definitions/duration"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to an GoToPreviousStep action.\n"
         },
         "goToStep": {
           "type": "object",
@@ -3683,18 +3893,21 @@
               "step": {
                 "type": "integer",
                 "minimum": 1,
-                "description": "The step number of the step to navigate to. This action only makes\nsense for use with linear flows, with a static step number\ndistribution.\n"
+                "description": "The step number of the step to navigate to. This action only makes\nsense for use with linear flows, with a static step number\ndistribution.\n",
+                "markdownDescription": "The step number of the step to navigate to. This action only makes\nsense for use with linear flows, with a static step number\ndistribution.\n"
               },
               "reset": {
                 "type": "boolean",
                 "default": false,
-                "description": "A boolean flag indicating that all intermediate steps should be reset.\n"
+                "description": "A boolean flag indicating that all intermediate steps should be reset.\n",
+                "markdownDescription": "A boolean flag indicating that all intermediate steps should be reset.\n"
               },
               "delay": {
                 "$ref": "#/definitions/duration"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to an GoToStep action.\n"
         },
         "notify": {
           "type": "object",
@@ -3715,12 +3928,14 @@
             "properties": {
               "text": {
                 "type": "string",
-                "description": "A text to display on the notification. Supports field value\ninterpolation using the double curly parentheses syntax `{{MyField}}`.\n"
+                "description": "A text to display on the notification. Supports field value\ninterpolation using the double curly parentheses syntax `{{MyField}}`.\n",
+                "markdownDescription": "A text to display on the notification. Supports field value\ninterpolation using the double curly parentheses syntax `{{MyField}}`.\n"
               },
               "autoHideDuration": {
                 "type": "number",
                 "default": 5000,
-                "description": "Duration in milliseconds after which to hide the notification\nautomatically.\n"
+                "description": "Duration in milliseconds after which to hide the notification\nautomatically.\n",
+                "markdownDescription": "Duration in milliseconds after which to hide the notification\nautomatically.\n"
               },
               "variant": {
                 "type": "string",
@@ -3732,10 +3947,12 @@
                   "info",
                   "success",
                   "warning"
-                ]
+                ],
+                "markdownDescription": "The alert variant will impact the color and signals different stages\nof urgency or importance.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to an Notify action. In contrast to an alert the notification does\nnot interrupt the execution of a workflow and requires no user interaction.\nIt will only be shown to users that have the workflow open at the time of\nthe action being run.\n"
         },
         "repeatSubstep": {
           "type": "object",
@@ -3753,10 +3970,12 @@
             "properties": {
               "substep": {
                 "type": "integer",
-                "description": "Index of the substep from which on the step should be repeated. Substeps\nare always indexed form 0. So to passing `substep: 0`, would repeat the\nentire step.\n\nIf no option is passed the index is taken from the trigger, e.g. a\nSubstepComplete trigger will repeat the just completed substep.\n"
+                "description": "Index of the substep from which on the step should be repeated. Substeps\nare always indexed form 0. So to passing `substep: 0`, would repeat the\nentire step.\n\nIf no option is passed the index is taken from the trigger, e.g. a\nSubstepComplete trigger will repeat the just completed substep.\n",
+                "markdownDescription": "Index of the substep from which on the step should be repeated. Substeps\nare always indexed form 0. So to passing `substep: 0`, would repeat the\nentire step.\n\nIf no option is passed the index is taken from the trigger, e.g. a\nSubstepComplete trigger will repeat the just completed substep.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to an RepeatSubstep action.\n"
         },
         "resetTimer": {
           "type": "object",
@@ -3774,10 +3993,12 @@
             "properties": {
               "identifier": {
                 "type": "string",
-                "description": "Identifier of a timer.\n"
+                "description": "Identifier of a timer.\n",
+                "markdownDescription": "Identifier of a timer.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to an ResetTimer action.\n"
         },
         "selectCell": {
           "type": "object",
@@ -3798,14 +4019,17 @@
             "properties": {
               "table": {
                 "$ref": "#/definitions/memberName",
-                "description": "Identifier of the table"
+                "description": "Identifier of the table",
+                "markdownDescription": "Identifier of the table"
               },
               "value": {
                 "$ref": "#/definitions/script",
-                "description": "Set the selected cell based on calculated value from signal and fields.\n\nFor example, if the signal come with the following structure:\n\n  {\n    'identifier' => 'myTable',\n    'data' => { 'pointer' => '/1/density' }\n  }\n\nYou can set the selected cell to the row on index 1 of column 'density' by\nsetting this property to 'data.pointer'.\n\nFor the selection to work, the calculated value must resolve to a json pointer\nin the format of /[row-0-based-index]/[column-key]\n\nTo unset the selection, the calculated value must resolve to 'null'.\n"
+                "description": "Set the selected cell based on calculated value from signal and fields.\n\nFor example, if the signal come with the following structure:\n\n  {\n    'identifier' => 'myTable',\n    'data' => { 'pointer' => '/1/density' }\n  }\n\nYou can set the selected cell to the row on index 1 of column 'density' by\nsetting this property to 'data.pointer'.\n\nFor the selection to work, the calculated value must resolve to a json pointer\nin the format of /[row-0-based-index]/[column-key]\n\nTo unset the selection, the calculated value must resolve to 'null'.\n",
+                "markdownDescription": "Set the selected cell based on calculated value from signal and fields.\n\nFor example, if the signal come with the following structure:\n\n  {\n    'identifier' => 'myTable',\n    'data' => { 'pointer' => '/1/density' }\n  }\n\nYou can set the selected cell to the row on index 1 of column 'density' by\nsetting this property to 'data.pointer'.\n\nFor the selection to work, the calculated value must resolve to a json pointer\nin the format of /[row-0-based-index]/[column-key]\n\nTo unset the selection, the calculated value must resolve to 'null'.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to a SelectCell action.\n"
         },
         "selectRow": {
           "type": "object",
@@ -3826,14 +4050,17 @@
             "properties": {
               "table": {
                 "$ref": "#/definitions/memberName",
-                "description": "Identifier of the table"
+                "description": "Identifier of the table",
+                "markdownDescription": "Identifier of the table"
               },
               "value": {
                 "$ref": "#/definitions/script",
-                "description": "Set the selected row based on calculated value from signal and fields.\n\nFor example, if the signal come with the following structure:\n\n  {\n    'identifier' => 'myTable',\n    'data' => { 'pointer' => '/1' }\n  }\n\nYou can set the row on index 1 (the second row on the table) to be selected by\nsetting this property to 'data.pointer'.\n\nFor the selection to work, the calculated value must resolve to a json pointer\nin the format of /[row-0-based-index]\n\nTo unset the selection, the calculated value must resolve to 'null'.\n"
+                "description": "Set the selected row based on calculated value from signal and fields.\n\nFor example, if the signal come with the following structure:\n\n  {\n    'identifier' => 'myTable',\n    'data' => { 'pointer' => '/1' }\n  }\n\nYou can set the row on index 1 (the second row on the table) to be selected by\nsetting this property to 'data.pointer'.\n\nFor the selection to work, the calculated value must resolve to a json pointer\nin the format of /[row-0-based-index]\n\nTo unset the selection, the calculated value must resolve to 'null'.\n",
+                "markdownDescription": "Set the selected row based on calculated value from signal and fields.\n\nFor example, if the signal come with the following structure:\n\n  {\n    'identifier' => 'myTable',\n    'data' => { 'pointer' => '/1' }\n  }\n\nYou can set the row on index 1 (the second row on the table) to be selected by\nsetting this property to 'data.pointer'.\n\nFor the selection to work, the calculated value must resolve to a json pointer\nin the format of /[row-0-based-index]\n\nTo unset the selection, the calculated value must resolve to 'null'.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to a SelectRow action\n"
         },
         "sendCommand": {
           "type": "object",
@@ -3856,14 +4083,17 @@
             "properties": {
               "device": {
                 "$ref": "#/definitions/memberName",
-                "description": "A reference to a field that is a relationship to a device.\n"
+                "description": "A reference to a field that is a relationship to a device.\n",
+                "markdownDescription": "A reference to a field that is a relationship to a device.\n"
               },
               "command": {
                 "type": "string",
-                "description": "The command to execute. Available commands are device\nspecific.\n"
+                "description": "The command to execute. Available commands are device\nspecific.\n",
+                "markdownDescription": "The command to execute. Available commands are device\nspecific.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to a SendCommand action.\n"
         },
         "setField": {
           "type": "object",
@@ -4018,7 +4248,8 @@
                 ]
               }
             }
-          ]
+          ],
+          "markdownDescription": "A Set Field action updates a field with a new value.\n"
         },
         "setTemporaryField": {
           "type": "object",
@@ -4041,11 +4272,13 @@
             "properties": {
               "field": {
                 "$ref": "#/definitions/memberName",
-                "description": "Name of the temporary field which will be assigned with value when the action is triggered.\n"
+                "description": "Name of the temporary field which will be assigned with value when the action is triggered.\n",
+                "markdownDescription": "Name of the temporary field which will be assigned with value when the action is triggered.\n"
               },
               "value": {
                 "$ref": "#/definitions/script",
-                "description": "A script that returns the value for the temporary field.\n"
+                "description": "A script that returns the value for the temporary field.\n",
+                "markdownDescription": "A script that returns the value for the temporary field.\n"
               }
             }
           },
@@ -4062,7 +4295,8 @@
                 "value": "AVG(MAP(data, item, item.value))"
               }
             }
-          ]
+          ],
+          "markdownDescription": "An action to store temporary value which last for a single chain of actions.\n"
         },
         "startTimer": {
           "type": "object",
@@ -4080,10 +4314,12 @@
             "properties": {
               "identifier": {
                 "type": "string",
-                "description": "Identifier of a timer.\n"
+                "description": "Identifier of a timer.\n",
+                "markdownDescription": "Identifier of a timer.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to a StartTimer action.\n"
         },
         "stopTimer": {
           "type": "object",
@@ -4101,10 +4337,12 @@
             "properties": {
               "identifier": {
                 "type": "string",
-                "description": "Identifier of a timer.\n"
+                "description": "Identifier of a timer.\n",
+                "markdownDescription": "Identifier of a timer.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to an StopTimer action.\n"
         },
         "updateResource": {
           "type": "object",
@@ -4171,7 +4409,8 @@
                 }
               }
             }
-          ]
+          ],
+          "markdownDescription": "An action to updates value of related resource.\n\nFor now, the action only support updating workflow run's title.\n"
         },
         "webhook": {
           "type": "object",
@@ -4192,7 +4431,8 @@
             "properties": {
               "url": {
                 "type": "string",
-                "description": "The URL that should be used in the webhook.\n"
+                "description": "The URL that should be used in the webhook.\n",
+                "markdownDescription": "The URL that should be used in the webhook.\n"
               },
               "interceptors": {
                 "type": "array",
@@ -4218,14 +4458,16 @@
                       }
                     }
                   ]
-                }
+                },
+                "markdownDescription": "interceptors to be applied to the request"
               },
               "headers": {
                 "type": "object",
                 "description": "The HTTP request headers\n",
                 "additionalProperties": {
                   "type": "string"
-                }
+                },
+                "markdownDescription": "The HTTP request headers\n"
               },
               "method": {
                 "type": "string",
@@ -4238,12 +4480,14 @@
                   "head"
                 ],
                 "description": "The HTTP verb that will be used in the request\n",
-                "default": "post"
+                "default": "post",
+                "markdownDescription": "The HTTP verb that will be used in the request\n"
               },
               "blocking": {
                 "type": "boolean",
                 "description": "Defines if the webhook action will block the subsequent steps\n",
-                "default": false
+                "default": false,
+                "markdownDescription": "Defines if the webhook action will block the subsequent steps\n"
               },
               "body": {
                 "type": "string",
@@ -4251,15 +4495,18 @@
                 "examples": [
                   "reference to a workflow field named 'volumeField' with a value of '10ml':\n{\n  \"registered_value\": {{volumeField}}\n}\nThe example above will generate a request with the following body:\n{\n  \"registered_value\": \"10ml\"\n}\n",
                   "reference to non-field information:\n{\n  \"stepPointer\": {{workflow_step.pointer}}\n}\nThe example above will generate a request with the following body:\n{\n  \"stepPointer\": \"/steps/externalStep\"\n}\n"
-                ]
+                ],
+                "markdownDescription": "The HTTP request body. You can add information about fields present in the workflow,\nand non-field information as well, using {{myInformation}}.\nBesides field identifiers, the following references are supported:\n  - workflow_step: The current step of the workflow.\n    Please refer to the API documentation for the keys available to use.\n  - workflow_run: The current workflow run.\n    Please refer to the API documentation for the keys available to use.\n  - signal: details of what triggered the action.\n    includes but not limited to:\n\n      - type: What triggered the action, e.g. StepStart, Manual, etc\n      - auth_token: Encoded reference to the active user access_tokens (applicable only in a SSO environment),\n        may be blank if the active user can not be determined\n      - pointer: Returns the pointer to the behavior that called the webhook\n        (reference to the path inside the workflow template being used).\n\n  - options: The options being used for the webhook action, i.e. URL, headers, handlers.\n"
               },
               "onSuccess": {
                 "description": "The handler for response status codes 2xx",
-                "$ref": "#/definitions/step/webhookHandler"
+                "$ref": "#/definitions/step/webhookHandler",
+                "markdownDescription": "The handler for response status codes 2xx"
               },
               "onError": {
                 "description": "The handler for response status codes 5xx",
-                "$ref": "#/definitions/step/webhookHandler"
+                "$ref": "#/definitions/step/webhookHandler",
+                "markdownDescription": "The handler for response status codes 5xx"
               },
               "onCode": {
                 "type": "object",
@@ -4269,10 +4516,12 @@
                 },
                 "additionalProperties": {
                   "$ref": "#/definitions/step/webhookHandler"
-                }
+                },
+                "markdownDescription": "Define a different handler for specific codes.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to set a webhook action\n"
         }
       },
       "trigger_objects": {
@@ -4298,24 +4547,28 @@
             "properties": {
               "device": {
                 "$ref": "#/definitions/memberName",
-                "description": "A reference to a field that is a relationship to a device.\n"
+                "description": "A reference to a field that is a relationship to a device.\n",
+                "markdownDescription": "A reference to a field that is a relationship to a device.\n"
               },
               "command": {
                 "type": "string",
                 "description": "Restricts the trigger to specific commands, e.g. only trigger on a\n`get_weight` response not on a response to `get_temperature`.\n",
                 "examples": [
                   "get_weight"
-                ]
+                ],
+                "markdownDescription": "Restricts the trigger to specific commands, e.g. only trigger on a\n`get_weight` response not on a response to `get_temperature`.\n"
               },
               "status": {
                 "type": "string",
                 "description": "Restricts the trigger to specific status of the response, e.g. only\ntrigger once a command is `confirmed` or `completed`. Note that\nyou also have access to that information in the conditions.\n",
                 "examples": [
                   "completed"
-                ]
+                ],
+                "markdownDescription": "Restricts the trigger to specific status of the response, e.g. only\ntrigger once a command is `confirmed` or `completed`. Note that\nyou also have access to that information in the conditions.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to a CommandResponse trigger.\n"
         },
         "dataPoint": {
           "type": "object",
@@ -4341,17 +4594,20 @@
             "properties": {
               "device": {
                 "$ref": "#/definitions/memberName",
-                "description": "A reference to a field that is a relationship to a device.\n"
+                "description": "A reference to a field that is a relationship to a device.\n",
+                "markdownDescription": "A reference to a field that is a relationship to a device.\n"
               },
               "channel": {
                 "type": "string",
                 "description": "Name of the channel that should be subscribed.\n",
                 "examples": [
                   "weight"
-                ]
+                ],
+                "markdownDescription": "Name of the channel that should be subscribed.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to a DataPoint trigger.\n"
         },
         "fieldUpdate": {
           "type": "object",
@@ -4376,10 +4632,12 @@
             "properties": {
               "field": {
                 "$ref": "#/definitions/memberName",
-                "description": "A field identifier. Only updates to this field will fire the trigger.\n"
+                "description": "A field identifier. Only updates to this field will fire the trigger.\n",
+                "markdownDescription": "A field identifier. Only updates to this field will fire the trigger.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to a FieldUpdate trigger.\n"
         },
         "manual": {
           "type": "object",
@@ -4404,10 +4662,12 @@
             "properties": {
               "key": {
                 "$ref": "#/definitions/memberName",
-                "description": "A key passed that is used to filter to react to a\nbutton being assigned the same key.\n"
+                "description": "A key passed that is used to filter to react to a\nbutton being assigned the same key.\n",
+                "markdownDescription": "A key passed that is used to filter to react to a\nbutton being assigned the same key.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to a Manual trigger.\n"
         },
         "scan": {
           "type": "object",
@@ -4434,15 +4694,18 @@
                 "examples": [
                   "^ID-[-A-Z0-9]"
                 ],
-                "default": "^[-A-Z0-9]{4,}"
+                "default": "^[-A-Z0-9]{4,}",
+                "markdownDescription": "The pattern will be matched with text to determine a valid barcode scan.\n"
               },
               "caseSensitive": {
                 "type": "boolean",
                 "description": "Determines whether the search for a match is case-sensitive.\n",
-                "default": false
+                "default": false,
+                "markdownDescription": "Determines whether the search for a match is case-sensitive.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options for a Scanner trigger. The application supports simulating a barcode scan by passing the 'simulateScanString' prop to the component.\n"
         },
         "timerComplete": {
           "type": "object",
@@ -4465,10 +4728,12 @@
             "properties": {
               "identifier": {
                 "$ref": "#/definitions/memberName",
-                "description": "Identifier of a timer that initiates the trigger.\n"
+                "description": "Identifier of a timer that initiates the trigger.\n",
+                "markdownDescription": "Identifier of a timer that initiates the trigger.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to a Timer Complete trigger.\n"
         },
         "timerReset": {
           "type": "object",
@@ -4491,10 +4756,12 @@
             "properties": {
               "identifier": {
                 "$ref": "#/definitions/memberName",
-                "description": "Identifier of a timer that initiates the trigger.\n"
+                "description": "Identifier of a timer that initiates the trigger.\n",
+                "markdownDescription": "Identifier of a timer that initiates the trigger.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to a Timer Reset trigger.\n"
         },
         "timerStart": {
           "type": "object",
@@ -4517,10 +4784,12 @@
             "properties": {
               "identifier": {
                 "$ref": "#/definitions/memberName",
-                "description": "Identifier of a timer that initiates the trigger.\n"
+                "description": "Identifier of a timer that initiates the trigger.\n",
+                "markdownDescription": "Identifier of a timer that initiates the trigger.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to a Timer Start trigger.\n"
         },
         "timerStop": {
           "type": "object",
@@ -4543,12 +4812,15 @@
             "properties": {
               "identifier": {
                 "$ref": "#/definitions/memberName",
-                "description": "Identifier of a timer that initiates the trigger.\n"
+                "description": "Identifier of a timer that initiates the trigger.\n",
+                "markdownDescription": "Identifier of a timer that initiates the trigger.\n"
               }
             }
-          }
+          },
+          "markdownDescription": "Options to a Timer Complete trigger.\n"
         }
       }
     }
-  }
+  },
+  "markdownDescription": "A workflow step template consists of:\n1. schema_version: Version of the step template schema used.\n2. info: General information about the workflow steps.\n3. config: general options to the workflow display.\n4. fields: Global context in this workflow.\n5. behaviors: The general scheme of a behavior\n6. substeps: Definition of all unique steps that occur in the workflow.\n"
 }
