@@ -2,7 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { camelCase, head, isPlainObject, last, omit, set } from 'lodash';
+import { camelCase, head, last, omit, set, startCase } from 'lodash';
 import glob from 'fast-glob';
 import yaml from 'yaml';
 
@@ -51,24 +51,39 @@ const writeFile = (schema: Record<string, unknown>, name: string) => {
 };
 
 /**
+ * Returns a string with a markdown link to a schema's documentation.
+ */
+const prepareLink = (pathname: string) => {
+  const urlPath = pathname.replace('.yml', '');
+  const schemaName = startCase(last(urlPath.split('/')));
+  const link = `\n\nSee more: [${schemaName} Schema](https://schema.laboperator.com/schemas/${urlPath}) `;
+
+  return link;
+};
+
+/**
  * On hover documentation is based on the standard `description` field. In order
  * to provide rich text formatting within VS Code we can add a custom field.
  *
  * https://code.visualstudio.com/docs/languages/json#_use-rich-formatting-in-hovers
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const addMarkdownDescription = (obj: Record<string, any>) => {
+const addMarkdownDescription = (pathname: string, obj: any) => {
+  // The `obj` param can be an array for nested schemas, e.g. `allOf` field,
+  // but we for..in iterate over it anyway until it breaks 🙃
   for (const key in obj) {
     if (key === 'description' && typeof obj[key] === 'string') {
       const parsed = obj.description.replace(
         /\]\(\/schemas/,
         '](https://schema.laboperator.com/schemas'
       );
+      // For nested properties this will link to the parent schema.
+      const link = prepareLink(pathname);
 
       // eslint-disable-next-line no-param-reassign
-      obj.markdownDescription = parsed;
-    } else if (isPlainObject(obj[key])) {
-      addMarkdownDescription(obj[key]);
+      obj.markdownDescription = parsed + link;
+    } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+      addMarkdownDescription(pathname, obj[key]);
     }
   }
 };
@@ -85,10 +100,10 @@ const compileSchema = (filename: string) => {
     );
     const propertyPath = getPropertyPath(pathname);
 
+    addMarkdownDescription(pathname, definition);
     set(schema, propertyPath, definition);
   });
 
-  addMarkdownDescription(schema);
   writeFile(schema, filename);
 };
 
