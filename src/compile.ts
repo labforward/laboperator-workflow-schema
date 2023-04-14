@@ -2,7 +2,15 @@
 import fs from 'fs';
 import path from 'path';
 
-import { camelCase, head, last, omit, set, startCase } from 'lodash';
+import {
+  camelCase,
+  head,
+  isPlainObject,
+  last,
+  omit,
+  set,
+  startCase,
+} from 'lodash';
 import glob from 'fast-glob';
 import yaml from 'yaml';
 
@@ -73,7 +81,7 @@ const addMarkdownDescription = (pathname: string, obj: any) => {
   // but we for..in iterate over it anyway until it breaks 🙃
   for (const key in obj) {
     if (key === 'description' && typeof obj[key] === 'string') {
-      const parsed = obj.description.replace(
+      const parsedDescription = obj.description.replace(
         /\]\(\/schemas/,
         '](https://schema.laboperator.com/schemas'
       );
@@ -81,8 +89,8 @@ const addMarkdownDescription = (pathname: string, obj: any) => {
       const link = prepareLink(pathname);
 
       // eslint-disable-next-line no-param-reassign
-      obj.markdownDescription = parsed + link;
-    } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+      obj.markdownDescription = parsedDescription + link;
+    } else if (isPlainObject(obj[key]) || Array.isArray(obj[key])) {
       addMarkdownDescription(pathname, obj[key]);
     }
   }
