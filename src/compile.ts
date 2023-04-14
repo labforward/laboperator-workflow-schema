@@ -82,7 +82,11 @@ const addMarkdownDescription = (pathname: string, obj: any) => {
     if (key === 'description' && typeof obj[key] === 'string') {
       const parsedDescription = obj.description
         .replace(/\]\(\/schemas/, '](https://schema.laboperator.com/schemas')
+        // In nested code blocks spaces are sometimes rendered as their HTML
+        // entity string value of `&emsp`. To fix that we replace them with
+        // the invisible U+2003 unicode character.
         .replace(/ {2}/g, '  ')
+        // Adding language identifiers interferes with syntax highlighting.
         .replace(/```yml/g, '```');
       // For nested properties this will link to the parent schema.
       const link = prepareLink(pathname);
