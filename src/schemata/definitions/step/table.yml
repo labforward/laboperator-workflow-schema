@@ -30,69 +30,69 @@ properties:
 
       - table configuration:
 
-        ```yml
-        columns:
-          - label: Name
-            value: '/name'
-          - label: Density
-            value: '/density'
-        tabs:
-          - rows: '/0'
-          - rows: '/1'
-        ```
+      ```yml
+      columns:
+        - label: Name
+          value: '/name'
+        - label: Density
+          value: '/density'
+      tabs:
+        - rows: '/0'
+        - rows: '/1'
+      ```
 
       - sample data:
 
-        ```yml
-        - - name: acetic anhydride
-            density: 1.08
-            molar_mass: 102.09
-          - name: 2-Hydroxybenzoic acid
-            density: 1.44
-            molar_mass: 138.121
-        - - name: salicylic acid
-            density: 1.44
-            molar_mass: 138.12
-          - name: 2,4,6-Trichlorphenol
-            density: 1,68
-            molar_mass: 197,45
-        ```
+      ```yml
+      - - name: acetic anhydride
+          density: 1.08
+          molar_mass: 102.09
+        - name: 2-Hydroxybenzoic acid
+          density: 1.44
+          molar_mass: 138.121
+      - - name: salicylic acid
+          density: 1.44
+          molar_mass: 138.12
+        - name: 2,4,6-Trichlorphenol
+          density: 1,68
+          molar_mass: 197,45
+      ```
 
       2. Array of objects:
 
       - table configuration:
 
-        ```yml
-        columns:
-          - label: Name
-            value: /name
-          - label: Factor
-            value: /factor
-        tabs:
-          - rows: /0/determinations
-          - rows: /1/determinations
-        ```
+      ```yml
+      columns:
+        - label: Name
+          value: /name
+        - label: Factor
+          value: /factor
+      tabs:
+        - rows: /0/determinations
+        - rows: /1/determinations
+      ```
 
       - sample data:
 
-        ```yml
-        - name: First Dilution
-          determinations:
-            - name: acetic anhydride
-              factor: 2
-              weight: 102.09
-            - name: 2-Hydroxybenzoic acid
-              factor: 2
-              weight: 138.121
-        - name: Second Dilution
-          determinations:
-            - name: acetic anhydride
-              factor: 4
-              weight: 80.25
-            - name: 2-Hydroxybenzoic acid
-              factor: 4
-              weight: 108.457
-        ```
+      ```yml
+      - name: First Dilution
+        determinations:
+          - name: acetic anhydride
+            factor: 2
+            weight: 102.09
+          - name: 2-Hydroxybenzoic acid
+            factor: 2
+            weight: 138.121
+      - name: Second Dilution
+        determinations:
+          - name: acetic anhydride
+            factor: 4
+            weight: 80.25
+          - name: 2-Hydroxybenzoic acid
+            factor: 4
+            weight: 108.457
+      ```
     examples:
       - my_table_data
   tabs:
