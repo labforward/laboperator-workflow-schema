@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import fs from 'fs';
 import path from 'path';
 
@@ -81,10 +80,10 @@ const addMarkdownDescription = (pathname: string, obj: any) => {
   // but we for..in iterate over it anyway until it breaks 🙃
   for (const key in obj) {
     if (key === 'description' && typeof obj[key] === 'string') {
-      const parsedDescription = obj.description.replace(
-        /\]\(\/schemas/,
-        '](https://schema.laboperator.com/schemas'
-      );
+      const parsedDescription = obj.description
+        .replace(/\]\(\/schemas/, '](https://schema.laboperator.com/schemas')
+        .replace(/ {2}/g, '  ')
+        .replace(/```yml/g, '```');
       // For nested properties this will link to the parent schema.
       const link = prepareLink(pathname);
 
