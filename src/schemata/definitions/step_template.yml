@@ -15,12 +15,14 @@ allOf:
         properties:
           title:
             type: string
+            maxLength: 100
             description: |
               The display name of the step in Laboperator.
             examples:
               - Tare Balance
           description:
             type: string
+            maxLength: 1000
             description: |
               A descriptive summary of the step.
       secrets:

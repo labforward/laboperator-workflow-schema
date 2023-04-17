@@ -700,6 +700,7 @@
       "properties": {
         "title": {
           "type": "string",
+          "maxLength": 200,
           "description": "The display name of the template in Laboperator.\n",
           "examples": [
             "PTC Integration"
@@ -714,6 +715,7 @@
         },
         "description": {
           "type": "string",
+          "maxLength": 10000,
           "description": "A descriptive summary of the workflow.\n",
           "examples": [
             "Workflow descriptions support __[Markdown](https://en.wikipedia.org/wiki/Markdown)__!'"
@@ -1107,6 +1109,7 @@
               "properties": {
                 "title": {
                   "type": "string",
+                  "maxLength": 100,
                   "description": "The display name of the step in Laboperator.\n",
                   "examples": [
                     "Tare Balance"
@@ -1115,6 +1118,7 @@
                 },
                 "description": {
                   "type": "string",
+                  "maxLength": 1000,
                   "description": "A descriptive summary of the step.\n",
                   "markdownDescription": "A descriptive summary of the step.\n\n\nSee more: [Step Template Schema](https://schema.laboperator.com/schemas/definitions/step_template) "
                 }
