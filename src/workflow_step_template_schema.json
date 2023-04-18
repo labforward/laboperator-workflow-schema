@@ -1629,7 +1629,7 @@
       },
       "timer": {
         "type": "object",
-        "description": "Defines a field of type `timer`. Timers are used to measure time or execute time-controlled actions within a Workflow Run.\n\nTimers have two possible modes of operation: countdown and stopwatch.\n\nIn **countdown** mode, the timer will run for a specified duration, and fire a `on_timer_complete` Trigger upon completion.\nIn **stopwatch** mode, the timer measures time until it is stopped, either manually or through a Behavior.\n\nTimer fields can be assigned to individual substeps by passing the field identifier to the `timer` property.\n",
+        "description": "Defines a field of type `timer` to measure time or execute time-controlled actions.\n\nTimers have two possible modes of operation, countdown and stopwatch. In countdown mode, the timer will run for a specified duration and fire a [Timer Complete trigger](/schemas/definitions/workflow_template/trigger_objects/timerComplete/) upon completion. In _stopwatch_ mode, the timer measures time until it is stopped, either manually or through an [action](/schemas/definitions/workflow_template/actions/).\n",
         "required": [
           "type"
         ],
@@ -1641,15 +1641,20 @@
             ]
           },
           "defaultDuration": {
-            "description": "The default value set on the timer upon starting the workflow. If this is defined, the timer will run in countdown mode, unless the value is reset during workflow execution.\n\nThe initial value of the timer can also be set using the `defaultValue` property. If both are defined, `defaultValue` will overwrite the value set in `defaultDuration`.\n",
             "$ref": "#/definitions/duration",
-            "markdownDescription": "The default value set on the timer upon starting the workflow. If this is defined, the timer will run in countdown mode, unless the value is reset during workflow execution.\n\nThe initial value of the timer can also be set using the `defaultValue` property. If both are defined, `defaultValue` will overwrite the value set in `defaultDuration`.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
+            "description": "The default value of the timer. If set to a non-zero value, the timer will run in countdown mode. If no duration is defined or it is set to _\"0:00\"_, the timer will run in stopwatch mode. Note that also defining `defaultValue` will overwrite this setting.\n",
+            "examples": [
+              90,
+              "1 mins 30 sec",
+              "1:30"
+            ],
+            "markdownDescription": "The default value of the timer. If set to a non-zero value, the timer will run in countdown mode. If no duration is defined or it is set to _\"0:00\"_, the timer will run in stopwatch mode. Note that also defining `defaultValue` will overwrite this setting.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
           },
           "showButtons": {
             "type": "boolean",
             "default": false,
-            "description": "A flag indicating whether to show all the buttons to control the timer. When this property is set to `true`, it will take precedence over the flags for individual buttons.\n",
-            "markdownDescription": "A flag indicating whether to show all the buttons to control the timer. When this property is set to `true`, it will take precedence over the flags for individual buttons.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
+            "description": "A flag indicating whether to show all timer control buttons. Use this setting to conveniently remove all buttons in case of the timer being controlled entirely by [actions](/schemas/definitions/workflow_template/actions/). This setting take precedence over the settings for the individual buttons.\n",
+            "markdownDescription": "A flag indicating whether to show all timer control buttons. Use this setting to conveniently remove all buttons in case of the timer being controlled entirely by [actions](https://schema.laboperator.com/schemas/definitions/workflow_template/actions/). This setting take precedence over the settings for the individual buttons.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
           },
           "showStartButton": {
             "type": "boolean",
@@ -1672,8 +1677,8 @@
           "skipBehaviors": {
             "type": "boolean",
             "default": false,
-            "description": "A flag indicating whether to skip automatically creating behaviors to\nhandle buttons on the timer.\n",
-            "markdownDescription": "A flag indicating whether to skip automatically creating behaviors to\nhandle buttons on the timer.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
+            "description": "A flag indicating whether to skip automatically creating behaviors to\nhandle the control button, e.g. starting the countdown.\n",
+            "markdownDescription": "A flag indicating whether to skip automatically creating behaviors to\nhandle the control button, e.g. starting the countdown.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
           }
         },
         "examples": [
@@ -1689,7 +1694,7 @@
             "showResetButton": true
           }
         ],
-        "markdownDescription": "Defines a field of type `timer`. Timers are used to measure time or execute time-controlled actions within a Workflow Run.\n\nTimers have two possible modes of operation: countdown and stopwatch.\n\nIn **countdown** mode, the timer will run for a specified duration, and fire a `on_timer_complete` Trigger upon completion.\nIn **stopwatch** mode, the timer measures time until it is stopped, either manually or through a Behavior.\n\nTimer fields can be assigned to individual substeps by passing the field identifier to the `timer` property.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
+        "markdownDescription": "Defines a field of type `timer` to measure time or execute time-controlled actions.\n\nTimers have two possible modes of operation, countdown and stopwatch. In countdown mode, the timer will run for a specified duration and fire a [Timer Complete trigger](https://schema.laboperator.com/schemas/definitions/workflow_template/trigger_objects/timerComplete/) upon completion. In _stopwatch_ mode, the timer measures time until it is stopped, either manually or through an [action](/schemas/definitions/workflow_template/actions/).\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
       }
     },
     "flow": {
