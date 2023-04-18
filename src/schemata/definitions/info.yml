@@ -1,35 +1,33 @@
 ---
 type: object
-title: Info Section Schema
+title: Info
 description: |
-  The info section of a workflow or step template holds general information
-  about the template.
+  The info section of a Workflow (Step) Template holds general information about the template.
 required:
   - title
+  - uuid
+  - version
+additionalProperties: false
 properties:
   title:
     type: string
-    title: Title
+    maxLength: 200
     description: |
-      A title that will be used as a display name to the workflow template.
+      The display name of the template in Laboperator.
     examples:
-      - My Premium Workflow
-
+      - PTC Integration
+  uuid:
+    $ref: '#/definitions/uuid'
+  version:
+    $ref: '#/definitions/version'
   description:
     type: string
-    title: Description
-    default: ''
+    maxLength: 10000
+    description: |
+      A descriptive summary of the workflow.
     examples:
-      - 'Add a fancy description here. It even supports __[Markdown](https://en.wikipedia.org/wiki/Markdown)__!'
-
+      - Workflow descriptions support __[Markdown](https://en.wikipedia.org/wiki/Markdown)__!'
   author:
-    $id: '#/definitions/author'
-
+    $ref: '#/definitions/author'
   slug:
-    $id: '#/definitions/slug'
-
-  tags:
-    type: array
-    items:
-      type: string
-      maxLength: 50
+    $ref: '#/definitions/slug'

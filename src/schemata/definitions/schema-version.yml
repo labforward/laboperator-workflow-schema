@@ -1,6 +1,7 @@
 ---
 title: Schema Version
-description: A valid Workflow schema version.
+description: |
+  A valid Workflow Schema version.
 type: string
 enum:
   - 0.0.1

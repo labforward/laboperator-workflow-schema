@@ -2,8 +2,8 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "/laboperator/workflow_step_template_schema/1.0.1",
     "type": "object",
-    "title": "The Workflow Step Template Schema",
-    "description": "A workflow step template consists of:\n1. schema_version: Version of the step template schema used.\n2. info: General information about the workflow steps.\n3. config: general options to the workflow display.\n4. fields: Global context in this workflow.\n5. behaviors: The general scheme of a behavior\n6. substeps: Definition of all unique steps that occur in the workflow.\n",
+    "title": "Workflow Step Template Schema",
+    "description": "A workflow step template consists of one or multiple substeps and can be used across multiple different workflow templates.\n",
     "required": [
         "schema_version",
         "info"
@@ -19,31 +19,7 @@
                     "$ref": "#/definitions/schemaVersion"
                 },
                 "info": {
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/info"
-                        },
-                        {
-                            "type": "object",
-                            "required": [
-                                "title",
-                                "version",
-                                "uuid"
-                            ],
-                            "properties": {
-                                "uuid": {
-                                    "$ref": "#/definitions/uuid"
-                                },
-                                "version": {
-                                    "$ref": "#/definitions/version"
-                                },
-                                "title": {
-                                    "type": "string",
-                                    "description": "Title of The Workflow Step Template"
-                                }
-                            }
-                        }
-                    ]
+                    "$ref": "#/definitions/info"
                 }
             }
         }
@@ -714,44 +690,47 @@
         },
         "info": {
             "type": "object",
-            "title": "Info Section Schema",
-            "description": "The info section of a workflow or step template holds general information\nabout the template.\n",
+            "title": "Info",
+            "description": "The info section of a Workflow (Step) Template holds general information about the template.\n",
             "required": [
-                "title"
+                "title",
+                "uuid",
+                "version"
             ],
+            "additionalProperties": false,
             "properties": {
                 "title": {
                     "type": "string",
-                    "title": "Title",
-                    "description": "A title that will be used as a display name to the workflow template.\n",
+                    "maxLength": 200,
+                    "description": "The display name of the template in Laboperator.\n",
                     "examples": [
-                        "My Premium Workflow"
+                        "PTC Integration"
                     ],
-                    "markdownDescription": "A title that will be used as a display name to the workflow template.\n\n\nSee more: [Info Schema](https://schema.laboperator.com/schemas/definitions/info) "
+                    "markdownDescription": "The display name of the template in Laboperator.\n\n\nSee more: [Info Schema](https://schema.laboperator.com/schemas/definitions/info) "
+                },
+                "uuid": {
+                    "$ref": "#/definitions/uuid"
+                },
+                "version": {
+                    "$ref": "#/definitions/version"
                 },
                 "description": {
                     "type": "string",
-                    "title": "Description",
-                    "default": "",
+                    "maxLength": 10000,
+                    "description": "A descriptive summary of the workflow.\n",
                     "examples": [
-                        "Add a fancy description here. It even supports __[Markdown](https://en.wikipedia.org/wiki/Markdown)__!"
-                    ]
+                        "Workflow descriptions support __[Markdown](https://en.wikipedia.org/wiki/Markdown)__!'"
+                    ],
+                    "markdownDescription": "A descriptive summary of the workflow.\n\n\nSee more: [Info Schema](https://schema.laboperator.com/schemas/definitions/info) "
                 },
                 "author": {
-                    "$id": "#/definitions/author"
+                    "$ref": "#/definitions/author"
                 },
                 "slug": {
-                    "$id": "#/definitions/slug"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "maxLength": 50
-                    }
+                    "$ref": "#/definitions/slug"
                 }
             },
-            "markdownDescription": "The info section of a workflow or step template holds general information\nabout the template.\n\n\nSee more: [Info Schema](https://schema.laboperator.com/schemas/definitions/info) "
+            "markdownDescription": "The info section of a Workflow (Step) Template holds general information about the template.\n\n\nSee more: [Info Schema](https://schema.laboperator.com/schemas/definitions/info) "
         },
         "jsonPointer": {
             "type": "string",
@@ -926,7 +905,7 @@
         },
         "schemaVersion": {
             "title": "Schema Version",
-            "description": "A valid Workflow schema version.",
+            "description": "A valid Workflow Schema version.\n",
             "type": "string",
             "enum": [
                 "0.0.1",
@@ -938,7 +917,7 @@
                 "1.0.0",
                 "1.0.1"
             ],
-            "markdownDescription": "A valid Workflow schema version.\n\nSee more: [Schema Version Schema](https://schema.laboperator.com/schemas/definitions/schemaVersion) "
+            "markdownDescription": "A valid Workflow Schema version.\n\n\nSee more: [Schema Version Schema](https://schema.laboperator.com/schemas/definitions/schema-version) "
         },
         "script": {
             "default": "",
@@ -1100,31 +1079,6 @@
                 }
             },
             "markdownDescription": "A reference to workflow step defined outside the workflow template.\nAdditional properties might be added to the reference for documentation\npurposes. It is recommended to use the `$comment` property.\n\n\nSee more: [Step Reference Schema](https://schema.laboperator.com/schemas/definitions/step_reference) "
-        },
-        "stepTemplate": {
-            "type": "object",
-            "title": "The Workflow Step Template Schema",
-            "description": "A step is a closed set of activities and instructions. Steps can be defined\nindependent of a workflow and then be reused across different workflows.\n\nA step descriptor file describes a workflow consisting of four parts:\n1. info: General information about the workflow.\n2. fields: Global context in this workflow.\n3. steps: Definition of all unique steps that occur in the workflow.\n4. workflow: The flow of steps and mapping of fields.\n",
-            "required": [
-                "info"
-            ],
-            "allOf": [
-                {
-                    "$ref": "#/definitions/stepAttributes"
-                },
-                {
-                    "type": "object",
-                    "properties": {
-                        "info": {
-                            "$ref": "#/definitions/info"
-                        },
-                        "secrets": {
-                            "$ref": "#/definitions/secrets"
-                        }
-                    }
-                }
-            ],
-            "markdownDescription": "A step is a closed set of activities and instructions. Steps can be defined\nindependent of a workflow and then be reused across different workflows.\n\nA step descriptor file describes a workflow consisting of four parts:\n1. info: General information about the workflow.\n2. fields: Global context in this workflow.\n3. steps: Definition of all unique steps that occur in the workflow.\n4. workflow: The flow of steps and mapping of fields.\n\n\nSee more: [Step Template Schema](https://schema.laboperator.com/schemas/definitions/step_template) "
         },
         "timestamp": {
             "title": "timestamp",
@@ -3504,6 +3458,52 @@
                 "$ref": "#/definitions/flow/sequential",
                 "markdownDescription": "A set of sequential steps that define the flow of the workflow. Each step can be configured with additional flow control mechanisms to support conditional execution and repetition.\n\n\nSee more: [Flow Schema](https://schema.laboperator.com/schemas/definitions/workflow_template/flow) "
             },
+            "step": {
+                "type": "object",
+                "title": "Step",
+                "description": "A step is a closed set of activities and instructions.\n",
+                "required": [
+                    "info"
+                ],
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/stepAttributes"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "info": {
+                                "type": "object",
+                                "required": [
+                                    "title"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "description": "The display name of the step in Laboperator.\n",
+                                        "examples": [
+                                            "Tare Balance"
+                                        ],
+                                        "markdownDescription": "The display name of the step in Laboperator.\n\n\nSee more: [Step Schema](https://schema.laboperator.com/schemas/definitions/workflow_template/step) "
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "maxLength": 1000,
+                                        "description": "A descriptive summary of the step.\n",
+                                        "markdownDescription": "A descriptive summary of the step.\n\n\nSee more: [Step Schema](https://schema.laboperator.com/schemas/definitions/workflow_template/step) "
+                                    }
+                                }
+                            },
+                            "secrets": {
+                                "$ref": "#/definitions/secrets"
+                            }
+                        }
+                    }
+                ],
+                "markdownDescription": "A step is a closed set of activities and instructions.\n\n\nSee more: [Step Schema](https://schema.laboperator.com/schemas/definitions/workflow_template/step) "
+            },
             "steps": {
                 "type": "object",
                 "title": "Steps Section Schema",
@@ -3514,7 +3514,7 @@
                 "additionalProperties": {
                     "oneOf": [
                         {
-                            "$ref": "#/definitions/stepTemplate"
+                            "$ref": "#/definitions/workflow_template/step"
                         },
                         {
                             "$ref": "#/definitions/stepReference"

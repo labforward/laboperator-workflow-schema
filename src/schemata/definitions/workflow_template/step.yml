@@ -1,0 +1,29 @@
+---
+type: object
+title: Step
+description: |
+  A step is a closed set of activities and instructions.
+required: [info]
+allOf:
+  - $ref: '#/definitions/stepAttributes'
+  - type: object
+    properties:
+      info:
+        type: object
+        required: [title]
+        additionalProperties: false
+        properties:
+          title:
+            type: string
+            maxLength: 100
+            description: |
+              The display name of the step in Laboperator.
+            examples:
+              - Tare Balance
+          description:
+            type: string
+            maxLength: 1000
+            description: |
+              A descriptive summary of the step.
+      secrets:
+        $ref: '#/definitions/secrets'

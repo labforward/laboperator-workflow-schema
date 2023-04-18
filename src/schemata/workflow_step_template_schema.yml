@@ -2,15 +2,9 @@
 $schema: http://json-schema.org/draft-07/schema#
 $id: /laboperator/workflow_step_template_schema/1.0.1
 type: object
-title: The Workflow Step Template Schema
+title: Workflow Step Template Schema
 description: |
-  A workflow step template consists of:
-  1. schema_version: Version of the step template schema used.
-  2. info: General information about the workflow steps.
-  3. config: general options to the workflow display.
-  4. fields: Global context in this workflow.
-  5. behaviors: The general scheme of a behavior
-  6. substeps: Definition of all unique steps that occur in the workflow.
+  A workflow step template consists of one or multiple substeps and can be used across multiple different workflow templates.
 required:
   - schema_version
   - info
@@ -21,18 +15,5 @@ allOf:
       schema_version:
         $ref: '#/definitions/schemaVersion'
       info:
-        allOf:
-          - $ref: '#/definitions/info'
-          - type: object
-            required:
-              - title
-              - version
-              - uuid
-            properties:
-              uuid:
-                $ref: '#/definitions/uuid'
-              version:
-                $ref: '#/definitions/version'
-              title:
-                type: string
-                description: Title of The Workflow Step Template
+        $ref: '#/definitions/info'
+

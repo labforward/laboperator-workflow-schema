@@ -2,14 +2,9 @@
 $schema: http://json-schema.org/draft-07/schema#
 $id: /laboperator/workflow_template_schema/1.0.1
 type: object
-title: The Workflow Template Schema
+title: Workflow Template Schema
 description: |
-  A workflow template consists of five parts:
-  1. schema_version: Version of the template schema used.
-  2. info: General information about the workflow.
-  3. fields: Global context in this workflow.
-  4. steps: Definition of all unique steps that occur in the workflow.
-  5. flow: The flow of steps.
+  A workflow template consists of one or multiple steps to orchestrate devices and data with information and control elements.
 required:
   - schema_version
   - info
@@ -20,24 +15,13 @@ properties:
   schema_version:
     $ref: '#/definitions/schemaVersion'
   info:
-    allOf:
-      - $ref: '#/definitions/info'
-      - type: object
-        required:
-            - version
-            - uuid
-        properties:
-          uuid:
-            $ref: '#/definitions/uuid'
-          version:
-            $ref: '#/definitions/version'
+    $ref: '#/definitions/info'
   config:
     $ref: '#/definitions/config/workflowConfig'
   elements:
     type: array
-    title: Data Elements
     description: |
-      Data elements allow to render data from device channels on the substep.
+      Data elements allow to display data from device channels.
     items:
       $ref: '#/definitions/step/element'
   tables:
