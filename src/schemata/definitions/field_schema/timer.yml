@@ -46,15 +46,3 @@ properties:
     description: |
       A flag indicating whether to skip automatically creating behaviors to
       handle buttons on the timer.
-  editable:
-    type: boolean
-    default: false
-    description: |
-      A flag indicating whether the duration can be manually adjusted at
-      runtime.
-  playSound:
-    type: boolean
-    default: false
-    description: |
-      A flag indicating whether the timer should trigger a sound when
-      going off. The sound can always be toggled at runtime.
