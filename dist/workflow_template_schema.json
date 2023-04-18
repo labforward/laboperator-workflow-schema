@@ -1699,18 +1699,6 @@
                         "default": false,
                         "description": "A flag indicating whether to skip automatically creating behaviors to\nhandle buttons on the timer.\n",
                         "markdownDescription": "A flag indicating whether to skip automatically creating behaviors to\nhandle buttons on the timer.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
-                    },
-                    "editable": {
-                        "type": "boolean",
-                        "default": false,
-                        "description": "A flag indicating whether the duration can be manually adjusted at\nruntime.\n",
-                        "markdownDescription": "A flag indicating whether the duration can be manually adjusted at\nruntime.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
-                    },
-                    "playSound": {
-                        "type": "boolean",
-                        "default": false,
-                        "description": "A flag indicating whether the timer should trigger a sound when\ngoing off. The sound can always be toggled at runtime.\n",
-                        "markdownDescription": "A flag indicating whether the timer should trigger a sound when\ngoing off. The sound can always be toggled at runtime.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
                     }
                 },
                 "markdownDescription": "Defines a field of type `timer`. Timers are used to measure time or execute time-controlled actions within a Workflow Run.\n\nTimers have two possible modes of operation: countdown and stopwatch.\n\nIn **countdown** mode, the timer will run for a specified duration, and fire a `on_timer_complete` Trigger upon completion.\nIn **stopwatch** mode, the timer measures time until it is stopped, either manually or through a Behavior.\n\nTimer fields can be assigned to individual substeps by passing the field identifier to the `timer` property.\n\n\nSee more: [Timer Schema](https://schema.laboperator.com/schemas/definitions/field_schema/timer) "
