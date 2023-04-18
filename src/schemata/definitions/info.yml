@@ -7,6 +7,7 @@ required:
   - title
   - uuid
   - version
+additionalProperties: false
 properties:
   title:
     type: string
@@ -30,8 +31,3 @@ properties:
     $ref: '#/definitions/author'
   slug:
     $ref: '#/definitions/slug'
-  tags:
-    type: array
-    items:
-      type: string
-      maxLength: 50

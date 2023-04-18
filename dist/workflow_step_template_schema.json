@@ -697,6 +697,7 @@
                 "uuid",
                 "version"
             ],
+            "additionalProperties": false,
             "properties": {
                 "title": {
                     "type": "string",
@@ -727,13 +728,6 @@
                 },
                 "slug": {
                     "$ref": "#/definitions/slug"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "maxLength": 50
-                    }
                 }
             },
             "markdownDescription": "The info section of a Workflow (Step) Template holds general information about the template.\n\n\nSee more: [Info Schema](https://schema.laboperator.com/schemas/definitions/info) "
