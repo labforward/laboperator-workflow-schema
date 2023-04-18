@@ -46,3 +46,11 @@ properties:
     description: |
       A flag indicating whether to skip automatically creating behaviors to
       handle buttons on the timer.
+examples:
+  - type: timer
+    defaultDuration: 120 seconds
+    showButtons: true
+  - type: timer
+    skipBehaviors: true
+    showStartButton: true
+    showResetButton: true
