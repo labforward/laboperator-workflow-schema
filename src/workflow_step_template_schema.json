@@ -4492,17 +4492,21 @@
           },
           "examples": [
             {
-              "id": "workflow_run.data.id",
-              "type": "workflow_run",
-              "attributes": {
-                "title": "sampleField.name"
+              "update_resource": {
+                "id": "workflow_run.data.id",
+                "type": "workflow_run",
+                "attributes": {
+                  "title": "sampleField.name"
+                }
               }
             },
             {
-              "id": "balance.id",
-              "type": "device",
-              "attributes": {
-                "custom_attributes": "{\n  HASH(\n    \"name\",\"DeviceInUse\",\n    \"type\", \"boolean\",\n    \"value\", true\n  ),\n  HASH(\n    \"name\",\"WorkflowID\",\n    \"type\", \"string\",\n    \"value\", workflow_run.data.id\n  )\n}\n"
+              "update_resource": {
+                "id": "balance.id",
+                "type": "device",
+                "attributes": {
+                  "custom_attributes": "{\n  HASH(\n    \"name\",\"DeviceInUse\",\n    \"type\", \"boolean\",\n    \"value\", true\n  ),\n  HASH(\n    \"name\",\"WorkflowID\",\n    \"type\", \"string\",\n    \"value\", workflow_run.data.id\n  )\n}\n"
+                }
               }
             }
           ],
