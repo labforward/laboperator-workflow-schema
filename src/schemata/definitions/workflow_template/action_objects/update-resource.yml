@@ -1,0 +1,89 @@
+---
+type: object
+title: Update Resource
+description: |
+  An action to update a resource. It can be used to update the value of custom attributes, and in case of Workflow Runs also update their title.
+propertyNames:
+  enum:
+    - update_resource
+    - UPDATE_RESOURCE
+    - UpdateResource
+additionalProperties:
+  allOf:
+    - type: object
+      required: [id]
+      properties:
+        id:
+          $ref: '#/definitions/script'
+          description: |
+            A script that must resolve to the `id` of the resource to be updated.
+          examples:
+            - workflow_run.data.id
+            - deviceField.id
+    - oneOf:
+        - type: object
+          required:
+            - type
+            - attributes
+          properties:
+            type:
+              type: string
+              enum: [workflow_run]
+            attributes:
+              type: object
+              additionalProperties: false
+              properties:
+                custom_attributes:
+                  $ref: '#/definitions/script'
+                  description: |
+                    To update a custom attribute, the script must resolve to a hash object with `name`, `type` and `value` attributes. The supported custom attribute data types are `number`, `text`, `boolean` (checkbox), `date`, `datetime`, `file`, `image`, `physicalQuantity`, `relation`, and `duration`.
+                title:
+                  $ref: '#/definitions/script'
+        - type: object
+          required:
+            - type
+            - attributes
+          properties:
+            type:
+              type: string
+              enum:
+                - collection
+                - connector
+                - dashboard
+                - device
+                - export
+                - measurement
+                - sample
+                - workflow_step_template 
+                - workflow_template
+            attributes:
+              type: object
+              additionalProperties: false
+              properties:
+                custom_attributes:
+                  $ref: '#/definitions/script'
+                  description: |
+                    To update a custom attribute, the script must evaluate to a hash object with `name`, `type` and `value` attributes. The supported custom attribute data types are `number`, `text`, `boolean` (checkbox), `date`, `datetime`, `file`, `image`, `physicalQuantity`, `relation`, and `duration`.
+examples:
+  - update_resource:
+      id: workflow_run.data.id
+      type: workflow_run
+      attributes:
+        title: sampleField.name
+  - update_resource:
+      id: balance.id
+      type: device
+      attributes:
+        custom_attributes: |
+          {
+            HASH(
+              "name","DeviceInUse",
+              "type", "boolean",
+              "value", true
+            ),
+            HASH(
+              "name","WorkflowID",
+              "type", "string",
+              "value", workflow_run.data.id
+            )
+          }
