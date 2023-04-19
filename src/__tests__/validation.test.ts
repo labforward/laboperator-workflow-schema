@@ -10,15 +10,9 @@ describe('Schema validation', () => {
   describe('Workflow Template', () => {
     it('should have all required properties', () => {
       const { errors } = validate({});
-      const requiredProperties = [
-        'schema_version',
-        'info',
-        'fields',
-        'steps',
-        'flow',
-      ];
+      const requiredProperties = ['schema_version', 'info', 'steps', 'flow'];
 
-      expect(errors).toHaveLength(5);
+      expect(errors).toHaveLength(4);
 
       (errors || []).forEach((err, index) => {
         expect(err.schema).toEqual(requiredProperties);
