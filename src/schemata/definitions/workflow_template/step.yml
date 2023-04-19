@@ -25,5 +25,3 @@ allOf:
             maxLength: 1000
             description: |
               A descriptive summary of the step.
-      secrets:
-        $ref: '#/definitions/secrets'
