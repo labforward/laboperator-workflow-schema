@@ -8,7 +8,6 @@ description: |
 required:
   - schema_version
   - info
-  - fields
   - steps
   - flow
 properties:

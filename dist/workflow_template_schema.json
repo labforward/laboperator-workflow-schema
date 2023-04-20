@@ -7,7 +7,6 @@
     "required": [
         "schema_version",
         "info",
-        "fields",
         "steps",
         "flow"
     ],
@@ -3524,9 +3523,6 @@
                                         "markdownDescription": "A descriptive summary of the step.\n\n\nSee more: [Step Schema](https://schema.laboperator.com/schemas/definitions/workflow_template/step) "
                                     }
                                 }
-                            },
-                            "secrets": {
-                                "$ref": "#/definitions/secrets"
                             }
                         }
                     }

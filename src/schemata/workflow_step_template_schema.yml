@@ -16,4 +16,6 @@ allOf:
         $ref: '#/definitions/schemaVersion'
       info:
         $ref: '#/definitions/info'
+      secrets:
+        $ref: '#/definitions/secrets'
 

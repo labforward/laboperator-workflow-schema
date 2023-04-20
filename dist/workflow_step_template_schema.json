@@ -20,6 +20,9 @@
                 },
                 "info": {
                     "$ref": "#/definitions/info"
+                },
+                "secrets": {
+                    "$ref": "#/definitions/secrets"
                 }
             }
         }
@@ -3495,9 +3498,6 @@
                                         "markdownDescription": "A descriptive summary of the step.\n\n\nSee more: [Step Schema](https://schema.laboperator.com/schemas/definitions/workflow_template/step) "
                                     }
                                 }
-                            },
-                            "secrets": {
-                                "$ref": "#/definitions/secrets"
                             }
                         }
                     }

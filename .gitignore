@@ -13,6 +13,8 @@ node_modules/
 
 # Misc
 *.log
+
+# Local playground files that match schema mapping
 template.json
 template.yml
 *.template.json
@@ -21,3 +23,7 @@ step-template.json
 step-template.yml
 *.step-template.json
 *.step-template.yml
+
+# Compiled schema
+src/workflow_template_schema.json
+src/workflow_step_template_schema.json
