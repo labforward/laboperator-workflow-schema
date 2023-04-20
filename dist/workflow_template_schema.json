@@ -454,11 +454,11 @@
                             "enum": [
                                 "checkbox",
                                 "switch",
-                                "textarea",
-                                "input"
+                                "text",
+                                "textarea"
                             ],
-                            "description": "A flag indicating the widget variant for fields of type `string` or `boolean`. All other field types ignore this setting.\nBoolean fields can be displayed as either a checkbox or a switch to toggle between a binary state. The default appearance is a checkbox. Fields of type `string` can be configured as a multi-line textarea element. Their default appearance is a single-line input.\n",
-                            "markdownDescription": "A flag indicating the widget variant for fields of type `string` or `boolean`. All other field types ignore this setting.\nBoolean fields can be displayed as either a checkbox or a switch to toggle between a binary state. The default appearance is a checkbox. Fields of type `string` can be configured as a multi-line textarea element. Their default appearance is a single-line input.\n\n\nSee more: [Field Schema](https://schema.laboperator.com/schemas/definitions/field) "
+                            "description": "A flag indicating the widget variant for fields of type `string` or `boolean`. All other field types ignore this setting.\nBoolean fields can be displayed as either a checkbox or a switch to toggle between a binary state. The default appearance is a checkbox. Fields of type `string` can be configured as a multi-line textarea element. Their default appearance is a single-line text input.\n",
+                            "markdownDescription": "A flag indicating the widget variant for fields of type `string` or `boolean`. All other field types ignore this setting.\nBoolean fields can be displayed as either a checkbox or a switch to toggle between a binary state. The default appearance is a checkbox. Fields of type `string` can be configured as a multi-line textarea element. Their default appearance is a single-line text input.\n\n\nSee more: [Field Schema](https://schema.laboperator.com/schemas/definitions/field) "
                         },
                         "ui:options": {
                             "type": "object",
