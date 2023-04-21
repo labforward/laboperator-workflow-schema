@@ -25,9 +25,9 @@ properties:
         required: [type]
       - oneOf:
           - $ref: '#/definitions/jsonSchemaDraft7'
-          - $ref: '#/definitions/field_schema/quantity'
-          - $ref: '#/definitions/field_schema/relationship'
-          - $ref: '#/definitions/field_schema/timer'
+          - $ref: '#/definitions/field-schema/quantity'
+          - $ref: '#/definitions/field-schema/relationship'
+          - $ref: '#/definitions/field-schema/timer'
     examples:
       - type: quantity
         unit: mg

@@ -1,0 +1,23 @@
+---
+type: object
+title: Action Object Schema
+description: Used to pass arguments to an action.
+oneOf:
+  - $ref: '#/definitions/workflow-template/action-objects/addStep'
+  - $ref: '#/definitions/workflow-template/action-objects/alert'
+  - $ref: '#/definitions/workflow-template/action-objects/completeTimer'
+  - $ref: '#/definitions/workflow-template/action-objects/getResources'
+  - $ref: '#/definitions/workflow-template/action-objects/goToPreviousStep'
+  - $ref: '#/definitions/workflow-template/action-objects/goToStep'
+  - $ref: '#/definitions/workflow-template/action-objects/notify'
+  - $ref: '#/definitions/workflow-template/action-objects/repeatSubstep'
+  - $ref: '#/definitions/workflow-template/action-objects/resetTimer'
+  - $ref: '#/definitions/workflow-template/action-objects/sendCommand'
+  - $ref: '#/definitions/workflow-template/action-objects/selectRow'
+  - $ref: '#/definitions/workflow-template/action-objects/selectCell'
+  - $ref: '#/definitions/workflow-template/action-objects/setField'
+  - $ref: '#/definitions/workflow-template/action-objects/setTemporaryField'
+  - $ref: '#/definitions/workflow-template/action-objects/startTimer'
+  - $ref: '#/definitions/workflow-template/action-objects/stopTimer'
+  - $ref: '#/definitions/workflow-template/action-objects/updateResource'
+  - $ref: '#/definitions/workflow-template/action-objects/webhook'

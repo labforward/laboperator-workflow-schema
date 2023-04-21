@@ -23,7 +23,7 @@ properties:
       actively mapped to be available and avoid name collisions.
     $ref: '#/definitions/fields'
   behaviors:
-    $ref: '#/definitions/workflow_template/behaviors'
+    $ref: '#/definitions/workflow-template/behaviors'
   substeps:
     type: array
     items:

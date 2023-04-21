@@ -15,7 +15,7 @@ properties:
       A title mostly for better readability of the step schema.
 
   when:
-    $ref: '#/definitions/workflow_template/triggers'
+    $ref: '#/definitions/workflow-template/triggers'
 
   delay:
     description: |
@@ -28,7 +28,7 @@ properties:
     $ref: '#/definitions/script'
 
   do:
-    $ref: '#/definitions/workflow_template/actions'
+    $ref: '#/definitions/workflow-template/actions'
 
   else:
-    $ref: '#/definitions/workflow_template/actions'
+    $ref: '#/definitions/workflow-template/actions'

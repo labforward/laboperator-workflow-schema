@@ -13,4 +13,4 @@ properties:
       - json
 
   do:
-    $ref: '#/definitions/workflow_template/actions'
+    $ref: '#/definitions/workflow-template/actions'

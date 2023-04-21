@@ -16,7 +16,7 @@ properties:
           The duration by which the automatic navigation to the next step is
           delayed.
   contextInfoSettings:
-    $ref: '#/definitions/context_info/contextInfoSettings'
+    $ref: '#/definitions/context-info/contextInfoSettings'
   reportHeader:
     type: string
     title: Header of the workflow report.

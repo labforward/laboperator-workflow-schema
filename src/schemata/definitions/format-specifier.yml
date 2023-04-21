@@ -6,7 +6,7 @@ description: |
 
   Note that a format specifier only affects the display value of a field. If the field is used as an interactive control element in the workflow, the user input will not be formatted.
   
-  A format specifier can also be defined for a field of type [quantity](/schemas/definitions/field_schema/quantity/).
+  A format specifier can also be defined for a field of type [quantity](/schemas/definitions/field-schema/quantity/).
 examples:
   - .6f
   - .3%

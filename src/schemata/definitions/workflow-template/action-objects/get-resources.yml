@@ -38,7 +38,7 @@ additionalProperties:
       required: [do]
       properties:
         do:
-          $ref: '#/definitions/workflow_template/actions'
+          $ref: '#/definitions/workflow-template/actions'
 
 examples:
   - getResources:

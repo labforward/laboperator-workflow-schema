@@ -1,0 +1,14 @@
+---
+type: object
+title: Trigger Object Schema
+description: Used to pass arguments to a trigger.
+oneOf:
+  - $ref: '#/definitions/workflow-template/trigger-objects/commandResponse'
+  - $ref: '#/definitions/workflow-template/trigger-objects/dataPoint'
+  - $ref: '#/definitions/workflow-template/trigger-objects/fieldUpdate'
+  - $ref: '#/definitions/workflow-template/trigger-objects/manual'
+  - $ref: '#/definitions/workflow-template/trigger-objects/scan'
+  - $ref: '#/definitions/workflow-template/trigger-objects/timerComplete'
+  - $ref: '#/definitions/workflow-template/trigger-objects/timerReset'
+  - $ref: '#/definitions/workflow-template/trigger-objects/timerStart'
+  - $ref: '#/definitions/workflow-template/trigger-objects/timerStop'

@@ -2,8 +2,8 @@ import addFormats from 'ajv-formats';
 import Ajv from 'ajv';
 
 import { Options, Validation } from './types';
-import workflowStepTemplate from './workflow_step_template_schema.json';
-import workflowTemplate from './workflow_template_schema.json';
+import workflowStepTemplate from './workflow-step-template-schema.json';
+import workflowTemplate from './workflow-template-schema.json';
 
 const ajv = new Ajv({
   // Check all rules collecting all errors.

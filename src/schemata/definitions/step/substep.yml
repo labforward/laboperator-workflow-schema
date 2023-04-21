@@ -117,14 +117,14 @@ properties:
       flag to the timer definition.
     oneOf:
       - $ref: '#/definitions/memberName'
-      - $ref: '#/definitions/field_schema/timer'
+      - $ref: '#/definitions/field-schema/timer'
     examples:
       - myTimer
       - type: timer
         defaultDuration: 2000
 
   behaviors:
-    $ref: '#/definitions/workflow_template/behaviors'
+    $ref: '#/definitions/workflow-template/behaviors'
 
   selector:
     $ref: '#/definitions/step/selector'

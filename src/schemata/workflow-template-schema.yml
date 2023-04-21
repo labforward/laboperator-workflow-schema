@@ -1,6 +1,6 @@
 ---
 $schema: http://json-schema.org/draft-07/schema#
-$id: /laboperator/workflow_template_schema/1.0.1
+$id: /laboperator/workflow-template-schema/1.0.1
 type: object
 title: Workflow Template Schema
 description: |
@@ -30,12 +30,12 @@ properties:
   fields:
     $ref: '#/definitions/fields'
   steps:
-    $ref: '#/definitions/workflow_template/steps'
+    $ref: '#/definitions/workflow-template/steps'
   flow:
-    $ref: '#/definitions/workflow_template/flow'
+    $ref: '#/definitions/workflow-template/flow'
   contextInfo:
     $ref: '#/definitions/contextInfo'
   behaviors:
-    $ref: '#/definitions/workflow_template/behaviors'
+    $ref: '#/definitions/workflow-template/behaviors'
   secrets:
     $ref: '#/definitions/secrets'

@@ -3,8 +3,8 @@ import minimalTemplate from '@fixtures/minimalTemplate.json';
 import stepTemplate from '@fixtures/workflow_step_template_example.json';
 import template from '@fixtures/workflow_template_example.json';
 import validate from '@src/validation';
-import workflowStepTemplateSchema from '@src/workflow_step_template_schema.json';
-import workflowTemplateSchema from '@src/workflow_template_schema.json';
+import workflowStepTemplateSchema from '@src/workflow-step-template-schema.json';
+import workflowTemplateSchema from '@src/workflow-template-schema.json';
 
 describe('Schema validation', () => {
   describe('Workflow Template', () => {

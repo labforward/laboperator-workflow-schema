@@ -81,7 +81,7 @@ properties:
   inputChannels: # channels
     type: array
     items:
-      $ref: '#/definitions/step/element_objects/inputChannel'
+      $ref: '#/definitions/step/element-objects/inputChannel'
     description: List of channels
   id:
     description: |
