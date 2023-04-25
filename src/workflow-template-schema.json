@@ -2608,26 +2608,17 @@
       },
       "webhookHandler": {
         "type": "object",
-        "title": "Webhook handler Schema",
-        "description": "The general schema of a webhook handler always consists of a `processor`\nand an `action`. Currently the processor supported is json\n",
+        "title": "Webhook Handler",
+        "description": "A webhook handler always consists of an [action](/schemas/definitions/workflow-template/actions/).\n",
         "required": [
-          "processor",
           "do"
         ],
         "properties": {
-          "processor": {
-            "description": "Type of processor needed for handling the response",
-            "type": "string",
-            "enum": [
-              "json"
-            ],
-            "markdownDescription": "Type of processor needed for handling the response\n\nSee more: [Webhook Handler Schema](https://schema.laboperator.com/schemas/definitions/step/webhook-handler) "
-          },
           "do": {
             "$ref": "#/definitions/workflow-template/actions"
           }
         },
-        "markdownDescription": "The general schema of a webhook handler always consists of a `processor`\nand an `action`. Currently the processor supported is json\n\n\nSee more: [Webhook Handler Schema](https://schema.laboperator.com/schemas/definitions/step/webhook-handler) "
+        "markdownDescription": "A webhook handler always consists of an [action](https://schema.laboperator.com/schemas/definitions/workflow-template/actions/).\n\n\nSee more: [Webhook Handler Schema](https://schema.laboperator.com/schemas/definitions/step/webhook-handler) "
       },
       "element-objects": {
         "inputChannel": {

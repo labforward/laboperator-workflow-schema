@@ -86,7 +86,6 @@
                 },
                 "body": "body_value",
                 "onSuccess": {
-                  "processor": "json",
                   "do": [
                     {
                       "SET_FIELD": {
@@ -97,12 +96,10 @@
                   ]
                 },
                 "onError": {
-                  "processor": "json",
                   "do": ["REPEAT_SUBSTEP"]
                 },
                 "onCode": {
                   "404": {
-                    "processor": "json",
                     "do": [
                       {
                         "ALERT": {
@@ -113,7 +110,6 @@
                     ]
                   },
                   "418": {
-                    "processor": "json",
                     "do": [
                       {
                         "ALERT": {

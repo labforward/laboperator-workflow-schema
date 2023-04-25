@@ -1,16 +1,9 @@
 ---
 type: object
-title: Webhook handler Schema
+title: Webhook Handler
 description: |
-  The general schema of a webhook handler always consists of a `processor`
-  and an `action`. Currently the processor supported is json
-required: [processor, do]
+   A webhook handler always consists of an [action](/schemas/definitions/workflow-template/actions/).
+required: [do]
 properties:
-  processor:
-    description: Type of processor needed for handling the response
-    type: string
-    enum:
-      - json
-
   do:
     $ref: '#/definitions/workflow-template/actions'
