@@ -30,7 +30,7 @@ additionalProperties:
           properties:
             reason:
               description: |
-                A reason that is recorded along with a field update if the update requires a reason. See [Change Reason schema](/schemas/definitions/workflow_template/changeReason/) for more information.
+                A reason that is recorded along with a field update if the update requires a reason. See [Change Reason schema](/schemas/definitions/workflow-template/change-reason/) for more information.
               type: string
     - type: object
       required:
@@ -81,7 +81,7 @@ additionalProperties:
           properties:
             reason:
               description: |
-                A reason that is recorded along with a field update if the update requires a reason. See [Change Reason schema](/schemas/definitions/workflow_template/changeReason/) for more information.
+                A reason that is recorded along with a field update if the update requires a reason. See [Change Reason schema](/schemas/definitions/workflow-template/change-reason/) for more information.
               type: string
 
 examples:

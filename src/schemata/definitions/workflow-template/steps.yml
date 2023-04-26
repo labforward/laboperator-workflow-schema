@@ -19,5 +19,5 @@ propertyNames:
   $ref: '#/definitions/memberName'
 additionalProperties:
   oneOf:
-    - $ref: '#/definitions/workflow_template/step'
+    - $ref: '#/definitions/workflow-template/step'
     - $ref: '#/definitions/stepReference'

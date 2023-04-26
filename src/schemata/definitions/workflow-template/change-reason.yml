@@ -10,7 +10,7 @@ description: |
       5. update to `14` => reason required
       6. user does not submit reason => field value is still `null`
 
-  A reason can be submitted programmatically as part of a `set_field` action, which would then not prompt the reason dialog to the user during workflow execution. See [Set Field schema](/schemas/definitions/workflow_template/action_objects/setField/) for more information.
+  A reason can be submitted programmatically as part of a `set_field` action, which would then not prompt the reason dialog to the user during workflow execution. See [Set Field schema](/schemas/definitions/workflow-template/action-objects/set-field/) for more information.
 
   For fields of type array or object the `changeReason` setting can be applied both at the top-level, meaning any partial update of an existing value requires a reason, or for individual items and properties only. Nested settings take precedence over higher-level settings.
 

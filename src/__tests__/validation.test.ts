@@ -3,16 +3,22 @@ import minimalTemplate from '@fixtures/minimalTemplate.json';
 import stepTemplate from '@fixtures/workflow_step_template_example.json';
 import template from '@fixtures/workflow_template_example.json';
 import validate from '@src/validation';
-import workflowStepTemplateSchema from '@src/workflow_step_template_schema.json';
-import workflowTemplateSchema from '@src/workflow_template_schema.json';
+import workflowStepTemplateSchema from '@src/workflow-step-template-schema.json';
+import workflowTemplateSchema from '@src/workflow-template-schema.json';
 
 describe('Schema validation', () => {
   describe('Workflow Template', () => {
     it('should have all required properties', () => {
       const { errors } = validate({});
-      const requiredProperties = ['schema_version', 'info', 'steps', 'flow'];
+      const requiredProperties = [
+        'schema_version',
+        'info',
+        'fields',
+        'steps',
+        'flow',
+      ];
 
-      expect(errors).toHaveLength(4);
+      expect(errors).toHaveLength(5);
 
       (errors || []).forEach((err, index) => {
         expect(err.schema).toEqual(requiredProperties);

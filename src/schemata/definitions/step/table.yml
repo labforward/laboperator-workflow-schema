@@ -127,7 +127,7 @@ properties:
           description: |
             Configures which table elements can be selected to trigger behaviors. It takes precedence over the table-wide `selectable` setting.
         columns:
-          $ref: '#/definitions/step/table_attributes/columns'
+          $ref: '#/definitions/step/table-attributes/columns'
         caption:
           type: string
           description: |
@@ -167,7 +167,7 @@ properties:
     description: |
       Configures which table elements can be selected to trigger behaviors.
   columns:
-    $ref: '#/definitions/step/table_attributes/columns'
+    $ref: '#/definitions/step/table-attributes/columns'
   state:
     $ref: '#/definitions/memberName'
     description: |
@@ -197,4 +197,4 @@ properties:
       Toggles the automatic creation of behaviors for selecting table rows and cells
 
   rules:
-    $ref: '#/definitions/step/table_attributes/rules'
+    $ref: '#/definitions/step/table-attributes/rules'

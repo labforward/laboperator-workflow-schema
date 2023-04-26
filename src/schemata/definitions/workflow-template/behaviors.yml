@@ -7,6 +7,6 @@ description: |
   within a step and much more. The general scheme of a behavior is
   `trigger` => `action`.
 
-  Behaviors are always treated as parallel independant definitions.
+  Behaviors are always treated as parallel independent definitions.
 items:
-  $ref: '#/definitions/workflow_template/behavior'
+  $ref: '#/definitions/workflow-template/behavior'

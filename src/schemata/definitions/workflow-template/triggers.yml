@@ -8,10 +8,10 @@ description: |
   other occurrences of triggers on that behavior will have no effect, so the
   same behavior can not be triggered multiple times in parallel.
 oneOf:
-  - $ref: '#/definitions/workflow_template/triggerIdentifier'
-  - $ref: '#/definitions/workflow_template/triggerObject'
+  - $ref: '#/definitions/workflow-template/triggerIdentifier'
+  - $ref: '#/definitions/workflow-template/triggerObject'
   - type: array
     items:
       oneOf:
-        - $ref: '#/definitions/workflow_template/triggerIdentifier'
-        - $ref: '#/definitions/workflow_template/triggerObject'
+        - $ref: '#/definitions/workflow-template/triggerIdentifier'
+        - $ref: '#/definitions/workflow-template/triggerObject'

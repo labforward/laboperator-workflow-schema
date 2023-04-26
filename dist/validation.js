@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var ajv_formats_1 = __importDefault(require("ajv-formats"));
 var ajv_1 = __importDefault(require("ajv"));
-var workflow_step_template_schema_json_1 = __importDefault(require("./workflow_step_template_schema.json"));
-var workflow_template_schema_json_1 = __importDefault(require("./workflow_template_schema.json"));
+var workflow_step_template_schema_json_1 = __importDefault(require("./workflow-step-template-schema.json"));
+var workflow_template_schema_json_1 = __importDefault(require("./workflow-template-schema.json"));
 var ajv = new ajv_1.default({
     // Check all rules collecting all errors.
     allErrors: true,

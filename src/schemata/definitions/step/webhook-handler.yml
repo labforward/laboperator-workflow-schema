@@ -1,0 +1,9 @@
+---
+type: object
+title: Webhook Handler
+description: |
+   A webhook handler always consists of an [action](/schemas/definitions/workflow-template/actions/).
+required: [do]
+properties:
+  do:
+    $ref: '#/definitions/workflow-template/actions'

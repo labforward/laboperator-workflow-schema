@@ -118,5 +118,5 @@ const compileSchema = (filename: string) => {
   writeFile(schema, filename);
 };
 
-compileSchema('workflow_template_schema.yml');
-compileSchema('workflow_step_template_schema.yml');
+compileSchema('workflow-template-schema.yml');
+compileSchema('workflow-step-template-schema.yml');

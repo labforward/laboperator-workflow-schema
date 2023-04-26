@@ -59,14 +59,14 @@ allOf:
         description: |
           A flag that is used to group fields during the workflow preparation stage. Fields with the same group name are displayed together in the order of definition. All fields without a specified group are displayed separately.
       changeReason:
-        $ref: '#/definitions/workflow_template/changeReason'
+        $ref: '#/definitions/workflow-template/changeReason'
   - oneOf:
       - $ref: '#/definitions/jsonSchemaDraft7'
-      - $ref: '#/definitions/field_schema/file'
-      - $ref: '#/definitions/field_schema/quantity'
-      - $ref: '#/definitions/field_schema/relationship'
-      - $ref: '#/definitions/field_schema/script'
-      - $ref: '#/definitions/field_schema/timer'
+      - $ref: '#/definitions/field-schema/file'
+      - $ref: '#/definitions/field-schema/quantity'
+      - $ref: '#/definitions/field-schema/relationship'
+      - $ref: '#/definitions/field-schema/script'
+      - $ref: '#/definitions/field-schema/timer'
 examples:
   # enum options
   - type: string
