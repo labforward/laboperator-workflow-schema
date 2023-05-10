@@ -16,7 +16,7 @@ additionalProperties:
   additionalProperties: false
   properties:
     field:
-      $ref: '#/definitions/memberName'
+      $ref: '#/definitions/member-name'
       description: |
         Name of the temporary field which will be assigned with value when the action is triggered.
     value:

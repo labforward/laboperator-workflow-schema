@@ -15,14 +15,14 @@ items:
     - label
   properties:
     value:
-      $ref: '#/definitions/jsonPointer'
+      $ref: '#/definitions/json-pointer'
       description: |
         The pointer to the value for each row in a column. The path is resolved relative to each row object.
     label:
       type: string
       description: The display name of the column.
     formatSpecifier:
-      $ref: '#/definitions/formatSpecifier'
+      $ref: '#/definitions/format-specifier'
       description: |
         A specifier describing number formatting for numeric field values. All other field value types will ignore this.
     align:

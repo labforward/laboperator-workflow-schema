@@ -90,24 +90,24 @@ additionalProperties:
         - |
           reference to non-field information:
           {
-            "stepPointer": {{workflow_step.pointer}}
+            "step-pointer": {{workflow_step.pointer}}
           }
           The example above will generate a request with the following body:
           {
-            "stepPointer": "/steps/externalStep"
+            "stepPointer": "/steps/external-step"
           }
 
     onSuccess:
       description: The handler for response status codes 2xx
-      $ref: '#/definitions/step/webhookHandler'
+      $ref: '#/definitions/step/webhook-handler'
     onError:
       description: The handler for response status codes 5xx
-      $ref: '#/definitions/step/webhookHandler'
+      $ref: '#/definitions/step/webhook-handler'
     onCode:
       type: object
       description: |
         Define a different handler for specific codes.
       propertyNames:
-        $ref: '#/definitions/statusCode'
+        $ref: '#/definitions/status-code'
       additionalProperties:
-        $ref: '#/definitions/step/webhookHandler'
+        $ref: '#/definitions/step/webhook-handler'

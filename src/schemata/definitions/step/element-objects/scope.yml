@@ -37,7 +37,7 @@ allOf:
     then:
       properties:
         params:
-          $ref: '#/definitions/moment_duration'
+          $ref: '#/definitions/moment-duration'
           description: Duration till present time.
           examples:
             - [2, minute]
@@ -61,11 +61,11 @@ allOf:
           properties:
             start_at:
               oneOf:
-                - $ref: '#/definitions/memberName'
+                - $ref: '#/definitions/member-name'
                 - $ref: '#/definitions/timestamp'
             end_at:
               oneOf:
-                - $ref: '#/definitions/memberName'
+                - $ref: '#/definitions/member-name'
                 - $ref: '#/definitions/timestamp'
           examples:
             - start_at: 2020-03-03T07:07:26.000Z
@@ -86,7 +86,7 @@ allOf:
           properties:
             start_at:
               oneOf:
-                - $ref: '#/definitions/memberName'
+                - $ref: '#/definitions/member-name'
                 - type: string
                   pattern: '^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$'
           examples:

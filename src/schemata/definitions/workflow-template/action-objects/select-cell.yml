@@ -14,7 +14,7 @@ additionalProperties:
     - value
   properties:
     table:
-      $ref: '#/definitions/memberName'
+      $ref: '#/definitions/member-name'
       description: Identifier of the table
     value:
       $ref: '#/definitions/script'

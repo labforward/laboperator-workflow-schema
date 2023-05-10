@@ -9,7 +9,7 @@ oneOf:
   - required: ['dataScope']
   - anyOf:
       - required: ['scope']
-      - required: ['inputChannels']  
+      - required: ['inputChannels']
   - not:
       anyOf:
         - required: ['dataScope']
@@ -76,21 +76,21 @@ properties:
         maximum: 12
   dataScope:
     type: object
-    $ref: '#/definitions/memberName' # measurement field
+    $ref: '#/definitions/member-name' # measurement field
     description: Scope of a measurement
   inputChannels: # channels
     type: array
     items:
-      $ref: '#/definitions/step/element-objects/inputChannel'
+      $ref: '#/definitions/step/element-objects/input-channel'
     description: List of channels
   id:
     description: |
       Can be used to render the element inside text (e.g. substep description)
-      in the format {{element|memberName}}.
+      in the format {{element|member-name}}.
       For example, when id is defined as "rotationGauge" the text may look like:
 
       Use this view to monitor the stirring speed {{element|rotationGauge}}
-    $ref: '#/definitions/memberName'
+    $ref: '#/definitions/member-name'
   placement:
     description: |
       When set to `manual` the element won't be displayed in the substep. To render the element it has to be referenced inside the description markdown: `{{element|rotationGauge}}`. Replace `rotationGauge` with the

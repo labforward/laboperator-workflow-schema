@@ -5,7 +5,7 @@ description: |
   A format specifier is a string describing how to format a number for display. It is based on the excellent [d3-format](https://github.com/d3/d3-format) library. For example, a typical fixed point precision of two digits behind the decimal point is achieved with `.2f`. Visit their [official documentation](https://github.com/d3/d3-format#locale_format) for a complete reference and examples.
 
   Note that a format specifier only affects the display value of a field. If the field is used as an interactive control element in the workflow, the user input will not be formatted.
-  
+
   A format specifier can also be defined for a field of type [quantity](/schemas/definitions/field-schema/quantity/).
 examples:
   - .6f

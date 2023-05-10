@@ -14,19 +14,19 @@ additionalProperties:
     - tag
   properties:
     tag:
-      $ref: '#/definitions/resourceTag'
+      $ref: '#/definitions/resource-tag'
     filter:
       type: object
       propertyNames:
-        $ref: '#/definitions/resourceTag'
-    page: 
+        $ref: '#/definitions/resource-tag'
+    page:
       type: object
       propertyNames:
-        $ref: '#/definitions/resourceTag'
-    sort: 
+        $ref: '#/definitions/resource-tag'
+    sort:
       type: object
       propertyNames:
-        $ref: '#/definitions/resourceTag'
+        $ref: '#/definitions/resource-tag'
     blocking:
       type: boolean
       description: |

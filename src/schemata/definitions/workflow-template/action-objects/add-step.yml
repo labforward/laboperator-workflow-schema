@@ -23,9 +23,9 @@ additionalProperties:
           $ref: '#/definitions/version'
           description: Version on a step template.
         fields:
-          $ref: '#/definitions/fieldValues'
+          $ref: '#/definitions/field-values'
         fieldMapping:
-          $ref: '#/definitions/fieldMapping'
+          $ref: '#/definitions/field-mapping'
 
     - type: object
       required:
@@ -33,8 +33,8 @@ additionalProperties:
       additionalProperties: false
       properties:
         step:
-          $ref: '#/definitions/memberName'
+          $ref: '#/definitions/member-name'
         fields:
-          $ref: '#/definitions/fieldValues'
+          $ref: '#/definitions/field-values'
         fieldMapping:
-          $ref: '#/definitions/fieldMapping'
+          $ref: '#/definitions/field-mapping'

@@ -22,7 +22,7 @@ properties:
 
   result:
     description: Define the field that will receive the value of the selected option.
-    $ref: '#/definitions/memberName'
+    $ref: '#/definitions/member-name'
 
   title:
     type: string
@@ -50,12 +50,12 @@ properties:
 
   options:
     oneOf:
-      - $ref: '#/definitions/memberName'
-      - $ref: '#/definitions/step/selectorOptions'
+      - $ref: '#/definitions/member-name'
+      - $ref: '#/definitions/step/selector-options'
       - type: object
         minProperties: 1
         maxProperties: 1
         propertyNames:
-          $ref: '#/definitions/memberName'
+          $ref: '#/definitions/member-name'
         additionalProperties:
-          $ref: '#/definitions/step/selectorAccessors'
+          $ref: '#/definitions/step/selector-accessors'

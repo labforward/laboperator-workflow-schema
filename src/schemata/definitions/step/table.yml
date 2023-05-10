@@ -5,7 +5,7 @@ required:
   - data
 properties:
   data:
-    $ref: '#/definitions/memberName'
+    $ref: '#/definitions/member-name'
     description: |
       The unique identifier of a field that contains the source data.
 
@@ -106,7 +106,7 @@ properties:
         - rows
       properties:
         rows:
-          $ref: '#/definitions/jsonPointer'
+          $ref: '#/definitions/json-pointer'
           description: |
             The pointer to the array that holds the rows data for each tab. The path is resolved relative to the table `data` field.
         label:
@@ -169,7 +169,7 @@ properties:
   columns:
     $ref: '#/definitions/step/table-attributes/columns'
   state:
-    $ref: '#/definitions/memberName'
+    $ref: '#/definitions/member-name'
     description: |
       The unique identifier of a field.
 

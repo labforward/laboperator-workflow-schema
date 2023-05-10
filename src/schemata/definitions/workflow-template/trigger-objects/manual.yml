@@ -18,7 +18,7 @@ additionalProperties:
     - key
   properties:
     key:
-      $ref: '#/definitions/memberName'
+      $ref: '#/definitions/member-name'
       description: |
         A key passed that is used to filter to react to a
         button being assigned the same key.

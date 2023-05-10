@@ -7,7 +7,7 @@ description: |
 maxProperties: 1
 minProperties: 1
 propertyNames:
-  $ref: '#/definitions/stepIdentifier'
+  $ref: '#/definitions/step-identifier'
 additionalProperties:
   type: object
   minProperties: 1
@@ -20,6 +20,6 @@ additionalProperties:
         customize the title of a generic step for each invocation when it is
         reused multiple times during the workflow.
     fields:
-      $ref: '#/definitions/fieldValues'
+      $ref: '#/definitions/field-values'
     fieldMapping:
-      $ref: '#/definitions/fieldMapping'
+      $ref: '#/definitions/field-mapping'

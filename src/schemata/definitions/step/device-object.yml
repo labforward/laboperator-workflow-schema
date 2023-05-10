@@ -5,7 +5,7 @@ description: Used to pass arguments to an step device.
 maxProperties: 1
 minProperties: 1
 propertyNames:
-  $ref: '#/definitions/memberName'
+  $ref: '#/definitions/member-name'
 additionalProperties:
   type: object
   minProperties: 1

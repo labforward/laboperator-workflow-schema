@@ -17,4 +17,4 @@ allOf:
         - until
         - loop
         - do
-  - $ref: '#/definitions/memberName'
+  - $ref: '#/definitions/member-name'

@@ -67,7 +67,7 @@ properties:
       Use the title and description properties of the field schema to control
       the label and help text of an input.
     items: # NOTE: extend to spcify individual elements (e.g. a chart)?
-      $ref: '#/definitions/memberName'
+      $ref: '#/definitions/member-name'
       description: The identifier of a field defined in the step.
 
   buttons:
@@ -86,10 +86,10 @@ properties:
       as invoked commands.
     items:
       oneOf:
-        - $ref: '#/definitions/memberName'
+        - $ref: '#/definitions/member-name'
           description: |
             The identifier of a field that is a device or channel relation.
-        - $ref: '#/definitions/step/deviceObject'
+        - $ref: '#/definitions/step/device-object'
 
   elements:
     type: array
@@ -116,7 +116,7 @@ properties:
       for you. To skip creation of these behaviors, pass the `skipBehavior`
       flag to the timer definition.
     oneOf:
-      - $ref: '#/definitions/memberName'
+      - $ref: '#/definitions/member-name'
       - $ref: '#/definitions/field-schema/timer'
     examples:
       - myTimer

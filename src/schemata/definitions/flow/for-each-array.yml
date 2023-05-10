@@ -8,19 +8,19 @@ required: [forEach, in, do]
 additionalProperties: false
 properties:
   forEach:
-    $ref: '#/definitions/memberName'
+    $ref: '#/definitions/member-name'
     description: |
       An intermediate iterator field which holds the index of the current array item.
       The field must be defined in the template as type `integer`.
   in:
-    $ref: '#/definitions/memberName'
+    $ref: '#/definitions/member-name'
     description: |
       A source data field which will be iterated upon.
       The field must be defined as type `array` in the template.
       Modifications to the array length or item order during or after the iteration is not supported
       and will lead to undefined behavior.
   do:
-    $ref: '#/definitions/flow/flowControl'
+    $ref: '#/definitions/flow/flow-control'
 examples:
   - forEach: iterator
     in: collection

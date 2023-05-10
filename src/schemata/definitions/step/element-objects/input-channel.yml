@@ -5,14 +5,14 @@ description: |
   Input Channels
 items:
   oneOf:
-    - $ref: '#/definitions/memberName' # channels field
+    - $ref: '#/definitions/member-name' # channels field
     - type: object
       required:
         - device
       properties:
         device:
-          $ref: '#/definitions/memberName' # device field
+          $ref: '#/definitions/member-name' # device field
         channels:
           type: array
           items:
-            $ref: '#/definitions/memberName' # channel names
+            $ref: '#/definitions/member-name' # channel names
