@@ -1,16 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-import {
-  camelCase,
-  head,
-  isPlainObject,
-  last,
-  omit,
-  set,
-  startCase,
-} from 'lodash';
 import glob from 'fast-glob';
+import { head, isPlainObject, last, omit, set, startCase } from 'lodash';
 import yaml from 'yaml';
 
 import jsonSchema from './schemata/org.json-schema.draft-07.schema.json';
@@ -26,7 +18,9 @@ const metaSchema = JSON.parse(
  */
 delete metaSchema.$id;
 
-const assignMetaSchema = (rootSchema: Record<string, any>) => {
+const assignMetaSchema = (
+  rootSchema: Record<string, Record<string, unknown>>
+) => {
   const copy = { ...rootSchema };
 
   copy.definitions = metaSchema.definitions;
@@ -41,7 +35,7 @@ const getPropertyPath = (pathname: string) => {
   const dirs = substrings.slice(0, -1).join('.');
   const filename = head(last(substrings)?.split('.'));
 
-  return `${dirs}.${camelCase(filename)}`;
+  return `${dirs}.${filename}`;
 };
 
 const readFile = (filename: string) => {
@@ -120,3 +114,4 @@ const compileSchema = (filename: string) => {
 
 compileSchema('workflow-template-schema.yml');
 compileSchema('workflow-step-template-schema.yml');
+compileSchema('workflow-event-schema.yml');
