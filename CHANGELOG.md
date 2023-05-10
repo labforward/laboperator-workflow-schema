@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - [[WFE-89]](https://labforward.atlassian.net/browse/WFE-89) [Maintenance] Add linting tools
 - [[CUB-4282]](https://labforward.atlassian.net/browse/CUB-4282) [Workflows] Add get resources template schema
 - [[CUB-4622]](https://labforward.atlassian.net/browse/CUB-4622) [Workflows] Add Workflow Event to the schemata definitions
+- [[CUB-4622]](https://labforward.atlassian.net/browse/CUB-4622) [Workflows] Change definition references to dashed-case
 
 ### Changed
 
