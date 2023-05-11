@@ -72,6 +72,8 @@ items:
           type: string
           description: |
             The hint text that will be available for the user when the rules are applied.
+        formatSpecifier:
+          $ref: '#/definitions/format-specifier'
 
 examples:
   - |
