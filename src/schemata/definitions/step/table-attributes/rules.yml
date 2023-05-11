@@ -74,6 +74,8 @@ items:
             The hint text that will be available for the user when the rules are applied.
         formatSpecifier:
           $ref: '#/definitions/format-specifier'
+        readOnly:
+          type: boolean
 
 examples:
   - |
