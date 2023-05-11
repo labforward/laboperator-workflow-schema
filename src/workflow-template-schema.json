@@ -44,7 +44,7 @@
       "$ref": "#/definitions/workflow-template/flow"
     },
     "contextInfo": {
-      "$ref": "#/definitions/context-info"
+      "$ref": "#/definitions/context/info"
     },
     "behaviors": {
       "$ref": "#/definitions/workflow-template/behaviors"
@@ -390,129 +390,11 @@
     "buttons": {
       "type": "array",
       "title": "Buttons",
-      "description": "Buttons allow users to trigger actions with a single tap.\n\nButtons defined at the workflow or step level can be used anywhere in the workflow or step respectively. Use its unique `key` or `id` value to reference a button inside markdown:\n\n`{{button|member-name}}`\n\nWhen defined at the substep level of a template, buttons automatically appear at the very bottom of the substep in the order in which they are defined. To manually place a substep button in the above shown format its `placement` setting must be set to `manual`.\n",
+      "description": "Buttons allow users to trigger actions with a single tap.\n\nButtons defined at the workflow or step level can be used anywhere in the workflow or step respectively. Use its unique `key` or `id` value to reference a button inside markdown:\n\n`{{button|memberName}}`\n\nWhen defined at the substep level of a template, buttons automatically appear at the very bottom of the substep in the order in which they are defined. To manually place a substep button in the above shown format its `placement` setting must be set to `manual`.\n",
       "items": {
         "$ref": "#/definitions/button"
       },
-      "markdownDescription": "Buttons allow users to trigger actions with a single tap.\n\nButtons defined at the workflow or step level can be used anywhere in the workflow or step respectively. Use its unique `key` or `id` value to reference a button inside markdown:\n\n`{{button|member-name}}`\n\nWhen defined at the substep level of a template, buttons automatically appear at the very bottom of the substep in the order in which they are defined. To manually place a substep button in the above shown format its `placement` setting must be set to `manual`.\n\n\nSee more: [Buttons Schema](https://schema.laboperator.com/schemas/definitions/buttons) "
-    },
-    "context-info-page": {
-      "type": "object",
-      "title": "Page containing context information",
-      "description": "Pages displayed as workflow context information.\n",
-      "required": [
-        "title",
-        "content"
-      ],
-      "properties": {
-        "title": {
-          "type": "string",
-          "title": "Title",
-          "description": "The displayed title of the page.\n",
-          "examples": [
-            "Formula"
-          ],
-          "markdownDescription": "The displayed title of the page.\n\n\nSee more: [Context Info Page Schema](https://schema.laboperator.com/schemas/definitions/context-info-page) "
-        },
-        "content": {
-          "type": "string",
-          "title": "Main content",
-          "description": "Display text, tables, fields values and media using Markdown.\n",
-          "default": "",
-          "examples": [
-            "Add a fancy slide content. It even supports __[Markdown](https://en.wikipedia.org/wiki/Markdown)__!"
-          ],
-          "markdownDescription": "Display text, tables, fields values and media using Markdown.\n\n\nSee more: [Context Info Page Schema](https://schema.laboperator.com/schemas/definitions/context-info-page) "
-        }
-      },
-      "markdownDescription": "Pages displayed as workflow context information.\n\n\nSee more: [Context Info Page Schema](https://schema.laboperator.com/schemas/definitions/context-info-page) "
-    },
-    "context-info-settings": {
-      "type": "object",
-      "title": "Context information panel settings",
-      "description": "Configuration of the workflow context information.\n",
-      "properties": {
-        "toggleButton": {
-          "type": "object",
-          "title": "Toggle button settings",
-          "description": "Configuration of the toggle button which opens/closes the panel.",
-          "properties": {
-            "label": {
-              "description": "Label of the button",
-              "type": "string",
-              "default": "Info",
-              "examples": [
-                "Info"
-              ],
-              "markdownDescription": "Label of the button\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info-settings) "
-            }
-          },
-          "markdownDescription": "Configuration of the toggle button which opens/closes the panel.\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info-settings) "
-        },
-        "allowFullscreen": {
-          "title": "Full-screen mode toggle",
-          "description": "Switches the ability to expand the panel to the full screen height.\n",
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Switches the ability to expand the panel to the full screen height.\n\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info-settings) "
-        },
-        "initialState": {
-          "type": "object",
-          "title": "Initial state of the context information panel",
-          "description": "Determines the behavior of the context information panel when the workflow run execution view is opened.\n",
-          "properties": {
-            "open": {
-              "type": "boolean",
-              "default": false
-            },
-            "fullscreen": {
-              "type": "boolean",
-              "default": false
-            }
-          },
-          "markdownDescription": "Determines the behavior of the context information panel when the workflow run execution view is opened.\n\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info-settings) "
-        },
-        "contentPanel": {
-          "type": "object",
-          "title": "Content panel settings",
-          "description": "Configuration of the panel.\n",
-          "properties": {
-            "color": {
-              "description": "Background color.",
-              "type": "string",
-              "default": "#f5f5f5",
-              "examples": [
-                "white",
-                "#210210"
-              ],
-              "markdownDescription": "Background color.\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info-settings) "
-            },
-            "height": {
-              "description": "Height of opened panel in pixels.",
-              "type": "number",
-              "default": 160,
-              "markdownDescription": "Height of opened panel in pixels.\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info-settings) "
-            }
-          },
-          "markdownDescription": "Configuration of the panel.\n\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info-settings) "
-        }
-      },
-      "markdownDescription": "Configuration of the workflow context information.\n\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info-settings) "
-    },
-    "context-info": {
-      "type": "object",
-      "title": "Context information of a workflow or a step",
-      "description": "Used to display contextual information related to the workflow or step.\n\nGlobal contextual information is defined in a workflow template and displayed\nin all steps.\n\nLocal contextual information is defined in a step template, or within a step\nin a workflow template, and displayed only during that specific step.\n",
-      "properties": {
-        "pages": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/definitions/context-info-page"
-          }
-        }
-      },
-      "markdownDescription": "Used to display contextual information related to the workflow or step.\n\nGlobal contextual information is defined in a workflow template and displayed\nin all steps.\n\nLocal contextual information is defined in a step template, or within a step\nin a workflow template, and displayed only during that specific step.\n\n\nSee more: [Context Info Schema](https://schema.laboperator.com/schemas/definitions/context-info) "
+      "markdownDescription": "Buttons allow users to trigger actions with a single tap.\n\nButtons defined at the workflow or step level can be used anywhere in the workflow or step respectively. Use its unique `key` or `id` value to reference a button inside markdown:\n\n`{{button|memberName}}`\n\nWhen defined at the substep level of a template, buttons automatically appear at the very bottom of the substep in the order in which they are defined. To manually place a substep button in the above shown format its `placement` setting must be set to `manual`.\n\n\nSee more: [Buttons Schema](https://schema.laboperator.com/schemas/definitions/buttons) "
     },
     "duration": {
       "title": "Duration",
@@ -1147,7 +1029,7 @@
           }
         },
         "contextInfo": {
-          "$ref": "#/definitions/context-info"
+          "$ref": "#/definitions/context/info"
         },
         "reportSummary": {
           "$ref": "#/definitions/report-summary"
@@ -1333,7 +1215,7 @@
             ]
           },
           "contextInfoSettings": {
-            "$ref": "#/definitions/context-info-settings"
+            "$ref": "#/definitions/context/settings"
           },
           "reportHeader": {
             "type": "string",
@@ -1352,6 +1234,126 @@
           }
         },
         "markdownDescription": "The configuration section of a workflow template holds general options for the\nworkflow display.\n\nStep configurations will override workflow configuration.\n\n\nSee more: [Workflow Config Schema](https://schema.laboperator.com/schemas/definitions/config/workflow-config) "
+      }
+    },
+    "context": {
+      "info": {
+        "type": "object",
+        "title": "Context information of a workflow or a step",
+        "description": "Used to display contextual information related to the workflow or step.\n\nGlobal contextual information is defined in a workflow template and displayed\nin all steps.\n\nLocal contextual information is defined in a step template, or within a step\nin a workflow template, and displayed only during that specific step.\n",
+        "properties": {
+          "pages": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/definitions/context/page"
+            }
+          }
+        },
+        "markdownDescription": "Used to display contextual information related to the workflow or step.\n\nGlobal contextual information is defined in a workflow template and displayed\nin all steps.\n\nLocal contextual information is defined in a step template, or within a step\nin a workflow template, and displayed only during that specific step.\n\n\nSee more: [Info Schema](https://schema.laboperator.com/schemas/definitions/context/info) "
+      },
+      "page": {
+        "type": "object",
+        "title": "Page containing context information",
+        "description": "Pages displayed as workflow context information.\n",
+        "required": [
+          "title",
+          "content"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "The displayed title of the page.\n",
+            "examples": [
+              "Formula"
+            ],
+            "markdownDescription": "The displayed title of the page.\n\n\nSee more: [Page Schema](https://schema.laboperator.com/schemas/definitions/context/page) "
+          },
+          "content": {
+            "type": "string",
+            "title": "Main content",
+            "description": "Display text, tables, fields values and media using Markdown.\n",
+            "default": "",
+            "examples": [
+              "Add a fancy slide content. It even supports __[Markdown](https://en.wikipedia.org/wiki/Markdown)__!"
+            ],
+            "markdownDescription": "Display text, tables, fields values and media using Markdown.\n\n\nSee more: [Page Schema](https://schema.laboperator.com/schemas/definitions/context/page) "
+          }
+        },
+        "markdownDescription": "Pages displayed as workflow context information.\n\n\nSee more: [Page Schema](https://schema.laboperator.com/schemas/definitions/context/page) "
+      },
+      "settings": {
+        "type": "object",
+        "title": "Context information panel settings",
+        "description": "Configuration of the workflow context information.\n",
+        "properties": {
+          "toggleButton": {
+            "type": "object",
+            "title": "Toggle button settings",
+            "description": "Configuration of the toggle button which opens/closes the panel.",
+            "properties": {
+              "label": {
+                "description": "Label of the button",
+                "type": "string",
+                "default": "Info",
+                "examples": [
+                  "Info"
+                ],
+                "markdownDescription": "Label of the button\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
+              }
+            },
+            "markdownDescription": "Configuration of the toggle button which opens/closes the panel.\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
+          },
+          "allowFullscreen": {
+            "title": "Full-screen mode toggle",
+            "description": "Switches the ability to expand the panel to the full screen height.\n",
+            "type": "boolean",
+            "default": true,
+            "markdownDescription": "Switches the ability to expand the panel to the full screen height.\n\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
+          },
+          "initialState": {
+            "type": "object",
+            "title": "Initial state of the context information panel",
+            "description": "Determines the behavior of the context information panel when the workflow run execution view is opened.\n",
+            "properties": {
+              "open": {
+                "type": "boolean",
+                "default": false
+              },
+              "fullscreen": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "markdownDescription": "Determines the behavior of the context information panel when the workflow run execution view is opened.\n\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
+          },
+          "contentPanel": {
+            "type": "object",
+            "title": "Content panel settings",
+            "description": "Configuration of the panel.\n",
+            "properties": {
+              "color": {
+                "description": "Background color.",
+                "type": "string",
+                "default": "#f5f5f5",
+                "examples": [
+                  "white",
+                  "#210210"
+                ],
+                "markdownDescription": "Background color.\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
+              },
+              "height": {
+                "description": "Height of opened panel in pixels.",
+                "type": "number",
+                "default": 160,
+                "markdownDescription": "Height of opened panel in pixels.\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
+              }
+            },
+            "markdownDescription": "Configuration of the panel.\n\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
+          }
+        },
+        "markdownDescription": "Configuration of the workflow context information.\n\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
       }
     },
     "field-schema": {
@@ -4597,7 +4599,7 @@
                 "description": "The HTTP request body. You can add information about fields present in the workflow,\nand non-field information as well, using {{myInformation}}.\nBesides field identifiers, the following references are supported:\n  - workflow_step: The current step of the workflow.\n    Please refer to the API documentation for the keys available to use.\n  - workflow_run: The current workflow run.\n    Please refer to the API documentation for the keys available to use.\n  - signal: details of what triggered the action.\n    includes but not limited to:\n\n      - type: What triggered the action, e.g. StepStart, Manual, etc\n      - auth_token: Encoded reference to the active user access_tokens (applicable only in a SSO environment),\n        may be blank if the active user can not be determined\n      - pointer: Returns the pointer to the behavior that called the webhook\n        (reference to the path inside the workflow template being used).\n\n  - options: The options being used for the webhook action, i.e. URL, headers, handlers.\n",
                 "examples": [
                   "reference to a workflow field named 'volumeField' with a value of '10ml':\n{\n  \"registered_value\": {{volumeField}}\n}\nThe example above will generate a request with the following body:\n{\n  \"registered_value\": \"10ml\"\n}\n",
-                  "reference to non-field information:\n{\n  \"step-pointer\": {{workflow_step.pointer}}\n}\nThe example above will generate a request with the following body:\n{\n  \"stepPointer\": \"/steps/external-step\"\n}\n"
+                  "reference to non-field information:\n{\n  \"step-pointer\": {{workflow_step.pointer}}\n}\nThe example above will generate a request with the following body:\n{\n  \"stepPointer\": \"/steps/externalStep\"\n}\n"
                 ],
                 "markdownDescription": "The HTTP request body. You can add information about fields present in the workflow,\nand non-field information as well, using {{myInformation}}.\nBesides field identifiers, the following references are supported:\n  - workflow_step: The current step of the workflow.\n    Please refer to the API documentation for the keys available to use.\n  - workflow_run: The current workflow run.\n    Please refer to the API documentation for the keys available to use.\n  - signal: details of what triggered the action.\n    includes but not limited to:\n\n      - type: What triggered the action, e.g. StepStart, Manual, etc\n      - auth_token: Encoded reference to the active user access_tokens (applicable only in a SSO environment),\n        may be blank if the active user can not be determined\n      - pointer: Returns the pointer to the behavior that called the webhook\n        (reference to the path inside the workflow template being used).\n\n  - options: The options being used for the webhook action, i.e. URL, headers, handlers.\n\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
               },
