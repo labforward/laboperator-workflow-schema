@@ -29,7 +29,7 @@ properties:
     items:
       $ref: '#/definitions/step/substep'
   contextInfo:
-    $ref: '#/definitions/context-info'
+    $ref: '#/definitions/context/info'
   reportSummary:
     $ref: '#/definitions/report-summary'
   tables:

@@ -35,7 +35,7 @@ properties:
   flow:
     $ref: '#/definitions/workflow-template/flow'
   contextInfo:
-    $ref: '#/definitions/context-info'
+    $ref: '#/definitions/context/info'
   behaviors:
     $ref: '#/definitions/workflow-template/behaviors'
   secrets:

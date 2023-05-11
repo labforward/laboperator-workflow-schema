@@ -94,7 +94,7 @@ additionalProperties:
           }
           The example above will generate a request with the following body:
           {
-            "stepPointer": "/steps/external-step"
+            "stepPointer": "/steps/externalStep"
           }
 
     onSuccess:
