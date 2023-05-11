@@ -2977,6 +2977,9 @@
                     "type": "string",
                     "description": "The hint text that will be available for the user when the rules are applied.\n",
                     "markdownDescription": "The hint text that will be available for the user when the rules are applied.\n\n\nSee more: [Rules Schema](https://schema.laboperator.com/schemas/definitions/step/table-attributes/rules) "
+                  },
+                  "formatSpecifier": {
+                    "$ref": "#/definitions/format-specifier"
                   }
                 },
                 "markdownDescription": "The changes that are applied to cells, rows and tabs in the `range` if the `condition` is fulfilled.\n\n\nSee more: [Rules Schema](https://schema.laboperator.com/schemas/definitions/step/table-attributes/rules) "
