@@ -7,7 +7,7 @@ description: |
   reference and examples.
 oneOf:
   - type: array
-    item:
+    items:
       oneOf:
         - type: string
           enum:
