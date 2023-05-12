@@ -10,7 +10,7 @@ properties:
       - move_step
   payload:
     type: object
-    require:
+    required:
       - from
       - to
     properties:
