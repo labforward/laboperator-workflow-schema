@@ -808,7 +808,7 @@
       "oneOf": [
         {
           "type": "array",
-          "item": {
+          "items": {
             "oneOf": [
               {
                 "type": "string",
@@ -2022,6 +2022,48 @@
         "required": [
           "type"
         ],
+        "oneOf": [
+          {
+            "required": [
+              "dataScope"
+            ]
+          },
+          {
+            "anyOf": [
+              {
+                "required": [
+                  "scope"
+                ]
+              },
+              {
+                "required": [
+                  "inputChannels"
+                ]
+              }
+            ]
+          },
+          {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "dataScope"
+                  ]
+                },
+                {
+                  "required": [
+                    "scope"
+                  ]
+                },
+                {
+                  "required": [
+                    "inputChannels"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
         "properties": {
           "type": {
             "type": "string",
@@ -2093,45 +2135,17 @@
                 "maximum": 12
               }
             ],
-            "examples": [
-              6,
-              {
-                "xs": 12,
-                "md": 6
-              }
-            ],
             "markdownDescription": "The responsive width of the element. The value is the number of columns that the element should occupy based on a 12-column grid layout.\n\nThere are 5 breakpoints allowing to define multiple width values for different screen sizes.\n\nA single number may be provided and applied to all breakpoints if there is no reason to resize the element for different screen sizes.\n\n\nSee more: [Element Schema](https://schema.laboperator.com/schemas/definitions/step/element) "
           },
-          "oneOf": [
-            {
-              "type": "object",
-              "properties": {
-                "dataScope": {
-                  "$ref": "#/definitions/member-name",
-                  "description": "Scope of a measurement",
-                  "markdownDescription": "Scope of a measurement\n\nSee more: [Element Schema](https://schema.laboperator.com/schemas/definitions/step/element) "
-                }
-              }
-            },
-            {
-              "type": "object",
-              "properties": {
-                "scope": {
-                  "$ref": "#/definitions/step/element-objects/scope",
-                  "description": "Interval of time",
-                  "markdownDescription": "Interval of time\n\nSee more: [Element Schema](https://schema.laboperator.com/schemas/definitions/step/element) "
-                },
-                "inputChannels": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/step/element-objects/input-channel"
-                  },
-                  "description": "List of channels",
-                  "markdownDescription": "List of channels\n\nSee more: [Element Schema](https://schema.laboperator.com/schemas/definitions/step/element) "
-                }
-              }
-            }
-          ],
+          "dataScope": {
+            "type": "object",
+            "$ref": "#/definitions/member-name",
+            "description": "Scope of a measurement",
+            "markdownDescription": "Scope of a measurement\n\nSee more: [Element Schema](https://schema.laboperator.com/schemas/definitions/step/element) "
+          },
+          "inputChannels": {
+            "$ref": "#/definitions/step/element-objects/input-channels"
+          },
           "id": {
             "description": "Can be used to render the element inside text (e.g. substep description)\nin the format {{element|memberName}}.\nFor example, when id is defined as \"rotationGauge\" the text may look like:\n\nUse this view to monitor the stirring speed {{element|rotationGauge}}\n",
             "$ref": "#/definitions/member-name",
@@ -2602,7 +2616,7 @@
         "markdownDescription": "A webhook handler always consists of an [action](https://schema.laboperator.com/schemas/definitions/workflow-template/actions/).\n\n\nSee more: [Webhook Handler Schema](https://schema.laboperator.com/schemas/definitions/step/webhook-handler) "
       },
       "element-objects": {
-        "input-channel": {
+        "input-channels": {
           "type": "array",
           "title": "Input Channels",
           "description": "Input Channels\n",
@@ -2630,7 +2644,7 @@
               }
             ]
           },
-          "markdownDescription": "Input Channels\n\n\nSee more: [Input Channel Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/input-channel) "
+          "markdownDescription": "Input Channels\n\n\nSee more: [Input Channels Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/input-channels) "
         },
         "scope": {
           "type": "object",

@@ -683,7 +683,7 @@ export declare const schemas: {
                 description: string;
                 oneOf: ({
                     type: string;
-                    item: {
+                    items: {
                         oneOf: ({
                             type: string;
                             enum: string[];
@@ -701,7 +701,7 @@ export declare const schemas: {
                     type: string;
                     description: string;
                     markdownDescription: string;
-                    item?: undefined;
+                    items?: undefined;
                     pattern?: undefined;
                     propertyNames?: undefined;
                     additionalProperties?: undefined;
@@ -710,7 +710,7 @@ export declare const schemas: {
                     pattern: string;
                     description: string;
                     markdownDescription: string;
-                    item?: undefined;
+                    items?: undefined;
                     propertyNames?: undefined;
                     additionalProperties?: undefined;
                 } | {
@@ -721,7 +721,7 @@ export declare const schemas: {
                     additionalProperties: {
                         type: string;
                     };
-                    item?: undefined;
+                    items?: undefined;
                     description?: undefined;
                     markdownDescription?: undefined;
                     pattern?: undefined;
@@ -1596,6 +1596,25 @@ export declare const schemas: {
                     title: string;
                     description: string;
                     required: string[];
+                    oneOf: ({
+                        required: string[];
+                        anyOf?: undefined;
+                        not?: undefined;
+                    } | {
+                        anyOf: {
+                            required: string[];
+                        }[];
+                        required?: undefined;
+                        not?: undefined;
+                    } | {
+                        not: {
+                            anyOf: {
+                                required: string[];
+                            }[];
+                        };
+                        required?: undefined;
+                        anyOf?: undefined;
+                    })[];
                     properties: {
                         type: {
                             type: string;
@@ -1639,42 +1658,17 @@ export declare const schemas: {
                                 additionalProperties?: undefined;
                                 propertyNames?: undefined;
                             })[];
-                            examples: (number | {
-                                xs: number;
-                                md: number;
-                            })[];
                             markdownDescription: string;
                         };
-                        oneOf: ({
+                        dataScope: {
                             type: string;
-                            properties: {
-                                dataScope: {
-                                    $ref: string;
-                                    description: string;
-                                    markdownDescription: string;
-                                };
-                                scope?: undefined;
-                                inputChannels?: undefined;
-                            };
-                        } | {
-                            type: string;
-                            properties: {
-                                scope: {
-                                    $ref: string;
-                                    description: string;
-                                    markdownDescription: string;
-                                };
-                                inputChannels: {
-                                    type: string;
-                                    items: {
-                                        $ref: string;
-                                    };
-                                    description: string;
-                                    markdownDescription: string;
-                                };
-                                dataScope?: undefined;
-                            };
-                        })[];
+                            $ref: string;
+                            description: string;
+                            markdownDescription: string;
+                        };
+                        inputChannels: {
+                            $ref: string;
+                        };
                         id: {
                             description: string;
                             $ref: string;
@@ -2098,7 +2092,7 @@ export declare const schemas: {
                     markdownDescription: string;
                 };
                 "element-objects": {
-                    "input-channel": {
+                    "input-channels": {
                         type: string;
                         title: string;
                         description: string;
@@ -4519,7 +4513,7 @@ export declare const schemas: {
                 description: string;
                 oneOf: ({
                     type: string;
-                    item: {
+                    items: {
                         oneOf: ({
                             type: string;
                             enum: string[];
@@ -4537,7 +4531,7 @@ export declare const schemas: {
                     type: string;
                     description: string;
                     markdownDescription: string;
-                    item?: undefined;
+                    items?: undefined;
                     pattern?: undefined;
                     propertyNames?: undefined;
                     additionalProperties?: undefined;
@@ -4546,7 +4540,7 @@ export declare const schemas: {
                     pattern: string;
                     description: string;
                     markdownDescription: string;
-                    item?: undefined;
+                    items?: undefined;
                     propertyNames?: undefined;
                     additionalProperties?: undefined;
                 } | {
@@ -4557,7 +4551,7 @@ export declare const schemas: {
                     additionalProperties: {
                         type: string;
                     };
-                    item?: undefined;
+                    items?: undefined;
                     description?: undefined;
                     markdownDescription?: undefined;
                     pattern?: undefined;
@@ -5432,6 +5426,25 @@ export declare const schemas: {
                     title: string;
                     description: string;
                     required: string[];
+                    oneOf: ({
+                        required: string[];
+                        anyOf?: undefined;
+                        not?: undefined;
+                    } | {
+                        anyOf: {
+                            required: string[];
+                        }[];
+                        required?: undefined;
+                        not?: undefined;
+                    } | {
+                        not: {
+                            anyOf: {
+                                required: string[];
+                            }[];
+                        };
+                        required?: undefined;
+                        anyOf?: undefined;
+                    })[];
                     properties: {
                         type: {
                             type: string;
@@ -5475,42 +5488,17 @@ export declare const schemas: {
                                 additionalProperties?: undefined;
                                 propertyNames?: undefined;
                             })[];
-                            examples: (number | {
-                                xs: number;
-                                md: number;
-                            })[];
                             markdownDescription: string;
                         };
-                        oneOf: ({
+                        dataScope: {
                             type: string;
-                            properties: {
-                                dataScope: {
-                                    $ref: string;
-                                    description: string;
-                                    markdownDescription: string;
-                                };
-                                scope?: undefined;
-                                inputChannels?: undefined;
-                            };
-                        } | {
-                            type: string;
-                            properties: {
-                                scope: {
-                                    $ref: string;
-                                    description: string;
-                                    markdownDescription: string;
-                                };
-                                inputChannels: {
-                                    type: string;
-                                    items: {
-                                        $ref: string;
-                                    };
-                                    description: string;
-                                    markdownDescription: string;
-                                };
-                                dataScope?: undefined;
-                            };
-                        })[];
+                            $ref: string;
+                            description: string;
+                            markdownDescription: string;
+                        };
+                        inputChannels: {
+                            $ref: string;
+                        };
                         id: {
                             description: string;
                             $ref: string;
@@ -5934,7 +5922,7 @@ export declare const schemas: {
                     markdownDescription: string;
                 };
                 "element-objects": {
-                    "input-channel": {
+                    "input-channels": {
                         type: string;
                         title: string;
                         description: string;
@@ -8337,7 +8325,7 @@ export declare const schemas: {
                 description: string;
                 oneOf: ({
                     type: string;
-                    item: {
+                    items: {
                         oneOf: ({
                             type: string;
                             enum: string[];
@@ -8355,7 +8343,7 @@ export declare const schemas: {
                     type: string;
                     description: string;
                     markdownDescription: string;
-                    item?: undefined;
+                    items?: undefined;
                     pattern?: undefined;
                     propertyNames?: undefined;
                     additionalProperties?: undefined;
@@ -8364,7 +8352,7 @@ export declare const schemas: {
                     pattern: string;
                     description: string;
                     markdownDescription: string;
-                    item?: undefined;
+                    items?: undefined;
                     propertyNames?: undefined;
                     additionalProperties?: undefined;
                 } | {
@@ -8375,7 +8363,7 @@ export declare const schemas: {
                     additionalProperties: {
                         type: string;
                     };
-                    item?: undefined;
+                    items?: undefined;
                     description?: undefined;
                     markdownDescription?: undefined;
                     pattern?: undefined;
@@ -9250,6 +9238,25 @@ export declare const schemas: {
                     title: string;
                     description: string;
                     required: string[];
+                    oneOf: ({
+                        required: string[];
+                        anyOf?: undefined;
+                        not?: undefined;
+                    } | {
+                        anyOf: {
+                            required: string[];
+                        }[];
+                        required?: undefined;
+                        not?: undefined;
+                    } | {
+                        not: {
+                            anyOf: {
+                                required: string[];
+                            }[];
+                        };
+                        required?: undefined;
+                        anyOf?: undefined;
+                    })[];
                     properties: {
                         type: {
                             type: string;
@@ -9293,42 +9300,17 @@ export declare const schemas: {
                                 additionalProperties?: undefined;
                                 propertyNames?: undefined;
                             })[];
-                            examples: (number | {
-                                xs: number;
-                                md: number;
-                            })[];
                             markdownDescription: string;
                         };
-                        oneOf: ({
+                        dataScope: {
                             type: string;
-                            properties: {
-                                dataScope: {
-                                    $ref: string;
-                                    description: string;
-                                    markdownDescription: string;
-                                };
-                                scope?: undefined;
-                                inputChannels?: undefined;
-                            };
-                        } | {
-                            type: string;
-                            properties: {
-                                scope: {
-                                    $ref: string;
-                                    description: string;
-                                    markdownDescription: string;
-                                };
-                                inputChannels: {
-                                    type: string;
-                                    items: {
-                                        $ref: string;
-                                    };
-                                    description: string;
-                                    markdownDescription: string;
-                                };
-                                dataScope?: undefined;
-                            };
-                        })[];
+                            $ref: string;
+                            description: string;
+                            markdownDescription: string;
+                        };
+                        inputChannels: {
+                            $ref: string;
+                        };
                         id: {
                             description: string;
                             $ref: string;
@@ -9752,7 +9734,7 @@ export declare const schemas: {
                     markdownDescription: string;
                 };
                 "element-objects": {
-                    "input-channel": {
+                    "input-channels": {
                         type: string;
                         title: string;
                         description: string;
