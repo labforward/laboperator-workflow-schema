@@ -87,7 +87,7 @@ properties:
   id:
     description: |
       Can be used to render the element inside text (e.g. substep description)
-      in the format {{element|member-name}}.
+      in the format {{element|memberName}}.
       For example, when id is defined as "rotationGauge" the text may look like:
 
       Use this view to monitor the stirring speed {{element|rotationGauge}}

@@ -90,7 +90,7 @@ additionalProperties:
         - |
           reference to non-field information:
           {
-            "step-pointer": {{workflow_step.pointer}}
+            "stepPointer": {{workflow_step.pointer}}
           }
           The example above will generate a request with the following body:
           {
