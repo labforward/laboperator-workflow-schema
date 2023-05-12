@@ -3093,7 +3093,7 @@
                     },
                     "payload": {
                         "type": "object",
-                        "require": [
+                        "required": [
                             "from",
                             "to"
                         ],

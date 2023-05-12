@@ -2485,7 +2485,7 @@ export declare const schemas: {
                         };
                         payload: {
                             type: string;
-                            require: string[];
+                            required: string[];
                             properties: {
                                 from: {
                                     type: string;
@@ -6315,7 +6315,7 @@ export declare const schemas: {
                         };
                         payload: {
                             type: string;
-                            require: string[];
+                            required: string[];
                             properties: {
                                 from: {
                                     type: string;
@@ -10127,7 +10127,7 @@ export declare const schemas: {
                         };
                         payload: {
                             type: string;
-                            require: string[];
+                            required: string[];
                             properties: {
                                 from: {
                                     type: string;
