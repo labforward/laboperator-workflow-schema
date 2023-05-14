@@ -80,6 +80,8 @@ properties:
     description: Scope of a measurement
   inputChannels: # channels
     $ref: '#/definitions/step/element-objects/input-channels'
+  scope:
+    $ref: '#/definitions/step/element-objects/scope'
   id:
     description: |
       Can be used to render the element inside text (e.g. substep description)

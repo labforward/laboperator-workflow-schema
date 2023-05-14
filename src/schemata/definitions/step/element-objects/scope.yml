@@ -14,44 +14,39 @@ properties:
       - duration
       - range
       - open_range
-allOf:
-  - if:
-    properties:
-      type:
-        const: limit
-    then:
-      properties:
-        params:
-          type: object
-          description: |
-            Fixed number of last data points that should be taken to the scope.
+  params:
+    type:
+      - object
+      - array
+      - string
+      - number
+    allOf:
+      - if:
           properties:
-            count:
-              type: number
-          examples:
-            - count: 1
-  - if:
-    properties:
-      type:
-        const: duration
-    then:
-      properties:
-        params:
+            type:
+              enum:
+                - limit
+        then:
+            description: |
+              Fixed number of last data points that should be taken to the scope.
+            properties:
+              count:
+                type: number
+            examples:
+              - count: 1
+      - if:
+          properties:
+            type:
+              enum:
+                - duration
+        then:
           $ref: '#/definitions/moment-duration'
-          description: Duration till present time.
-          examples:
-            - [2, minute]
-            - P2M
-            - seconds: 2
-              minutes: 2
-  - if:
-    properties:
-      type:
-        const: range
-    then:
-      properties:
-        params:
-          type: object
+      - if:
+          properties:
+            type:
+              enum:
+                - range
+        then:
           description: |
             An interval from defined point in time till another specific moment or
             till now if the last had not been defined.
@@ -70,14 +65,12 @@ allOf:
           examples:
             - start_at: 2020-03-03T07:07:26.000Z
               end_at: 2020-03-03T08:15:26.000Z
-  - if:
-    properties:
-      type:
-        const: open_range
-    then:
-      properties:
-        params:
-          type: object
+      - if:
+          properties:
+            type:
+              enum:
+                - open_range
+        then:
           description: |
             An interval from defined point in time till another specific moment or
             till now if the last had not been defined.
