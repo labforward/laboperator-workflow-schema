@@ -779,6 +779,17 @@
         "moment-duration": {
             "title": "Moment Duration",
             "description": "Duration formatting is based on the momentjs\n[momentjs](https://momentjs.com/) library. Head over to\n[docs](https://momentjs.com/docs/#/durations/creating/) for a full\nreference and examples.\n",
+            "examples": [
+                [
+                    2,
+                    "minute"
+                ],
+                "P2M",
+                {
+                    "seconds": 2,
+                    "minutes": 2
+                }
+            ],
             "oneOf": [
                 {
                     "type": "array",
@@ -2120,6 +2131,9 @@
                     "inputChannels": {
                         "$ref": "#/definitions/step/element-objects/input-channels"
                     },
+                    "scope": {
+                        "$ref": "#/definitions/step/element-objects/scope"
+                    },
                     "id": {
                         "description": "Can be used to render the element inside text (e.g. substep description)\nin the format {{element|memberName}}.\nFor example, when id is defined as \"rotationGauge\" the text may look like:\n\nUse this view to monitor the stirring speed {{element|rotationGauge}}\n",
                         "$ref": "#/definitions/member-name",
@@ -2637,20 +2651,26 @@
                                 "range",
                                 "open_range"
                             ]
-                        }
-                    },
-                    "allOf": [
-                        {
-                            "if": null,
-                            "properties": {
-                                "type": {
-                                    "const": "limit"
-                                }
-                            },
-                            "then": {
-                                "properties": {
-                                    "params": {
-                                        "type": "object",
+                        },
+                        "params": {
+                            "type": [
+                                "object",
+                                "array",
+                                "string",
+                                "number"
+                            ],
+                            "allOf": [
+                                {
+                                    "if": {
+                                        "properties": {
+                                            "type": {
+                                                "enum": [
+                                                    "limit"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "then": {
                                         "description": "Fixed number of last data points that should be taken to the scope.\n",
                                         "properties": {
                                             "count": {
@@ -2664,48 +2684,32 @@
                                         ],
                                         "markdownDescription": "Fixed number of last data points that should be taken to the scope.\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
                                     }
-                                }
-                            }
-                        },
-                        {
-                            "if": null,
-                            "properties": {
-                                "type": {
-                                    "const": "duration"
-                                }
-                            },
-                            "then": {
-                                "properties": {
-                                    "params": {
-                                        "$ref": "#/definitions/moment-duration",
-                                        "description": "Duration till present time.",
-                                        "examples": [
-                                            [
-                                                2,
-                                                "minute"
-                                            ],
-                                            "P2M",
-                                            {
-                                                "seconds": 2,
-                                                "minutes": 2
+                                },
+                                {
+                                    "if": {
+                                        "properties": {
+                                            "type": {
+                                                "enum": [
+                                                    "duration"
+                                                ]
                                             }
-                                        ],
-                                        "markdownDescription": "Duration till present time.\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
+                                        }
+                                    },
+                                    "then": {
+                                        "$ref": "#/definitions/moment-duration"
                                     }
-                                }
-                            }
-                        },
-                        {
-                            "if": null,
-                            "properties": {
-                                "type": {
-                                    "const": "range"
-                                }
-                            },
-                            "then": {
-                                "properties": {
-                                    "params": {
-                                        "type": "object",
+                                },
+                                {
+                                    "if": {
+                                        "properties": {
+                                            "type": {
+                                                "enum": [
+                                                    "range"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "then": {
                                         "description": "An interval from defined point in time till another specific moment or\ntill now if the last had not been defined.\n",
                                         "required": [
                                             "start_at",
@@ -2741,20 +2745,18 @@
                                         ],
                                         "markdownDescription": "An interval from defined point in time till another specific moment or\ntill now if the last had not been defined.\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
                                     }
-                                }
-                            }
-                        },
-                        {
-                            "if": null,
-                            "properties": {
-                                "type": {
-                                    "const": "open_range"
-                                }
-                            },
-                            "then": {
-                                "properties": {
-                                    "params": {
-                                        "type": "object",
+                                },
+                                {
+                                    "if": {
+                                        "properties": {
+                                            "type": {
+                                                "enum": [
+                                                    "open_range"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "then": {
                                         "description": "An interval from defined point in time till another specific moment or\ntill now if the last had not been defined.\n",
                                         "required": [
                                             "start_at"
@@ -2780,9 +2782,9 @@
                                         "markdownDescription": "An interval from defined point in time till another specific moment or\ntill now if the last had not been defined.\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
                                     }
                                 }
-                            }
+                            ]
                         }
-                    ],
+                    },
                     "markdownDescription": "Scope of time for displaying data points\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
                 }
             },

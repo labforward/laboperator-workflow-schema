@@ -681,6 +681,10 @@ export declare const schemas: {
             "moment-duration": {
                 title: string;
                 description: string;
+                examples: (string | (string | number)[] | {
+                    seconds: number;
+                    minutes: number;
+                })[];
                 oneOf: ({
                     type: string;
                     items: {
@@ -1669,6 +1673,9 @@ export declare const schemas: {
                         inputChannels: {
                             $ref: string;
                         };
+                        scope: {
+                            $ref: string;
+                        };
                         id: {
                             description: string;
                             $ref: string;
@@ -2131,18 +2138,17 @@ export declare const schemas: {
                                 type: string;
                                 enum: string[];
                             };
-                        };
-                        allOf: ({
-                            if: null;
-                            properties: {
-                                type: {
-                                    const: string;
-                                };
-                            };
-                            then: {
-                                properties: {
-                                    params: {
-                                        type: string;
+                            params: {
+                                type: string[];
+                                allOf: ({
+                                    if: {
+                                        properties: {
+                                            type: {
+                                                enum: string[];
+                                            };
+                                        };
+                                    };
+                                    then: {
                                         description: string;
                                         properties: {
                                             count: {
@@ -2158,42 +2164,31 @@ export declare const schemas: {
                                         $ref?: undefined;
                                         required?: undefined;
                                     };
-                                };
-                            };
-                        } | {
-                            if: null;
-                            properties: {
-                                type: {
-                                    const: string;
-                                };
-                            };
-                            then: {
-                                properties: {
-                                    params: {
+                                } | {
+                                    if: {
+                                        properties: {
+                                            type: {
+                                                enum: string[];
+                                            };
+                                        };
+                                    };
+                                    then: {
                                         $ref: string;
-                                        description: string;
-                                        examples: (string | (string | number)[] | {
-                                            seconds: number;
-                                            minutes: number;
-                                        })[];
-                                        markdownDescription: string;
-                                        type?: undefined;
+                                        description?: undefined;
                                         properties?: undefined;
+                                        examples?: undefined;
+                                        markdownDescription?: undefined;
                                         required?: undefined;
                                     };
-                                };
-                            };
-                        } | {
-                            if: null;
-                            properties: {
-                                type: {
-                                    const: string;
-                                };
-                            };
-                            then: {
-                                properties: {
-                                    params: {
-                                        type: string;
+                                } | {
+                                    if: {
+                                        properties: {
+                                            type: {
+                                                enum: string[];
+                                            };
+                                        };
+                                    };
+                                    then: {
                                         description: string;
                                         required: string[];
                                         properties: {
@@ -2216,19 +2211,15 @@ export declare const schemas: {
                                         markdownDescription: string;
                                         $ref?: undefined;
                                     };
-                                };
-                            };
-                        } | {
-                            if: null;
-                            properties: {
-                                type: {
-                                    const: string;
-                                };
-                            };
-                            then: {
-                                properties: {
-                                    params: {
-                                        type: string;
+                                } | {
+                                    if: {
+                                        properties: {
+                                            type: {
+                                                enum: string[];
+                                            };
+                                        };
+                                    };
+                                    then: {
                                         description: string;
                                         required: string[];
                                         properties: {
@@ -2252,9 +2243,9 @@ export declare const schemas: {
                                         markdownDescription: string;
                                         $ref?: undefined;
                                     };
-                                };
+                                })[];
                             };
-                        })[];
+                        };
                         markdownDescription: string;
                     };
                 };
@@ -4511,6 +4502,10 @@ export declare const schemas: {
             "moment-duration": {
                 title: string;
                 description: string;
+                examples: (string | (string | number)[] | {
+                    seconds: number;
+                    minutes: number;
+                })[];
                 oneOf: ({
                     type: string;
                     items: {
@@ -5499,6 +5494,9 @@ export declare const schemas: {
                         inputChannels: {
                             $ref: string;
                         };
+                        scope: {
+                            $ref: string;
+                        };
                         id: {
                             description: string;
                             $ref: string;
@@ -5961,18 +5959,17 @@ export declare const schemas: {
                                 type: string;
                                 enum: string[];
                             };
-                        };
-                        allOf: ({
-                            if: null;
-                            properties: {
-                                type: {
-                                    const: string;
-                                };
-                            };
-                            then: {
-                                properties: {
-                                    params: {
-                                        type: string;
+                            params: {
+                                type: string[];
+                                allOf: ({
+                                    if: {
+                                        properties: {
+                                            type: {
+                                                enum: string[];
+                                            };
+                                        };
+                                    };
+                                    then: {
                                         description: string;
                                         properties: {
                                             count: {
@@ -5988,42 +5985,31 @@ export declare const schemas: {
                                         $ref?: undefined;
                                         required?: undefined;
                                     };
-                                };
-                            };
-                        } | {
-                            if: null;
-                            properties: {
-                                type: {
-                                    const: string;
-                                };
-                            };
-                            then: {
-                                properties: {
-                                    params: {
+                                } | {
+                                    if: {
+                                        properties: {
+                                            type: {
+                                                enum: string[];
+                                            };
+                                        };
+                                    };
+                                    then: {
                                         $ref: string;
-                                        description: string;
-                                        examples: (string | (string | number)[] | {
-                                            seconds: number;
-                                            minutes: number;
-                                        })[];
-                                        markdownDescription: string;
-                                        type?: undefined;
+                                        description?: undefined;
                                         properties?: undefined;
+                                        examples?: undefined;
+                                        markdownDescription?: undefined;
                                         required?: undefined;
                                     };
-                                };
-                            };
-                        } | {
-                            if: null;
-                            properties: {
-                                type: {
-                                    const: string;
-                                };
-                            };
-                            then: {
-                                properties: {
-                                    params: {
-                                        type: string;
+                                } | {
+                                    if: {
+                                        properties: {
+                                            type: {
+                                                enum: string[];
+                                            };
+                                        };
+                                    };
+                                    then: {
                                         description: string;
                                         required: string[];
                                         properties: {
@@ -6046,19 +6032,15 @@ export declare const schemas: {
                                         markdownDescription: string;
                                         $ref?: undefined;
                                     };
-                                };
-                            };
-                        } | {
-                            if: null;
-                            properties: {
-                                type: {
-                                    const: string;
-                                };
-                            };
-                            then: {
-                                properties: {
-                                    params: {
-                                        type: string;
+                                } | {
+                                    if: {
+                                        properties: {
+                                            type: {
+                                                enum: string[];
+                                            };
+                                        };
+                                    };
+                                    then: {
                                         description: string;
                                         required: string[];
                                         properties: {
@@ -6082,9 +6064,9 @@ export declare const schemas: {
                                         markdownDescription: string;
                                         $ref?: undefined;
                                     };
-                                };
+                                })[];
                             };
-                        })[];
+                        };
                         markdownDescription: string;
                     };
                 };
@@ -7688,6 +7670,7 @@ export declare const schemas: {
         $schema: string;
         title: string;
         description: string;
+        type: string;
         required: string[];
         oneOf: {
             $ref: string;
@@ -8323,6 +8306,10 @@ export declare const schemas: {
             "moment-duration": {
                 title: string;
                 description: string;
+                examples: (string | (string | number)[] | {
+                    seconds: number;
+                    minutes: number;
+                })[];
                 oneOf: ({
                     type: string;
                     items: {
@@ -9311,6 +9298,9 @@ export declare const schemas: {
                         inputChannels: {
                             $ref: string;
                         };
+                        scope: {
+                            $ref: string;
+                        };
                         id: {
                             description: string;
                             $ref: string;
@@ -9773,18 +9763,17 @@ export declare const schemas: {
                                 type: string;
                                 enum: string[];
                             };
-                        };
-                        allOf: ({
-                            if: null;
-                            properties: {
-                                type: {
-                                    const: string;
-                                };
-                            };
-                            then: {
-                                properties: {
-                                    params: {
-                                        type: string;
+                            params: {
+                                type: string[];
+                                allOf: ({
+                                    if: {
+                                        properties: {
+                                            type: {
+                                                enum: string[];
+                                            };
+                                        };
+                                    };
+                                    then: {
                                         description: string;
                                         properties: {
                                             count: {
@@ -9800,42 +9789,31 @@ export declare const schemas: {
                                         $ref?: undefined;
                                         required?: undefined;
                                     };
-                                };
-                            };
-                        } | {
-                            if: null;
-                            properties: {
-                                type: {
-                                    const: string;
-                                };
-                            };
-                            then: {
-                                properties: {
-                                    params: {
+                                } | {
+                                    if: {
+                                        properties: {
+                                            type: {
+                                                enum: string[];
+                                            };
+                                        };
+                                    };
+                                    then: {
                                         $ref: string;
-                                        description: string;
-                                        examples: (string | (string | number)[] | {
-                                            seconds: number;
-                                            minutes: number;
-                                        })[];
-                                        markdownDescription: string;
-                                        type?: undefined;
+                                        description?: undefined;
                                         properties?: undefined;
+                                        examples?: undefined;
+                                        markdownDescription?: undefined;
                                         required?: undefined;
                                     };
-                                };
-                            };
-                        } | {
-                            if: null;
-                            properties: {
-                                type: {
-                                    const: string;
-                                };
-                            };
-                            then: {
-                                properties: {
-                                    params: {
-                                        type: string;
+                                } | {
+                                    if: {
+                                        properties: {
+                                            type: {
+                                                enum: string[];
+                                            };
+                                        };
+                                    };
+                                    then: {
                                         description: string;
                                         required: string[];
                                         properties: {
@@ -9858,19 +9836,15 @@ export declare const schemas: {
                                         markdownDescription: string;
                                         $ref?: undefined;
                                     };
-                                };
-                            };
-                        } | {
-                            if: null;
-                            properties: {
-                                type: {
-                                    const: string;
-                                };
-                            };
-                            then: {
-                                properties: {
-                                    params: {
-                                        type: string;
+                                } | {
+                                    if: {
+                                        properties: {
+                                            type: {
+                                                enum: string[];
+                                            };
+                                        };
+                                    };
+                                    then: {
                                         description: string;
                                         required: string[];
                                         properties: {
@@ -9894,9 +9868,9 @@ export declare const schemas: {
                                         markdownDescription: string;
                                         $ref?: undefined;
                                     };
-                                };
+                                })[];
                             };
-                        })[];
+                        };
                         markdownDescription: string;
                     };
                 };
