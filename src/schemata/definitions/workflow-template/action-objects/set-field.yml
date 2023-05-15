@@ -17,7 +17,7 @@ additionalProperties:
       additionalProperties: false
       properties:
         field:
-          $ref: '#/definitions/memberName'
+          $ref: '#/definitions/member-name'
           description: |
             A reference to a field that is updated with a value when the action is triggered.
         value:
@@ -39,7 +39,7 @@ additionalProperties:
       additionalProperties: false
       properties:
         field:
-          $ref: '#/definitions/memberName'
+          $ref: '#/definitions/member-name'
           description: |
             A reference to a field that is partially updated with a value when the action is triggered.
         patch:

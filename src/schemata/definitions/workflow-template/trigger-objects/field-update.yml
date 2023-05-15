@@ -18,6 +18,6 @@ additionalProperties:
     - field
   properties:
     field:
-      $ref: '#/definitions/memberName'
+      $ref: '#/definitions/member-name'
       description: |
         A field identifier. Only updates to this field will fire the trigger.

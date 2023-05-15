@@ -6,10 +6,10 @@ description: |
   actions will always be executed sequentially. A somehow erroneous action
   will cause the consecutive actions not to be executed.
 oneOf:
-  - $ref: '#/definitions/workflow-template/actionIdentifier'
-  - $ref: '#/definitions/workflow-template/actionObject'
+  - $ref: '#/definitions/workflow-template/action-identifier'
+  - $ref: '#/definitions/workflow-template/action-object'
   - type: array
     items:
       oneOf:
-        - $ref: '#/definitions/workflow-template/actionIdentifier'
-        - $ref: '#/definitions/workflow-template/actionObject'
+        - $ref: '#/definitions/workflow-template/action-identifier'
+        - $ref: '#/definitions/workflow-template/action-object'

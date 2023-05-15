@@ -2,14 +2,15 @@
 $schema: http://json-schema.org/draft-07/schema#
 title: Workflow Event Schema
 description: A modification event done during a workflow execution.
+type: object
 required:
   - type
   - payload
 oneOf:
-  - $ref: '#/definitions/workflow-event/addStep'
-  - $ref: '#/definitions/workflow-event/moveStep'
-  - $ref: '#/definitions/workflow-event/removeStep'
-  - $ref: '#/definitions/workflow-event/resolveIf'
-  - $ref: '#/definitions/workflow-event/resolveUntil'
-  - $ref: '#/definitions/workflow-event/resolveWhile'
-  - $ref: '#/definitions/workflow-event/resolveForEach'
+  - $ref: '#/definitions/workflow-event/add-step'
+  - $ref: '#/definitions/workflow-event/move-step'
+  - $ref: '#/definitions/workflow-event/remove-step'
+  - $ref: '#/definitions/workflow-event/resolve-if'
+  - $ref: '#/definitions/workflow-event/resolve-until'
+  - $ref: '#/definitions/workflow-event/resolve-while'
+  - $ref: '#/definitions/workflow-event/resolve-for-each'

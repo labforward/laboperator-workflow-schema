@@ -9,10 +9,10 @@ description: |
 minProperties: 1
 propertyNames:
   description: A valid field identifier defined by the workflow template.
-  $ref: '#/definitions/dynamicMemberName'
+  $ref: '#/definitions/dynamic-member-name'
 additionalProperties:
   description: A valid field identifier defined by the step.
-  $ref: '#/definitions/memberName'
+  $ref: '#/definitions/member-name'
 examples:
   - workflowFieldA: stepField1
     workflowFieldB: stepField2

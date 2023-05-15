@@ -14,7 +14,7 @@ required:
   - substeps
 properties:
   config:
-    $ref: '#/definitions/config/stepConfig'
+    $ref: '#/definitions/config/step-config'
   fields:
     description: |
       In a step, fields are optional. If no fields are defined, the fields of
@@ -29,9 +29,9 @@ properties:
     items:
       $ref: '#/definitions/step/substep'
   contextInfo:
-    $ref: '#/definitions/contextInfo'
+    $ref: '#/definitions/context/info'
   reportSummary:
-    $ref: '#/definitions/reportSummary'
+    $ref: '#/definitions/report-summary'
   tables:
     $ref: '#/definitions/step/tables'
   buttons:

@@ -10,13 +10,13 @@
   ],
   "allOf": [
     {
-      "$ref": "#/definitions/stepAttributes"
+      "$ref": "#/definitions/step-attributes"
     },
     {
       "type": "object",
       "properties": {
         "schema_version": {
-          "$ref": "#/definitions/schemaVersion"
+          "$ref": "#/definitions/schema-version"
         },
         "info": {
           "$ref": "#/definitions/info"
@@ -340,12 +340,12 @@
           "markdownDescription": "The button variant. Contained buttons are high-emphasis, distinguished by their use of elevation and fill. They contain actions that are primary to their context. Outlined buttons are medium-emphasis buttons. Text buttons are typically used for less-pronounced actions.\n\n\nSee more: [Button Schema](https://schema.laboperator.com/schemas/definitions/button) "
         },
         "key": {
-          "$ref": "#/definitions/memberName",
-          "description": "A unique reference passed to a manual trigger that can be used in a `behaviors` definition to react to this button being clicked.\n\nThe `key` can be used as a button `id` if it is unique in the current context and `id` is not defined. For example, use the `key` to display the button inside markdown in the format `{{button|my-key}}`.\n",
-          "markdownDescription": "A unique reference passed to a manual trigger that can be used in a `behaviors` definition to react to this button being clicked.\n\nThe `key` can be used as a button `id` if it is unique in the current context and `id` is not defined. For example, use the `key` to display the button inside markdown in the format `{{button|my-key}}`.\n\n\nSee more: [Button Schema](https://schema.laboperator.com/schemas/definitions/button) "
+          "$ref": "#/definitions/member-name",
+          "description": "A unique reference passed to a manual trigger that can be used in a `behaviors` definition to react to this button being clicked.\n\nThe `key` can be used as a button `id` if it is unique in the current context and `id` is not defined. For example, use the `key` to display the button inside markdown in the format `{{button|myKey}}`.\n",
+          "markdownDescription": "A unique reference passed to a manual trigger that can be used in a `behaviors` definition to react to this button being clicked.\n\nThe `key` can be used as a button `id` if it is unique in the current context and `id` is not defined. For example, use the `key` to display the button inside markdown in the format `{{button|myKey}}`.\n\n\nSee more: [Button Schema](https://schema.laboperator.com/schemas/definitions/button) "
         },
         "id": {
-          "$ref": "#/definitions/memberName",
+          "$ref": "#/definitions/member-name",
           "description": "Can be used to render the button inside markdown text. For example, when `id` is defined as `print`, the text may look like:\n\n```yml\nUse this view to print the weight {{button|print}}.\n```\n",
           "markdownDescription": "Can be used to render the button inside markdown text. For example, when `id` is defined as `print`, the text may look like:\n\n```\nUse this view to print the weight {{button|print}}.\n```\n\n\nSee more: [Button Schema](https://schema.laboperator.com/schemas/definitions/button) "
         },
@@ -364,26 +364,11 @@
     "buttons": {
       "type": "array",
       "title": "Buttons",
-      "description": "Buttons allow users to trigger actions with a single tap.\n\nButtons defined at the workflow or step level can be used anywhere in the workflow or step respectively. Use its unique `key` or `id` value to reference a button inside markdown:\n\n`{{button|member-name}}`\n\nWhen defined at the substep level of a template, buttons automatically appear at the very bottom of the substep in the order in which they are defined. To manually place a substep button in the above shown format its `placement` setting must be set to `manual`.\n",
+      "description": "Buttons allow users to trigger actions with a single tap.\n\nButtons defined at the workflow or step level can be used anywhere in the workflow or step respectively. Use its unique `key` or `id` value to reference a button inside markdown:\n\n`{{button|memberName}}`\n\nWhen defined at the substep level of a template, buttons automatically appear at the very bottom of the substep in the order in which they are defined. To manually place a substep button in the above shown format its `placement` setting must be set to `manual`.\n",
       "items": {
         "$ref": "#/definitions/button"
       },
-      "markdownDescription": "Buttons allow users to trigger actions with a single tap.\n\nButtons defined at the workflow or step level can be used anywhere in the workflow or step respectively. Use its unique `key` or `id` value to reference a button inside markdown:\n\n`{{button|member-name}}`\n\nWhen defined at the substep level of a template, buttons automatically appear at the very bottom of the substep in the order in which they are defined. To manually place a substep button in the above shown format its `placement` setting must be set to `manual`.\n\n\nSee more: [Buttons Schema](https://schema.laboperator.com/schemas/definitions/buttons) "
-    },
-    "contextInfo": {
-      "type": "object",
-      "title": "Context information of a workflow or a step",
-      "description": "Used to display contextual information related to the workflow or step.\n\nGlobal contextual information is defined in a workflow template and displayed\nin all steps.\n\nLocal contextual information is defined in a step template, or within a step\nin a workflow template, and displayed only during that specific step.\n",
-      "properties": {
-        "pages": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/definitions/context-info/contextInfoPage"
-          }
-        }
-      },
-      "markdownDescription": "Used to display contextual information related to the workflow or step.\n\nGlobal contextual information is defined in a workflow template and displayed\nin all steps.\n\nLocal contextual information is defined in a step template, or within a step\nin a workflow template, and displayed only during that specific step.\n\n\nSee more: [Context Info Schema](https://schema.laboperator.com/schemas/definitions/context-info) "
+      "markdownDescription": "Buttons allow users to trigger actions with a single tap.\n\nButtons defined at the workflow or step level can be used anywhere in the workflow or step respectively. Use its unique `key` or `id` value to reference a button inside markdown:\n\n`{{button|memberName}}`\n\nWhen defined at the substep level of a template, buttons automatically appear at the very bottom of the substep in the order in which they are defined. To manually place a substep button in the above shown format its `placement` setting must be set to `manual`.\n\n\nSee more: [Buttons Schema](https://schema.laboperator.com/schemas/definitions/buttons) "
     },
     "duration": {
       "title": "Duration",
@@ -401,7 +386,7 @@
       ],
       "markdownDescription": "An duration string parsable by [Chronic Duration](https://github.com/henrypoydar/chronic_duration).\n\n\nSee more: [Duration Schema](https://schema.laboperator.com/schemas/definitions/duration) "
     },
-    "dynamicMemberName": {
+    "dynamic-member-name": {
       "type": "string",
       "title": "Dynamic member name",
       "description": "Dynamic member names allow to use field values for composing names in the field mapping.\n",
@@ -414,19 +399,19 @@
       ],
       "markdownDescription": "Dynamic member names allow to use field values for composing names in the field mapping.\n\n\nSee more: [Dynamic Member Name Schema](https://schema.laboperator.com/schemas/definitions/dynamic-member-name) "
     },
-    "fieldMapping": {
+    "field-mapping": {
       "title": "Field Mapping",
       "type": "object",
       "description": "A field mapping is always required when a step defines its own fields.\nThe field mapping maps the global workflow fields to step internal\nfields. During validation it will be ensured that the field types are\ncompatible.\n",
       "minProperties": 1,
       "propertyNames": {
         "description": "A valid field identifier defined by the workflow template.",
-        "$ref": "#/definitions/dynamicMemberName",
+        "$ref": "#/definitions/dynamic-member-name",
         "markdownDescription": "A valid field identifier defined by the workflow template.\n\nSee more: [Field Mapping Schema](https://schema.laboperator.com/schemas/definitions/field-mapping) "
       },
       "additionalProperties": {
         "description": "A valid field identifier defined by the step.",
-        "$ref": "#/definitions/memberName",
+        "$ref": "#/definitions/member-name",
         "markdownDescription": "A valid field identifier defined by the step.\n\nSee more: [Field Mapping Schema](https://schema.laboperator.com/schemas/definitions/field-mapping) "
       },
       "examples": [
@@ -438,14 +423,14 @@
       ],
       "markdownDescription": "A field mapping is always required when a step defines its own fields.\nThe field mapping maps the global workflow fields to step internal\nfields. During validation it will be ensured that the field types are\ncompatible.\n\n\nSee more: [Field Mapping Schema](https://schema.laboperator.com/schemas/definitions/field-mapping) "
     },
-    "fieldValues": {
+    "field-values": {
       "title": "Field Values",
       "type": "object",
       "description": "Direct assignments of values to step fields. The values are evaluated\nagainst the field schema during validation.\n",
       "minProperties": 1,
       "propertyNames": {
         "description": "A valid field identifier defined by the step.",
-        "$ref": "#/definitions/memberName",
+        "$ref": "#/definitions/member-name",
         "markdownDescription": "A valid field identifier defined by the step.\n\nSee more: [Field Values Schema](https://schema.laboperator.com/schemas/definitions/field-values) "
       },
       "additionalProperties": true,
@@ -520,7 +505,7 @@
               "markdownDescription": "A flag indicating whether a field is included in the output of a workflow run export.\n\n\nSee more: [Field Schema](https://schema.laboperator.com/schemas/definitions/field) "
             },
             "formatSpecifier": {
-              "$ref": "#/definitions/formatSpecifier",
+              "$ref": "#/definitions/format-specifier",
               "description": "A specifier describing number formatting for fields of type `number`, `integer`, and `quantity`. All other field types ignore this flag.\n",
               "markdownDescription": "A specifier describing number formatting for fields of type `number`, `integer`, and `quantity`. All other field types ignore this flag.\n\n\nSee more: [Field Schema](https://schema.laboperator.com/schemas/definitions/field) "
             },
@@ -531,7 +516,7 @@
               "markdownDescription": "A flag that is used to group fields during the workflow preparation stage. Fields with the same group name are displayed together in the order of definition. All fields without a specified group are displayed separately.\n\n\nSee more: [Field Schema](https://schema.laboperator.com/schemas/definitions/field) "
             },
             "changeReason": {
-              "$ref": "#/definitions/workflow-template/changeReason"
+              "$ref": "#/definitions/workflow-template/change-reason"
             }
           }
         },
@@ -616,7 +601,7 @@
       "title": "Fields",
       "description": "Fields are top-level and step-level variables in a workflow template. A field can be used to store and retrieve information during workflow execution.\n\nFields of type array and object can be assigned a schema to validate its value.\n\nA field identifier, which is its key within the `fields` object, is considered unique in the context of a workflow. By definition a second occurrence of the same key will override the first occurrence. In markdown, fields can be referenced via their unique identifier: `{{myStringField}}`\n",
       "propertyNames": {
-        "$ref": "#/definitions/memberName"
+        "$ref": "#/definitions/member-name"
       },
       "additionalProperties": {
         "$ref": "#/definitions/field"
@@ -682,7 +667,7 @@
       ],
       "markdownDescription": "Fields are top-level and step-level variables in a workflow template. A field can be used to store and retrieve information during workflow execution.\n\nFields of type array and object can be assigned a schema to validate its value.\n\nA field identifier, which is its key within the `fields` object, is considered unique in the context of a workflow. By definition a second occurrence of the same key will override the first occurrence. In markdown, fields can be referenced via their unique identifier: `{{myStringField}}`\n\n\nSee more: [Fields Schema](https://schema.laboperator.com/schemas/definitions/fields) "
     },
-    "formatSpecifier": {
+    "format-specifier": {
       "type": "string",
       "title": "Format Specifier",
       "description": "A format specifier is a string describing how to format a number for display. It is based on the excellent [d3-format](https://github.com/d3/d3-format) library. For example, a typical fixed point precision of two digits behind the decimal point is achieved with `.2f`. Visit their [official documentation](https://github.com/d3/d3-format#locale_format) for a complete reference and examples.\n\nNote that a format specifier only affects the display value of a field. If the field is used as an interactive control element in the workflow, the user input will not be formatted.\n\nA format specifier can also be defined for a field of type [quantity](/schemas/definitions/field-schema/quantity/).\n",
@@ -736,7 +721,7 @@
       },
       "markdownDescription": "The info section of a Workflow (Step) Template holds general information about the template.\n\n\nSee more: [Info Schema](https://schema.laboperator.com/schemas/definitions/info) "
     },
-    "jsonPointer": {
+    "json-pointer": {
       "type": "string",
       "title": "JSON Pointer",
       "description": "JSON Pointer is a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document as defined by [RFC6901](https://tools.ietf.org/html/rfc6901). It contains a sequence of zero or more reference tokens, each prefixed by a '/' character.\n",
@@ -756,7 +741,7 @@
       "description": "## Markdown\n\nRich media content that can be formatted using [Markdown](https://en.wikipedia.org/wiki/Markdown).\n\nFor a general introduction to Markdown go to [Markdown Guide](https://www.markdownguide.org/getting-started/) or search for Markdown to find extensive resources online.\n\n## Laboperator Flavoured Markdown\n\nLaboperator workflows extend Markdown with custom syntax to render\nadditional content.\n\n### Field References\n\nReference fields defined in your workflow to dynamically display their\ncurrent value.\n\n__Syntax__\n```\n{{(field|)<identifier>|<variant>}}\n```\n\n_Note that the `field` type indicator can be omitted for brevity._\n\n__Parameters__\n| __identifier__ | The identifier of the field that is referenced |\n| __variant__    | The reference variant. Should be one of `value`, `title`, `plain`. Defaults to `value`. |\n\n\n__Example 1__\nBy default rendered values are highlighted against the background:\n```\nSome text with an inline reference to {{myField}}.\n```\n\n__Example 2__\nYou can render the title of a field instead of the value using the `title`\nvariant:\n```\nThe field _myField_ has the title {{myField|title}}.\n```\n\n__Example 3__\nUsing the `plain` variant you can render the plain value of a field without\nany highlights. This is for example useful for cleaner tables:\n```\n| {{myField|title}} | {{anotherField|title}} |\n| ----------------- | ---------------------- |\n| {{myField|plain}} | {{anotherField|plain}} |\n```\n\n### Field Inputs\n\nRender inputs for fields defined in your workflow.\n\n__Syntax__\n```\n{{field-input|<identifier>}}\n# or\n!{{<identifier>}}\n```\n\n_Note that the `field-input` type indicator can be omitted for brevity, if the placeholder is prefixed with an exclamation mark (`!`)._\n\n__Parameters__\n| __identifier__ | The identifier of the field that is referenced |\n\n\n__Example 1__\n```\nPlease enter the observed color of the substance:\n!{{observedColor}}\n```\n\n### Grids\n\nYou can use the `%col` tag to organize content in a grid.\n\n__Syntax__\n```\n%col <container?> <card?> <breakpoint={1-12}?>\n  # content is indented by two spaces or one tab\n  content\n```\n\n__Parameters__\n| __container__ | An optional flag that should be set if additional `%col` tags are nested inside. See __Example 2__. |\n| __card__ | An optional flag that can be set if the block should get a background. |\n| __breakpoint__ | Breakpoints can be used to specifically set how many columns of a 12 column grid the block should span. See [Material UI Fluid Grids](https://material-ui.com/components/grid/#fluid-grids) for details. Possible breakpoints are `xs`, `sm`, `md`, `lg`, and `xl`. The value can be between `1` and `12`. |\n\n__Example 1: Simple columns\n```\n%col\n  This text is in one column.\n%col\n  And this text in a second column next to it.\n\n\n%col\n  This text is in a second row.\n%col card\n  This text is in a second row in the second column and has a background\n%col\n  This row can have a different number of columns. This is the third.\n```\n\n__Example 2: Nested columns\n```\n%col container card\n  %col\n    This is a the first column inside an outer block with background.\n  %col container\n    %col\n      We can nest this even further\n    %col\n      Allowing us to build complex layouts\n```\n\n__Example 2: Breakpoints\n```\n%col xs={12} md={6}\n  On a small screen this column fills up the whole width.\n\n  On a tablet in landscape it will only fill up half the screen and the two\n  blocks will show next to each other.\n%col\n  This block will adjust to the first one automatically.\n```\n",
       "markdownDescription": "## Markdown\n\nRich media content that can be formatted using [Markdown](https://en.wikipedia.org/wiki/Markdown).\n\nFor a general introduction to Markdown go to [Markdown Guide](https://www.markdownguide.org/getting-started/) or search for Markdown to find extensive resources online.\n\n## Laboperator Flavoured Markdown\n\nLaboperator workflows extend Markdown with custom syntax to render\nadditional content.\n\n### Field References\n\nReference fields defined in your workflow to dynamically display their\ncurrent value.\n\n__Syntax__\n```\n{{(field|)<identifier>|<variant>}}\n```\n\n_Note that the `field` type indicator can be omitted for brevity._\n\n__Parameters__\n| __identifier__ | The identifier of the field that is referenced |\n| __variant__    | The reference variant. Should be one of `value`, `title`, `plain`. Defaults to `value`. |\n\n\n__Example 1__\nBy default rendered values are highlighted against the background:\n```\nSome text with an inline reference to {{myField}}.\n```\n\n__Example 2__\nYou can render the title of a field instead of the value using the `title`\nvariant:\n```\nThe field _myField_ has the title {{myField|title}}.\n```\n\n__Example 3__\nUsing the `plain` variant you can render the plain value of a field without\nany highlights. This is for example useful for cleaner tables:\n```\n| {{myField|title}} | {{anotherField|title}} |\n| ----------------- | ---------------------- |\n| {{myField|plain}} | {{anotherField|plain}} |\n```\n\n### Field Inputs\n\nRender inputs for fields defined in your workflow.\n\n__Syntax__\n```\n{{field-input|<identifier>}}\n# or\n!{{<identifier>}}\n```\n\n_Note that the `field-input` type indicator can be omitted for brevity, if the placeholder is prefixed with an exclamation mark (`!`)._\n\n__Parameters__\n| __identifier__ | The identifier of the field that is referenced |\n\n\n__Example 1__\n```\nPlease enter the observed color of the substance:\n!{{observedColor}}\n```\n\n### Grids\n\nYou can use the `%col` tag to organize content in a grid.\n\n__Syntax__\n```\n%col <container?> <card?> <breakpoint={1-12}?>\n  # content is indented by two spaces or one tab\n  content\n```\n\n__Parameters__\n| __container__ | An optional flag that should be set if additional `%col` tags are nested inside. See __Example 2__. |\n| __card__ | An optional flag that can be set if the block should get a background. |\n| __breakpoint__ | Breakpoints can be used to specifically set how many columns of a 12 column grid the block should span. See [Material UI Fluid Grids](https://material-ui.com/components/grid/#fluid-grids) for details. Possible breakpoints are `xs`, `sm`, `md`, `lg`, and `xl`. The value can be between `1` and `12`. |\n\n__Example 1: Simple columns\n```\n%col\n  This text is in one column.\n%col\n  And this text in a second column next to it.\n\n\n%col\n  This text is in a second row.\n%col card\n  This text is in a second row in the second column and has a background\n%col\n  This row can have a different number of columns. This is the third.\n```\n\n__Example 2: Nested columns\n```\n%col container card\n  %col\n    This is a the first column inside an outer block with background.\n  %col container\n    %col\n      We can nest this even further\n    %col\n      Allowing us to build complex layouts\n```\n\n__Example 2: Breakpoints\n```\n%col xs={12} md={6}\n  On a small screen this column fills up the whole width.\n\n  On a tablet in landscape it will only fill up half the screen and the two\n  blocks will show next to each other.\n%col\n  This block will adjust to the first one automatically.\n```\n\n\nSee more: [Markdown Schema](https://schema.laboperator.com/schemas/definitions/markdown) "
     },
-    "memberName": {
+    "member-name": {
       "type": "string",
       "title": "Member Name",
       "description": "A member name that is used as a reference elsewhere.\nAllowed characters are lower \"a\" to \"z\", capital \"A\" to \"Z\", \"0\" to \"9\" and\n\"-\" , \"_\". We recommend to consistently use either lowerCamelCase or\nkebab-case. While snake_case is allowed, it has a chance of name collisions\nwith internal values.\n",
@@ -791,13 +776,24 @@
       ],
       "markdownDescription": "A member name that is used as a reference elsewhere.\nAllowed characters are lower \"a\" to \"z\", capital \"A\" to \"Z\", \"0\" to \"9\" and\n\"-\" , \"_\". We recommend to consistently use either lowerCamelCase or\nkebab-case. While snake_case is allowed, it has a chance of name collisions\nwith internal values.\n\n\nSee more: [Member Name Schema](https://schema.laboperator.com/schemas/definitions/member-name) "
     },
-    "momentDuration": {
+    "moment-duration": {
       "title": "Moment Duration",
       "description": "Duration formatting is based on the momentjs\n[momentjs](https://momentjs.com/) library. Head over to\n[docs](https://momentjs.com/docs/#/durations/creating/) for a full\nreference and examples.\n",
+      "examples": [
+        [
+          2,
+          "minute"
+        ],
+        "P2M",
+        {
+          "seconds": 2,
+          "minutes": 2
+        }
+      ],
       "oneOf": [
         {
           "type": "array",
-          "item": {
+          "items": {
             "oneOf": [
               {
                 "type": "string",
@@ -857,7 +853,7 @@
       ],
       "markdownDescription": "Duration formatting is based on the momentjs\n[momentjs](https://momentjs.com/) library. Head over to\n[docs](https://momentjs.com/docs/#/durations/creating/) for a full\nreference and examples.\n\n\nSee more: [Moment Duration Schema](https://schema.laboperator.com/schemas/definitions/moment-duration) "
     },
-    "reportSummary": {
+    "report-summary": {
       "type": "string",
       "title": "Information summary about the step that will be generated in the report.",
       "description": "Used to add information that will be generated in the workflow report. The information can contain\nreference to information present in the workflow, like fields, or workflow template information, using the\ndouble curly brackets notation (see examples).\nBesides field identifiers, the following references are supported:\n- step: The step in which the reportSummary is contained. Please refer to the API documentation\n  for the keys available to use for step.\n- template: You can access values from any key inside the workflow template, as long as you pass the keys in the correct\n  hierarchy.\n- operator: The user who completed the step.\n",
@@ -870,7 +866,7 @@
       ],
       "markdownDescription": "Used to add information that will be generated in the workflow report. The information can contain\nreference to information present in the workflow, like fields, or workflow template information, using the\ndouble curly brackets notation (see examples).\nBesides field identifiers, the following references are supported:\n- step: The step in which the reportSummary is contained. Please refer to the API documentation\n  for the keys available to use for step.\n- template: You can access values from any key inside the workflow template, as long as you pass the keys in the correct\n  hierarchy.\n- operator: The user who completed the step.\n\n\nSee more: [Report Summary Schema](https://schema.laboperator.com/schemas/definitions/report-summary) "
     },
-    "resourceTag": {
+    "resource-tag": {
       "type": "string",
       "title": "Resource tag",
       "description": "This should map to the tag of the resources we have in our API documentation\n",
@@ -907,7 +903,7 @@
       ],
       "markdownDescription": "This should map to the tag of the resources we have in our API documentation\n\n\nSee more: [Resource Tag Schema](https://schema.laboperator.com/schemas/definitions/resource-tag) "
     },
-    "schemaVersion": {
+    "schema-version": {
       "title": "Schema Version",
       "description": "A valid Workflow Schema version.\n",
       "type": "string",
@@ -961,7 +957,7 @@
       "title": "Secrets",
       "description": "Secrets are sensitive information that should not be stored in workflow fields, for example passwords or API tokens.\n\nSecrets can be referenced in workflow behaviors via their unique identifier:\n\n`{{secrets.SECRET_KEY}}`\n",
       "propertyNames": {
-        "$ref": "#/definitions/memberName"
+        "$ref": "#/definitions/member-name"
       },
       "additionalProperties": {
         "$ref": "#/definitions/secret"
@@ -978,7 +974,7 @@
       ],
       "markdownDescription": "A URL compatible slug that can also be used as a reference elsewhere. By\ndefault it will generated from the components name or uuid.\n\n\nSee more: [Slug Schema](https://schema.laboperator.com/schemas/definitions/slug) "
     },
-    "statusCode": {
+    "status-code": {
       "type": "string",
       "title": "HTTP status code",
       "description": "A status code is the 3 digit code ranging from 1xx to 5xx that\nwill be present in the response\n",
@@ -992,7 +988,7 @@
       ],
       "markdownDescription": "A status code is the 3 digit code ranging from 1xx to 5xx that\nwill be present in the response\n\n\nSee more: [Status Code Schema](https://schema.laboperator.com/schemas/definitions/status-code) "
     },
-    "stepAttributes": {
+    "step-attributes": {
       "type": "object",
       "title": "The Workflow Step Template Schema",
       "description": "A step is a closed set of activities and instructions. Steps can be defined\nindependent of a workflow and then be reused across different workflows.\n\nA step descriptor file describes a workflow consisting of four parts:\n1. info: General information about the workflow.\n2. fields: Global context in this workflow.\n3. steps: Definition of all unique steps that occur in the workflow.\n4. workflow: The flow of steps and mapping of fields.\n",
@@ -1001,7 +997,7 @@
       ],
       "properties": {
         "config": {
-          "$ref": "#/definitions/config/stepConfig"
+          "$ref": "#/definitions/config/step-config"
         },
         "fields": {
           "description": "In a step, fields are optional. If no fields are defined, the fields of\nthe workflow will be passed down to the step as they are. However, if\nthe step does define fields, the fields of the workflow have to be\nactively mapped to be available and avoid name collisions.\n",
@@ -1018,10 +1014,10 @@
           }
         },
         "contextInfo": {
-          "$ref": "#/definitions/contextInfo"
+          "$ref": "#/definitions/context/info"
         },
         "reportSummary": {
-          "$ref": "#/definitions/reportSummary"
+          "$ref": "#/definitions/report-summary"
         },
         "tables": {
           "$ref": "#/definitions/step/tables"
@@ -1032,7 +1028,7 @@
       },
       "markdownDescription": "A step is a closed set of activities and instructions. Steps can be defined\nindependent of a workflow and then be reused across different workflows.\n\nA step descriptor file describes a workflow consisting of four parts:\n1. info: General information about the workflow.\n2. fields: Global context in this workflow.\n3. steps: Definition of all unique steps that occur in the workflow.\n4. workflow: The flow of steps and mapping of fields.\n\n\nSee more: [Step Attributes Schema](https://schema.laboperator.com/schemas/definitions/step-attributes) "
     },
-    "stepIdentifier": {
+    "step-identifier": {
       "allOf": [
         {
           "type": "string",
@@ -1055,11 +1051,11 @@
           "markdownDescription": "A valid step identifier that can be mapped to one of the keys of the\n`steps` section of the workflow.\n\n\nSee more: [Step Identifier Schema](https://schema.laboperator.com/schemas/definitions/step-identifier) "
         },
         {
-          "$ref": "#/definitions/memberName"
+          "$ref": "#/definitions/member-name"
         }
       ]
     },
-    "stepReference": {
+    "step-reference": {
       "type": "object",
       "title": "Schema for a reference to an external step",
       "description": "A reference to workflow step defined outside the workflow template.\nAdditional properties might be added to the reference for documentation\npurposes. It is recommended to use the `$comment` property.\n",
@@ -1164,7 +1160,7 @@
         ],
         "markdownDescription": "A flag indicating whether a workflow run can be signed.\n\nSignatures can be applied to any run with at least one completed step by anyone who has access to the run.\n\n\nSee more: [Signature Schema](https://schema.laboperator.com/schemas/definitions/config/signature) "
       },
-      "stepConfig": {
+      "step-config": {
         "type": "object",
         "title": "Configuration Section Schema of a step",
         "description": "The configuration section of a step template holds general options for the\nworkflow display.\n\nStep configurations will override workflow configurations.\n",
@@ -1185,7 +1181,7 @@
         },
         "markdownDescription": "The configuration section of a step template holds general options for the\nworkflow display.\n\nStep configurations will override workflow configurations.\n\n\nSee more: [Step Config Schema](https://schema.laboperator.com/schemas/definitions/config/step-config) "
       },
-      "workflowConfig": {
+      "workflow-config": {
         "type": "object",
         "title": "Configuration Section Schema of a workflow template",
         "description": "The configuration section of a workflow template holds general options for the\nworkflow display.\n\nStep configurations will override workflow configuration.\n",
@@ -1204,7 +1200,7 @@
             ]
           },
           "contextInfoSettings": {
-            "$ref": "#/definitions/context-info/contextInfoSettings"
+            "$ref": "#/definitions/context/settings"
           },
           "reportHeader": {
             "type": "string",
@@ -1225,8 +1221,23 @@
         "markdownDescription": "The configuration section of a workflow template holds general options for the\nworkflow display.\n\nStep configurations will override workflow configuration.\n\n\nSee more: [Workflow Config Schema](https://schema.laboperator.com/schemas/definitions/config/workflow-config) "
       }
     },
-    "context-info": {
-      "contextInfoPage": {
+    "context": {
+      "info": {
+        "type": "object",
+        "title": "Context information of a workflow or a step",
+        "description": "Used to display contextual information related to the workflow or step.\n\nGlobal contextual information is defined in a workflow template and displayed\nin all steps.\n\nLocal contextual information is defined in a step template, or within a step\nin a workflow template, and displayed only during that specific step.\n",
+        "properties": {
+          "pages": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/definitions/context/page"
+            }
+          }
+        },
+        "markdownDescription": "Used to display contextual information related to the workflow or step.\n\nGlobal contextual information is defined in a workflow template and displayed\nin all steps.\n\nLocal contextual information is defined in a step template, or within a step\nin a workflow template, and displayed only during that specific step.\n\n\nSee more: [Info Schema](https://schema.laboperator.com/schemas/definitions/context/info) "
+      },
+      "page": {
         "type": "object",
         "title": "Page containing context information",
         "description": "Pages displayed as workflow context information.\n",
@@ -1242,7 +1253,7 @@
             "examples": [
               "Formula"
             ],
-            "markdownDescription": "The displayed title of the page.\n\n\nSee more: [Context Info Page Schema](https://schema.laboperator.com/schemas/definitions/context-info/context-info-page) "
+            "markdownDescription": "The displayed title of the page.\n\n\nSee more: [Page Schema](https://schema.laboperator.com/schemas/definitions/context/page) "
           },
           "content": {
             "type": "string",
@@ -1252,12 +1263,12 @@
             "examples": [
               "Add a fancy slide content. It even supports __[Markdown](https://en.wikipedia.org/wiki/Markdown)__!"
             ],
-            "markdownDescription": "Display text, tables, fields values and media using Markdown.\n\n\nSee more: [Context Info Page Schema](https://schema.laboperator.com/schemas/definitions/context-info/context-info-page) "
+            "markdownDescription": "Display text, tables, fields values and media using Markdown.\n\n\nSee more: [Page Schema](https://schema.laboperator.com/schemas/definitions/context/page) "
           }
         },
-        "markdownDescription": "Pages displayed as workflow context information.\n\n\nSee more: [Context Info Page Schema](https://schema.laboperator.com/schemas/definitions/context-info/context-info-page) "
+        "markdownDescription": "Pages displayed as workflow context information.\n\n\nSee more: [Page Schema](https://schema.laboperator.com/schemas/definitions/context/page) "
       },
-      "contextInfoSettings": {
+      "settings": {
         "type": "object",
         "title": "Context information panel settings",
         "description": "Configuration of the workflow context information.\n",
@@ -1274,17 +1285,17 @@
                 "examples": [
                   "Info"
                 ],
-                "markdownDescription": "Label of the button\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info/context-info-settings) "
+                "markdownDescription": "Label of the button\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
               }
             },
-            "markdownDescription": "Configuration of the toggle button which opens/closes the panel.\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info/context-info-settings) "
+            "markdownDescription": "Configuration of the toggle button which opens/closes the panel.\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
           },
           "allowFullscreen": {
             "title": "Full-screen mode toggle",
             "description": "Switches the ability to expand the panel to the full screen height.\n",
             "type": "boolean",
             "default": true,
-            "markdownDescription": "Switches the ability to expand the panel to the full screen height.\n\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info/context-info-settings) "
+            "markdownDescription": "Switches the ability to expand the panel to the full screen height.\n\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
           },
           "initialState": {
             "type": "object",
@@ -1300,7 +1311,7 @@
                 "default": false
               }
             },
-            "markdownDescription": "Determines the behavior of the context information panel when the workflow run execution view is opened.\n\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info/context-info-settings) "
+            "markdownDescription": "Determines the behavior of the context information panel when the workflow run execution view is opened.\n\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
           },
           "contentPanel": {
             "type": "object",
@@ -1315,19 +1326,19 @@
                   "white",
                   "#210210"
                 ],
-                "markdownDescription": "Background color.\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info/context-info-settings) "
+                "markdownDescription": "Background color.\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
               },
               "height": {
                 "description": "Height of opened panel in pixels.",
                 "type": "number",
                 "default": 160,
-                "markdownDescription": "Height of opened panel in pixels.\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info/context-info-settings) "
+                "markdownDescription": "Height of opened panel in pixels.\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
               }
             },
-            "markdownDescription": "Configuration of the panel.\n\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info/context-info-settings) "
+            "markdownDescription": "Configuration of the panel.\n\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
           }
         },
-        "markdownDescription": "Configuration of the workflow context information.\n\n\nSee more: [Context Info Settings Schema](https://schema.laboperator.com/schemas/definitions/context-info/context-info-settings) "
+        "markdownDescription": "Configuration of the workflow context information.\n\n\nSee more: [Settings Schema](https://schema.laboperator.com/schemas/definitions/context/settings) "
       }
     },
     "field-schema": {
@@ -1656,13 +1667,13 @@
       }
     },
     "flow": {
-      "flowControl": {
+      "flow-control": {
         "oneOf": [
           {
-            "$ref": "#/definitions/stepIdentifier"
+            "$ref": "#/definitions/step-identifier"
           },
           {
-            "$ref": "#/definitions/flow/stepObject"
+            "$ref": "#/definitions/flow/step-object"
           },
           {
             "$ref": "#/definitions/flow/sequential"
@@ -1677,14 +1688,14 @@
             "$ref": "#/definitions/flow/while"
           },
           {
-            "$ref": "#/definitions/flow/forEachArray"
+            "$ref": "#/definitions/flow/for-each-array"
           },
           {
-            "$ref": "#/definitions/flow/forEachInteger"
+            "$ref": "#/definitions/flow/for-each-integer"
           }
         ]
       },
-      "forEachArray": {
+      "for-each-array": {
         "type": "object",
         "title": "For-Each Array Flow",
         "description": "An iteration flow of steps or nested flow control schemas.\nThe loop will be iterated once per item in a given source array.\n",
@@ -1696,17 +1707,17 @@
         "additionalProperties": false,
         "properties": {
           "forEach": {
-            "$ref": "#/definitions/memberName",
+            "$ref": "#/definitions/member-name",
             "description": "An intermediate iterator field which holds the index of the current array item.\nThe field must be defined in the template as type `integer`.\n",
             "markdownDescription": "An intermediate iterator field which holds the index of the current array item.\nThe field must be defined in the template as type `integer`.\n\n\nSee more: [For Each Array Schema](https://schema.laboperator.com/schemas/definitions/flow/for-each-array) "
           },
           "in": {
-            "$ref": "#/definitions/memberName",
+            "$ref": "#/definitions/member-name",
             "description": "A source data field which will be iterated upon.\nThe field must be defined as type `array` in the template.\nModifications to the array length or item order during or after the iteration is not supported\nand will lead to undefined behavior.\n",
             "markdownDescription": "A source data field which will be iterated upon.\nThe field must be defined as type `array` in the template.\nModifications to the array length or item order during or after the iteration is not supported\nand will lead to undefined behavior.\n\n\nSee more: [For Each Array Schema](https://schema.laboperator.com/schemas/definitions/flow/for-each-array) "
           },
           "do": {
-            "$ref": "#/definitions/flow/flowControl"
+            "$ref": "#/definitions/flow/flow-control"
           }
         },
         "examples": [
@@ -1721,7 +1732,7 @@
         ],
         "markdownDescription": "An iteration flow of steps or nested flow control schemas.\nThe loop will be iterated once per item in a given source array.\n\n\nSee more: [For Each Array Schema](https://schema.laboperator.com/schemas/definitions/flow/for-each-array) "
       },
-      "forEachInteger": {
+      "for-each-integer": {
         "type": "object",
         "title": "For-Each Integer Flow",
         "description": "An iteration flow of steps or nested flow control schemas.\nThe loop will be iterated up to the given limit of an iterator integer.\n",
@@ -1733,7 +1744,7 @@
         "additionalProperties": false,
         "properties": {
           "forEach": {
-            "$ref": "#/definitions/memberName",
+            "$ref": "#/definitions/member-name",
             "description": "An intermediate iterator field which holds the index of current iteration.\nThe field must be defined in the template as type `integer`.\n",
             "markdownDescription": "An intermediate iterator field which holds the index of current iteration.\nThe field must be defined in the template as type `integer`.\n\n\nSee more: [For Each Integer Schema](https://schema.laboperator.com/schemas/definitions/flow/for-each-integer) "
           },
@@ -1745,7 +1756,7 @@
                 "type": "integer"
               },
               {
-                "$ref": "#/definitions/memberName"
+                "$ref": "#/definitions/member-name"
               }
             ],
             "markdownDescription": "The number by which to increase or decrease the `forEach` iterator integer.\n\n\nSee more: [For Each Integer Schema](https://schema.laboperator.com/schemas/definitions/flow/for-each-integer) "
@@ -1757,13 +1768,13 @@
                 "type": "integer"
               },
               {
-                "$ref": "#/definitions/memberName"
+                "$ref": "#/definitions/member-name"
               }
             ],
             "markdownDescription": "The limit value at which the flow execution will break out of the loop.\nThe check will be done exclusively.\n\nFor example, given the following definition:\n\n```\nforEach: iterator\nto: 5\ndo: something\n```\n\nThe iteration will happens 5 times, during which the `iterator` field will be\nassigned the value of 0,1,2,3, and 4 respectively.\n\n\nSee more: [For Each Integer Schema](https://schema.laboperator.com/schemas/definitions/flow/for-each-integer) "
           },
           "do": {
-            "$ref": "#/definitions/flow/flowControl"
+            "$ref": "#/definitions/flow/flow-control"
           }
         },
         "examples": [
@@ -1812,10 +1823,10 @@
             "markdownDescription": "The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.\n\n\nSee more: [If Schema](https://schema.laboperator.com/schemas/definitions/flow/if) "
           },
           "then": {
-            "$ref": "#/definitions/flow/flowControl"
+            "$ref": "#/definitions/flow/flow-control"
           },
           "else": {
-            "$ref": "#/definitions/flow/flowControl"
+            "$ref": "#/definitions/flow/flow-control"
           }
         },
         "examples": [
@@ -1845,7 +1856,7 @@
         "additionalProperties": false,
         "properties": {
           "loop": {
-            "$ref": "#/definitions/flow/flowControl"
+            "$ref": "#/definitions/flow/flow-control"
           },
           "until": {
             "$ref": "#/definitions/script",
@@ -1873,7 +1884,7 @@
         "title": "Sequential Flow",
         "description": "A sequence steps or nested flow control schemas. In a sequential flow consecutive items will always be executed one after another. Therefore, a nested flow has to be completed before a consecutive item can be started. The sequential flow is the only implicit flow, meaning it does not have any key words or properties. It is typically used as the top-level flow control in a workflow.\n",
         "items": {
-          "$ref": "#/definitions/flow/flowControl"
+          "$ref": "#/definitions/flow/flow-control"
         },
         "examples": [
           [
@@ -1901,14 +1912,14 @@
         ],
         "markdownDescription": "A sequence steps or nested flow control schemas. In a sequential flow consecutive items will always be executed one after another. Therefore, a nested flow has to be completed before a consecutive item can be started. The sequential flow is the only implicit flow, meaning it does not have any key words or properties. It is typically used as the top-level flow control in a workflow.\n\n\nSee more: [Sequential Schema](https://schema.laboperator.com/schemas/definitions/flow/sequential) "
       },
-      "stepObject": {
+      "step-object": {
         "type": "object",
         "title": "A step call object",
         "description": "A step call object is the more sophisticated variant of a step identifier\nallowing to pass additional parameters to a step being called.\n",
         "maxProperties": 1,
         "minProperties": 1,
         "propertyNames": {
-          "$ref": "#/definitions/stepIdentifier"
+          "$ref": "#/definitions/step-identifier"
         },
         "additionalProperties": {
           "type": "object",
@@ -1921,10 +1932,10 @@
               "markdownDescription": "Overrides the step title of the step definition. This is useful to\ncustomize the title of a generic step for each invocation when it is\nreused multiple times during the workflow.\n\n\nSee more: [Step Object Schema](https://schema.laboperator.com/schemas/definitions/flow/step-object) "
             },
             "fields": {
-              "$ref": "#/definitions/fieldValues"
+              "$ref": "#/definitions/field-values"
             },
             "fieldMapping": {
-              "$ref": "#/definitions/fieldMapping"
+              "$ref": "#/definitions/field-mapping"
             }
           }
         },
@@ -1946,7 +1957,7 @@
             "markdownDescription": "The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.\n\n\nSee more: [While Schema](https://schema.laboperator.com/schemas/definitions/flow/while) "
           },
           "do": {
-            "$ref": "#/definitions/flow/flowControl"
+            "$ref": "#/definitions/flow/flow-control"
           }
         },
         "examples": [
@@ -1966,14 +1977,14 @@
       }
     },
     "step": {
-      "deviceObject": {
+      "device-object": {
         "type": "object",
         "title": "Device Object Schema",
         "description": "Used to pass arguments to an step device.",
         "maxProperties": 1,
         "minProperties": 1,
         "propertyNames": {
-          "$ref": "#/definitions/memberName"
+          "$ref": "#/definitions/member-name"
         },
         "additionalProperties": {
           "type": "object",
@@ -2113,21 +2124,19 @@
           },
           "dataScope": {
             "type": "object",
-            "$ref": "#/definitions/memberName",
+            "$ref": "#/definitions/member-name",
             "description": "Scope of a measurement",
             "markdownDescription": "Scope of a measurement\n\nSee more: [Element Schema](https://schema.laboperator.com/schemas/definitions/step/element) "
           },
           "inputChannels": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/step/element-objects/inputChannel"
-            },
-            "description": "List of channels",
-            "markdownDescription": "List of channels\n\nSee more: [Element Schema](https://schema.laboperator.com/schemas/definitions/step/element) "
+            "$ref": "#/definitions/step/element-objects/input-channels"
+          },
+          "scope": {
+            "$ref": "#/definitions/step/element-objects/scope"
           },
           "id": {
             "description": "Can be used to render the element inside text (e.g. substep description)\nin the format {{element|memberName}}.\nFor example, when id is defined as \"rotationGauge\" the text may look like:\n\nUse this view to monitor the stirring speed {{element|rotationGauge}}\n",
-            "$ref": "#/definitions/memberName",
+            "$ref": "#/definitions/member-name",
             "markdownDescription": "Can be used to render the element inside text (e.g. substep description)\nin the format {{element|memberName}}.\nFor example, when id is defined as \"rotationGauge\" the text may look like:\n\nUse this view to monitor the stirring speed {{element|rotationGauge}}\n\n\nSee more: [Element Schema](https://schema.laboperator.com/schemas/definitions/step/element) "
           },
           "placement": {
@@ -2150,7 +2159,7 @@
         },
         "markdownDescription": "Elements are used to display data points over a certain period.\n\n\nSee more: [Element Schema](https://schema.laboperator.com/schemas/definitions/step/element) "
       },
-      "selectorAccessors": {
+      "selector-accessors": {
         "type": "object",
         "minProperties": 1,
         "additionalProperties": false,
@@ -2188,7 +2197,7 @@
         ],
         "markdownDescription": "Define accessors for selector options. You can map the selector options to fields defined in a field.\n\n\nSee more: [Selector Accessors Schema](https://schema.laboperator.com/schemas/definitions/step/selector-accessors) "
       },
-      "selectorOptions": {
+      "selector-options": {
         "type": "array",
         "items": {
           "type": "object",
@@ -2245,7 +2254,7 @@
           },
           "result": {
             "description": "Define the field that will receive the value of the selected option.",
-            "$ref": "#/definitions/memberName",
+            "$ref": "#/definitions/member-name",
             "markdownDescription": "Define the field that will receive the value of the selected option.\n\nSee more: [Selector Schema](https://schema.laboperator.com/schemas/definitions/step/selector) "
           },
           "title": {
@@ -2275,20 +2284,20 @@
           "options": {
             "oneOf": [
               {
-                "$ref": "#/definitions/memberName"
+                "$ref": "#/definitions/member-name"
               },
               {
-                "$ref": "#/definitions/step/selectorOptions"
+                "$ref": "#/definitions/step/selector-options"
               },
               {
                 "type": "object",
                 "minProperties": 1,
                 "maxProperties": 1,
                 "propertyNames": {
-                  "$ref": "#/definitions/memberName"
+                  "$ref": "#/definitions/member-name"
                 },
                 "additionalProperties": {
-                  "$ref": "#/definitions/step/selectorAccessors"
+                  "$ref": "#/definitions/step/selector-accessors"
                 }
               }
             ]
@@ -2350,7 +2359,7 @@
             "title": "Substep Inputs",
             "description": "A list of fields to show inputs for on the substep. For each field the\nsubstep will display an appropriate input component.\n\nUse the title and description properties of the field schema to control\nthe label and help text of an input.\n",
             "items": {
-              "$ref": "#/definitions/memberName",
+              "$ref": "#/definitions/member-name",
               "description": "The identifier of a field defined in the step.",
               "markdownDescription": "The identifier of a field defined in the step.\n\nSee more: [Substep Schema](https://schema.laboperator.com/schemas/definitions/step/substep) "
             },
@@ -2372,12 +2381,12 @@
             "items": {
               "oneOf": [
                 {
-                  "$ref": "#/definitions/memberName",
+                  "$ref": "#/definitions/member-name",
                   "description": "The identifier of a field that is a device or channel relation.\n",
                   "markdownDescription": "The identifier of a field that is a device or channel relation.\n\n\nSee more: [Substep Schema](https://schema.laboperator.com/schemas/definitions/step/substep) "
                 },
                 {
-                  "$ref": "#/definitions/step/deviceObject"
+                  "$ref": "#/definitions/step/device-object"
                 }
               ]
             },
@@ -2397,7 +2406,7 @@
             "description": "A timer to display on the substep. The timer can be started using\ndisplayed buttons or using actions.\nWith no default_duration given or duration set to 00:00 it can be used\nas a stop watch.\n\nFor full flexibility the timer can either implicitly define a field and\nbehaviors to handle the manual buttons or you can a define timer field\nin the `/fields` section of the step or the workflow manually and\nreference it here.\n\nBehaviors to handle the buttons on the timer are automatically created\nfor you. To skip creation of these behaviors, pass the `skipBehavior`\nflag to the timer definition.\n",
             "oneOf": [
               {
-                "$ref": "#/definitions/memberName"
+                "$ref": "#/definitions/member-name"
               },
               {
                 "$ref": "#/definitions/field-schema/timer"
@@ -2421,7 +2430,7 @@
         },
         "markdownDescription": "A substep is a single instruction of a step and can both content and actions\nattached to it.\n\n\nSee more: [Substep Schema](https://schema.laboperator.com/schemas/definitions/step/substep) "
       },
-      "tableState": {
+      "table-state": {
         "type": "object",
         "title": "Table State Schema",
         "description": "Dynamic data that describes the current behavior of the table based on any data of changes.\n",
@@ -2448,7 +2457,7 @@
         ],
         "properties": {
           "data": {
-            "$ref": "#/definitions/memberName",
+            "$ref": "#/definitions/member-name",
             "description": "The unique identifier of a field that contains the source data.\n\nIf configuration for `tabs` or `columns` is not specified, the data source is expected to be an array of objects. Each object represents one row in the table. The order of rows in the table is defined by the array indices. The object properties define the cell values within that row. For example, the following source data would result in a table with three columns and two rows:\n\n```yml\n- name: acetic anhydride\n  density: 1.08\n  molar_mass: 102.09\n- name: 2-Hydroxybenzoic acid\n  density: 1.44\n  molar_mass: 138.121\n```\n\nConfiguration for `tabs` or `columns` can be provided for mapping a data source that is not an array of objects.\nWith `tabs` you can split the source data into separate tables in separate tabs. Mapping on where to find the data for each tab must be defined in the `tabs.rows` setting.\nThe `columns` setting enables fine-grained control over the structure of a table and the formatting of cell values. If `columns` is not specified, rows must be represented by objects in the source data.\n\nExamples for when the source data is:\n\n1. Array of arrays:\n\n- table configuration:\n\n```yml\ncolumns:\n  - label: Name\n    value: '/name'\n  - label: Density\n    value: '/density'\ntabs:\n  - rows: '/0'\n  - rows: '/1'\n```\n\n- sample data:\n\n```yml\n- - name: acetic anhydride\n    density: 1.08\n    molar_mass: 102.09\n  - name: 2-Hydroxybenzoic acid\n    density: 1.44\n    molar_mass: 138.121\n- - name: salicylic acid\n    density: 1.44\n    molar_mass: 138.12\n  - name: 2,4,6-Trichlorphenol\n    density: 1,68\n    molar_mass: 197,45\n```\n\n2. Array of objects:\n\n- table configuration:\n\n```yml\ncolumns:\n  - label: Name\n    value: /name\n  - label: Factor\n    value: /factor\ntabs:\n  - rows: /0/determinations\n  - rows: /1/determinations\n```\n\n- sample data:\n\n```yml\n- name: First Dilution\n  determinations:\n    - name: acetic anhydride\n      factor: 2\n      weight: 102.09\n    - name: 2-Hydroxybenzoic acid\n      factor: 2\n      weight: 138.121\n- name: Second Dilution\n  determinations:\n    - name: acetic anhydride\n      factor: 4\n      weight: 80.25\n    - name: 2-Hydroxybenzoic acid\n      factor: 4\n      weight: 108.457\n```\n",
             "examples": [
               "my_table_data"
@@ -2466,7 +2475,7 @@
               ],
               "properties": {
                 "rows": {
-                  "$ref": "#/definitions/jsonPointer",
+                  "$ref": "#/definitions/json-pointer",
                   "description": "The pointer to the array that holds the rows data for each tab. The path is resolved relative to the table `data` field.\n",
                   "markdownDescription": "The pointer to the array that holds the rows data for each tab. The path is resolved relative to the table `data` field.\n\n\nSee more: [Table Schema](https://schema.laboperator.com/schemas/definitions/step/table) "
                 },
@@ -2550,7 +2559,7 @@
             "$ref": "#/definitions/step/table-attributes/columns"
           },
           "state": {
-            "$ref": "#/definitions/memberName",
+            "$ref": "#/definitions/member-name",
             "description": "The unique identifier of a field.\n\nThe state field will be created implicitly. The field name pattern consists of the table identifier and the string `_state`, joined end-to-end.\n\nA custom state field needs to conform to the following schema:\n\n```yml\ntype: object\nadditionalProperties: false\nproperties:\n  selectedRow:\n    type: string\n    description: The currently selected row.\n  selectedCell:\n    type: string\n    description: The currently selected cell.\n```\n",
             "examples": [
               "myTable_state"
@@ -2573,14 +2582,14 @@
         "title": "Tables Schema",
         "description": "Tables display a collection of data in an ordered arrangement of rows and columns.\n\nIn markdown, tables can be referenced via their unique identifier:\n\n`{{table|my_table}}`\n\nAdditionally, you can define the number of visible rows for the table body. Example:\n\n`{{table|my_table|rows=3}}`\n\nThis will display the referenced table with the header row and its column labels, and the first three rows of the table body. Subsequent rows can be scrolled into view, while the table header remains in a fixed position. Limiting the number of visible rows is useful to save space on the UI for tables with many rows or when UI space is scarce in general. This setting prevents line breaks for all cell content in order to be able to calculate the height of the visible area. Consequently this comes with the potential trade-of of horizontal scrolling.\n",
         "propertyNames": {
-          "$ref": "#/definitions/memberName"
+          "$ref": "#/definitions/member-name"
         },
         "additionalProperties": {
           "$ref": "#/definitions/step/table"
         },
         "markdownDescription": "Tables display a collection of data in an ordered arrangement of rows and columns.\n\nIn markdown, tables can be referenced via their unique identifier:\n\n`{{table|my_table}}`\n\nAdditionally, you can define the number of visible rows for the table body. Example:\n\n`{{table|my_table|rows=3}}`\n\nThis will display the referenced table with the header row and its column labels, and the first three rows of the table body. Subsequent rows can be scrolled into view, while the table header remains in a fixed position. Limiting the number of visible rows is useful to save space on the UI for tables with many rows or when UI space is scarce in general. This setting prevents line breaks for all cell content in order to be able to calculate the height of the visible area. Consequently this comes with the potential trade-of of horizontal scrolling.\n\n\nSee more: [Tables Schema](https://schema.laboperator.com/schemas/definitions/step/tables) "
       },
-      "webhookHandler": {
+      "webhook-handler": {
         "type": "object",
         "title": "Webhook Handler",
         "description": "A webhook handler always consists of an [action](/schemas/definitions/workflow-template/actions/).\n",
@@ -2595,14 +2604,14 @@
         "markdownDescription": "A webhook handler always consists of an [action](https://schema.laboperator.com/schemas/definitions/workflow-template/actions/).\n\n\nSee more: [Webhook Handler Schema](https://schema.laboperator.com/schemas/definitions/step/webhook-handler) "
       },
       "element-objects": {
-        "inputChannel": {
+        "input-channels": {
           "type": "array",
           "title": "Input Channels",
           "description": "Input Channels\n",
           "items": {
             "oneOf": [
               {
-                "$ref": "#/definitions/memberName"
+                "$ref": "#/definitions/member-name"
               },
               {
                 "type": "object",
@@ -2611,19 +2620,19 @@
                 ],
                 "properties": {
                   "device": {
-                    "$ref": "#/definitions/memberName"
+                    "$ref": "#/definitions/member-name"
                   },
                   "channels": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/definitions/memberName"
+                      "$ref": "#/definitions/member-name"
                     }
                   }
                 }
               }
             ]
           },
-          "markdownDescription": "Input Channels\n\n\nSee more: [Input Channel Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/input-channel) "
+          "markdownDescription": "Input Channels\n\n\nSee more: [Input Channels Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/input-channels) "
         },
         "scope": {
           "type": "object",
@@ -2642,20 +2651,26 @@
                 "range",
                 "open_range"
               ]
-            }
-          },
-          "allOf": [
-            {
-              "if": null,
-              "properties": {
-                "type": {
-                  "const": "limit"
-                }
-              },
-              "then": {
-                "properties": {
-                  "params": {
-                    "type": "object",
+            },
+            "params": {
+              "type": [
+                "object",
+                "array",
+                "string",
+                "number"
+              ],
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "type": {
+                        "enum": [
+                          "limit"
+                        ]
+                      }
+                    }
+                  },
+                  "then": {
                     "description": "Fixed number of last data points that should be taken to the scope.\n",
                     "properties": {
                       "count": {
@@ -2669,48 +2684,32 @@
                     ],
                     "markdownDescription": "Fixed number of last data points that should be taken to the scope.\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
                   }
-                }
-              }
-            },
-            {
-              "if": null,
-              "properties": {
-                "type": {
-                  "const": "duration"
-                }
-              },
-              "then": {
-                "properties": {
-                  "params": {
-                    "$ref": "#/definitions/moment_duration",
-                    "description": "Duration till present time.",
-                    "examples": [
-                      [
-                        2,
-                        "minute"
-                      ],
-                      "P2M",
-                      {
-                        "seconds": 2,
-                        "minutes": 2
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "type": {
+                        "enum": [
+                          "duration"
+                        ]
                       }
-                    ],
-                    "markdownDescription": "Duration till present time.\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
+                    }
+                  },
+                  "then": {
+                    "$ref": "#/definitions/moment-duration"
                   }
-                }
-              }
-            },
-            {
-              "if": null,
-              "properties": {
-                "type": {
-                  "const": "range"
-                }
-              },
-              "then": {
-                "properties": {
-                  "params": {
-                    "type": "object",
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "type": {
+                        "enum": [
+                          "range"
+                        ]
+                      }
+                    }
+                  },
+                  "then": {
                     "description": "An interval from defined point in time till another specific moment or\ntill now if the last had not been defined.\n",
                     "required": [
                       "start_at",
@@ -2720,7 +2719,7 @@
                       "start_at": {
                         "oneOf": [
                           {
-                            "$ref": "#/definitions/memberName"
+                            "$ref": "#/definitions/member-name"
                           },
                           {
                             "$ref": "#/definitions/timestamp"
@@ -2730,7 +2729,7 @@
                       "end_at": {
                         "oneOf": [
                           {
-                            "$ref": "#/definitions/memberName"
+                            "$ref": "#/definitions/member-name"
                           },
                           {
                             "$ref": "#/definitions/timestamp"
@@ -2746,20 +2745,18 @@
                     ],
                     "markdownDescription": "An interval from defined point in time till another specific moment or\ntill now if the last had not been defined.\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
                   }
-                }
-              }
-            },
-            {
-              "if": null,
-              "properties": {
-                "type": {
-                  "const": "open_range"
-                }
-              },
-              "then": {
-                "properties": {
-                  "params": {
-                    "type": "object",
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "type": {
+                        "enum": [
+                          "open_range"
+                        ]
+                      }
+                    }
+                  },
+                  "then": {
                     "description": "An interval from defined point in time till another specific moment or\ntill now if the last had not been defined.\n",
                     "required": [
                       "start_at"
@@ -2768,7 +2765,7 @@
                       "start_at": {
                         "oneOf": [
                           {
-                            "$ref": "#/definitions/memberName"
+                            "$ref": "#/definitions/member-name"
                           },
                           {
                             "type": "string",
@@ -2785,9 +2782,9 @@
                     "markdownDescription": "An interval from defined point in time till another specific moment or\ntill now if the last had not been defined.\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
                   }
                 }
-              }
+              ]
             }
-          ],
+          },
           "markdownDescription": "Scope of time for displaying data points\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
         }
       },
@@ -2805,7 +2802,7 @@
             ],
             "properties": {
               "value": {
-                "$ref": "#/definitions/jsonPointer",
+                "$ref": "#/definitions/json-pointer",
                 "description": "The pointer to the value for each row in a column. The path is resolved relative to each row object.\n",
                 "markdownDescription": "The pointer to the value for each row in a column. The path is resolved relative to each row object.\n\n\nSee more: [Columns Schema](https://schema.laboperator.com/schemas/definitions/step/table-attributes/columns) "
               },
@@ -2815,7 +2812,7 @@
                 "markdownDescription": "The display name of the column.\n\nSee more: [Columns Schema](https://schema.laboperator.com/schemas/definitions/step/table-attributes/columns) "
               },
               "formatSpecifier": {
-                "$ref": "#/definitions/formatSpecifier",
+                "$ref": "#/definitions/format-specifier",
                 "description": "A specifier describing number formatting for numeric field values. All other field value types will ignore this.\n",
                 "markdownDescription": "A specifier describing number formatting for numeric field values. All other field value types will ignore this.\n\n\nSee more: [Columns Schema](https://schema.laboperator.com/schemas/definitions/step/table-attributes/columns) "
               },
@@ -2979,6 +2976,12 @@
                     "type": "string",
                     "description": "The hint text that will be available for the user when the rules are applied.\n",
                     "markdownDescription": "The hint text that will be available for the user when the rules are applied.\n\n\nSee more: [Rules Schema](https://schema.laboperator.com/schemas/definitions/step/table-attributes/rules) "
+                  },
+                  "formatSpecifier": {
+                    "$ref": "#/definitions/format-specifier"
+                  },
+                  "readOnly": {
+                    "type": "boolean"
                   }
                 },
                 "markdownDescription": "The changes that are applied to cells, rows and tabs in the `range` if the `condition` is fulfilled.\n\n\nSee more: [Rules Schema](https://schema.laboperator.com/schemas/definitions/step/table-attributes/rules) "
@@ -3007,7 +3010,7 @@
       }
     },
     "workflow-event": {
-      "addStep": {
+      "add-step": {
         "type": "object",
         "title": "AddStep Event",
         "description": "The event of adding a step to a running dynamic template.\nThe added step will be appended as the last step of the run.\n",
@@ -3044,7 +3047,7 @@
                 ],
                 "properties": {
                   "step": {
-                    "$ref": "#/definitions/memberName"
+                    "$ref": "#/definitions/member-name"
                   }
                 },
                 "markdownDescription": "Payload of locally defined step template\n\nSee more: [Add Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-event/add-step) "
@@ -3054,7 +3057,7 @@
         },
         "markdownDescription": "The event of adding a step to a running dynamic template.\nThe added step will be appended as the last step of the run.\n\n\nSee more: [Add Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-event/add-step) "
       },
-      "moveStep": {
+      "move-step": {
         "type": "object",
         "title": "MoveStep Event",
         "description": "The event of moving a step in a running dynamic template.\nOnly steps which are not yet started can be moved.\n",
@@ -3066,7 +3069,7 @@
           },
           "payload": {
             "type": "object",
-            "require": [
+            "required": [
               "from",
               "to"
             ],
@@ -3084,7 +3087,7 @@
         },
         "markdownDescription": "The event of moving a step in a running dynamic template.\nOnly steps which are not yet started can be moved.\n\n\nSee more: [Move Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-event/move-step) "
       },
-      "removeStep": {
+      "remove-step": {
         "type": "object",
         "title": "RemoveStep Event",
         "description": "The event of removing a step from a running dynamic template.\nOnly steps which are not yet started can be removed\n",
@@ -3109,7 +3112,7 @@
         },
         "markdownDescription": "The event of removing a step from a running dynamic template.\nOnly steps which are not yet started can be removed\n\n\nSee more: [Remove Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-event/remove-step) "
       },
-      "resolveForEach": {
+      "resolve-for-each": {
         "type": "object",
         "title": "ResolveForEach Event",
         "description": "The event of resolving a single iteration of `for-each` flow of steps.\n\nThe iteration will continue up to and including the last item in the source array.\n",
@@ -3138,7 +3141,7 @@
         },
         "markdownDescription": "The event of resolving a single iteration of `for-each` flow of steps.\n\nThe iteration will continue up to and including the last item in the source array.\n\n\nSee more: [Resolve For Each Schema](https://schema.laboperator.com/schemas/definitions/workflow-event/resolve-for-each) "
       },
-      "resolveIf": {
+      "resolve-if": {
         "type": "object",
         "title": "ResolveIf Event",
         "description": "The event of resolving the condition in an `if` flow of steps.\n\nIf the condition resolves to a truthy value, the steps included in `then` will be unfolded.\nOtherwise, the steps included in `else` will be unfolded.\n\nIf `else` is not specified in the `if` flow and the condition resolves to a falsy value,\nno steps will be unfolded.\n",
@@ -3167,7 +3170,7 @@
         },
         "markdownDescription": "The event of resolving the condition in an `if` flow of steps.\n\nIf the condition resolves to a truthy value, the steps included in `then` will be unfolded.\nOtherwise, the steps included in `else` will be unfolded.\n\nIf `else` is not specified in the `if` flow and the condition resolves to a falsy value,\nno steps will be unfolded.\n\n\nSee more: [Resolve If Schema](https://schema.laboperator.com/schemas/definitions/workflow-event/resolve-if) "
       },
-      "resolveUntil": {
+      "resolve-until": {
         "type": "object",
         "title": "ResolveUntil Event",
         "description": "The event of resolving the condition in a `loop-until` flow of steps.\n\nIf the condition in `until` resolves to a falsy value, the steps included in `loop` will be unfolded.\nOtherwise, the execution will break out of the `loop-until` flow and continue to evaluate the next entry in the parent flow.\n",
@@ -3196,7 +3199,7 @@
         },
         "markdownDescription": "The event of resolving the condition in a `loop-until` flow of steps.\n\nIf the condition in `until` resolves to a falsy value, the steps included in `loop` will be unfolded.\nOtherwise, the execution will break out of the `loop-until` flow and continue to evaluate the next entry in the parent flow.\n\n\nSee more: [Resolve Until Schema](https://schema.laboperator.com/schemas/definitions/workflow-event/resolve-until) "
       },
-      "resolveWhile": {
+      "resolve-while": {
         "type": "object",
         "title": "ResolveWhile Event",
         "description": "The event of resolving the condition in a `while` flow of steps.\n\nIf the condition in `while` resolves to a truthy value, the steps included in `do` will be unfolded.\nOtherwise, the execution will break out of the `while` flow and continue to evaluate the next entry in the parent flow.\n",
@@ -3227,7 +3230,7 @@
       }
     },
     "workflow-template": {
-      "actionIdentifier": {
+      "action-identifier": {
         "type": "string",
         "title": "Action Identifier Schema",
         "enum": [
@@ -3256,61 +3259,61 @@
           "confirm_alert"
         ]
       },
-      "actionObject": {
+      "action-object": {
         "type": "object",
         "title": "Action Object Schema",
         "description": "Used to pass arguments to an action.",
         "oneOf": [
           {
-            "$ref": "#/definitions/workflow-template/action-objects/addStep"
+            "$ref": "#/definitions/workflow-template/action-objects/add-step"
           },
           {
             "$ref": "#/definitions/workflow-template/action-objects/alert"
           },
           {
-            "$ref": "#/definitions/workflow-template/action-objects/completeTimer"
+            "$ref": "#/definitions/workflow-template/action-objects/complete-timer"
           },
           {
-            "$ref": "#/definitions/workflow-template/action-objects/getResources"
+            "$ref": "#/definitions/workflow-template/action-objects/get-resources"
           },
           {
-            "$ref": "#/definitions/workflow-template/action-objects/goToPreviousStep"
+            "$ref": "#/definitions/workflow-template/action-objects/go-to-previous-step"
           },
           {
-            "$ref": "#/definitions/workflow-template/action-objects/goToStep"
+            "$ref": "#/definitions/workflow-template/action-objects/go-to-step"
           },
           {
             "$ref": "#/definitions/workflow-template/action-objects/notify"
           },
           {
-            "$ref": "#/definitions/workflow-template/action-objects/repeatSubstep"
+            "$ref": "#/definitions/workflow-template/action-objects/repeat-substep"
           },
           {
-            "$ref": "#/definitions/workflow-template/action-objects/resetTimer"
+            "$ref": "#/definitions/workflow-template/action-objects/reset-timer"
           },
           {
-            "$ref": "#/definitions/workflow-template/action-objects/sendCommand"
+            "$ref": "#/definitions/workflow-template/action-objects/send-command"
           },
           {
-            "$ref": "#/definitions/workflow-template/action-objects/selectRow"
+            "$ref": "#/definitions/workflow-template/action-objects/select-row"
           },
           {
-            "$ref": "#/definitions/workflow-template/action-objects/selectCell"
+            "$ref": "#/definitions/workflow-template/action-objects/select-cell"
           },
           {
-            "$ref": "#/definitions/workflow-template/action-objects/setField"
+            "$ref": "#/definitions/workflow-template/action-objects/set-field"
           },
           {
-            "$ref": "#/definitions/workflow-template/action-objects/setTemporaryField"
+            "$ref": "#/definitions/workflow-template/action-objects/set-temporary-field"
           },
           {
-            "$ref": "#/definitions/workflow-template/action-objects/startTimer"
+            "$ref": "#/definitions/workflow-template/action-objects/start-timer"
           },
           {
-            "$ref": "#/definitions/workflow-template/action-objects/stopTimer"
+            "$ref": "#/definitions/workflow-template/action-objects/stop-timer"
           },
           {
-            "$ref": "#/definitions/workflow-template/action-objects/updateResource"
+            "$ref": "#/definitions/workflow-template/action-objects/update-resource"
           },
           {
             "$ref": "#/definitions/workflow-template/action-objects/webhook"
@@ -3323,20 +3326,20 @@
         "description": "Actions can come as a simple identifier string or an object to pass options.\nEither variant can be used as single action or a list of actions. A list of\nactions will always be executed sequentially. A somehow erroneous action\nwill cause the consecutive actions not to be executed.\n",
         "oneOf": [
           {
-            "$ref": "#/definitions/workflow-template/actionIdentifier"
+            "$ref": "#/definitions/workflow-template/action-identifier"
           },
           {
-            "$ref": "#/definitions/workflow-template/actionObject"
+            "$ref": "#/definitions/workflow-template/action-object"
           },
           {
             "type": "array",
             "items": {
               "oneOf": [
                 {
-                  "$ref": "#/definitions/workflow-template/actionIdentifier"
+                  "$ref": "#/definitions/workflow-template/action-identifier"
                 },
                 {
-                  "$ref": "#/definitions/workflow-template/actionObject"
+                  "$ref": "#/definitions/workflow-template/action-object"
                 }
               ]
             }
@@ -3391,7 +3394,7 @@
         },
         "markdownDescription": "Behaviors provide means to define the behavior of a step. They can be used\nto control devices, record results, wait for device responses, control flow\nwithin a step and much more. The general scheme of a behavior is\n`trigger` => `action`.\n\nBehaviors are always treated as parallel independent definitions.\n\n\nSee more: [Behaviors Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/behaviors) "
       },
-      "changeReason": {
+      "change-reason": {
         "title": "Change Reason",
         "description": "A flag indicating whether subsequent field updates require a reason and prompt the user with a reason dialog. The first update to a field's value never requires a reason, any further updates always do. Consider the following example:\n\n    1. field has no value\n    2. update to `10`\n    3. update to `22` => reason required\n    4. update to `null` => reason required\n    5. update to `14` => reason required\n    6. user does not submit reason => field value is still `null`\n\nA reason can be submitted programmatically as part of a `set_field` action, which would then not prompt the reason dialog to the user during workflow execution. See [Set Field schema](/schemas/definitions/workflow-template/action-objects/set-field/) for more information.\n\nFor fields of type array or object the `changeReason` setting can be applied both at the top-level, meaning any partial update of an existing value requires a reason, or for individual items and properties only. Nested settings take precedence over higher-level settings.\n\nA field update that requires a reason will always fail if no reason is provided.\n",
         "oneOf": [
@@ -3462,7 +3465,7 @@
         ],
         "allOf": [
           {
-            "$ref": "#/definitions/stepAttributes"
+            "$ref": "#/definitions/step-attributes"
           },
           {
             "type": "object",
@@ -3501,7 +3504,7 @@
         "title": "Steps Section Schema",
         "description": "The `steps` section defines all steps used in a workflow. A step is a set\nof closed activities and instructions. Steps can be defined outside of a\nworkflow and then be reused across different workflows.\n\nThe `steps` sections maps inline or external definitions to a key that\nis unique within this workflow. That key or identifier must be unique among\nthe keys in the steps object. If a key is defined twice the later definition\noverrides the previous.\n\nSteps defined outside of this workflow template can use the fields defined\nfor this workflow by mapping them to the internally defined fields in the\nworkflow section of the workflow template.\n",
         "propertyNames": {
-          "$ref": "#/definitions/memberName"
+          "$ref": "#/definitions/member-name"
         },
         "additionalProperties": {
           "oneOf": [
@@ -3509,13 +3512,13 @@
               "$ref": "#/definitions/workflow-template/step"
             },
             {
-              "$ref": "#/definitions/stepReference"
+              "$ref": "#/definitions/step-reference"
             }
           ]
         },
         "markdownDescription": "The `steps` section defines all steps used in a workflow. A step is a set\nof closed activities and instructions. Steps can be defined outside of a\nworkflow and then be reused across different workflows.\n\nThe `steps` sections maps inline or external definitions to a key that\nis unique within this workflow. That key or identifier must be unique among\nthe keys in the steps object. If a key is defined twice the later definition\noverrides the previous.\n\nSteps defined outside of this workflow template can use the fields defined\nfor this workflow by mapping them to the internally defined fields in the\nworkflow section of the workflow template.\n\n\nSee more: [Steps Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/steps) "
       },
-      "triggerIdentifier": {
+      "trigger-identifier": {
         "type": "string",
         "title": "Trigger Identifier Schema",
         "enum": [
@@ -3585,19 +3588,19 @@
           "scan"
         ]
       },
-      "triggerObject": {
+      "trigger-object": {
         "type": "object",
         "title": "Trigger Object Schema",
         "description": "Used to pass arguments to a trigger.",
         "oneOf": [
           {
-            "$ref": "#/definitions/workflow-template/trigger-objects/commandResponse"
+            "$ref": "#/definitions/workflow-template/trigger-objects/command-response"
           },
           {
-            "$ref": "#/definitions/workflow-template/trigger-objects/dataPoint"
+            "$ref": "#/definitions/workflow-template/trigger-objects/data-point"
           },
           {
-            "$ref": "#/definitions/workflow-template/trigger-objects/fieldUpdate"
+            "$ref": "#/definitions/workflow-template/trigger-objects/field-update"
           },
           {
             "$ref": "#/definitions/workflow-template/trigger-objects/manual"
@@ -3606,16 +3609,16 @@
             "$ref": "#/definitions/workflow-template/trigger-objects/scan"
           },
           {
-            "$ref": "#/definitions/workflow-template/trigger-objects/timerComplete"
+            "$ref": "#/definitions/workflow-template/trigger-objects/timer-complete"
           },
           {
-            "$ref": "#/definitions/workflow-template/trigger-objects/timerReset"
+            "$ref": "#/definitions/workflow-template/trigger-objects/timer-reset"
           },
           {
-            "$ref": "#/definitions/workflow-template/trigger-objects/timerStart"
+            "$ref": "#/definitions/workflow-template/trigger-objects/timer-start"
           },
           {
-            "$ref": "#/definitions/workflow-template/trigger-objects/timerStop"
+            "$ref": "#/definitions/workflow-template/trigger-objects/timer-stop"
           }
         ],
         "markdownDescription": "Used to pass arguments to a trigger.\n\nSee more: [Trigger Object Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-object) "
@@ -3625,20 +3628,20 @@
         "description": "Triggers can come as a simple identifier string or an object to pass options.\nEither variant can be used as a single trigger or a list of triggers.\nDifferent then actions, triggers are considered alternatives. Either of any\ntriggers could set the behavior in motion. While a behavior is in motion\nother occurrences of triggers on that behavior will have no effect, so the\nsame behavior can not be triggered multiple times in parallel.\n",
         "oneOf": [
           {
-            "$ref": "#/definitions/workflow-template/triggerIdentifier"
+            "$ref": "#/definitions/workflow-template/trigger-identifier"
           },
           {
-            "$ref": "#/definitions/workflow-template/triggerObject"
+            "$ref": "#/definitions/workflow-template/trigger-object"
           },
           {
             "type": "array",
             "items": {
               "oneOf": [
                 {
-                  "$ref": "#/definitions/workflow-template/triggerIdentifier"
+                  "$ref": "#/definitions/workflow-template/trigger-identifier"
                 },
                 {
-                  "$ref": "#/definitions/workflow-template/triggerObject"
+                  "$ref": "#/definitions/workflow-template/trigger-object"
                 }
               ]
             }
@@ -3647,7 +3650,7 @@
         "markdownDescription": "Triggers can come as a simple identifier string or an object to pass options.\nEither variant can be used as a single trigger or a list of triggers.\nDifferent then actions, triggers are considered alternatives. Either of any\ntriggers could set the behavior in motion. While a behavior is in motion\nother occurrences of triggers on that behavior will have no effect, so the\nsame behavior can not be triggered multiple times in parallel.\n\n\nSee more: [Triggers Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/triggers) "
       },
       "action-objects": {
-        "addStep": {
+        "add-step": {
           "type": "object",
           "title": "AddStep Options",
           "description": "Options to a AddStep action.\n",
@@ -3679,10 +3682,10 @@
                     "markdownDescription": "Version on a step template.\n\nSee more: [Add Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/add-step) "
                   },
                   "fields": {
-                    "$ref": "#/definitions/fieldValues"
+                    "$ref": "#/definitions/field-values"
                   },
                   "fieldMapping": {
-                    "$ref": "#/definitions/fieldMapping"
+                    "$ref": "#/definitions/field-mapping"
                   }
                 }
               },
@@ -3694,13 +3697,13 @@
                 "additionalProperties": false,
                 "properties": {
                   "step": {
-                    "$ref": "#/definitions/memberName"
+                    "$ref": "#/definitions/member-name"
                   },
                   "fields": {
-                    "$ref": "#/definitions/fieldValues"
+                    "$ref": "#/definitions/field-values"
                   },
                   "fieldMapping": {
-                    "$ref": "#/definitions/fieldMapping"
+                    "$ref": "#/definitions/field-mapping"
                   }
                 }
               }
@@ -3755,7 +3758,7 @@
           },
           "markdownDescription": "Options to an Alert action.\n\n\nSee more: [Alert Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/alert) "
         },
-        "completeTimer": {
+        "complete-timer": {
           "type": "object",
           "title": "CompleteTimer Options",
           "description": "Options to an CompleteTimer action.\n",
@@ -3778,7 +3781,7 @@
           },
           "markdownDescription": "Options to an CompleteTimer action.\n\n\nSee more: [Complete Timer Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/complete-timer) "
         },
-        "getResources": {
+        "get-resources": {
           "type": "object",
           "title": "Get Resources",
           "description": "An action to filter related API resources.\n",
@@ -3796,24 +3799,24 @@
             ],
             "properties": {
               "tag": {
-                "$ref": "#/definitions/resourceTag"
+                "$ref": "#/definitions/resource-tag"
               },
               "filter": {
                 "type": "object",
                 "propertyNames": {
-                  "$ref": "#/definitions/resourceTag"
+                  "$ref": "#/definitions/resource-tag"
                 }
               },
               "page": {
                 "type": "object",
                 "propertyNames": {
-                  "$ref": "#/definitions/resourceTag"
+                  "$ref": "#/definitions/resource-tag"
                 }
               },
               "sort": {
                 "type": "object",
                 "propertyNames": {
-                  "$ref": "#/definitions/resourceTag"
+                  "$ref": "#/definitions/resource-tag"
                 }
               },
               "blocking": {
@@ -3869,7 +3872,7 @@
           ],
           "markdownDescription": "An action to filter related API resources.\n\n\nSee more: [Get Resources Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/get-resources) "
         },
-        "goToPreviousStep": {
+        "go-to-previous-step": {
           "type": "object",
           "title": "GoToPreviousStep Options",
           "description": "Options to an GoToPreviousStep action.\n",
@@ -3902,7 +3905,7 @@
           },
           "markdownDescription": "Options to an GoToPreviousStep action.\n\n\nSee more: [Go To Previous Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/go-to-previous-step) "
         },
-        "goToStep": {
+        "go-to-step": {
           "type": "object",
           "title": "GoToPreviousStep Options",
           "description": "Options to an GoToStep action.\n",
@@ -3983,7 +3986,7 @@
           },
           "markdownDescription": "Options to an Notify action. In contrast to an alert the notification does\nnot interrupt the execution of a workflow and requires no user interaction.\nIt will only be shown to users that have the workflow open at the time of\nthe action being run.\n\n\nSee more: [Notify Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/notify) "
         },
-        "repeatSubstep": {
+        "repeat-substep": {
           "type": "object",
           "title": "RepeatSubstep Options",
           "description": "Options to an RepeatSubstep action.\n",
@@ -4006,7 +4009,7 @@
           },
           "markdownDescription": "Options to an RepeatSubstep action.\n\n\nSee more: [Repeat Substep Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/repeat-substep) "
         },
-        "resetTimer": {
+        "reset-timer": {
           "type": "object",
           "title": "ResetTimer Options",
           "description": "Options to an ResetTimer action.\n",
@@ -4029,7 +4032,7 @@
           },
           "markdownDescription": "Options to an ResetTimer action.\n\n\nSee more: [Reset Timer Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/reset-timer) "
         },
-        "selectCell": {
+        "select-cell": {
           "type": "object",
           "title": "SelectCell Options",
           "description": "Options to a SelectCell action.\n",
@@ -4047,7 +4050,7 @@
             ],
             "properties": {
               "table": {
-                "$ref": "#/definitions/memberName",
+                "$ref": "#/definitions/member-name",
                 "description": "Identifier of the table",
                 "markdownDescription": "Identifier of the table\n\nSee more: [Select Cell Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/select-cell) "
               },
@@ -4060,7 +4063,7 @@
           },
           "markdownDescription": "Options to a SelectCell action.\n\n\nSee more: [Select Cell Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/select-cell) "
         },
-        "selectRow": {
+        "select-row": {
           "type": "object",
           "title": "SelectRow Options",
           "description": "Options to a SelectRow action\n",
@@ -4078,7 +4081,7 @@
             ],
             "properties": {
               "table": {
-                "$ref": "#/definitions/memberName",
+                "$ref": "#/definitions/member-name",
                 "description": "Identifier of the table",
                 "markdownDescription": "Identifier of the table\n\nSee more: [Select Row Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/select-row) "
               },
@@ -4091,7 +4094,7 @@
           },
           "markdownDescription": "Options to a SelectRow action\n\n\nSee more: [Select Row Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/select-row) "
         },
-        "sendCommand": {
+        "send-command": {
           "type": "object",
           "title": "SendCommand Options",
           "description": "Options to a SendCommand action.\n",
@@ -4111,7 +4114,7 @@
             ],
             "properties": {
               "device": {
-                "$ref": "#/definitions/memberName",
+                "$ref": "#/definitions/member-name",
                 "description": "A reference to a field that is a relationship to a device.\n",
                 "markdownDescription": "A reference to a field that is a relationship to a device.\n\n\nSee more: [Send Command Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-command) "
               },
@@ -4124,7 +4127,7 @@
           },
           "markdownDescription": "Options to a SendCommand action.\n\n\nSee more: [Send Command Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-command) "
         },
-        "setField": {
+        "set-field": {
           "type": "object",
           "title": "Set Field",
           "description": "A Set Field action updates a field with a new value.\n",
@@ -4146,7 +4149,7 @@
                 "additionalProperties": false,
                 "properties": {
                   "field": {
-                    "$ref": "#/definitions/memberName",
+                    "$ref": "#/definitions/member-name",
                     "description": "A reference to a field that is updated with a value when the action is triggered.\n",
                     "markdownDescription": "A reference to a field that is updated with a value when the action is triggered.\n\n\nSee more: [Set Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-field) "
                   },
@@ -4177,7 +4180,7 @@
                 "additionalProperties": false,
                 "properties": {
                   "field": {
-                    "$ref": "#/definitions/memberName",
+                    "$ref": "#/definitions/member-name",
                     "description": "A reference to a field that is partially updated with a value when the action is triggered.\n",
                     "markdownDescription": "A reference to a field that is partially updated with a value when the action is triggered.\n\n\nSee more: [Set Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-field) "
                   },
@@ -4290,7 +4293,7 @@
           ],
           "markdownDescription": "A Set Field action updates a field with a new value.\n\n\nSee more: [Set Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-field) "
         },
-        "setTemporaryField": {
+        "set-temporary-field": {
           "type": "object",
           "title": "Set Temporary Field",
           "description": "An action to store temporary value which last for a single chain of actions.\n",
@@ -4310,7 +4313,7 @@
             "additionalProperties": false,
             "properties": {
               "field": {
-                "$ref": "#/definitions/memberName",
+                "$ref": "#/definitions/member-name",
                 "description": "Name of the temporary field which will be assigned with value when the action is triggered.\n",
                 "markdownDescription": "Name of the temporary field which will be assigned with value when the action is triggered.\n\n\nSee more: [Set Temporary Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-temporary-field) "
               },
@@ -4337,7 +4340,7 @@
           ],
           "markdownDescription": "An action to store temporary value which last for a single chain of actions.\n\n\nSee more: [Set Temporary Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-temporary-field) "
         },
-        "startTimer": {
+        "start-timer": {
           "type": "object",
           "title": "StartTimer Options",
           "description": "Options to a StartTimer action.\n",
@@ -4360,7 +4363,7 @@
           },
           "markdownDescription": "Options to a StartTimer action.\n\n\nSee more: [Start Timer Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/start-timer) "
         },
-        "stopTimer": {
+        "stop-timer": {
           "type": "object",
           "title": "StopTimer Options",
           "description": "Options to an StopTimer action.\n",
@@ -4383,7 +4386,7 @@
           },
           "markdownDescription": "Options to an StopTimer action.\n\n\nSee more: [Stop Timer Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/stop-timer) "
         },
-        "updateResource": {
+        "update-resource": {
           "type": "object",
           "title": "Update Resource",
           "description": "An action to update a resource. It can be used to update the value of custom attributes, and in case of Workflow Runs also update their title.\n",
@@ -4592,22 +4595,22 @@
               },
               "onSuccess": {
                 "description": "The handler for response status codes 2xx",
-                "$ref": "#/definitions/step/webhookHandler",
+                "$ref": "#/definitions/step/webhook-handler",
                 "markdownDescription": "The handler for response status codes 2xx\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
               },
               "onError": {
                 "description": "The handler for response status codes 5xx",
-                "$ref": "#/definitions/step/webhookHandler",
+                "$ref": "#/definitions/step/webhook-handler",
                 "markdownDescription": "The handler for response status codes 5xx\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
               },
               "onCode": {
                 "type": "object",
                 "description": "Define a different handler for specific codes.\n",
                 "propertyNames": {
-                  "$ref": "#/definitions/statusCode"
+                  "$ref": "#/definitions/status-code"
                 },
                 "additionalProperties": {
-                  "$ref": "#/definitions/step/webhookHandler"
+                  "$ref": "#/definitions/step/webhook-handler"
                 },
                 "markdownDescription": "Define a different handler for specific codes.\n\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
               }
@@ -4617,7 +4620,7 @@
         }
       },
       "trigger-objects": {
-        "commandResponse": {
+        "command-response": {
           "type": "object",
           "title": "CommandResponse Options",
           "description": "Options to a CommandResponse trigger.\n",
@@ -4638,7 +4641,7 @@
             ],
             "properties": {
               "device": {
-                "$ref": "#/definitions/memberName",
+                "$ref": "#/definitions/member-name",
                 "description": "A reference to a field that is a relationship to a device.\n",
                 "markdownDescription": "A reference to a field that is a relationship to a device.\n\n\nSee more: [Command Response Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/command-response) "
               },
@@ -4662,7 +4665,7 @@
           },
           "markdownDescription": "Options to a CommandResponse trigger.\n\n\nSee more: [Command Response Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/command-response) "
         },
-        "dataPoint": {
+        "data-point": {
           "type": "object",
           "title": "DataPoint Options",
           "description": "Options to a DataPoint trigger.\n",
@@ -4685,7 +4688,7 @@
             ],
             "properties": {
               "device": {
-                "$ref": "#/definitions/memberName",
+                "$ref": "#/definitions/member-name",
                 "description": "A reference to a field that is a relationship to a device.\n",
                 "markdownDescription": "A reference to a field that is a relationship to a device.\n\n\nSee more: [Data Point Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/data-point) "
               },
@@ -4701,7 +4704,7 @@
           },
           "markdownDescription": "Options to a DataPoint trigger.\n\n\nSee more: [Data Point Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/data-point) "
         },
-        "fieldUpdate": {
+        "field-update": {
           "type": "object",
           "title": "FieldUpdate Options",
           "description": "Options to a FieldUpdate trigger.\n",
@@ -4723,7 +4726,7 @@
             ],
             "properties": {
               "field": {
-                "$ref": "#/definitions/memberName",
+                "$ref": "#/definitions/member-name",
                 "description": "A field identifier. Only updates to this field will fire the trigger.\n",
                 "markdownDescription": "A field identifier. Only updates to this field will fire the trigger.\n\n\nSee more: [Field Update Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/field-update) "
               }
@@ -4753,7 +4756,7 @@
             ],
             "properties": {
               "key": {
-                "$ref": "#/definitions/memberName",
+                "$ref": "#/definitions/member-name",
                 "description": "A key passed that is used to filter to react to a\nbutton being assigned the same key.\n",
                 "markdownDescription": "A key passed that is used to filter to react to a\nbutton being assigned the same key.\n\n\nSee more: [Manual Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/manual) "
               }
@@ -4799,7 +4802,7 @@
           },
           "markdownDescription": "Options for a Scanner trigger. The application supports simulating a barcode scan by passing the 'simulateScanString' prop to the component.\n\n\nSee more: [Scan Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/scan) "
         },
-        "timerComplete": {
+        "timer-complete": {
           "type": "object",
           "title": "Timer Complete Options",
           "description": "Options to a Timer Complete trigger.\n",
@@ -4819,7 +4822,7 @@
             ],
             "properties": {
               "identifier": {
-                "$ref": "#/definitions/memberName",
+                "$ref": "#/definitions/member-name",
                 "description": "Identifier of a timer that initiates the trigger.\n",
                 "markdownDescription": "Identifier of a timer that initiates the trigger.\n\n\nSee more: [Timer Complete Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-complete) "
               }
@@ -4827,7 +4830,7 @@
           },
           "markdownDescription": "Options to a Timer Complete trigger.\n\n\nSee more: [Timer Complete Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-complete) "
         },
-        "timerReset": {
+        "timer-reset": {
           "type": "object",
           "title": "Timer Reset Options",
           "description": "Options to a Timer Reset trigger.\n",
@@ -4847,7 +4850,7 @@
             ],
             "properties": {
               "identifier": {
-                "$ref": "#/definitions/memberName",
+                "$ref": "#/definitions/member-name",
                 "description": "Identifier of a timer that initiates the trigger.\n",
                 "markdownDescription": "Identifier of a timer that initiates the trigger.\n\n\nSee more: [Timer Reset Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-reset) "
               }
@@ -4855,7 +4858,7 @@
           },
           "markdownDescription": "Options to a Timer Reset trigger.\n\n\nSee more: [Timer Reset Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-reset) "
         },
-        "timerStart": {
+        "timer-start": {
           "type": "object",
           "title": "Timer Start Options",
           "description": "Options to a Timer Start trigger.\n",
@@ -4875,7 +4878,7 @@
             ],
             "properties": {
               "identifier": {
-                "$ref": "#/definitions/memberName",
+                "$ref": "#/definitions/member-name",
                 "description": "Identifier of a timer that initiates the trigger.\n",
                 "markdownDescription": "Identifier of a timer that initiates the trigger.\n\n\nSee more: [Timer Start Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-start) "
               }
@@ -4883,7 +4886,7 @@
           },
           "markdownDescription": "Options to a Timer Start trigger.\n\n\nSee more: [Timer Start Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-start) "
         },
-        "timerStop": {
+        "timer-stop": {
           "type": "object",
           "title": "Timer Complete Options",
           "description": "Options to a Timer Complete trigger.\n",
@@ -4903,7 +4906,7 @@
             ],
             "properties": {
               "identifier": {
-                "$ref": "#/definitions/memberName",
+                "$ref": "#/definitions/member-name",
                 "description": "Identifier of a timer that initiates the trigger.\n",
                 "markdownDescription": "Identifier of a timer that initiates the trigger.\n\n\nSee more: [Timer Stop Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-stop) "
               }

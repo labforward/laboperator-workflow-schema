@@ -7,7 +7,7 @@ description: |
 minProperties: 1
 propertyNames:
   description: A valid field identifier defined by the step.
-  $ref: '#/definitions/memberName'
+  $ref: '#/definitions/member-name'
 additionalProperties: true
 examples:
   - stepField1: true

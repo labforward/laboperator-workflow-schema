@@ -16,8 +16,8 @@ description: |
   workflow section of the workflow template.
 
 propertyNames:
-  $ref: '#/definitions/memberName'
+  $ref: '#/definitions/member-name'
 additionalProperties:
   oneOf:
     - $ref: '#/definitions/workflow-template/step'
-    - $ref: '#/definitions/stepReference'
+    - $ref: '#/definitions/step-reference'

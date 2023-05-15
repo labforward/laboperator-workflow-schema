@@ -5,9 +5,14 @@ description: |
   [momentjs](https://momentjs.com/) library. Head over to
   [docs](https://momentjs.com/docs/#/durations/creating/) for a full
   reference and examples.
+examples:
+  - [2, minute]
+  - P2M
+  - seconds: 2
+    minutes: 2
 oneOf:
   - type: array
-    item:
+    items:
       oneOf:
         - type: string
           enum:

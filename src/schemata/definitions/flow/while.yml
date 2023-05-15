@@ -11,7 +11,7 @@ properties:
     description: |
       The condition has access to all global fields of the workflow. Local step fields cannot be referenced in a condition. Any string result or numerical result other then zero will be considered truthy and trigger execution of the `then` workflow. A falsy value will trigger execution of the `else` workflow.
   do:
-    $ref: '#/definitions/flow/flowControl'
+    $ref: '#/definitions/flow/flow-control'
 examples:
   - while: field1 > 100
     do:

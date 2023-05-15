@@ -50,7 +50,7 @@ allOf:
         description: |
           A flag indicating whether a field is included in the output of a workflow run export.
       formatSpecifier:
-        $ref: '#/definitions/formatSpecifier'
+        $ref: '#/definitions/format-specifier'
         description: |
           A specifier describing number formatting for fields of type `number`, `integer`, and `quantity`. All other field types ignore this flag.
       group:
@@ -59,7 +59,7 @@ allOf:
         description: |
           A flag that is used to group fields during the workflow preparation stage. Fields with the same group name are displayed together in the order of definition. All fields without a specified group are displayed separately.
       changeReason:
-        $ref: '#/definitions/workflow-template/changeReason'
+        $ref: '#/definitions/workflow-template/change-reason'
   - oneOf:
       - $ref: '#/definitions/jsonSchemaDraft7'
       - $ref: '#/definitions/field-schema/file'

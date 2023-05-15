@@ -7,7 +7,7 @@ required: [loop, until]
 additionalProperties: false
 properties:
   loop:
-    $ref: '#/definitions/flow/flowControl'
+    $ref: '#/definitions/flow/flow-control'
   until:
     $ref: '#/definitions/script'
     description: |

@@ -5,7 +5,7 @@ description: |
   A step is a closed set of activities and instructions.
 required: [info]
 allOf:
-  - $ref: '#/definitions/stepAttributes'
+  - $ref: '#/definitions/step-attributes'
   - type: object
     properties:
       info:

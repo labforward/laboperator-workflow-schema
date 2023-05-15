@@ -16,6 +16,6 @@ additionalProperties:
     - identifier
   properties:
     identifier:
-      $ref: '#/definitions/memberName'
+      $ref: '#/definitions/member-name'
       description: |
         Identifier of a timer that initiates the trigger.

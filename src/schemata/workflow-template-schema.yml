@@ -13,11 +13,11 @@ required:
   - flow
 properties:
   schema_version:
-    $ref: '#/definitions/schemaVersion'
+    $ref: '#/definitions/schema-version'
   info:
     $ref: '#/definitions/info'
   config:
-    $ref: '#/definitions/config/workflowConfig'
+    $ref: '#/definitions/config/workflow-config'
   elements:
     type: array
     description: |
@@ -35,7 +35,7 @@ properties:
   flow:
     $ref: '#/definitions/workflow-template/flow'
   contextInfo:
-    $ref: '#/definitions/contextInfo'
+    $ref: '#/definitions/context/info'
   behaviors:
     $ref: '#/definitions/workflow-template/behaviors'
   secrets:

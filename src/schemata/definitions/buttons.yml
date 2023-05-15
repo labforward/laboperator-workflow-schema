@@ -6,7 +6,7 @@ description: |
 
   Buttons defined at the workflow or step level can be used anywhere in the workflow or step respectively. Use its unique `key` or `id` value to reference a button inside markdown:
 
-  `{{button|member-name}}`
+  `{{button|memberName}}`
 
   When defined at the substep level of a template, buttons automatically appear at the very bottom of the substep in the order in which they are defined. To manually place a substep button in the above shown format its `placement` setting must be set to `manual`.
 items:

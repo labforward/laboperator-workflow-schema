@@ -1,9 +1,9 @@
 oneOf:
-  - $ref: '#/definitions/stepIdentifier'
-  - $ref: '#/definitions/flow/stepObject'
+  - $ref: '#/definitions/step-identifier'
+  - $ref: '#/definitions/flow/step-object'
   - $ref: '#/definitions/flow/sequential'
   - $ref: '#/definitions/flow/if'
   - $ref: '#/definitions/flow/loop'
   - $ref: '#/definitions/flow/while'
-  - $ref: '#/definitions/flow/forEachArray'
-  - $ref: '#/definitions/flow/forEachInteger'
+  - $ref: '#/definitions/flow/for-each-array'
+  - $ref: '#/definitions/flow/for-each-integer'

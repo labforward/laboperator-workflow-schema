@@ -99,15 +99,15 @@ additionalProperties:
 
     onSuccess:
       description: The handler for response status codes 2xx
-      $ref: '#/definitions/step/webhookHandler'
+      $ref: '#/definitions/step/webhook-handler'
     onError:
       description: The handler for response status codes 5xx
-      $ref: '#/definitions/step/webhookHandler'
+      $ref: '#/definitions/step/webhook-handler'
     onCode:
       type: object
       description: |
         Define a different handler for specific codes.
       propertyNames:
-        $ref: '#/definitions/statusCode'
+        $ref: '#/definitions/status-code'
       additionalProperties:
-        $ref: '#/definitions/step/webhookHandler'
+        $ref: '#/definitions/step/webhook-handler'

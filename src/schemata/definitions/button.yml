@@ -29,13 +29,13 @@ properties:
       - text
     default: contained
   key:
-    $ref: '#/definitions/memberName'
+    $ref: '#/definitions/member-name'
     description: |
       A unique reference passed to a manual trigger that can be used in a `behaviors` definition to react to this button being clicked.
 
-      The `key` can be used as a button `id` if it is unique in the current context and `id` is not defined. For example, use the `key` to display the button inside markdown in the format `{{button|my-key}}`.
+      The `key` can be used as a button `id` if it is unique in the current context and `id` is not defined. For example, use the `key` to display the button inside markdown in the format `{{button|myKey}}`.
   id:
-    $ref: '#/definitions/memberName'
+    $ref: '#/definitions/member-name'
     description: |
       Can be used to render the button inside markdown text. For example, when `id` is defined as `print`, the text may look like:
 
