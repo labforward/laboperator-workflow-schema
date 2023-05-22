@@ -1,7 +1,7 @@
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 export default {
   moduleNameMapper: {
-    '@src/(.*)': '<rootDir>/src/$1',
+    '@/(.*)': '<rootDir>/src/$1',
     '@fixtures/(.*)': '<rootDir>/src/__tests__/fixtures/$1',
   },
   /**

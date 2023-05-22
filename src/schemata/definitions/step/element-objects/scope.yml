@@ -6,81 +6,61 @@ description: |
 required:
   - type
   - params
-properties:
-  type:
-    type: 'string'
-    enum:
-      - limit
-      - duration
-      - range
-      - open_range
-  params:
-    type:
-      - object
-      - array
-      - string
-      - number
-    allOf:
-      - if:
-          properties:
-            type:
-              enum:
-                - limit
-        then:
-            description: |
-              Fixed number of last data points that should be taken to the scope.
-            properties:
-              count:
-                type: number
-            examples:
-              - count: 1
-      - if:
-          properties:
-            type:
-              enum:
-                - duration
-        then:
-          $ref: '#/definitions/moment-duration'
-      - if:
-          properties:
-            type:
-              enum:
-                - range
-        then:
-          description: |
-            An interval from defined point in time till another specific moment or
-            till now if the last had not been defined.
-          required:
-            - start_at
-            - end_at
-          properties:
-            start_at:
-              oneOf:
-                - $ref: '#/definitions/member-name'
-                - $ref: '#/definitions/timestamp'
-            end_at:
-              oneOf:
-                - $ref: '#/definitions/member-name'
-                - $ref: '#/definitions/timestamp'
-          examples:
-            - start_at: 2020-03-03T07:07:26.000Z
-              end_at: 2020-03-03T08:15:26.000Z
-      - if:
-          properties:
-            type:
-              enum:
-                - open_range
-        then:
-          description: |
-            An interval from defined point in time till another specific moment or
-            till now if the last had not been defined.
-          required:
-            - start_at
-          properties:
-            start_at:
-              oneOf:
-                - $ref: '#/definitions/member-name'
-                - type: string
-                  pattern: '^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$'
-          examples:
-            - start_at: StartTimeField
+oneOf:
+  - description: |
+      Fixed number of last data points that should be taken to the scope.
+    properties:
+      type:
+        const: limit
+      params:
+        type: object
+        properties:
+          count:
+            type: number
+        examples:
+          - count: 1
+  - description: Duration till present time.
+    properties:
+      type:
+        const: duration
+      params:
+        $ref: '#/definitions/moment-duration'
+  - description: |
+      An interval from defined point in time till another specific moment or till now if the last had not been defined.
+    properties:
+      type:
+        const: range
+      params:
+        type: object
+        required:
+          - start_at
+          - end_at
+        properties:
+          start_at:
+            oneOf:
+              - $ref: '#/definitions/member-name'
+              - $ref: '#/definitions/timestamp'
+          end_at:
+            oneOf:
+              - $ref: '#/definitions/member-name'
+              - $ref: '#/definitions/timestamp'
+        examples:
+          - start_at: 2020-03-03T07:07:26.000Z
+            end_at: 2020-03-03T08:15:26.000Z
+  - description: |
+      An interval from defined point in time till another specific moment or till now if the last had not been defined.
+    properties:
+      type:
+        const: open_range
+      params:
+        type: object
+        required:
+          - start_at
+        properties:
+          start_at:
+            oneOf:
+              - $ref: '#/definitions/member-name'
+              - type: string
+                pattern: '^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$'
+        examples:
+          - start_at: StartTimeField

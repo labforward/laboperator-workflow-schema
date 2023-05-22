@@ -2133,119 +2133,106 @@ export declare const schemas: {
                         title: string;
                         description: string;
                         required: string[];
-                        properties: {
-                            type: {
-                                type: string;
-                                enum: string[];
-                            };
-                            params: {
-                                type: string[];
-                                allOf: ({
-                                    if: {
-                                        properties: {
-                                            type: {
-                                                enum: string[];
-                                            };
+                        oneOf: ({
+                            description: string;
+                            properties: {
+                                type: {
+                                    const: string;
+                                };
+                                params: {
+                                    type: string;
+                                    properties: {
+                                        count: {
+                                            type: string;
                                         };
+                                        start_at?: undefined;
+                                        end_at?: undefined;
                                     };
-                                    then: {
-                                        description: string;
-                                        properties: {
-                                            count: {
+                                    examples: {
+                                        count: number;
+                                    }[];
+                                    $ref?: undefined;
+                                    required?: undefined;
+                                };
+                            };
+                            markdownDescription: string;
+                        } | {
+                            description: string;
+                            properties: {
+                                type: {
+                                    const: string;
+                                };
+                                params: {
+                                    $ref: string;
+                                    type?: undefined;
+                                    properties?: undefined;
+                                    examples?: undefined;
+                                    required?: undefined;
+                                };
+                            };
+                            markdownDescription: string;
+                        } | {
+                            description: string;
+                            properties: {
+                                type: {
+                                    const: string;
+                                };
+                                params: {
+                                    type: string;
+                                    required: string[];
+                                    properties: {
+                                        start_at: {
+                                            oneOf: {
+                                                $ref: string;
+                                            }[];
+                                        };
+                                        end_at: {
+                                            oneOf: {
+                                                $ref: string;
+                                            }[];
+                                        };
+                                        count?: undefined;
+                                    };
+                                    examples: {
+                                        start_at: string;
+                                        end_at: string;
+                                    }[];
+                                    $ref?: undefined;
+                                };
+                            };
+                            markdownDescription: string;
+                        } | {
+                            description: string;
+                            properties: {
+                                type: {
+                                    const: string;
+                                };
+                                params: {
+                                    type: string;
+                                    required: string[];
+                                    properties: {
+                                        start_at: {
+                                            oneOf: ({
+                                                $ref: string;
+                                                type?: undefined;
+                                                pattern?: undefined;
+                                            } | {
                                                 type: string;
-                                            };
-                                            start_at?: undefined;
-                                            end_at?: undefined;
+                                                pattern: string;
+                                                $ref?: undefined;
+                                            })[];
                                         };
-                                        examples: {
-                                            count: number;
-                                        }[];
-                                        markdownDescription: string;
-                                        $ref?: undefined;
-                                        required?: undefined;
+                                        count?: undefined;
+                                        end_at?: undefined;
                                     };
-                                } | {
-                                    if: {
-                                        properties: {
-                                            type: {
-                                                enum: string[];
-                                            };
-                                        };
-                                    };
-                                    then: {
-                                        $ref: string;
-                                        description?: undefined;
-                                        properties?: undefined;
-                                        examples?: undefined;
-                                        markdownDescription?: undefined;
-                                        required?: undefined;
-                                    };
-                                } | {
-                                    if: {
-                                        properties: {
-                                            type: {
-                                                enum: string[];
-                                            };
-                                        };
-                                    };
-                                    then: {
-                                        description: string;
-                                        required: string[];
-                                        properties: {
-                                            start_at: {
-                                                oneOf: {
-                                                    $ref: string;
-                                                }[];
-                                            };
-                                            end_at: {
-                                                oneOf: {
-                                                    $ref: string;
-                                                }[];
-                                            };
-                                            count?: undefined;
-                                        };
-                                        examples: {
-                                            start_at: string;
-                                            end_at: string;
-                                        }[];
-                                        markdownDescription: string;
-                                        $ref?: undefined;
-                                    };
-                                } | {
-                                    if: {
-                                        properties: {
-                                            type: {
-                                                enum: string[];
-                                            };
-                                        };
-                                    };
-                                    then: {
-                                        description: string;
-                                        required: string[];
-                                        properties: {
-                                            start_at: {
-                                                oneOf: ({
-                                                    $ref: string;
-                                                    type?: undefined;
-                                                    pattern?: undefined;
-                                                } | {
-                                                    type: string;
-                                                    pattern: string;
-                                                    $ref?: undefined;
-                                                })[];
-                                            };
-                                            count?: undefined;
-                                            end_at?: undefined;
-                                        };
-                                        examples: {
-                                            start_at: string;
-                                        }[];
-                                        markdownDescription: string;
-                                        $ref?: undefined;
-                                    };
-                                })[];
+                                    examples: {
+                                        start_at: string;
+                                    }[];
+                                    $ref?: undefined;
+                                };
                             };
-                        };
+                            markdownDescription: string;
+                        })[];
                         markdownDescription: string;
                     };
                 };
@@ -5954,119 +5941,106 @@ export declare const schemas: {
                         title: string;
                         description: string;
                         required: string[];
-                        properties: {
-                            type: {
-                                type: string;
-                                enum: string[];
-                            };
-                            params: {
-                                type: string[];
-                                allOf: ({
-                                    if: {
-                                        properties: {
-                                            type: {
-                                                enum: string[];
-                                            };
+                        oneOf: ({
+                            description: string;
+                            properties: {
+                                type: {
+                                    const: string;
+                                };
+                                params: {
+                                    type: string;
+                                    properties: {
+                                        count: {
+                                            type: string;
                                         };
+                                        start_at?: undefined;
+                                        end_at?: undefined;
                                     };
-                                    then: {
-                                        description: string;
-                                        properties: {
-                                            count: {
+                                    examples: {
+                                        count: number;
+                                    }[];
+                                    $ref?: undefined;
+                                    required?: undefined;
+                                };
+                            };
+                            markdownDescription: string;
+                        } | {
+                            description: string;
+                            properties: {
+                                type: {
+                                    const: string;
+                                };
+                                params: {
+                                    $ref: string;
+                                    type?: undefined;
+                                    properties?: undefined;
+                                    examples?: undefined;
+                                    required?: undefined;
+                                };
+                            };
+                            markdownDescription: string;
+                        } | {
+                            description: string;
+                            properties: {
+                                type: {
+                                    const: string;
+                                };
+                                params: {
+                                    type: string;
+                                    required: string[];
+                                    properties: {
+                                        start_at: {
+                                            oneOf: {
+                                                $ref: string;
+                                            }[];
+                                        };
+                                        end_at: {
+                                            oneOf: {
+                                                $ref: string;
+                                            }[];
+                                        };
+                                        count?: undefined;
+                                    };
+                                    examples: {
+                                        start_at: string;
+                                        end_at: string;
+                                    }[];
+                                    $ref?: undefined;
+                                };
+                            };
+                            markdownDescription: string;
+                        } | {
+                            description: string;
+                            properties: {
+                                type: {
+                                    const: string;
+                                };
+                                params: {
+                                    type: string;
+                                    required: string[];
+                                    properties: {
+                                        start_at: {
+                                            oneOf: ({
+                                                $ref: string;
+                                                type?: undefined;
+                                                pattern?: undefined;
+                                            } | {
                                                 type: string;
-                                            };
-                                            start_at?: undefined;
-                                            end_at?: undefined;
+                                                pattern: string;
+                                                $ref?: undefined;
+                                            })[];
                                         };
-                                        examples: {
-                                            count: number;
-                                        }[];
-                                        markdownDescription: string;
-                                        $ref?: undefined;
-                                        required?: undefined;
+                                        count?: undefined;
+                                        end_at?: undefined;
                                     };
-                                } | {
-                                    if: {
-                                        properties: {
-                                            type: {
-                                                enum: string[];
-                                            };
-                                        };
-                                    };
-                                    then: {
-                                        $ref: string;
-                                        description?: undefined;
-                                        properties?: undefined;
-                                        examples?: undefined;
-                                        markdownDescription?: undefined;
-                                        required?: undefined;
-                                    };
-                                } | {
-                                    if: {
-                                        properties: {
-                                            type: {
-                                                enum: string[];
-                                            };
-                                        };
-                                    };
-                                    then: {
-                                        description: string;
-                                        required: string[];
-                                        properties: {
-                                            start_at: {
-                                                oneOf: {
-                                                    $ref: string;
-                                                }[];
-                                            };
-                                            end_at: {
-                                                oneOf: {
-                                                    $ref: string;
-                                                }[];
-                                            };
-                                            count?: undefined;
-                                        };
-                                        examples: {
-                                            start_at: string;
-                                            end_at: string;
-                                        }[];
-                                        markdownDescription: string;
-                                        $ref?: undefined;
-                                    };
-                                } | {
-                                    if: {
-                                        properties: {
-                                            type: {
-                                                enum: string[];
-                                            };
-                                        };
-                                    };
-                                    then: {
-                                        description: string;
-                                        required: string[];
-                                        properties: {
-                                            start_at: {
-                                                oneOf: ({
-                                                    $ref: string;
-                                                    type?: undefined;
-                                                    pattern?: undefined;
-                                                } | {
-                                                    type: string;
-                                                    pattern: string;
-                                                    $ref?: undefined;
-                                                })[];
-                                            };
-                                            count?: undefined;
-                                            end_at?: undefined;
-                                        };
-                                        examples: {
-                                            start_at: string;
-                                        }[];
-                                        markdownDescription: string;
-                                        $ref?: undefined;
-                                    };
-                                })[];
+                                    examples: {
+                                        start_at: string;
+                                    }[];
+                                    $ref?: undefined;
+                                };
                             };
-                        };
+                            markdownDescription: string;
+                        })[];
                         markdownDescription: string;
                     };
                 };
@@ -9758,119 +9732,106 @@ export declare const schemas: {
                         title: string;
                         description: string;
                         required: string[];
-                        properties: {
-                            type: {
-                                type: string;
-                                enum: string[];
-                            };
-                            params: {
-                                type: string[];
-                                allOf: ({
-                                    if: {
-                                        properties: {
-                                            type: {
-                                                enum: string[];
-                                            };
+                        oneOf: ({
+                            description: string;
+                            properties: {
+                                type: {
+                                    const: string;
+                                };
+                                params: {
+                                    type: string;
+                                    properties: {
+                                        count: {
+                                            type: string;
                                         };
+                                        start_at?: undefined;
+                                        end_at?: undefined;
                                     };
-                                    then: {
-                                        description: string;
-                                        properties: {
-                                            count: {
+                                    examples: {
+                                        count: number;
+                                    }[];
+                                    $ref?: undefined;
+                                    required?: undefined;
+                                };
+                            };
+                            markdownDescription: string;
+                        } | {
+                            description: string;
+                            properties: {
+                                type: {
+                                    const: string;
+                                };
+                                params: {
+                                    $ref: string;
+                                    type?: undefined;
+                                    properties?: undefined;
+                                    examples?: undefined;
+                                    required?: undefined;
+                                };
+                            };
+                            markdownDescription: string;
+                        } | {
+                            description: string;
+                            properties: {
+                                type: {
+                                    const: string;
+                                };
+                                params: {
+                                    type: string;
+                                    required: string[];
+                                    properties: {
+                                        start_at: {
+                                            oneOf: {
+                                                $ref: string;
+                                            }[];
+                                        };
+                                        end_at: {
+                                            oneOf: {
+                                                $ref: string;
+                                            }[];
+                                        };
+                                        count?: undefined;
+                                    };
+                                    examples: {
+                                        start_at: string;
+                                        end_at: string;
+                                    }[];
+                                    $ref?: undefined;
+                                };
+                            };
+                            markdownDescription: string;
+                        } | {
+                            description: string;
+                            properties: {
+                                type: {
+                                    const: string;
+                                };
+                                params: {
+                                    type: string;
+                                    required: string[];
+                                    properties: {
+                                        start_at: {
+                                            oneOf: ({
+                                                $ref: string;
+                                                type?: undefined;
+                                                pattern?: undefined;
+                                            } | {
                                                 type: string;
-                                            };
-                                            start_at?: undefined;
-                                            end_at?: undefined;
+                                                pattern: string;
+                                                $ref?: undefined;
+                                            })[];
                                         };
-                                        examples: {
-                                            count: number;
-                                        }[];
-                                        markdownDescription: string;
-                                        $ref?: undefined;
-                                        required?: undefined;
+                                        count?: undefined;
+                                        end_at?: undefined;
                                     };
-                                } | {
-                                    if: {
-                                        properties: {
-                                            type: {
-                                                enum: string[];
-                                            };
-                                        };
-                                    };
-                                    then: {
-                                        $ref: string;
-                                        description?: undefined;
-                                        properties?: undefined;
-                                        examples?: undefined;
-                                        markdownDescription?: undefined;
-                                        required?: undefined;
-                                    };
-                                } | {
-                                    if: {
-                                        properties: {
-                                            type: {
-                                                enum: string[];
-                                            };
-                                        };
-                                    };
-                                    then: {
-                                        description: string;
-                                        required: string[];
-                                        properties: {
-                                            start_at: {
-                                                oneOf: {
-                                                    $ref: string;
-                                                }[];
-                                            };
-                                            end_at: {
-                                                oneOf: {
-                                                    $ref: string;
-                                                }[];
-                                            };
-                                            count?: undefined;
-                                        };
-                                        examples: {
-                                            start_at: string;
-                                            end_at: string;
-                                        }[];
-                                        markdownDescription: string;
-                                        $ref?: undefined;
-                                    };
-                                } | {
-                                    if: {
-                                        properties: {
-                                            type: {
-                                                enum: string[];
-                                            };
-                                        };
-                                    };
-                                    then: {
-                                        description: string;
-                                        required: string[];
-                                        properties: {
-                                            start_at: {
-                                                oneOf: ({
-                                                    $ref: string;
-                                                    type?: undefined;
-                                                    pattern?: undefined;
-                                                } | {
-                                                    type: string;
-                                                    pattern: string;
-                                                    $ref?: undefined;
-                                                })[];
-                                            };
-                                            count?: undefined;
-                                            end_at?: undefined;
-                                        };
-                                        examples: {
-                                            start_at: string;
-                                        }[];
-                                        markdownDescription: string;
-                                        $ref?: undefined;
-                                    };
-                                })[];
+                                    examples: {
+                                        start_at: string;
+                                    }[];
+                                    $ref?: undefined;
+                                };
                             };
-                        };
+                            markdownDescription: string;
+                        })[];
                         markdownDescription: string;
                     };
                 };

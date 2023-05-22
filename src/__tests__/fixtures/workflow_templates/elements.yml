@@ -1,0 +1,122 @@
+---
+schema_version: '0.0.1'
+info:
+  version: '1.0.0'
+  uuid: 'ecd5e29c-51f0-481b-8ebf-5eb42127dd9a'
+  title: 'Test Workflow | Elements'
+
+fields:
+  ChannelsField:
+    type: 'relationship'
+    resourceType: 'channels'
+    prepare: true
+  Balance:
+    type: 'relationship'
+    resourceType: 'devices'
+    prepare: true
+  StartField:
+    type: 'string'
+    format: date-time
+    prepare: true
+  EndField:
+    type: 'string'
+    format: date-time
+    prepare: true
+
+steps:
+  stepOne:
+    info:
+      title: 'Do Something'
+    substeps:
+      - primary: 'First step.'
+        confirm: true
+        elements:
+          - type: Display
+            elementLabel:
+              text: You get a label, you get a label, everyone gets a label!
+            height: 200
+            grid: 6
+            scope:
+              type: limit
+              params:
+                count: 1
+            inputChannels:
+              - ChannelsField
+          - type: GaugeControl
+            elementLabel:
+              text: You get a label, you get a label, everyone gets a label!
+            grid: 6
+            height: 200
+            scope:
+              type: limit
+              params:
+                count: 1
+            inputChannels:
+              - device: Balance
+                channels:
+                  - weight
+          - type: LineChart
+            elementLabel:
+              text: You get a label, you get a label, everyone gets a label!
+            grid: 12
+            height: 350
+            scope:
+              type: duration
+              params:
+                - 2
+                - minutes
+            inputChannels:
+              - ChannelsField
+          - type: Separator
+            elementLabel:
+              text: You get a label, you get a label, everyone gets a label!
+            height: 30
+            grid: 12
+            settings:
+              divider: true
+              align: left
+              size: 16
+              color: '#9e9e9e'
+              direction: horizontal
+              text: Other part below
+              height: 30
+          - type: LineChart
+            elementLabel:
+              text: You get a label, you get a label, everyone gets a label!
+            grid: 12
+            height: 400
+            scope:
+              type: 'range'
+              params:
+                start_at: StartField
+                end_at: EndField
+            inputChannels:
+              - ChannelsField
+          - type: DeviceChannelTable
+            elementLabel:
+              text: You get a label, you get a label, everyone gets a label!
+            grid: 12
+            height: 400
+            scope:
+              type: 'open_range'
+              params:
+                start_at: StartField
+            inputChannels:
+              - device: Balance
+          - type: Content
+            elementLabel:
+              text: You get a label, you get a label, everyone gets a label!
+            grid: 6
+            height: 200
+            settings:
+              content: Interesting explanation on everything ~~no~~ __yes__
+              padding: true
+          - type: Button
+            settings:
+              parameterizedCommand:
+                title: get_weight
+                label: print
+                device: 1
+
+flow:
+  - stepOne

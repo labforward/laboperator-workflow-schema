@@ -2668,149 +2668,119 @@
             "type",
             "params"
           ],
-          "properties": {
-            "type": {
-              "type": "string",
-              "enum": [
-                "limit",
-                "duration",
-                "range",
-                "open_range"
-              ]
-            },
-            "params": {
-              "type": [
-                "object",
-                "array",
-                "string",
-                "number"
-              ],
-              "allOf": [
-                {
-                  "if": {
-                    "properties": {
-                      "type": {
-                        "enum": [
-                          "limit"
-                        ]
-                      }
-                    }
-                  },
-                  "then": {
-                    "description": "Fixed number of last data points that should be taken to the scope.\n",
-                    "properties": {
-                      "count": {
-                        "type": "number"
-                      }
-                    },
-                    "examples": [
-                      {
-                        "count": 1
-                      }
-                    ],
-                    "markdownDescription": "Fixed number of last data points that should be taken to the scope.\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
-                  }
+          "oneOf": [
+            {
+              "description": "Fixed number of last data points that should be taken to the scope.\n",
+              "properties": {
+                "type": {
+                  "const": "limit"
                 },
-                {
-                  "if": {
-                    "properties": {
-                      "type": {
-                        "enum": [
-                          "duration"
-                        ]
-                      }
+                "params": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
                     }
                   },
-                  "then": {
-                    "$ref": "#/definitions/moment-duration"
-                  }
-                },
-                {
-                  "if": {
-                    "properties": {
-                      "type": {
-                        "enum": [
-                          "range"
-                        ]
-                      }
+                  "examples": [
+                    {
+                      "count": 1
                     }
-                  },
-                  "then": {
-                    "description": "An interval from defined point in time till another specific moment or\ntill now if the last had not been defined.\n",
-                    "required": [
-                      "start_at",
-                      "end_at"
-                    ],
-                    "properties": {
-                      "start_at": {
-                        "oneOf": [
-                          {
-                            "$ref": "#/definitions/member-name"
-                          },
-                          {
-                            "$ref": "#/definitions/timestamp"
-                          }
-                        ]
-                      },
-                      "end_at": {
-                        "oneOf": [
-                          {
-                            "$ref": "#/definitions/member-name"
-                          },
-                          {
-                            "$ref": "#/definitions/timestamp"
-                          }
-                        ]
-                      }
-                    },
-                    "examples": [
-                      {
-                        "start_at": "2020-03-03T07:07:26.000Z",
-                        "end_at": "2020-03-03T08:15:26.000Z"
-                      }
-                    ],
-                    "markdownDescription": "An interval from defined point in time till another specific moment or\ntill now if the last had not been defined.\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
-                  }
-                },
-                {
-                  "if": {
-                    "properties": {
-                      "type": {
-                        "enum": [
-                          "open_range"
-                        ]
-                      }
-                    }
-                  },
-                  "then": {
-                    "description": "An interval from defined point in time till another specific moment or\ntill now if the last had not been defined.\n",
-                    "required": [
-                      "start_at"
-                    ],
-                    "properties": {
-                      "start_at": {
-                        "oneOf": [
-                          {
-                            "$ref": "#/definitions/member-name"
-                          },
-                          {
-                            "type": "string",
-                            "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$"
-                          }
-                        ]
-                      }
-                    },
-                    "examples": [
-                      {
-                        "start_at": "StartTimeField"
-                      }
-                    ],
-                    "markdownDescription": "An interval from defined point in time till another specific moment or\ntill now if the last had not been defined.\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
-                  }
+                  ]
                 }
-              ]
+              },
+              "markdownDescription": "Fixed number of last data points that should be taken to the scope.\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
+            },
+            {
+              "description": "Duration till present time.",
+              "properties": {
+                "type": {
+                  "const": "duration"
+                },
+                "params": {
+                  "$ref": "#/definitions/moment-duration"
+                }
+              },
+              "markdownDescription": "Duration till present time.\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
+            },
+            {
+              "description": "An interval from defined point in time till another specific moment or till now if the last had not been defined.\n",
+              "properties": {
+                "type": {
+                  "const": "range"
+                },
+                "params": {
+                  "type": "object",
+                  "required": [
+                    "start_at",
+                    "end_at"
+                  ],
+                  "properties": {
+                    "start_at": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/definitions/member-name"
+                        },
+                        {
+                          "$ref": "#/definitions/timestamp"
+                        }
+                      ]
+                    },
+                    "end_at": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/definitions/member-name"
+                        },
+                        {
+                          "$ref": "#/definitions/timestamp"
+                        }
+                      ]
+                    }
+                  },
+                  "examples": [
+                    {
+                      "start_at": "2020-03-03T07:07:26.000Z",
+                      "end_at": "2020-03-03T08:15:26.000Z"
+                    }
+                  ]
+                }
+              },
+              "markdownDescription": "An interval from defined point in time till another specific moment or till now if the last had not been defined.\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
+            },
+            {
+              "description": "An interval from defined point in time till another specific moment or till now if the last had not been defined.\n",
+              "properties": {
+                "type": {
+                  "const": "open_range"
+                },
+                "params": {
+                  "type": "object",
+                  "required": [
+                    "start_at"
+                  ],
+                  "properties": {
+                    "start_at": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/definitions/member-name"
+                        },
+                        {
+                          "type": "string",
+                          "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$"
+                        }
+                      ]
+                    }
+                  },
+                  "examples": [
+                    {
+                      "start_at": "StartTimeField"
+                    }
+                  ]
+                }
+              },
+              "markdownDescription": "An interval from defined point in time till another specific moment or till now if the last had not been defined.\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
             }
-          },
+          ],
           "markdownDescription": "Scope of time for displaying data points\n\n\nSee more: [Scope Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/scope) "
         }
       },
