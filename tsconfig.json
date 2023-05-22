@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "outDir": "dist",
     "paths": {
-      "@src/*": ["src/*"],
+      "@/*": ["src/*"],
       "@fixtures/*": ["src/__tests__/fixtures/*"]
     },
     "rootDirs": ["src"],
