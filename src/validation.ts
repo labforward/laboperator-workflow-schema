@@ -1,5 +1,5 @@
-import addFormats from 'ajv-formats';
 import Ajv, { ValidateFunction } from 'ajv';
+import addFormats from 'ajv-formats';
 
 import { Options, Validation } from './types';
 import workflowEventTemplate from './workflow-event-schema.json';
@@ -11,10 +11,10 @@ const ajv = new Ajv({
   allErrors: true,
   // Allow using multiple non-null types in "type" keyword
   allowUnionTypes: true,
-  // Include reference to the part of the schema and validated data in errors.
-  verbose: true,
   // Skip iterating over enumerable prototype properties.
   ownProperties: true,
+  // Include reference to the part of the schema and validated data in errors.
+  verbose: true,
 });
 
 /**
@@ -32,21 +32,19 @@ ajv.addKeyword({
 addFormats(ajv);
 
 const validationFunctions = {
-  workflowTemplate: ajv.compile(workflowTemplate),
-  workflowStepTemplate: ajv.compile(workflowStepTemplate),
   workflowEventTemplate: ajv.compile(workflowEventTemplate),
+  workflowStepTemplate: ajv.compile(workflowStepTemplate),
+  workflowTemplate: ajv.compile(workflowTemplate),
 };
 
-const validateTemplate = (
+const validateTemplate = <S>(
   data: unknown,
-  validationFunction: ValidateFunction<{
-    [x: string]: unknown;
-  }>
+  validationFunction: ValidateFunction<S>
 ) => {
   const isValid = validationFunction(data);
   const result: Validation = {
-    schema: validationFunction.schema,
     errors: null,
+    schema: validationFunction.schema,
   };
 
   if (!isValid) result.errors = validationFunction.errors;
