@@ -1,55 +1,15 @@
 import type { Options, Validation } from './types';
 import validate from './validation';
 export declare const schemas: {
-    workflowTemplateSchema: {
+    workflowEventSchema: {
         $schema: string;
-        $id: string;
-        type: string;
         title: string;
         description: string;
+        type: string;
         required: string[];
-        properties: {
-            schema_version: {
-                $ref: string;
-            };
-            info: {
-                $ref: string;
-            };
-            config: {
-                $ref: string;
-            };
-            elements: {
-                type: string;
-                description: string;
-                items: {
-                    $ref: string;
-                };
-            };
-            tables: {
-                $ref: string;
-            };
-            buttons: {
-                $ref: string;
-            };
-            fields: {
-                $ref: string;
-            };
-            steps: {
-                $ref: string;
-            };
-            flow: {
-                $ref: string;
-            };
-            contextInfo: {
-                $ref: string;
-            };
-            behaviors: {
-                $ref: string;
-            };
-            secrets: {
-                $ref: string;
-            };
-        };
+        oneOf: {
+            $ref: string;
+        }[];
         definitions: {
             schemaArray: {
                 type: string;
@@ -7640,15 +7600,55 @@ export declare const schemas: {
             };
         };
     };
-    workflowEventSchema: {
+    workflowTemplateSchema: {
         $schema: string;
+        $id: string;
+        type: string;
         title: string;
         description: string;
-        type: string;
         required: string[];
-        oneOf: {
-            $ref: string;
-        }[];
+        properties: {
+            schema_version: {
+                $ref: string;
+            };
+            info: {
+                $ref: string;
+            };
+            config: {
+                $ref: string;
+            };
+            elements: {
+                type: string;
+                description: string;
+                items: {
+                    $ref: string;
+                };
+            };
+            tables: {
+                $ref: string;
+            };
+            buttons: {
+                $ref: string;
+            };
+            fields: {
+                $ref: string;
+            };
+            steps: {
+                $ref: string;
+            };
+            flow: {
+                $ref: string;
+            };
+            contextInfo: {
+                $ref: string;
+            };
+            behaviors: {
+                $ref: string;
+            };
+            secrets: {
+                $ref: string;
+            };
+        };
         definitions: {
             schemaArray: {
                 type: string;

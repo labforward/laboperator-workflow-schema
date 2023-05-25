@@ -2,12 +2,12 @@ import { ValidateFunction } from 'ajv';
 
 export interface Options {
   schema?:
-    | 'workflowTemplate'
+    | 'workflowEventTemplate'
     | 'workflowStepTemplate'
-    | 'workflowEventTemplate';
+    | 'workflowTemplate';
 }
 
 export interface Validation {
-  schema: ValidateFunction['schema'];
   errors: ValidateFunction['errors'];
+  schema: ValidateFunction['schema'];
 }
