@@ -5,9 +5,9 @@ import workflowStepTemplateSchema from './workflow-step-template-schema.json';
 import workflowTemplateSchema from './workflow-template-schema.json';
 
 export const schemas = {
-  workflowTemplateSchema,
-  workflowStepTemplateSchema,
   workflowEventSchema,
+  workflowStepTemplateSchema,
+  workflowTemplateSchema,
 };
 
 export { Options, Validation, validate };
