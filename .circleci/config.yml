@@ -1,15 +1,6 @@
 ---
 aliases:
   # --------------------
-  #   ALIASES: Filters
-  # --------------------
-  not_develop_or_main: &not_develop_nor_main
-    filters:
-      branches:
-        ignore:
-          - main
-          - develop
-  # --------------------
   #   ALIASES: Keys
   # --------------------
   yarn_cache_key: &yarn_cache_key yarn-v1-{{ checksum "yarn.lock" }}
@@ -88,5 +79,4 @@ workflows:
   version: 2
   tests:
     jobs:
-      - test:
-          <<: *not_develop_nor_main
+      - test
