@@ -2079,7 +2079,10 @@ export declare const schemas: {
                                     channels: {
                                         type: string;
                                         items: {
-                                            $ref: string;
+                                            type: string;
+                                            description: string;
+                                            pattern: string;
+                                            markdownDescription: string;
                                         };
                                     };
                                 };
@@ -5887,7 +5890,10 @@ export declare const schemas: {
                                     channels: {
                                         type: string;
                                         items: {
-                                            $ref: string;
+                                            type: string;
+                                            description: string;
+                                            pattern: string;
+                                            markdownDescription: string;
                                         };
                                     };
                                 };
@@ -9718,7 +9724,10 @@ export declare const schemas: {
                                     channels: {
                                         type: string;
                                         items: {
-                                            $ref: string;
+                                            type: string;
+                                            description: string;
+                                            pattern: string;
+                                            markdownDescription: string;
                                         };
                                     };
                                 };
