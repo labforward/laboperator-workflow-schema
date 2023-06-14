@@ -17,7 +17,5 @@ items:
           items:
             type: string # channel names
             description: |
-              A channel name that is present on the specified device.
-              Allowed characters are lower "a" to "z", capital "A" to "Z", "0" to "9", "/" and "_".
+              A channel name that is present on the specified device. Allowed characters are lower "a" to "z", capital "A" to "Z", "0" to "9", "/" and "_".
             pattern: (?=^[a-zA-Z0-9_/]+$)
-

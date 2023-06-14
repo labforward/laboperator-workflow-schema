@@ -2626,9 +2626,9 @@
                     "type": "array",
                     "items": {
                       "type": "string",
-                      "description": "A channel name that is present on the specified device.\nAllowed characters are lower \"a\" to \"z\", capital \"A\" to \"Z\", \"0\" to \"9\", \"/\" and \"_\".\n",
+                      "description": "A channel name that is present on the specified device. Allowed characters are lower \"a\" to \"z\", capital \"A\" to \"Z\", \"0\" to \"9\", \"/\" and \"_\".\n",
                       "pattern": "(?=^[a-zA-Z0-9_/]+$)",
-                      "markdownDescription": "A channel name that is present on the specified device.\nAllowed characters are lower \"a\" to \"z\", capital \"A\" to \"Z\", \"0\" to \"9\", \"/\" and \"_\".\n\n\nSee more: [Input Channels Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/input-channels) "
+                      "markdownDescription": "A channel name that is present on the specified device. Allowed characters are lower \"a\" to \"z\", capital \"A\" to \"Z\", \"0\" to \"9\", \"/\" and \"_\".\n\n\nSee more: [Input Channels Schema](https://schema.laboperator.com/schemas/definitions/step/element-objects/input-channels) "
                     }
                   }
                 }
