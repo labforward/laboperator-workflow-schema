@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - [[CUB-4282]](https://labforward.atlassian.net/browse/CUB-4282) [Workflows] Add get resources template schema
 - [[CUB-4622]](https://labforward.atlassian.net/browse/CUB-4622) [Workflows] Add Workflow Event to the schemata definitions
 - [[CUB-4622]](https://labforward.atlassian.net/browse/CUB-4622) [Workflows] Change definition references to dashed-case
+- [[WFE-56]](https://labforward.atlassian.net/browse/WFE-56) [Documentation] Trigger schema  docs release when workflow schema is updated
 
 ### Changed
 
