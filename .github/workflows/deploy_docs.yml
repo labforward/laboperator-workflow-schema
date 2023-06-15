@@ -1,0 +1,18 @@
+name: 'Deploy Schema Docs'
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  deploy-docs:
+    if: github.actor != dependabot[bot]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Deploy workflow
+        uses: CircleCI-Public/trigger-circleci-pipeline-action@v1.0.5
+        with:
+          target-slug: github/labforward/laboperator-schema-docs
+        env:
+          CCI_TOKEN: ${{ secrets.CCI_TOKEN }}
