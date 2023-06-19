@@ -25,5 +25,5 @@ additionalProperties:
       default: false
       description: |
         A boolean flag indicating that all intermediate steps should be reset.
-    delay:
-      $ref: '#/definitions/duration'
+    # delay:             not currently implemented
+      # $ref: '#/definitions/duration'

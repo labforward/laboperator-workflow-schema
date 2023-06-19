@@ -17,10 +17,10 @@ properties:
   when:
     $ref: '#/definitions/workflow-template/triggers'
 
-  delay:
-    description: |
-      Wait a given duration before evaluating conditions and executing actions.
-    $ref: '#/definitions/duration'
+  # delay:             not currently implemented
+  #   description: |
+  #     Wait a given duration before evaluating conditions and executing actions.
+  #   $ref: '#/definitions/duration'
 
   and:
     description: |
