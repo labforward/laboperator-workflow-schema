@@ -27,6 +27,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 
+- [[CUB-4865]](https://labforward.atlassian.net/browse/CUB-4865) [Documentation] Remove Delay from Public Schema Documentation
+
 ### Fixed
 
 ### Security

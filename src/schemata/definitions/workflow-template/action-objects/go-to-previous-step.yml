@@ -23,5 +23,3 @@ additionalProperties:
       description: |
         A boolean flag indicating that the previous step should be reset
         before returning to it.
-    delay:
-      $ref: '#/definitions/duration'

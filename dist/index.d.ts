@@ -2608,11 +2608,6 @@ export declare const schemas: {
                         when: {
                             $ref: string;
                         };
-                        delay: {
-                            description: string;
-                            $ref: string;
-                            markdownDescription: string;
-                        };
                         and: {
                             description: string;
                             $ref: string;
@@ -2985,9 +2980,6 @@ export declare const schemas: {
                                     description: string;
                                     markdownDescription: string;
                                 };
-                                delay: {
-                                    $ref: string;
-                                };
                             };
                         };
                         markdownDescription: string;
@@ -3014,9 +3006,6 @@ export declare const schemas: {
                                     default: boolean;
                                     description: string;
                                     markdownDescription: string;
-                                };
-                                delay: {
-                                    $ref: string;
                                 };
                             };
                         };
@@ -6419,11 +6408,6 @@ export declare const schemas: {
                         when: {
                             $ref: string;
                         };
-                        delay: {
-                            description: string;
-                            $ref: string;
-                            markdownDescription: string;
-                        };
                         and: {
                             description: string;
                             $ref: string;
@@ -6796,9 +6780,6 @@ export declare const schemas: {
                                     description: string;
                                     markdownDescription: string;
                                 };
-                                delay: {
-                                    $ref: string;
-                                };
                             };
                         };
                         markdownDescription: string;
@@ -6825,9 +6806,6 @@ export declare const schemas: {
                                     default: boolean;
                                     description: string;
                                     markdownDescription: string;
-                                };
-                                delay: {
-                                    $ref: string;
                                 };
                             };
                         };
@@ -10253,11 +10231,6 @@ export declare const schemas: {
                         when: {
                             $ref: string;
                         };
-                        delay: {
-                            description: string;
-                            $ref: string;
-                            markdownDescription: string;
-                        };
                         and: {
                             description: string;
                             $ref: string;
@@ -10630,9 +10603,6 @@ export declare const schemas: {
                                     description: string;
                                     markdownDescription: string;
                                 };
-                                delay: {
-                                    $ref: string;
-                                };
                             };
                         };
                         markdownDescription: string;
@@ -10659,9 +10629,6 @@ export declare const schemas: {
                                     default: boolean;
                                     description: string;
                                     markdownDescription: string;
-                                };
-                                delay: {
-                                    $ref: string;
                                 };
                             };
                         };

@@ -213,7 +213,6 @@ steps:
           Results after gravimetrical placement are recorded: {{actual}}
         behaviors:
           - when: ON_SUBSTEP_START
-            delay: 4s
             do:
               - COMPLETE_SUBSTEP
               - COMPLETE_STEP

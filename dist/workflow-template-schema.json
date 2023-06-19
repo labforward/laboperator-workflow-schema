@@ -3349,7 +3349,7 @@
             "behavior": {
                 "type": "object",
                 "title": "Behavior Schema",
-                "description": "The general scheme of a behavior always consists of a `trigger` and an\n`action`. It is extended by the use of conditions, delays, alternative\nactions, multiple triggers and multiple actions.\n",
+                "description": "The general scheme of a behavior always consists of a `trigger` and an\n`action`. It is extended by the use of conditions, alternative\nactions, multiple triggers and multiple actions.\n",
                 "additionalProperties": false,
                 "required": [
                     "when",
@@ -3365,11 +3365,6 @@
                     "when": {
                         "$ref": "#/definitions/workflow-template/triggers"
                     },
-                    "delay": {
-                        "description": "Wait a given duration before evaluating conditions and executing actions.\n",
-                        "$ref": "#/definitions/duration",
-                        "markdownDescription": "Wait a given duration before evaluating conditions and executing actions.\n\n\nSee more: [Behavior Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/behavior) "
-                    },
                     "and": {
                         "description": "A condition that can access fields, and trigger information.\n",
                         "$ref": "#/definitions/script",
@@ -3382,7 +3377,7 @@
                         "$ref": "#/definitions/workflow-template/actions"
                     }
                 },
-                "markdownDescription": "The general scheme of a behavior always consists of a `trigger` and an\n`action`. It is extended by the use of conditions, delays, alternative\nactions, multiple triggers and multiple actions.\n\n\nSee more: [Behavior Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/behavior) "
+                "markdownDescription": "The general scheme of a behavior always consists of a `trigger` and an\n`action`. It is extended by the use of conditions, alternative\nactions, multiple triggers and multiple actions.\n\n\nSee more: [Behavior Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/behavior) "
             },
             "behaviors": {
                 "type": "array",
@@ -3896,9 +3891,6 @@
                                 "default": false,
                                 "description": "A boolean flag indicating that the previous step should be reset\nbefore returning to it.\n",
                                 "markdownDescription": "A boolean flag indicating that the previous step should be reset\nbefore returning to it.\n\n\nSee more: [Go To Previous Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/go-to-previous-step) "
-                            },
-                            "delay": {
-                                "$ref": "#/definitions/duration"
                             }
                         }
                     },
@@ -3932,9 +3924,6 @@
                                 "default": false,
                                 "description": "A boolean flag indicating that all intermediate steps should be reset.\n",
                                 "markdownDescription": "A boolean flag indicating that all intermediate steps should be reset.\n\n\nSee more: [Go To Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/go-to-step) "
-                            },
-                            "delay": {
-                                "$ref": "#/definitions/duration"
                             }
                         }
                     },

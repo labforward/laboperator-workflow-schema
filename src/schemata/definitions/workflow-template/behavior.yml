@@ -3,7 +3,7 @@ type: object
 title: Behavior Schema
 description: |
   The general scheme of a behavior always consists of a `trigger` and an
-  `action`. It is extended by the use of conditions, delays, alternative
+  `action`. It is extended by the use of conditions, alternative
   actions, multiple triggers and multiple actions.
 additionalProperties: false
 required: [when, do]
@@ -16,11 +16,6 @@ properties:
 
   when:
     $ref: '#/definitions/workflow-template/triggers'
-
-  delay:
-    description: |
-      Wait a given duration before evaluating conditions and executing actions.
-    $ref: '#/definitions/duration'
 
   and:
     description: |
