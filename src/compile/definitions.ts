@@ -20,4 +20,4 @@ pathnames.forEach((pathname: string) => {
   set(schema, propertyPath, definition);
 });
 
-export default schema.definitions;
+export default schema;

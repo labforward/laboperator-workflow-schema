@@ -1,17 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import fs from 'fs';
 import path from 'path';
 import yaml from 'yaml';
 
-import { head, isPlainObject, last, startCase } from 'lodash';
+import { isPlainObject, last, startCase } from 'lodash';
 
+// e.g. '#/definitions/flow/loop' => 'definitions.flow.loop'
 // e.g. 'definitions/flow/loop.yml' => 'definitions.flow.loop'
-export const getPropertyPath = (pathname: string) => {
-  const substrings = pathname.split('/');
-  const dirs = substrings.slice(0, -1).join('.');
-  const filename = head(last(substrings)?.split('.'));
-
-  return `${dirs}.${filename}`;
-};
+export const getPropertyPath = (pathname: string) =>
+  pathname
+    .replace('#/', '')
+    .replace(/\.\w+$/, '')
+    .split('/')
+    .join('.');
 
 export const readFile = (filename: string) => {
   return yaml.parse(
@@ -37,13 +38,27 @@ export const prepareLink = (pathname: string) => {
   return link;
 };
 
+export const forEachDeep = (
+  obj: any,
+  cb: (key: string, value: any) => void
+) => {
+  // The `obj` param can be an array for nested schemas, e.g. `allOf` field,
+  // but we for..in iterate over it anyway until it breaks 🙃
+  for (const key in obj) {
+    if (isPlainObject(obj[key]) || Array.isArray(obj[key])) {
+      forEachDeep(obj[key], cb);
+    } else {
+      cb(key, obj[key]);
+    }
+  }
+};
+
 /**
  * On hover documentation is based on the standard `description` field. In order
  * to provide rich text formatting within VS Code we can add a custom field.
  *
  * https://code.visualstudio.com/docs/languages/json#_use-rich-formatting-in-hovers
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const addMarkdownDescription = (pathname: string, obj: any) => {
   // The `obj` param can be an array for nested schemas, e.g. `allOf` field,
   // but we for..in iterate over it anyway until it breaks 🙃
