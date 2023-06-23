@@ -33,6 +33,9 @@ additionalProperties:
                     type: string
                   access_key:
                     type: string
+              oidc:
+                type: object
+                additionalProperties: false
     headers:
       type: object
       description: |
