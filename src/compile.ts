@@ -1,19 +1,57 @@
-import { omit } from 'lodash';
+import { get, has, omit, set } from 'lodash';
 
 import definitions from './compile/definitions';
 import metaSchema from './compile/metaSchema';
-import { readFile, writeFile } from './compile/utils';
+import {
+  forEachDeep,
+  getPropertyPath,
+  readFile,
+  writeFile,
+} from './compile/utils';
 
-const assignDefinitions = (
-  rootSchema: Record<string, Record<string, unknown>>
-) => ({
-  ...rootSchema,
-  definitions: {
-    ...metaSchema.definitions,
-    jsonSchemaDraft7: omit(metaSchema, 'definitions'),
-    ...definitions,
-  },
-});
+type Schema = Record<string, Record<string, unknown>>;
+
+const getMissingDefinitionsSchema = (schema: Schema) => {
+  const missingDefinitions: Array<string> = [];
+
+  forEachDeep(schema, (key, value) => {
+    if (key !== '$ref') return;
+
+    const pathname = getPropertyPath(value);
+
+    if (has(schema, pathname)) return;
+
+    missingDefinitions.push(pathname);
+  });
+
+  return missingDefinitions;
+};
+
+const resolveDefinitions = (schema: Schema) => {
+  const missingDefinitions = getMissingDefinitionsSchema(schema);
+
+  missingDefinitions.forEach((definition: string) => {
+    set(schema, definition, get(definitions, definition));
+  });
+
+  return missingDefinitions.length;
+};
+
+const assignDefinitions = (rootSchema: Schema) => {
+  const schema = {
+    ...rootSchema,
+    definitions: {
+      ...metaSchema.definitions,
+      jsonSchemaDraft7: omit(metaSchema, 'definitions'),
+    },
+  };
+
+  while (resolveDefinitions(schema)) {
+    // repeat until no missing definitions
+  }
+
+  return schema;
+};
 
 const compileSchema = (filename: string) => {
   const rootSchema = readFile(filename);
