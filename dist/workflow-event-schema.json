@@ -537,13 +537,1331 @@
                     "workflow"
                 ]
             },
-            "examples": [
-                "myField",
-                "my-field",
-                "transportSampleToShaker",
-                "transport_sample_to_shaker"
-            ],
-            "markdownDescription": "A member name that is used as a reference elsewhere.\nAllowed characters are lower \"a\" to \"z\", capital \"A\" to \"Z\", \"0\" to \"9\" and\n\"-\" , \"_\". We recommend to consistently use either lowerCamelCase or\nkebab-case. While snake_case is allowed, it has a chance of name collisions\nwith internal values.\n\n\nSee more: [Member Name Schema](https://schema.laboperator.com/schemas/definitions/member-name) "
+            "trigger-object": {
+                "type": "object",
+                "title": "Trigger Object Schema",
+                "description": "Used to pass arguments to a trigger.",
+                "oneOf": [
+                    {
+                        "$ref": "#/definitions/workflow-template/trigger-objects/command-response"
+                    },
+                    {
+                        "$ref": "#/definitions/workflow-template/trigger-objects/data-point"
+                    },
+                    {
+                        "$ref": "#/definitions/workflow-template/trigger-objects/field-update"
+                    },
+                    {
+                        "$ref": "#/definitions/workflow-template/trigger-objects/manual"
+                    },
+                    {
+                        "$ref": "#/definitions/workflow-template/trigger-objects/scan"
+                    },
+                    {
+                        "$ref": "#/definitions/workflow-template/trigger-objects/timer-complete"
+                    },
+                    {
+                        "$ref": "#/definitions/workflow-template/trigger-objects/timer-reset"
+                    },
+                    {
+                        "$ref": "#/definitions/workflow-template/trigger-objects/timer-start"
+                    },
+                    {
+                        "$ref": "#/definitions/workflow-template/trigger-objects/timer-stop"
+                    }
+                ],
+                "markdownDescription": "Used to pass arguments to a trigger.\n\nSee more: [Trigger Object Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-object) "
+            },
+            "triggers": {
+                "title": "Triggers Schema",
+                "description": "Triggers can come as a simple identifier string or an object to pass options.\nEither variant can be used as a single trigger or a list of triggers.\nDifferent then actions, triggers are considered alternatives. Either of any\ntriggers could set the behavior in motion. While a behavior is in motion\nother occurrences of triggers on that behavior will have no effect, so the\nsame behavior can not be triggered multiple times in parallel.\n",
+                "oneOf": [
+                    {
+                        "$ref": "#/definitions/workflow-template/trigger-identifier"
+                    },
+                    {
+                        "$ref": "#/definitions/workflow-template/trigger-object"
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "oneOf": [
+                                {
+                                    "$ref": "#/definitions/workflow-template/trigger-identifier"
+                                },
+                                {
+                                    "$ref": "#/definitions/workflow-template/trigger-object"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "markdownDescription": "Triggers can come as a simple identifier string or an object to pass options.\nEither variant can be used as a single trigger or a list of triggers.\nDifferent then actions, triggers are considered alternatives. Either of any\ntriggers could set the behavior in motion. While a behavior is in motion\nother occurrences of triggers on that behavior will have no effect, so the\nsame behavior can not be triggered multiple times in parallel.\n\n\nSee more: [Triggers Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/triggers) "
+            },
+            "action-objects": {
+                "add-step": {
+                    "type": "object",
+                    "title": "AddStep Options",
+                    "description": "Options to a AddStep action.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "AddStep",
+                            "add_step",
+                            "ADD_STEP"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "required": [
+                                    "uuid",
+                                    "version"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "uuid": {
+                                        "$ref": "#/definitions/uuid",
+                                        "description": "A reference to a step template.",
+                                        "markdownDescription": "A reference to a step template.\n\nSee more: [Add Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/add-step) "
+                                    },
+                                    "version": {
+                                        "$ref": "#/definitions/version",
+                                        "description": "Version on a step template.",
+                                        "markdownDescription": "Version on a step template.\n\nSee more: [Add Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/add-step) "
+                                    },
+                                    "fields": {
+                                        "$ref": "#/definitions/field-values"
+                                    },
+                                    "fieldMapping": {
+                                        "$ref": "#/definitions/field-mapping"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "required": [
+                                    "step"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "step": {
+                                        "$ref": "#/definitions/member-name"
+                                    },
+                                    "fields": {
+                                        "$ref": "#/definitions/field-values"
+                                    },
+                                    "fieldMapping": {
+                                        "$ref": "#/definitions/field-mapping"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "markdownDescription": "Options to a AddStep action.\n\n\nSee more: [Add Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/add-step) "
+                },
+                "alert": {
+                    "type": "object",
+                    "title": "Alert Object",
+                    "description": "Options to an Alert action.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "alert",
+                            "Alert",
+                            "ALERT"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                            "title",
+                            "text"
+                        ],
+                        "properties": {
+                            "title": {
+                                "type": "string",
+                                "description": "A title to display on the alert.\n",
+                                "markdownDescription": "A title to display on the alert.\n\n\nSee more: [Alert Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/alert) "
+                            },
+                            "text": {
+                                "type": "string",
+                                "description": "A text to display on the alert. Supports markdown formatting.\n",
+                                "markdownDescription": "A text to display on the alert. Supports markdown formatting.\n\n\nSee more: [Alert Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/alert) "
+                            },
+                            "buttons": {
+                                "type": "array",
+                                "description": "A set maximum of three buttons to display on the alert. Any\nbutton, will cause the alert modal to close. Remember to handle\nthe button key in a behavior.\n",
+                                "default": [
+                                    {
+                                        "label": "OK",
+                                        "key": "alert_confirmed"
+                                    }
+                                ],
+                                "maxItems": 3,
+                                "items": {
+                                    "$ref": "#/definitions/button"
+                                },
+                                "markdownDescription": "A set maximum of three buttons to display on the alert. Any\nbutton, will cause the alert modal to close. Remember to handle\nthe button key in a behavior.\n\n\nSee more: [Alert Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/alert) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to an Alert action.\n\n\nSee more: [Alert Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/alert) "
+                },
+                "complete-timer": {
+                    "type": "object",
+                    "title": "CompleteTimer Options",
+                    "description": "Options to an CompleteTimer action.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "complete_timer",
+                            "COMPLETE_TIMER",
+                            "CompleteTimer"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                            "identifier": {
+                                "type": "string",
+                                "description": "Identifier of a timer.\n",
+                                "markdownDescription": "Identifier of a timer.\n\n\nSee more: [Complete Timer Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/complete-timer) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to an CompleteTimer action.\n\n\nSee more: [Complete Timer Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/complete-timer) "
+                },
+                "get-resources": {
+                    "type": "object",
+                    "title": "Get Resources",
+                    "description": "An action to filter related API resources.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "get_resources",
+                            "GetResources",
+                            "GET_RESOURCES"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                            "tag"
+                        ],
+                        "properties": {
+                            "tag": {
+                                "$ref": "#/definitions/resource-tag"
+                            },
+                            "filter": {
+                                "type": "object",
+                                "propertyNames": {
+                                    "$ref": "#/definitions/resource-tag"
+                                }
+                            },
+                            "page": {
+                                "type": "object",
+                                "propertyNames": {
+                                    "$ref": "#/definitions/resource-tag"
+                                }
+                            },
+                            "sort": {
+                                "type": "object",
+                                "propertyNames": {
+                                    "$ref": "#/definitions/resource-tag"
+                                }
+                            },
+                            "blocking": {
+                                "type": "boolean",
+                                "description": "Determines if the query action will block subsequent steps.\n",
+                                "default": false,
+                                "markdownDescription": "Determines if the query action will block subsequent steps.\n\n\nSee more: [Get Resources Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/get-resources) "
+                            },
+                            "onSuccess": {
+                                "description": "The handler for filtered querying response",
+                                "type": "object",
+                                "required": [
+                                    "do"
+                                ],
+                                "properties": {
+                                    "do": {
+                                        "$ref": "#/definitions/workflow-template/actions"
+                                    }
+                                },
+                                "markdownDescription": "The handler for filtered querying response\n\nSee more: [Get Resources Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/get-resources) "
+                            }
+                        }
+                    },
+                    "examples": [
+                        {
+                            "getResources": {
+                                "tag": "workflow_runs",
+                                "filter": {
+                                    "workflow_runs": {
+                                        "workflow_template_id": "workflow_run.data.attributes.workflow_template_id"
+                                    }
+                                },
+                                "page": {
+                                    "workflow_runs": {
+                                        "size": 20
+                                    }
+                                },
+                                "sort": {
+                                    "workflow_runs": "-created_at"
+                                },
+                                "onSuccess": {
+                                    "do": [
+                                        {
+                                            "set_field": {
+                                                "field": "sampleField",
+                                                "value": "response.data"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "markdownDescription": "An action to filter related API resources.\n\n\nSee more: [Get Resources Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/get-resources) "
+                },
+                "go-to-previous-step": {
+                    "type": "object",
+                    "title": "GoToPreviousStep Options",
+                    "description": "Options to an GoToPreviousStep action.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "go_to_previous_step",
+                            "GO_TO_PREVIOUS_STEP",
+                            "GoToPreviousStep"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                            "resetCurrent": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "A boolean flag indicating that the current step should be reset as if\nit had not started yet.\n",
+                                "markdownDescription": "A boolean flag indicating that the current step should be reset as if\nit had not started yet.\n\n\nSee more: [Go To Previous Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/go-to-previous-step) "
+                            },
+                            "resetPrevious": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "A boolean flag indicating that the previous step should be reset\nbefore returning to it.\n",
+                                "markdownDescription": "A boolean flag indicating that the previous step should be reset\nbefore returning to it.\n\n\nSee more: [Go To Previous Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/go-to-previous-step) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to an GoToPreviousStep action.\n\n\nSee more: [Go To Previous Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/go-to-previous-step) "
+                },
+                "go-to-step": {
+                    "type": "object",
+                    "title": "GoToPreviousStep Options",
+                    "description": "Options to an GoToStep action.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "go_to_step",
+                            "GO_TO_STEP",
+                            "GoToStep"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                            "step"
+                        ],
+                        "properties": {
+                            "step": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "description": "The step number of the step to navigate to. This action only makes\nsense for use with linear flows, with a static step number\ndistribution.\n",
+                                "markdownDescription": "The step number of the step to navigate to. This action only makes\nsense for use with linear flows, with a static step number\ndistribution.\n\n\nSee more: [Go To Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/go-to-step) "
+                            },
+                            "reset": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "A boolean flag indicating that all intermediate steps should be reset.\n",
+                                "markdownDescription": "A boolean flag indicating that all intermediate steps should be reset.\n\n\nSee more: [Go To Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/go-to-step) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to an GoToStep action.\n\n\nSee more: [Go To Step Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/go-to-step) "
+                },
+                "notify": {
+                    "type": "object",
+                    "title": "Notify Object",
+                    "description": "Options to an Notify action. In contrast to an alert the notification does\nnot interrupt the execution of a workflow and requires no user interaction.\nIt will only be shown to users that have the workflow open at the time of\nthe action being run.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "Notify",
+                            "notify",
+                            "NOTIFY"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                            "text"
+                        ],
+                        "properties": {
+                            "text": {
+                                "type": "string",
+                                "description": "A text to display on the notification. Supports field value\ninterpolation using the double curly parentheses syntax `{{MyField}}`.\n",
+                                "markdownDescription": "A text to display on the notification. Supports field value\ninterpolation using the double curly parentheses syntax `{{MyField}}`.\n\n\nSee more: [Notify Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/notify) "
+                            },
+                            "autoHideDuration": {
+                                "type": "number",
+                                "default": 5000,
+                                "description": "Duration in milliseconds after which to hide the notification\nautomatically.\n",
+                                "markdownDescription": "Duration in milliseconds after which to hide the notification\nautomatically.\n\n\nSee more: [Notify Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/notify) "
+                            },
+                            "variant": {
+                                "type": "string",
+                                "default": "default",
+                                "description": "The alert variant will impact the color and signals different stages\nof urgency or importance.\n",
+                                "enum": [
+                                    "default",
+                                    "error",
+                                    "info",
+                                    "success",
+                                    "warning"
+                                ],
+                                "markdownDescription": "The alert variant will impact the color and signals different stages\nof urgency or importance.\n\n\nSee more: [Notify Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/notify) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to an Notify action. In contrast to an alert the notification does\nnot interrupt the execution of a workflow and requires no user interaction.\nIt will only be shown to users that have the workflow open at the time of\nthe action being run.\n\n\nSee more: [Notify Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/notify) "
+                },
+                "repeat-substep": {
+                    "type": "object",
+                    "title": "RepeatSubstep Options",
+                    "description": "Options to an RepeatSubstep action.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "repeat_substep",
+                            "REPEAT_SUBSTEP",
+                            "RepeatSubstep"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                            "substep": {
+                                "type": "integer",
+                                "description": "Index of the substep from which on the step should be repeated. Substeps\nare always indexed form 0. So to passing `substep: 0`, would repeat the\nentire step.\n\nIf no option is passed the index is taken from the trigger, e.g. a\nSubstepComplete trigger will repeat the just completed substep.\n",
+                                "markdownDescription": "Index of the substep from which on the step should be repeated. Substeps\nare always indexed form 0. So to passing `substep: 0`, would repeat the\nentire step.\n\nIf no option is passed the index is taken from the trigger, e.g. a\nSubstepComplete trigger will repeat the just completed substep.\n\n\nSee more: [Repeat Substep Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/repeat-substep) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to an RepeatSubstep action.\n\n\nSee more: [Repeat Substep Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/repeat-substep) "
+                },
+                "reset-timer": {
+                    "type": "object",
+                    "title": "ResetTimer Options",
+                    "description": "Options to an ResetTimer action.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "reset_timer",
+                            "RESET_TIMER",
+                            "ResetTimer"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                            "identifier": {
+                                "type": "string",
+                                "description": "Identifier of a timer.\n",
+                                "markdownDescription": "Identifier of a timer.\n\n\nSee more: [Reset Timer Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/reset-timer) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to an ResetTimer action.\n\n\nSee more: [Reset Timer Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/reset-timer) "
+                },
+                "select-cell": {
+                    "type": "object",
+                    "title": "SelectCell Options",
+                    "description": "Options to a SelectCell action.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "select_cell",
+                            "SELECT_CELL"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                            "table",
+                            "value"
+                        ],
+                        "properties": {
+                            "table": {
+                                "$ref": "#/definitions/member-name",
+                                "description": "Identifier of the table",
+                                "markdownDescription": "Identifier of the table\n\nSee more: [Select Cell Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/select-cell) "
+                            },
+                            "value": {
+                                "$ref": "#/definitions/script",
+                                "description": "Set the selected cell based on calculated value from signal and fields.\n\nFor example, if the signal come with the following structure:\n\n  {\n    'identifier' => 'myTable',\n    'data' => { 'pointer' => '/1/density' }\n  }\n\nYou can set the selected cell to the row on index 1 of column 'density' by\nsetting this property to 'data.pointer'.\n\nFor the selection to work, the calculated value must resolve to a json pointer\nin the format of /[row-0-based-index]/[column-key]\n\nTo unset the selection, the calculated value must resolve to 'null'.\n",
+                                "markdownDescription": "Set the selected cell based on calculated value from signal and fields.\n\nFor example, if the signal come with the following structure:\n\n  {\n    'identifier' => 'myTable',\n    'data' => { 'pointer' => '/1/density' }\n  }\n\nYou can set the selected cell to the row on index 1 of column 'density' by\nsetting this property to 'data.pointer'.\n\nFor the selection to work, the calculated value must resolve to a json pointer\nin the format of /[row-0-based-index]/[column-key]\n\nTo unset the selection, the calculated value must resolve to 'null'.\n\n\nSee more: [Select Cell Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/select-cell) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to a SelectCell action.\n\n\nSee more: [Select Cell Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/select-cell) "
+                },
+                "select-row": {
+                    "type": "object",
+                    "title": "SelectRow Options",
+                    "description": "Options to a SelectRow action\n",
+                    "propertyNames": {
+                        "enum": [
+                            "select_row",
+                            "SELECT_ROW"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                            "table",
+                            "value"
+                        ],
+                        "properties": {
+                            "table": {
+                                "$ref": "#/definitions/member-name",
+                                "description": "Identifier of the table",
+                                "markdownDescription": "Identifier of the table\n\nSee more: [Select Row Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/select-row) "
+                            },
+                            "value": {
+                                "$ref": "#/definitions/script",
+                                "description": "Set the selected row based on calculated value from signal and fields.\n\nFor example, if the signal come with the following structure:\n\n  {\n    'identifier' => 'myTable',\n    'data' => { 'pointer' => '/1' }\n  }\n\nYou can set the row on index 1 (the second row on the table) to be selected by\nsetting this property to 'data.pointer'.\n\nFor the selection to work, the calculated value must resolve to a json pointer\nin the format of /[row-0-based-index]\n\nTo unset the selection, the calculated value must resolve to 'null'.\n",
+                                "markdownDescription": "Set the selected row based on calculated value from signal and fields.\n\nFor example, if the signal come with the following structure:\n\n  {\n    'identifier' => 'myTable',\n    'data' => { 'pointer' => '/1' }\n  }\n\nYou can set the row on index 1 (the second row on the table) to be selected by\nsetting this property to 'data.pointer'.\n\nFor the selection to work, the calculated value must resolve to a json pointer\nin the format of /[row-0-based-index]\n\nTo unset the selection, the calculated value must resolve to 'null'.\n\n\nSee more: [Select Row Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/select-row) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to a SelectRow action\n\n\nSee more: [Select Row Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/select-row) "
+                },
+                "send-command": {
+                    "type": "object",
+                    "title": "SendCommand Options",
+                    "description": "Options to a SendCommand action.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "SendCommand",
+                            "send_command",
+                            "SEND_COMMAND"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "required": [
+                            "device",
+                            "command"
+                        ],
+                        "properties": {
+                            "device": {
+                                "$ref": "#/definitions/member-name",
+                                "description": "A reference to a field that is a relationship to a device.\n",
+                                "markdownDescription": "A reference to a field that is a relationship to a device.\n\n\nSee more: [Send Command Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-command) "
+                            },
+                            "command": {
+                                "type": "string",
+                                "description": "The command to execute. Available commands are device\nspecific.\n",
+                                "markdownDescription": "The command to execute. Available commands are device\nspecific.\n\n\nSee more: [Send Command Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-command) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to a SendCommand action.\n\n\nSee more: [Send Command Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-command) "
+                },
+                "set-field": {
+                    "type": "object",
+                    "title": "Set Field",
+                    "description": "A Set Field action updates a field with a new value.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "set_field",
+                            "SET_FIELD",
+                            "SetField"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "required": [
+                                    "field",
+                                    "value"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "field": {
+                                        "$ref": "#/definitions/member-name",
+                                        "description": "A reference to a field that is updated with a value when the action is triggered.\n",
+                                        "markdownDescription": "A reference to a field that is updated with a value when the action is triggered.\n\n\nSee more: [Set Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-field) "
+                                    },
+                                    "value": {
+                                        "$ref": "#/definitions/script",
+                                        "description": "A script that returns a value. The value type must match the type of the field that is referenced in the `field` setting. Different fields allow for different logical and arithmetical operations.\n",
+                                        "markdownDescription": "A script that returns a value. The value type must match the type of the field that is referenced in the `field` setting. Different fields allow for different logical and arithmetical operations.\n\n\nSee more: [Set Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-field) "
+                                    },
+                                    "meta": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "reason": {
+                                                "description": "A reason that is recorded along with a field update if the update requires a reason. See [Change Reason schema](/schemas/definitions/workflow-template/change-reason/) for more information.\n",
+                                                "type": "string",
+                                                "markdownDescription": "A reason that is recorded along with a field update if the update requires a reason. See [Change Reason schema](https://schema.laboperator.com/schemas/definitions/workflow-template/change-reason/) for more information.\n\n\nSee more: [Set Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-field) "
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "required": [
+                                    "field",
+                                    "patch"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "field": {
+                                        "$ref": "#/definitions/member-name",
+                                        "description": "A reference to a field that is partially updated with a value when the action is triggered.\n",
+                                        "markdownDescription": "A reference to a field that is partially updated with a value when the action is triggered.\n\n\nSee more: [Set Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-field) "
+                                    },
+                                    "patch": {
+                                        "type": "array",
+                                        "description": "An array of JSON patch operations to be performed. The JSON Patch format can be used to avoid sending a whole document when only a part has changed. You can find more details at [jsonpatch.com](http://jsonpatch.com/).\n",
+                                        "items": {
+                                            "type": "object",
+                                            "required": [
+                                                "path",
+                                                "op"
+                                            ],
+                                            "properties": {
+                                                "path": {
+                                                    "$ref": "#/definitions/script",
+                                                    "description": "A script that returns the pointer to the part of a field document that will be updated. The path is resolved relative to the field's value.\n",
+                                                    "markdownDescription": "A script that returns the pointer to the part of a field document that will be updated. The path is resolved relative to the field's value.\n\n\nSee more: [Set Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-field) "
+                                                },
+                                                "op": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "add",
+                                                        "remove",
+                                                        "replace",
+                                                        "copy",
+                                                        "move",
+                                                        "test"
+                                                    ],
+                                                    "description": "Operation to be performed as defined by [the specification](http://jsonpatch.com/#operations).\n",
+                                                    "markdownDescription": "Operation to be performed as defined by [the specification](http://jsonpatch.com/#operations).\n\n\nSee more: [Set Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-field) "
+                                                },
+                                                "value": {
+                                                    "$ref": "#/definitions/script",
+                                                    "description": "A script that returns a value. The value type must match the type of the field that is referenced in the `field` setting. Different fields allow for different logical and arithmetical operations.\n",
+                                                    "markdownDescription": "A script that returns a value. The value type must match the type of the field that is referenced in the `field` setting. Different fields allow for different logical and arithmetical operations.\n\n\nSee more: [Set Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-field) "
+                                                },
+                                                "from": {
+                                                    "$ref": "#/definitions/script",
+                                                    "description": "A script that returns the pointer to the part of a field document that is copied or moved. The path is resolved relative to the field's value.\n",
+                                                    "markdownDescription": "A script that returns the pointer to the part of a field document that is copied or moved. The path is resolved relative to the field's value.\n\n\nSee more: [Set Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-field) "
+                                                }
+                                            }
+                                        },
+                                        "markdownDescription": "An array of JSON patch operations to be performed. The JSON Patch format can be used to avoid sending a whole document when only a part has changed. You can find more details at [jsonpatch.com](http://jsonpatch.com/).\n\n\nSee more: [Set Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-field) "
+                                    },
+                                    "meta": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "reason": {
+                                                "description": "A reason that is recorded along with a field update if the update requires a reason. See [Change Reason schema](/schemas/definitions/workflow-template/change-reason/) for more information.\n",
+                                                "type": "string",
+                                                "markdownDescription": "A reason that is recorded along with a field update if the update requires a reason. See [Change Reason schema](https://schema.laboperator.com/schemas/definitions/workflow-template/change-reason/) for more information.\n\n\nSee more: [Set Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-field) "
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "examples": [
+                        {
+                            "set_field": {
+                                "field": "resultField",
+                                "value": "data_point.value",
+                                "meta": {
+                                    "reason": "Field update via incoming data point from device weight channel"
+                                }
+                            }
+                        },
+                        {
+                            "set_field": {
+                                "field": "myTableData",
+                                "patch": [
+                                    {
+                                        "path": "'/0/molar_mass'",
+                                        "value": 200,
+                                        "op": "replace"
+                                    },
+                                    {
+                                        "path": "'/0/final_density'",
+                                        "value": "myDensity * 3",
+                                        "op": "replace"
+                                    },
+                                    {
+                                        "path": "myField.myPointer",
+                                        "value": {
+                                            "targetValue": 100,
+                                            "experimentId": "abc123"
+                                        },
+                                        "op": "replace"
+                                    },
+                                    {
+                                        "path": "'/-'",
+                                        "value": {
+                                            "density": "2 mg/ul",
+                                            "molar_mass": 100,
+                                            "type_here": "it works"
+                                        },
+                                        "op": "add"
+                                    },
+                                    {
+                                        "path": "'/0'",
+                                        "value": null,
+                                        "op": "remove"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "markdownDescription": "A Set Field action updates a field with a new value.\n\n\nSee more: [Set Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-field) "
+                },
+                "set-temporary-field": {
+                    "type": "object",
+                    "title": "Set Temporary Field",
+                    "description": "An action to store temporary value which last for a single chain of actions.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "set_temporary_field",
+                            "SET_TEMPORARY_FIELD",
+                            "SetTemporaryField"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                            "field",
+                            "value"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                            "field": {
+                                "$ref": "#/definitions/member-name",
+                                "description": "Name of the temporary field which will be assigned with value when the action is triggered.\n",
+                                "markdownDescription": "Name of the temporary field which will be assigned with value when the action is triggered.\n\n\nSee more: [Set Temporary Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-temporary-field) "
+                            },
+                            "value": {
+                                "$ref": "#/definitions/script",
+                                "description": "A script that returns the value for the temporary field.\n",
+                                "markdownDescription": "A script that returns the value for the temporary field.\n\n\nSee more: [Set Temporary Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-temporary-field) "
+                            }
+                        }
+                    },
+                    "examples": [
+                        {
+                            "set_temporary_field": {
+                                "field": "authenticationToken",
+                                "value": "response.body.authentication_token"
+                            }
+                        },
+                        {
+                            "SetTemporaryField": {
+                                "field": "average",
+                                "value": "AVG(MAP(data, item, item.value))"
+                            }
+                        }
+                    ],
+                    "markdownDescription": "An action to store temporary value which last for a single chain of actions.\n\n\nSee more: [Set Temporary Field Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/set-temporary-field) "
+                },
+                "start-timer": {
+                    "type": "object",
+                    "title": "StartTimer Options",
+                    "description": "Options to a StartTimer action.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "start_timer",
+                            "START_TIMER",
+                            "StartTimer"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                            "identifier": {
+                                "type": "string",
+                                "description": "Identifier of a timer.\n",
+                                "markdownDescription": "Identifier of a timer.\n\n\nSee more: [Start Timer Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/start-timer) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to a StartTimer action.\n\n\nSee more: [Start Timer Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/start-timer) "
+                },
+                "stop-timer": {
+                    "type": "object",
+                    "title": "StopTimer Options",
+                    "description": "Options to an StopTimer action.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "stop_timer",
+                            "STOP_TIMER",
+                            "StopTimer"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                            "identifier": {
+                                "type": "string",
+                                "description": "Identifier of a timer.\n",
+                                "markdownDescription": "Identifier of a timer.\n\n\nSee more: [Stop Timer Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/stop-timer) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to an StopTimer action.\n\n\nSee more: [Stop Timer Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/stop-timer) "
+                },
+                "update-resource": {
+                    "type": "object",
+                    "title": "Update Resource",
+                    "description": "An action to update a resource. It can be used to update the value of custom attributes, and in case of Workflow Runs also update their title.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "update_resource",
+                            "UPDATE_RESOURCE",
+                            "UpdateResource"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "allOf": [
+                            {
+                                "type": "object",
+                                "required": [
+                                    "id"
+                                ],
+                                "properties": {
+                                    "id": {
+                                        "$ref": "#/definitions/script",
+                                        "description": "A script that must resolve to the `id` of the resource to be updated.\n",
+                                        "examples": [
+                                            "workflow_run.data.id",
+                                            "deviceField.id"
+                                        ],
+                                        "markdownDescription": "A script that must resolve to the `id` of the resource to be updated.\n\n\nSee more: [Update Resource Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/update-resource) "
+                                    }
+                                }
+                            },
+                            {
+                                "oneOf": [
+                                    {
+                                        "type": "object",
+                                        "required": [
+                                            "type",
+                                            "attributes"
+                                        ],
+                                        "properties": {
+                                            "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "workflow_run"
+                                                ]
+                                            },
+                                            "attributes": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "custom_attributes": {
+                                                        "$ref": "#/definitions/script",
+                                                        "description": "To update a custom attribute, the script must resolve to a hash object with `name`, `type` and `value` attributes. The supported custom attribute data types are `number`, `text`, `boolean` (checkbox), `date`, `datetime`, `file`, `image`, `physicalQuantity`, `relation`, and `duration`.\n",
+                                                        "markdownDescription": "To update a custom attribute, the script must resolve to a hash object with `name`, `type` and `value` attributes. The supported custom attribute data types are `number`, `text`, `boolean` (checkbox), `date`, `datetime`, `file`, `image`, `physicalQuantity`, `relation`, and `duration`.\n\n\nSee more: [Update Resource Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/update-resource) "
+                                                    },
+                                                    "title": {
+                                                        "$ref": "#/definitions/script"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "object",
+                                        "required": [
+                                            "type",
+                                            "attributes"
+                                        ],
+                                        "properties": {
+                                            "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "collection",
+                                                    "connector",
+                                                    "dashboard",
+                                                    "device",
+                                                    "export",
+                                                    "measurement",
+                                                    "sample",
+                                                    "workflow_step_template",
+                                                    "workflow_template"
+                                                ]
+                                            },
+                                            "attributes": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "custom_attributes": {
+                                                        "$ref": "#/definitions/script",
+                                                        "description": "To update a custom attribute, the script must evaluate to a hash object with `name`, `type` and `value` attributes. The supported custom attribute data types are `number`, `text`, `boolean` (checkbox), `date`, `datetime`, `file`, `image`, `physicalQuantity`, `relation`, and `duration`.\n",
+                                                        "markdownDescription": "To update a custom attribute, the script must evaluate to a hash object with `name`, `type` and `value` attributes. The supported custom attribute data types are `number`, `text`, `boolean` (checkbox), `date`, `datetime`, `file`, `image`, `physicalQuantity`, `relation`, and `duration`.\n\n\nSee more: [Update Resource Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/update-resource) "
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "examples": [
+                        {
+                            "update_resource": {
+                                "id": "workflow_run.data.id",
+                                "type": "workflow_run",
+                                "attributes": {
+                                    "title": "sampleField.name"
+                                }
+                            }
+                        },
+                        {
+                            "update_resource": {
+                                "id": "balance.id",
+                                "type": "device",
+                                "attributes": {
+                                    "custom_attributes": "{\n  HASH(\n    \"name\",\"DeviceInUse\",\n    \"type\", \"boolean\",\n    \"value\", true\n  ),\n  HASH(\n    \"name\",\"WorkflowID\",\n    \"type\", \"string\",\n    \"value\", workflow_run.data.id\n  )\n}\n"
+                                }
+                            }
+                        }
+                    ],
+                    "markdownDescription": "An action to update a resource. It can be used to update the value of custom attributes, and in case of Workflow Runs also update their title.\n\n\nSee more: [Update Resource Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/update-resource) "
+                },
+                "webhook": {
+                    "type": "object",
+                    "title": "Webhook Actions",
+                    "description": "Options to set a webhook action\n",
+                    "propertyNames": {
+                        "enum": [
+                            "webhook",
+                            "Webhook",
+                            "WEBHOOK"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                            "url"
+                        ],
+                        "properties": {
+                            "url": {
+                                "type": "string",
+                                "description": "The URL that should be used in the webhook.\n",
+                                "markdownDescription": "The URL that should be used in the webhook.\n\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
+                            },
+                            "interceptors": {
+                                "type": "array",
+                                "description": "interceptors to be applied to the request",
+                                "items": {
+                                    "oneOf": [
+                                        {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "s3": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "secret_key": {
+                                                            "type": "string"
+                                                        },
+                                                        "access_key": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "oidc": {
+                                                    "type": "object",
+                                                    "additionalProperties": false
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "markdownDescription": "interceptors to be applied to the request\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
+                            },
+                            "headers": {
+                                "type": "object",
+                                "description": "The HTTP request headers\n",
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "markdownDescription": "The HTTP request headers\n\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
+                            },
+                            "method": {
+                                "type": "string",
+                                "enum": [
+                                    "get",
+                                    "put",
+                                    "patch",
+                                    "delete",
+                                    "post",
+                                    "head"
+                                ],
+                                "description": "The HTTP verb that will be used in the request\n",
+                                "default": "post",
+                                "markdownDescription": "The HTTP verb that will be used in the request\n\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
+                            },
+                            "blocking": {
+                                "type": "boolean",
+                                "description": "Defines if the webhook action will block the subsequent steps\n",
+                                "default": false,
+                                "markdownDescription": "Defines if the webhook action will block the subsequent steps\n\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
+                            },
+                            "body": {
+                                "type": "string",
+                                "description": "The HTTP request body. You can add information about fields present in the workflow,\nand non-field information as well, using {{myInformation}}.\nBesides field identifiers, the following references are supported:\n  - workflow_step: The current step of the workflow.\n    Please refer to the API documentation for the keys available to use.\n  - workflow_run: The current workflow run.\n    Please refer to the API documentation for the keys available to use.\n  - signal: details of what triggered the action.\n    includes but not limited to:\n\n      - type: What triggered the action, e.g. StepStart, Manual, etc\n      - auth_token: Encoded reference to the active user access_tokens (applicable only in a SSO environment),\n        may be blank if the active user can not be determined\n      - pointer: Returns the pointer to the behavior that called the webhook\n        (reference to the path inside the workflow template being used).\n\n  - options: The options being used for the webhook action, i.e. URL, headers, handlers.\n",
+                                "examples": [
+                                    "reference to a workflow field named 'volumeField' with a value of '10ml':\n{\n  \"registered_value\": {{volumeField}}\n}\nThe example above will generate a request with the following body:\n{\n  \"registered_value\": \"10ml\"\n}\n",
+                                    "reference to non-field information:\n{\n  \"stepPointer\": {{workflow_step.pointer}}\n}\nThe example above will generate a request with the following body:\n{\n  \"stepPointer\": \"/steps/externalStep\"\n}\n"
+                                ],
+                                "markdownDescription": "The HTTP request body. You can add information about fields present in the workflow,\nand non-field information as well, using {{myInformation}}.\nBesides field identifiers, the following references are supported:\n  - workflow_step: The current step of the workflow.\n    Please refer to the API documentation for the keys available to use.\n  - workflow_run: The current workflow run.\n    Please refer to the API documentation for the keys available to use.\n  - signal: details of what triggered the action.\n    includes but not limited to:\n\n      - type: What triggered the action, e.g. StepStart, Manual, etc\n      - auth_token: Encoded reference to the active user access_tokens (applicable only in a SSO environment),\n        may be blank if the active user can not be determined\n      - pointer: Returns the pointer to the behavior that called the webhook\n        (reference to the path inside the workflow template being used).\n\n  - options: The options being used for the webhook action, i.e. URL, headers, handlers.\n\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
+                            },
+                            "onSuccess": {
+                                "description": "The handler for response status codes 2xx",
+                                "$ref": "#/definitions/step/webhook-handler",
+                                "markdownDescription": "The handler for response status codes 2xx\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
+                            },
+                            "onError": {
+                                "description": "The handler for response status codes 5xx",
+                                "$ref": "#/definitions/step/webhook-handler",
+                                "markdownDescription": "The handler for response status codes 5xx\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
+                            },
+                            "onCode": {
+                                "type": "object",
+                                "description": "Define a different handler for specific codes.\n",
+                                "propertyNames": {
+                                    "$ref": "#/definitions/status-code"
+                                },
+                                "additionalProperties": {
+                                    "$ref": "#/definitions/step/webhook-handler"
+                                },
+                                "markdownDescription": "Define a different handler for specific codes.\n\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to set a webhook action\n\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
+                }
+            },
+            "trigger-objects": {
+                "command-response": {
+                    "type": "object",
+                    "title": "CommandResponse Options",
+                    "description": "Options to a CommandResponse trigger.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "CommandResponse",
+                            "command_response",
+                            "COMMAND_RESPONSE",
+                            "OnCommandResponse",
+                            "on_command_response",
+                            "ON_COMMAND_RESPONSE"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                            "device"
+                        ],
+                        "properties": {
+                            "device": {
+                                "$ref": "#/definitions/member-name",
+                                "description": "A reference to a field that is a relationship to a device.\n",
+                                "markdownDescription": "A reference to a field that is a relationship to a device.\n\n\nSee more: [Command Response Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/command-response) "
+                            },
+                            "command": {
+                                "type": "string",
+                                "description": "Restricts the trigger to specific commands, e.g. only trigger on a\n`get_weight` response not on a response to `get_temperature`.\n",
+                                "examples": [
+                                    "get_weight"
+                                ],
+                                "markdownDescription": "Restricts the trigger to specific commands, e.g. only trigger on a\n`get_weight` response not on a response to `get_temperature`.\n\n\nSee more: [Command Response Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/command-response) "
+                            },
+                            "status": {
+                                "type": "string",
+                                "description": "Restricts the trigger to specific status of the response, e.g. only\ntrigger once a command is `confirmed` or `completed`. Note that\nyou also have access to that information in the conditions.\n",
+                                "examples": [
+                                    "completed"
+                                ],
+                                "markdownDescription": "Restricts the trigger to specific status of the response, e.g. only\ntrigger once a command is `confirmed` or `completed`. Note that\nyou also have access to that information in the conditions.\n\n\nSee more: [Command Response Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/command-response) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to a CommandResponse trigger.\n\n\nSee more: [Command Response Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/command-response) "
+                },
+                "data-point": {
+                    "type": "object",
+                    "title": "DataPoint Options",
+                    "description": "Options to a DataPoint trigger.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "DataPoint",
+                            "data_point",
+                            "DATA_POINT",
+                            "OnDataPoint",
+                            "on_data_point",
+                            "ON_DATA_POINT"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "required": [
+                            "device",
+                            "channel"
+                        ],
+                        "properties": {
+                            "device": {
+                                "$ref": "#/definitions/member-name",
+                                "description": "A reference to a field that is a relationship to a device.\n",
+                                "markdownDescription": "A reference to a field that is a relationship to a device.\n\n\nSee more: [Data Point Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/data-point) "
+                            },
+                            "channel": {
+                                "type": "string",
+                                "description": "Name of the channel that should be subscribed.\n",
+                                "examples": [
+                                    "weight"
+                                ],
+                                "markdownDescription": "Name of the channel that should be subscribed.\n\n\nSee more: [Data Point Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/data-point) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to a DataPoint trigger.\n\n\nSee more: [Data Point Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/data-point) "
+                },
+                "field-update": {
+                    "type": "object",
+                    "title": "FieldUpdate Options",
+                    "description": "Options to a FieldUpdate trigger.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "FieldUpdate",
+                            "field_update",
+                            "FIELD_UPDATE",
+                            "OnFieldUpdate",
+                            "on_field_update",
+                            "ON_FIELD_UPDATE"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "required": [
+                            "field"
+                        ],
+                        "properties": {
+                            "field": {
+                                "$ref": "#/definitions/member-name",
+                                "description": "A field identifier. Only updates to this field will fire the trigger.\n",
+                                "markdownDescription": "A field identifier. Only updates to this field will fire the trigger.\n\n\nSee more: [Field Update Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/field-update) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to a FieldUpdate trigger.\n\n\nSee more: [Field Update Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/field-update) "
+                },
+                "manual": {
+                    "type": "object",
+                    "title": "Manual Options",
+                    "description": "Options to a Manual trigger.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "Manual",
+                            "manual",
+                            "MANUAL",
+                            "OnManual",
+                            "on_manual",
+                            "ON_MANUAL"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "required": [
+                            "key"
+                        ],
+                        "properties": {
+                            "key": {
+                                "$ref": "#/definitions/member-name",
+                                "description": "A key passed that is used to filter to react to a\nbutton being assigned the same key.\n",
+                                "markdownDescription": "A key passed that is used to filter to react to a\nbutton being assigned the same key.\n\n\nSee more: [Manual Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/manual) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to a Manual trigger.\n\n\nSee more: [Manual Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/manual) "
+                },
+                "scan": {
+                    "type": "object",
+                    "title": "Scan Options",
+                    "description": "Options for a Scanner trigger. The application supports simulating a barcode scan by passing the 'simulateScanString' prop to the component.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "scan",
+                            "SCAN",
+                            "on_scan",
+                            "ON_SCAN"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                            "pattern"
+                        ],
+                        "properties": {
+                            "pattern": {
+                                "type": "string",
+                                "format": "regex",
+                                "description": "The pattern will be matched with text to determine a valid barcode scan.\n",
+                                "examples": [
+                                    "^ID-[-A-Z0-9]"
+                                ],
+                                "default": "^[-A-Z0-9]{4,}",
+                                "markdownDescription": "The pattern will be matched with text to determine a valid barcode scan.\n\n\nSee more: [Scan Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/scan) "
+                            },
+                            "caseSensitive": {
+                                "type": "boolean",
+                                "description": "Determines whether the search for a match is case-sensitive.\n",
+                                "default": false,
+                                "markdownDescription": "Determines whether the search for a match is case-sensitive.\n\n\nSee more: [Scan Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/scan) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options for a Scanner trigger. The application supports simulating a barcode scan by passing the 'simulateScanString' prop to the component.\n\n\nSee more: [Scan Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/scan) "
+                },
+                "timer-complete": {
+                    "type": "object",
+                    "title": "Timer Complete Options",
+                    "description": "Options to a Timer Complete trigger.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "ON_TIMER_COMPLETE",
+                            "on_timer_complete",
+                            "TIMER_COMPLETE",
+                            "timer_complete"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "required": [
+                            "identifier"
+                        ],
+                        "properties": {
+                            "identifier": {
+                                "$ref": "#/definitions/member-name",
+                                "description": "Identifier of a timer that initiates the trigger.\n",
+                                "markdownDescription": "Identifier of a timer that initiates the trigger.\n\n\nSee more: [Timer Complete Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-complete) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to a Timer Complete trigger.\n\n\nSee more: [Timer Complete Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-complete) "
+                },
+                "timer-reset": {
+                    "type": "object",
+                    "title": "Timer Reset Options",
+                    "description": "Options to a Timer Reset trigger.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "ON_TIMER_RESET",
+                            "on_timer_reset",
+                            "TIMER_RESET",
+                            "timer_reset"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "required": [
+                            "identifier"
+                        ],
+                        "properties": {
+                            "identifier": {
+                                "$ref": "#/definitions/member-name",
+                                "description": "Identifier of a timer that initiates the trigger.\n",
+                                "markdownDescription": "Identifier of a timer that initiates the trigger.\n\n\nSee more: [Timer Reset Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-reset) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to a Timer Reset trigger.\n\n\nSee more: [Timer Reset Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-reset) "
+                },
+                "timer-start": {
+                    "type": "object",
+                    "title": "Timer Start Options",
+                    "description": "Options to a Timer Start trigger.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "ON_TIMER_START",
+                            "on_timer_start",
+                            "TIMER_START",
+                            "timer_start"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "required": [
+                            "identifier"
+                        ],
+                        "properties": {
+                            "identifier": {
+                                "$ref": "#/definitions/member-name",
+                                "description": "Identifier of a timer that initiates the trigger.\n",
+                                "markdownDescription": "Identifier of a timer that initiates the trigger.\n\n\nSee more: [Timer Start Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-start) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to a Timer Start trigger.\n\n\nSee more: [Timer Start Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-start) "
+                },
+                "timer-stop": {
+                    "type": "object",
+                    "title": "Timer Complete Options",
+                    "description": "Options to a Timer Complete trigger.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "ON_TIMER_STOP",
+                            "on_timer_stop",
+                            "TIMER_STOP",
+                            "timer_stop"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "required": [
+                            "identifier"
+                        ],
+                        "properties": {
+                            "identifier": {
+                                "$ref": "#/definitions/member-name",
+                                "description": "Identifier of a timer that initiates the trigger.\n",
+                                "markdownDescription": "Identifier of a timer that initiates the trigger.\n\n\nSee more: [Timer Stop Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-stop) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to a Timer Complete trigger.\n\n\nSee more: [Timer Stop Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/timer-stop) "
+                }
+            }
         }
     }
 }

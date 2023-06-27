@@ -2009,6 +2009,10 @@
                                                             "type": "string"
                                                         }
                                                     }
+                                                },
+                                                "oidc": {
+                                                    "type": "object",
+                                                    "additionalProperties": false
                                                 }
                                             }
                                         }
