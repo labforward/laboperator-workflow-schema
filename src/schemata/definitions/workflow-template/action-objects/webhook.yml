@@ -26,7 +26,7 @@ additionalProperties:
           - type: object
             additionalProperties: false
             description: |
-              The keys will be used to authenticate the upload of the file to AWS S3.
+              The secret and access keys will be used to authenticate the upload of a file to AWS S3.
             properties:
               s3:
                 type: object
@@ -39,8 +39,7 @@ additionalProperties:
           - type: string
             const: oidc
             description: |
-              The current user session token will be injected
-              in the request header between LO and the Webhook URL.
+              The current user session token will be injected in the request header between Laboperator and the webhook URL.
     headers:
       type: object
       description: |
