@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - [[CUB-4282]](https://labforward.atlassian.net/browse/CUB-4282) [Workflows] Add get resources template schema
 - [[CUB-4622]](https://labforward.atlassian.net/browse/CUB-4622) [Workflows] Add Workflow Event to the schemata definitions
 - [[CUB-4622]](https://labforward.atlassian.net/browse/CUB-4622) [Workflows] Change definition references to dashed-case
+- [[CUB-4771]](https://labforward.atlassian.net/browse/CUB-4771) [Workflows] Add oidc interceptor to webhook schema
 
 ### Changed
 

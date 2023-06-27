@@ -1991,12 +1991,13 @@
                             },
                             "interceptors": {
                                 "type": "array",
-                                "description": "interceptors to be applied to the request",
+                                "description": "Interceptors to be applied to the request.\n",
                                 "items": {
                                     "oneOf": [
                                         {
                                             "type": "object",
                                             "additionalProperties": false,
+                                            "description": "The secret and access keys will be used to authenticate the upload of a file to AWS S3.\n",
                                             "properties": {
                                                 "s3": {
                                                     "type": "object",
@@ -2010,11 +2011,18 @@
                                                         }
                                                     }
                                                 }
-                                            }
+                                            },
+                                            "markdownDescription": "The secret and access keys will be used to authenticate the upload of a file to AWS S3.\n\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
+                                        },
+                                        {
+                                            "type": "string",
+                                            "const": "oidc",
+                                            "description": "The current user session token will be injected in the request header between Laboperator and the webhook URL.\n",
+                                            "markdownDescription": "The current user session token will be injected in the request header between Laboperator and the webhook URL.\n\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
                                         }
                                     ]
                                 },
-                                "markdownDescription": "interceptors to be applied to the request\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
+                                "markdownDescription": "Interceptors to be applied to the request.\n\n\nSee more: [Webhook Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/webhook) "
                             },
                             "headers": {
                                 "type": "object",
