@@ -19,11 +19,14 @@ additionalProperties:
         The URL that should be used in the webhook.
     interceptors:
       type: array
-      description: interceptors to be applied to the request
+      description: |
+        Interceptors to be applied to the request.
       items:
         oneOf:
           - type: object
             additionalProperties: false
+            description: |
+              The keys will be used to authenticate the upload of the file to AWS S3.
             properties:
               s3:
                 type: object
@@ -33,9 +36,11 @@ additionalProperties:
                     type: string
                   access_key:
                     type: string
-              oidc:
-                type: object
-                additionalProperties: false
+          - type: string
+            const: oidc
+            description: |
+              The current user session token will be injected
+              in the request header between LO and the Webhook URL.
     headers:
       type: object
       description: |
