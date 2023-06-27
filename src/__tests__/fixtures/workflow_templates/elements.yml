@@ -42,7 +42,7 @@ steps:
                 count: 1
             inputChannels:
               - ChannelsField
-          - type: GaugeControl
+          - type: Gauge
             elementLabel:
               text: You get a label, you get a label, everyone gets a label!
             grid: 6
