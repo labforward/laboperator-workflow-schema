@@ -1189,9 +1189,10 @@ export declare const schemas: {
                                     type: string;
                                     description: string;
                                     items: {
-                                        oneOf: {
+                                        oneOf: ({
                                             type: string;
                                             additionalProperties: boolean;
+                                            description: string;
                                             properties: {
                                                 s3: {
                                                     type: string;
@@ -1205,12 +1206,17 @@ export declare const schemas: {
                                                         };
                                                     };
                                                 };
-                                                oidc: {
-                                                    type: string;
-                                                    additionalProperties: boolean;
-                                                };
                                             };
-                                        }[];
+                                            markdownDescription: string;
+                                            const?: undefined;
+                                        } | {
+                                            type: string;
+                                            const: string;
+                                            description: string;
+                                            markdownDescription: string;
+                                            additionalProperties?: undefined;
+                                            properties?: undefined;
+                                        })[];
                                     };
                                     markdownDescription: string;
                                 };
@@ -3005,9 +3011,10 @@ export declare const schemas: {
                                     type: string;
                                     description: string;
                                     items: {
-                                        oneOf: {
+                                        oneOf: ({
                                             type: string;
                                             additionalProperties: boolean;
+                                            description: string;
                                             properties: {
                                                 s3: {
                                                     type: string;
@@ -3021,12 +3028,17 @@ export declare const schemas: {
                                                         };
                                                     };
                                                 };
-                                                oidc: {
-                                                    type: string;
-                                                    additionalProperties: boolean;
-                                                };
                                             };
-                                        }[];
+                                            markdownDescription: string;
+                                            const?: undefined;
+                                        } | {
+                                            type: string;
+                                            const: string;
+                                            description: string;
+                                            markdownDescription: string;
+                                            additionalProperties?: undefined;
+                                            properties?: undefined;
+                                        })[];
                                     };
                                     markdownDescription: string;
                                 };
@@ -7086,9 +7098,10 @@ export declare const schemas: {
                                     type: string;
                                     description: string;
                                     items: {
-                                        oneOf: {
+                                        oneOf: ({
                                             type: string;
                                             additionalProperties: boolean;
+                                            description: string;
                                             properties: {
                                                 s3: {
                                                     type: string;
@@ -7102,12 +7115,17 @@ export declare const schemas: {
                                                         };
                                                     };
                                                 };
-                                                oidc: {
-                                                    type: string;
-                                                    additionalProperties: boolean;
-                                                };
                                             };
-                                        }[];
+                                            markdownDescription: string;
+                                            const?: undefined;
+                                        } | {
+                                            type: string;
+                                            const: string;
+                                            description: string;
+                                            markdownDescription: string;
+                                            additionalProperties?: undefined;
+                                            properties?: undefined;
+                                        })[];
                                     };
                                     markdownDescription: string;
                                 };
