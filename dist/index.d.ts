@@ -3032,6 +3032,13 @@ export declare const schemas: {
                     type: string;
                     required: string[];
                     properties: {
+                        title: {
+                            type: string;
+                            title: string;
+                            description: string;
+                            examples: string[];
+                            markdownDescription: string;
+                        };
                         "ui:widget": {
                             type: string;
                             enum: string[];
@@ -6379,6 +6386,13 @@ export declare const schemas: {
                     type: string;
                     required: string[];
                     properties: {
+                        title: {
+                            type: string;
+                            title: string;
+                            description: string;
+                            examples: string[];
+                            markdownDescription: string;
+                        };
                         "ui:widget": {
                             type: string;
                             enum: string[];

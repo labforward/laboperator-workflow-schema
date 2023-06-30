@@ -3532,6 +3532,15 @@
                         "type"
                     ],
                     "properties": {
+                        "title": {
+                            "type": "string",
+                            "title": "Title",
+                            "description": "The displayed title of the field. If not provided, the field identifier will be used instead.\n",
+                            "examples": [
+                                "My Field"
+                            ],
+                            "markdownDescription": "The displayed title of the field. If not provided, the field identifier will be used instead.\n\n\nSee more: [Field Schema](https://schema.laboperator.com/schemas/definitions/field) "
+                        },
                         "ui:widget": {
                             "type": "string",
                             "enum": [
