@@ -1,7 +1,8 @@
-import glob from 'fast-glob';
 import fs from 'fs';
-import { set } from 'lodash';
 import path from 'path';
+
+import glob from 'fast-glob';
+import { set } from 'lodash';
 import yaml from 'yaml';
 
 import { addMarkdownDescription, getPropertyPath } from './utils';
