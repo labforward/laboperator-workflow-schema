@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import fs from 'fs';
 import path from 'path';
-import yaml from 'yaml';
 
 import { isPlainObject, last, startCase } from 'lodash';
+import yaml from 'yaml';
 
 // e.g. '#/definitions/flow/loop' => 'definitions.flow.loop'
 // e.g. 'definitions/flow/loop.yml' => 'definitions.flow.loop'
@@ -16,7 +16,7 @@ export const getPropertyPath = (pathname: string) =>
 
 export const readFile = (filename: string) => {
   return yaml.parse(
-    fs.readFileSync(path.join(__dirname, `../schemata/${filename}`), 'utf8')
+    fs.readFileSync(path.join(__dirname, `../schemata/${filename}`), 'utf8'),
   );
 };
 
@@ -40,7 +40,7 @@ export const prepareLink = (pathname: string) => {
 
 export const forEachDeep = (
   obj: any,
-  cb: (key: string, value: any) => void
+  cb: (key: string, value: any) => void,
 ) => {
   // The `obj` param can be an array for nested schemas, e.g. `allOf` field,
   // but we for..in iterate over it anyway until it breaks 🙃

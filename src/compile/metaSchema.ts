@@ -1,7 +1,10 @@
 import jsonSchema from 'ajv/dist/refs/json-schema-draft-07.json';
 
 const metaSchema = JSON.parse(
-  JSON.stringify(jsonSchema).replace(/"#"/g, '"#/definitions/jsonSchemaDraft7"')
+  JSON.stringify(jsonSchema).replace(
+    /"#"/g,
+    '"#/definitions/jsonSchemaDraft7"',
+  ),
 );
 
 /**

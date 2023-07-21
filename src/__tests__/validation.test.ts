@@ -12,7 +12,7 @@ describe('Schema validation', () => {
     const fixturePath = path.resolve(
       __dirname,
       'fixtures',
-      'workflow_templates'
+      'workflow_templates',
     );
 
     it('should have all required properties', () => {
@@ -31,11 +31,11 @@ describe('Schema validation', () => {
       (errors || []).forEach((err, index) => {
         expect(err.schema).toEqual(requiredProperties);
         expect(err.message).toBe(
-          `must have required property '${requiredProperties[index]}'`
+          `must have required property '${requiredProperties[index]}'`,
         );
         expect(err).toHaveProperty(
           'params.missingProperty',
-          requiredProperties[index]
+          requiredProperties[index],
         );
       });
     });
@@ -45,11 +45,11 @@ describe('Schema validation', () => {
         it('should be validated against the correct schema', () => {
           const template = fs.readFileSync(
             path.resolve(fixturePath, filename),
-            { encoding: 'utf8' }
+            { encoding: 'utf8' },
           );
           const { errors, schema } = validate(
             yaml.parse(template, { version: '1.1' }),
-            { schema: 'workflowTemplate' }
+            { schema: 'workflowTemplate' },
           );
 
           expect(errors).toBeNull();
@@ -63,13 +63,13 @@ describe('Schema validation', () => {
     const fixturePath = path.resolve(
       __dirname,
       'fixtures',
-      'workflow_step_templates'
+      'workflow_step_templates',
     );
 
     it('should have all required properties', () => {
       const { errors, schema } = validate(
         {},
-        { schema: 'workflowStepTemplate' }
+        { schema: 'workflowStepTemplate' },
       );
       const requiredProperties = ['substeps', 'schema_version', 'info'];
 
@@ -78,11 +78,11 @@ describe('Schema validation', () => {
 
       (errors || []).forEach((err, index) => {
         expect(err.message).toBe(
-          `must have required property '${requiredProperties[index]}'`
+          `must have required property '${requiredProperties[index]}'`,
         );
         expect(err).toHaveProperty(
           'params.missingProperty',
-          requiredProperties[index]
+          requiredProperties[index],
         );
       });
     });
@@ -92,11 +92,11 @@ describe('Schema validation', () => {
         it('should be validated against the correct schema', () => {
           const template = fs.readFileSync(
             path.resolve(fixturePath, filename),
-            { encoding: 'utf8' }
+            { encoding: 'utf8' },
           );
           const { errors, schema } = validate(
             yaml.parse(template, { version: '1.1' }),
-            { schema: 'workflowStepTemplate' }
+            { schema: 'workflowStepTemplate' },
           );
 
           expect(errors).toBeNull();

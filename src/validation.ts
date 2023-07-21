@@ -39,7 +39,7 @@ const validationFunctions = {
 
 const validateTemplate = <S>(
   data: unknown,
-  validationFunction: ValidateFunction<S>
+  validationFunction: ValidateFunction<S>,
 ) => {
   const isValid = validationFunction(data);
   const result: Validation = {
@@ -60,7 +60,7 @@ const validateTemplate = <S>(
  */
 const validate = (
   data: unknown,
-  { schema = 'workflowTemplate' }: Options = {}
+  { schema = 'workflowTemplate' }: Options = {},
 ) => validateTemplate(data, validationFunctions[schema]);
 
 export default validate;
