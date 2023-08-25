@@ -20,7 +20,6 @@ not:
     - if
     - INTERNAL_STATE
     - loop
-    - parallel
     - step
     - substep
     - type
