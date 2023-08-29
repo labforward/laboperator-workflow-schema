@@ -15,6 +15,7 @@ allOf:
         properties:
           title:
             type: string
+            minLength: 1
             maxLength: 100
             description: |
               The display name of the step in Laboperator.

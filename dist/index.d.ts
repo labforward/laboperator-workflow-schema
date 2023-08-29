@@ -744,6 +744,7 @@ export declare const schemas: {
                 properties: {
                     title: {
                         type: string;
+                        minLength: number;
                         maxLength: number;
                         description: string;
                         examples: string[];
@@ -1308,6 +1309,7 @@ export declare const schemas: {
                             properties: {
                                 title: {
                                     type: string;
+                                    minLength: number;
                                     description: string;
                                     markdownDescription: string;
                                 };
@@ -2898,7 +2900,7 @@ export declare const schemas: {
                     properties: {
                         title: {
                             type: string;
-                            title: string;
+                            minLength: number;
                             description: string;
                             examples: string[];
                             markdownDescription: string;
@@ -3879,6 +3881,7 @@ export declare const schemas: {
                 properties: {
                     title: {
                         type: string;
+                        minLength: number;
                         maxLength: number;
                         description: string;
                         examples: string[];
@@ -4952,6 +4955,7 @@ export declare const schemas: {
                                 properties: {
                                     title: {
                                         type: string;
+                                        minLength: number;
                                         maxLength: number;
                                         description: string;
                                         examples: string[];
@@ -5395,6 +5399,7 @@ export declare const schemas: {
                             properties: {
                                 title: {
                                     type: string;
+                                    minLength: number;
                                     description: string;
                                     markdownDescription: string;
                                 };
@@ -6227,7 +6232,7 @@ export declare const schemas: {
                     properties: {
                         title: {
                             type: string;
-                            title: string;
+                            minLength: number;
                             description: string;
                             examples: string[];
                             markdownDescription: string;
