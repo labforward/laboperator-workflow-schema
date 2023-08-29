@@ -9,7 +9,7 @@ required:
 properties:
   title:
     type: string
-    title: Title
+    minLength: 1
     description: |
       The displayed title of the page.
     examples:
