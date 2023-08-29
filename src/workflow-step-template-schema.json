@@ -335,6 +335,7 @@
       "properties": {
         "title": {
           "type": "string",
+          "minLength": 1,
           "maxLength": 200,
           "description": "The display name of the template in Laboperator.\n",
           "examples": [
@@ -1197,6 +1198,7 @@
             "properties": {
               "title": {
                 "type": "string",
+                "minLength": 1,
                 "description": "A title to display on the alert.\n",
                 "markdownDescription": "A title to display on the alert.\n\n\nSee more: [Alert Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/alert) "
               },
@@ -3102,7 +3104,7 @@
         "properties": {
           "title": {
             "type": "string",
-            "title": "Title",
+            "minLength": 1,
             "description": "The displayed title of the page.\n",
             "examples": [
               "Formula"
