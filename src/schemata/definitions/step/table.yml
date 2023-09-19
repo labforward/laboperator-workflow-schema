@@ -166,6 +166,11 @@ properties:
         - cells
     description: |
       Configures which table elements can be selected to trigger behaviors.
+  transpose:
+    type: boolean
+    default: false
+    description: |
+      Display table in a transposed position, flipping the position of rows and columns. This is especially useful for tables with many columns, but only a single row.
   columns:
     $ref: '#/definitions/step/table-attributes/columns'
   state:

@@ -899,6 +899,12 @@
             "description": "Configures which table elements can be selected to trigger behaviors.\n",
             "markdownDescription": "Configures which table elements can be selected to trigger behaviors.\n\n\nSee more: [Table Schema](https://schema.laboperator.com/schemas/definitions/step/table) "
           },
+          "transpose": {
+            "type": "boolean",
+            "default": false,
+            "description": "Display table in a transposed position, flipping the position of rows and columns. This is especially useful for tables with many columns, but only a single row.\n",
+            "markdownDescription": "Display table in a transposed position, flipping the position of rows and columns. This is especially useful for tables with many columns, but only a single row.\n\n\nSee more: [Table Schema](https://schema.laboperator.com/schemas/definitions/step/table) "
+          },
           "columns": {
             "$ref": "#/definitions/step/table-attributes/columns"
           },
