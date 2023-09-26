@@ -799,6 +799,49 @@
                 "required": [
                     "data"
                 ],
+                "oneOf": [
+                    {
+                        "required": [
+                            "transpose"
+                        ],
+                        "properties": {
+                            "transpose": {
+                                "const": true
+                            },
+                            "selectable": {
+                                "const": [
+                                    "cells"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "required": [
+                            "selectable"
+                        ],
+                        "properties": {
+                            "transpose": {
+                                "const": false
+                            }
+                        }
+                    },
+                    {
+                        "not": {
+                            "anyOf": [
+                                {
+                                    "required": [
+                                        "transpose"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "selectable"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ],
                 "properties": {
                     "data": {
                         "$ref": "#/definitions/member-name",
@@ -902,8 +945,8 @@
                     "transpose": {
                         "type": "boolean",
                         "default": false,
-                        "description": "Display table in a transposed position, flipping the position of rows and columns. This is especially useful for tables with many columns, but only a single row.\n",
-                        "markdownDescription": "Display table in a transposed position, flipping the position of rows and columns. This is especially useful for tables with many columns, but only a single row.\n\n\nSee more: [Table Schema](https://schema.laboperator.com/schemas/definitions/step/table) "
+                        "description": "Enabling this setting will display the table in a transposed position, flipping the position of rows and columns. This is especially useful for tables with many columns, but only a single or a few rows. Note that selectable rows are not supported on transposed tables.\n",
+                        "markdownDescription": "Enabling this setting will display the table in a transposed position, flipping the position of rows and columns. This is especially useful for tables with many columns, but only a single or a few rows. Note that selectable rows are not supported on transposed tables.\n\n\nSee more: [Table Schema](https://schema.laboperator.com/schemas/definitions/step/table) "
                     },
                     "columns": {
                         "$ref": "#/definitions/step/table-attributes/columns"
