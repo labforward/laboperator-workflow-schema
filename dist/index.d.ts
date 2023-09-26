@@ -2458,6 +2458,12 @@ export declare const schemas: {
                             description: string;
                             markdownDescription: string;
                         };
+                        transpose: {
+                            type: string;
+                            default: boolean;
+                            description: string;
+                            markdownDescription: string;
+                        };
                         columns: {
                             $ref: string;
                         };
@@ -4351,6 +4357,12 @@ export declare const schemas: {
                                 type: string;
                                 enum: string[];
                             };
+                            description: string;
+                            markdownDescription: string;
+                        };
+                        transpose: {
+                            type: string;
+                            default: boolean;
                             description: string;
                             markdownDescription: string;
                         };
