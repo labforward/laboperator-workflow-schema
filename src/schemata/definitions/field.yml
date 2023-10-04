@@ -22,6 +22,11 @@ allOf:
             default: true
             description: |
               A flag indicating whether a field of type `boolean` has a display label. Setting this to `false` will display either only a checkbox or switch control element, without any visible label.
+          rows:
+            type: number
+            default: true
+            description: |
+              The number of rows to display when a field of type `string` is configured to display a textarea element via the `ui:widget` setting.
       readOnly:
         type: boolean
         default: false

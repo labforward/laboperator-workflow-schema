@@ -3056,6 +3056,12 @@ export declare const schemas: {
                                     description: string;
                                     markdownDescription: string;
                                 };
+                                rows: {
+                                    type: string;
+                                    default: boolean;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
                             };
                             markdownDescription: string;
                         };
@@ -6407,6 +6413,12 @@ export declare const schemas: {
                             description: string;
                             properties: {
                                 label: {
+                                    type: string;
+                                    default: boolean;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                                rows: {
                                     type: string;
                                     default: boolean;
                                     description: string;
