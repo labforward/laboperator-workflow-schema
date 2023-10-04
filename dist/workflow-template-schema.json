@@ -3534,6 +3534,172 @@
         "field": {
             "title": "Field",
             "description": "A valid field schema is either a valid JSON schema as per [Draft 7](http://json-schema.org/draft-07/schema#) or one of our custom field types. Some additional properties are allowed at the top level.\n",
+            "not": {
+                "oneOf": [
+                    {
+                        "required": [
+                            "type",
+                            "ui:options"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "number",
+                                    "integer",
+                                    "object",
+                                    "array",
+                                    "boolean",
+                                    "null",
+                                    "file",
+                                    "quantity",
+                                    "relationship",
+                                    "script",
+                                    "timer"
+                                ]
+                            },
+                            "ui:options": {
+                                "type": "object",
+                                "required": [
+                                    "rows"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "required": [
+                            "type",
+                            "ui:widget",
+                            "ui:options"
+                        ],
+                        "properties": {
+                            "type": {
+                                "const": "string"
+                            },
+                            "ui:widget": {
+                                "type": "string",
+                                "enum": [
+                                    "checkbox",
+                                    "switch",
+                                    "text"
+                                ]
+                            },
+                            "ui:options": {
+                                "type": "object",
+                                "required": [
+                                    "rows"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "required": [
+                            "type",
+                            "ui:widget"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "string",
+                                    "number",
+                                    "integer",
+                                    "object",
+                                    "array",
+                                    "null",
+                                    "file",
+                                    "quantity",
+                                    "relationship",
+                                    "script",
+                                    "timer"
+                                ]
+                            },
+                            "ui:widget": {
+                                "type": "string",
+                                "enum": [
+                                    "checkbox",
+                                    "switch"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "required": [
+                            "type",
+                            "ui:widget"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "number",
+                                    "integer",
+                                    "object",
+                                    "array",
+                                    "boolean",
+                                    "null",
+                                    "file",
+                                    "quantity",
+                                    "relationship",
+                                    "script",
+                                    "timer"
+                                ]
+                            },
+                            "ui:widget": {
+                                "type": "string",
+                                "enum": [
+                                    "text",
+                                    "textarea"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "required": [
+                            "type",
+                            "ui:options"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "string",
+                                    "number",
+                                    "integer",
+                                    "object",
+                                    "array",
+                                    "null",
+                                    "file",
+                                    "quantity",
+                                    "relationship",
+                                    "script",
+                                    "timer"
+                                ]
+                            },
+                            "ui:options": {
+                                "type": "string",
+                                "enum": [
+                                    "label"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "required": [
+                            "prepare",
+                            "hidden"
+                        ],
+                        "properties": {
+                            "hidden": {
+                                "const": true
+                            },
+                            "prepare": {
+                                "const": true
+                            }
+                        }
+                    }
+                ]
+            },
             "allOf": [
                 {
                     "type": "object",
