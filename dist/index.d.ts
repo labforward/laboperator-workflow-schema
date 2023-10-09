@@ -3036,92 +3036,6 @@ export declare const schemas: {
             field: {
                 title: string;
                 description: string;
-                not: {
-                    oneOf: ({
-                        required: string[];
-                        properties: {
-                            type: {
-                                type: string;
-                                enum: string[];
-                                const?: undefined;
-                            };
-                            "ui:options": {
-                                type: string;
-                                required: string[];
-                                enum?: undefined;
-                            };
-                            "ui:widget"?: undefined;
-                            hidden?: undefined;
-                            prepare?: undefined;
-                        };
-                    } | {
-                        required: string[];
-                        properties: {
-                            type: {
-                                const: string;
-                                type?: undefined;
-                                enum?: undefined;
-                            };
-                            "ui:widget": {
-                                type: string;
-                                enum: string[];
-                            };
-                            "ui:options": {
-                                type: string;
-                                required: string[];
-                                enum?: undefined;
-                            };
-                            hidden?: undefined;
-                            prepare?: undefined;
-                        };
-                    } | {
-                        required: string[];
-                        properties: {
-                            type: {
-                                type: string;
-                                enum: string[];
-                                const?: undefined;
-                            };
-                            "ui:widget": {
-                                type: string;
-                                enum: string[];
-                            };
-                            "ui:options"?: undefined;
-                            hidden?: undefined;
-                            prepare?: undefined;
-                        };
-                    } | {
-                        required: string[];
-                        properties: {
-                            type: {
-                                type: string;
-                                enum: string[];
-                                const?: undefined;
-                            };
-                            "ui:options": {
-                                type: string;
-                                enum: string[];
-                                required?: undefined;
-                            };
-                            "ui:widget"?: undefined;
-                            hidden?: undefined;
-                            prepare?: undefined;
-                        };
-                    } | {
-                        required: string[];
-                        properties: {
-                            hidden: {
-                                const: boolean;
-                            };
-                            prepare: {
-                                const: boolean;
-                            };
-                            type?: undefined;
-                            "ui:options"?: undefined;
-                            "ui:widget"?: undefined;
-                        };
-                    })[];
-                };
                 allOf: ({
                     type: string;
                     required: string[];
@@ -3144,7 +3058,7 @@ export declare const schemas: {
                                 };
                                 rows: {
                                     type: string;
-                                    default: boolean;
+                                    minimum: number;
                                     description: string;
                                     markdownDescription: string;
                                 };
@@ -3195,6 +3109,9 @@ export declare const schemas: {
                         };
                     };
                     oneOf?: undefined;
+                    if?: undefined;
+                    then?: undefined;
+                    not?: undefined;
                 } | {
                     oneOf: {
                         $ref: string;
@@ -3202,6 +3119,99 @@ export declare const schemas: {
                     type?: undefined;
                     required?: undefined;
                     properties?: undefined;
+                    if?: undefined;
+                    then?: undefined;
+                    not?: undefined;
+                } | {
+                    if: {
+                        required: string[];
+                        properties: {
+                            "ui:widget": {
+                                enum: string[];
+                            };
+                            "ui:options"?: undefined;
+                        };
+                    };
+                    then: {
+                        properties: {
+                            type: {
+                                const: string;
+                            };
+                            "ui:widget"?: undefined;
+                        };
+                        required?: undefined;
+                    };
+                    type?: undefined;
+                    required?: undefined;
+                    properties?: undefined;
+                    oneOf?: undefined;
+                    not?: undefined;
+                } | {
+                    if: {
+                        required: string[];
+                        properties: {
+                            "ui:options": {
+                                required: string[];
+                            };
+                            "ui:widget"?: undefined;
+                        };
+                    };
+                    then: {
+                        required: string[];
+                        properties: {
+                            "ui:widget": {
+                                const: string;
+                            };
+                            type?: undefined;
+                        };
+                    };
+                    type?: undefined;
+                    required?: undefined;
+                    properties?: undefined;
+                    oneOf?: undefined;
+                    not?: undefined;
+                } | {
+                    if: {
+                        required: string[];
+                        properties: {
+                            "ui:options": {
+                                required: string[];
+                            };
+                            "ui:widget"?: undefined;
+                        };
+                    };
+                    then: {
+                        properties: {
+                            type: {
+                                const: string;
+                            };
+                            "ui:widget"?: undefined;
+                        };
+                        required?: undefined;
+                    };
+                    type?: undefined;
+                    required?: undefined;
+                    properties?: undefined;
+                    oneOf?: undefined;
+                    not?: undefined;
+                } | {
+                    not: {
+                        required: string[];
+                        properties: {
+                            hidden: {
+                                const: boolean;
+                            };
+                            prepare: {
+                                const: boolean;
+                            };
+                        };
+                    };
+                    type?: undefined;
+                    required?: undefined;
+                    properties?: undefined;
+                    oneOf?: undefined;
+                    if?: undefined;
+                    then?: undefined;
                 })[];
                 examples: ({
                     type: string;
@@ -6484,92 +6494,6 @@ export declare const schemas: {
             field: {
                 title: string;
                 description: string;
-                not: {
-                    oneOf: ({
-                        required: string[];
-                        properties: {
-                            type: {
-                                type: string;
-                                enum: string[];
-                                const?: undefined;
-                            };
-                            "ui:options": {
-                                type: string;
-                                required: string[];
-                                enum?: undefined;
-                            };
-                            "ui:widget"?: undefined;
-                            hidden?: undefined;
-                            prepare?: undefined;
-                        };
-                    } | {
-                        required: string[];
-                        properties: {
-                            type: {
-                                const: string;
-                                type?: undefined;
-                                enum?: undefined;
-                            };
-                            "ui:widget": {
-                                type: string;
-                                enum: string[];
-                            };
-                            "ui:options": {
-                                type: string;
-                                required: string[];
-                                enum?: undefined;
-                            };
-                            hidden?: undefined;
-                            prepare?: undefined;
-                        };
-                    } | {
-                        required: string[];
-                        properties: {
-                            type: {
-                                type: string;
-                                enum: string[];
-                                const?: undefined;
-                            };
-                            "ui:widget": {
-                                type: string;
-                                enum: string[];
-                            };
-                            "ui:options"?: undefined;
-                            hidden?: undefined;
-                            prepare?: undefined;
-                        };
-                    } | {
-                        required: string[];
-                        properties: {
-                            type: {
-                                type: string;
-                                enum: string[];
-                                const?: undefined;
-                            };
-                            "ui:options": {
-                                type: string;
-                                enum: string[];
-                                required?: undefined;
-                            };
-                            "ui:widget"?: undefined;
-                            hidden?: undefined;
-                            prepare?: undefined;
-                        };
-                    } | {
-                        required: string[];
-                        properties: {
-                            hidden: {
-                                const: boolean;
-                            };
-                            prepare: {
-                                const: boolean;
-                            };
-                            type?: undefined;
-                            "ui:options"?: undefined;
-                            "ui:widget"?: undefined;
-                        };
-                    })[];
-                };
                 allOf: ({
                     type: string;
                     required: string[];
@@ -6592,7 +6516,7 @@ export declare const schemas: {
                                 };
                                 rows: {
                                     type: string;
-                                    default: boolean;
+                                    minimum: number;
                                     description: string;
                                     markdownDescription: string;
                                 };
@@ -6643,6 +6567,9 @@ export declare const schemas: {
                         };
                     };
                     oneOf?: undefined;
+                    if?: undefined;
+                    then?: undefined;
+                    not?: undefined;
                 } | {
                     oneOf: {
                         $ref: string;
@@ -6650,6 +6577,99 @@ export declare const schemas: {
                     type?: undefined;
                     required?: undefined;
                     properties?: undefined;
+                    if?: undefined;
+                    then?: undefined;
+                    not?: undefined;
+                } | {
+                    if: {
+                        required: string[];
+                        properties: {
+                            "ui:widget": {
+                                enum: string[];
+                            };
+                            "ui:options"?: undefined;
+                        };
+                    };
+                    then: {
+                        properties: {
+                            type: {
+                                const: string;
+                            };
+                            "ui:widget"?: undefined;
+                        };
+                        required?: undefined;
+                    };
+                    type?: undefined;
+                    required?: undefined;
+                    properties?: undefined;
+                    oneOf?: undefined;
+                    not?: undefined;
+                } | {
+                    if: {
+                        required: string[];
+                        properties: {
+                            "ui:options": {
+                                required: string[];
+                            };
+                            "ui:widget"?: undefined;
+                        };
+                    };
+                    then: {
+                        required: string[];
+                        properties: {
+                            "ui:widget": {
+                                const: string;
+                            };
+                            type?: undefined;
+                        };
+                    };
+                    type?: undefined;
+                    required?: undefined;
+                    properties?: undefined;
+                    oneOf?: undefined;
+                    not?: undefined;
+                } | {
+                    if: {
+                        required: string[];
+                        properties: {
+                            "ui:options": {
+                                required: string[];
+                            };
+                            "ui:widget"?: undefined;
+                        };
+                    };
+                    then: {
+                        properties: {
+                            type: {
+                                const: string;
+                            };
+                            "ui:widget"?: undefined;
+                        };
+                        required?: undefined;
+                    };
+                    type?: undefined;
+                    required?: undefined;
+                    properties?: undefined;
+                    oneOf?: undefined;
+                    not?: undefined;
+                } | {
+                    not: {
+                        required: string[];
+                        properties: {
+                            hidden: {
+                                const: boolean;
+                            };
+                            prepare: {
+                                const: boolean;
+                            };
+                        };
+                    };
+                    type?: undefined;
+                    required?: undefined;
+                    properties?: undefined;
+                    oneOf?: undefined;
+                    if?: undefined;
+                    then?: undefined;
                 })[];
                 examples: ({
                     type: string;
