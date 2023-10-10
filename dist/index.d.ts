@@ -3124,20 +3124,21 @@ export declare const schemas: {
                     not?: undefined;
                 } | {
                     if: {
-                        required: string[];
-                        properties: {
-                            "ui:widget": {
-                                enum: string[];
-                            };
-                            "ui:options"?: undefined;
-                        };
-                    };
-                    then: {
                         properties: {
                             type: {
                                 const: string;
                             };
-                            "ui:widget"?: undefined;
+                            "ui:options"?: undefined;
+                        };
+                        required?: undefined;
+                    };
+                    then: {
+                        properties: {
+                            "ui:widget": {
+                                enum: string[];
+                                const?: undefined;
+                            };
+                            type?: undefined;
                         };
                         required?: undefined;
                     };
@@ -3153,7 +3154,7 @@ export declare const schemas: {
                             "ui:options": {
                                 required: string[];
                             };
-                            "ui:widget"?: undefined;
+                            type?: undefined;
                         };
                     };
                     then: {
@@ -3161,6 +3162,7 @@ export declare const schemas: {
                         properties: {
                             "ui:widget": {
                                 const: string;
+                                enum?: undefined;
                             };
                             type?: undefined;
                         };
@@ -3177,7 +3179,7 @@ export declare const schemas: {
                             "ui:options": {
                                 required: string[];
                             };
-                            "ui:widget"?: undefined;
+                            type?: undefined;
                         };
                     };
                     then: {
@@ -6582,20 +6584,21 @@ export declare const schemas: {
                     not?: undefined;
                 } | {
                     if: {
-                        required: string[];
-                        properties: {
-                            "ui:widget": {
-                                enum: string[];
-                            };
-                            "ui:options"?: undefined;
-                        };
-                    };
-                    then: {
                         properties: {
                             type: {
                                 const: string;
                             };
-                            "ui:widget"?: undefined;
+                            "ui:options"?: undefined;
+                        };
+                        required?: undefined;
+                    };
+                    then: {
+                        properties: {
+                            "ui:widget": {
+                                enum: string[];
+                                const?: undefined;
+                            };
+                            type?: undefined;
                         };
                         required?: undefined;
                     };
@@ -6611,7 +6614,7 @@ export declare const schemas: {
                             "ui:options": {
                                 required: string[];
                             };
-                            "ui:widget"?: undefined;
+                            type?: undefined;
                         };
                     };
                     then: {
@@ -6619,6 +6622,7 @@ export declare const schemas: {
                         properties: {
                             "ui:widget": {
                                 const: string;
+                                enum?: undefined;
                             };
                             type?: undefined;
                         };
@@ -6635,7 +6639,7 @@ export declare const schemas: {
                             "ui:options": {
                                 required: string[];
                             };
-                            "ui:widget"?: undefined;
+                            type?: undefined;
                         };
                     };
                     then: {

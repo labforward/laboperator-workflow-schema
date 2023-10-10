@@ -3639,9 +3639,13 @@
                 },
                 {
                     "if": {
-                        "required": [
-                            "ui:widget"
-                        ],
+                        "properties": {
+                            "type": {
+                                "const": "string"
+                            }
+                        }
+                    },
+                    "then": {
                         "properties": {
                             "ui:widget": {
                                 "enum": [
@@ -3650,33 +3654,23 @@
                                 ]
                             }
                         }
-                    },
-                    "then": {
-                        "properties": {
-                            "type": {
-                                "const": "string"
-                            }
-                        }
                     }
                 },
                 {
                     "if": {
-                        "required": [
-                            "ui:widget"
-                        ],
+                        "properties": {
+                            "type": {
+                                "const": "boolean"
+                            }
+                        }
+                    },
+                    "then": {
                         "properties": {
                             "ui:widget": {
                                 "enum": [
                                     "checkbox",
                                     "switch"
                                 ]
-                            }
-                        }
-                    },
-                    "then": {
-                        "properties": {
-                            "type": {
-                                "const": "boolean"
                             }
                         }
                     }

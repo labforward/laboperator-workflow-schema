@@ -74,24 +74,22 @@ allOf:
       - $ref: '#/definitions/field-schema/timer'
   # only allow text & textarea widgets for string fields
   - if:
-      required: [ui:widget]
-      properties:
-        ui:widget:
-          enum: ['text', 'textarea']
-    then:
       properties:
         type:
           const: string
-  # only allow checkbox & switch widgets for boolean fields
-  - if:
-      required: [ui:widget]
+    then:
       properties:
         ui:widget:
-          enum: ['checkbox', 'switch']
-    then:
+          enum: ['text', 'textarea']
+  # only allow checkbox & switch widgets for boolean fields
+  - if:
       properties:
         type:
           const: boolean
+    then:
+      properties:
+        ui:widget:
+          enum: ['checkbox', 'switch']
   # only allow `ui:options.rows` for textarea widgets
   - if:
       required: ['ui:options']
