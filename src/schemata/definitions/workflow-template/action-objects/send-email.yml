@@ -1,0 +1,30 @@
+---
+type: object
+title: SendEmail Options
+description: |
+  Options to a SendEmail action.
+propertyNames:
+  enum:
+    - SendEmail
+    - send_email
+    - SEND_EMAIL
+additionalProperties:
+  type: object
+  additionalProperties: true
+  required:
+    - to
+    - subject
+    - body
+  properties:
+    to:
+      type: string
+      format: email
+      description: Recipient's e-mail address
+    subject:
+      type: string
+      description: |
+        Subject of the message sent by e-mail
+    body:
+      type: string
+      description: |
+        Content of the message sent by e-mail
