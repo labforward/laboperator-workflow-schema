@@ -1583,6 +1583,38 @@ export declare const schemas: {
                         };
                         markdownDescription: string;
                     };
+                    "send-email": {
+                        type: string;
+                        title: string;
+                        description: string;
+                        propertyNames: {
+                            enum: string[];
+                        };
+                        additionalProperties: {
+                            type: string;
+                            additionalProperties: boolean;
+                            required: string[];
+                            properties: {
+                                to: {
+                                    type: string;
+                                    format: string;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                                subject: {
+                                    type: string;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                                body: {
+                                    type: string;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                            };
+                        };
+                        markdownDescription: string;
+                    };
                     "select-row": {
                         type: string;
                         title: string;
@@ -5677,6 +5709,38 @@ export declare const schemas: {
                                     markdownDescription: string;
                                 };
                                 command: {
+                                    type: string;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                            };
+                        };
+                        markdownDescription: string;
+                    };
+                    "send-email": {
+                        type: string;
+                        title: string;
+                        description: string;
+                        propertyNames: {
+                            enum: string[];
+                        };
+                        additionalProperties: {
+                            type: string;
+                            additionalProperties: boolean;
+                            required: string[];
+                            properties: {
+                                to: {
+                                    type: string;
+                                    format: string;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                                subject: {
+                                    type: string;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                                body: {
                                     type: string;
                                     description: string;
                                     markdownDescription: string;

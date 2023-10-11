@@ -13,6 +13,7 @@ oneOf:
   - $ref: '#/definitions/workflow-template/action-objects/repeat-substep'
   - $ref: '#/definitions/workflow-template/action-objects/reset-timer'
   - $ref: '#/definitions/workflow-template/action-objects/send-command'
+  - $ref: '#/definitions/workflow-template/action-objects/send-email'
   - $ref: '#/definitions/workflow-template/action-objects/select-row'
   - $ref: '#/definitions/workflow-template/action-objects/select-cell'
   - $ref: '#/definitions/workflow-template/action-objects/set-field'

@@ -794,6 +794,9 @@
                         "$ref": "#/definitions/workflow-template/action-objects/send-command"
                     },
                     {
+                        "$ref": "#/definitions/workflow-template/action-objects/send-email"
+                    },
+                    {
                         "$ref": "#/definitions/workflow-template/action-objects/select-row"
                     },
                     {
@@ -1526,6 +1529,46 @@
                         }
                     },
                     "markdownDescription": "Options to a SendCommand action.\n\n\nSee more: [Send Command Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-command) "
+                },
+                "send-email": {
+                    "type": "object",
+                    "title": "SendEmail Options",
+                    "description": "Options to a SendEmail action.\n",
+                    "propertyNames": {
+                        "enum": [
+                            "SendEmail",
+                            "send_email",
+                            "SEND_EMAIL"
+                        ]
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": true,
+                        "required": [
+                            "to",
+                            "subject",
+                            "body"
+                        ],
+                        "properties": {
+                            "to": {
+                                "type": "string",
+                                "format": "email",
+                                "description": "Recipient's e-mail address",
+                                "markdownDescription": "Recipient's e-mail address\n\nSee more: [Send Email Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-email) "
+                            },
+                            "subject": {
+                                "type": "string",
+                                "description": "Subject of the message sent by e-mail\n",
+                                "markdownDescription": "Subject of the message sent by e-mail\n\n\nSee more: [Send Email Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-email) "
+                            },
+                            "body": {
+                                "type": "string",
+                                "description": "Content of the message sent by e-mail\n",
+                                "markdownDescription": "Content of the message sent by e-mail\n\n\nSee more: [Send Email Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-email) "
+                            }
+                        }
+                    },
+                    "markdownDescription": "Options to a SendEmail action.\n\n\nSee more: [Send Email Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-email) "
                 },
                 "select-row": {
                     "type": "object",
