@@ -18,7 +18,6 @@ additionalProperties:
   properties:
     to:
       type: string
-      format: email
       description: Recipient's e-mail address
     subject:
       type: string
