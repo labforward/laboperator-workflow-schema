@@ -1597,7 +1597,6 @@ export declare const schemas: {
                             properties: {
                                 to: {
                                     type: string;
-                                    format: string;
                                     description: string;
                                     markdownDescription: string;
                                 };
@@ -5731,7 +5730,6 @@ export declare const schemas: {
                             properties: {
                                 to: {
                                     type: string;
-                                    format: string;
                                     description: string;
                                     markdownDescription: string;
                                 };
