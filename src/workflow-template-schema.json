@@ -2684,7 +2684,6 @@
             "properties": {
               "to": {
                 "type": "string",
-                "format": "email",
                 "description": "Recipient's e-mail address",
                 "markdownDescription": "Recipient's e-mail address\n\nSee more: [Send Email Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-email) "
               },
