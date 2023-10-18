@@ -14,6 +14,10 @@ fields:
     type: 'relationship'
     resourceType: 'devices'
     prepare: true
+  ROBOT_ARM:
+    type: 'relationship'
+    resourceType: 'devices'
+    prepare: true
   StartField:
     type: 'string'
     format: date-time
@@ -22,6 +26,22 @@ fields:
     type: 'string'
     format: date-time
     prepare: true
+
+elements:
+  - type: Display
+    id: BuddyStatus
+    placement: manual
+    elementLabel:
+      text: Buddy Status
+    height: 200
+    scope:
+      type: limit
+      params:
+        count: 1
+    inputChannels:
+      - device: ROBOT_ARM
+        channels:
+          - org.silastandard/examples/BuddyService/v1/BuddyStatus
 
 steps:
   stepOne:
