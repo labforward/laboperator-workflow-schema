@@ -29,7 +29,6 @@ properties:
       - Display
       - FileTable
       - Gauge
-      - GaugeControl
       - JsonTable
       - LineChart
       - MultiState
