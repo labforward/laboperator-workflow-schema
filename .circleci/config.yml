@@ -30,14 +30,16 @@ commands:
     steps:
       - run:
           name: Install Dependencies
-          command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
+          command: |
+            sudo corepack enable
+            yarn install --immutable
   save_yarn_cache:
     steps:
       - save_cache:
           name: Save Yarn Package Cache
           key: *yarn_cache_key
           paths:
-            - ~/.cache/yarn
+            - ~/.yarn/berry/global
   restore_yarn_cache:
     steps:
       - restore_cache:
