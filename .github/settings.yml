@@ -1,0 +1,14 @@
+_extends: repo-settings
+
+branches:
+  - name: main
+    protection:
+      required_status_checks:
+        contexts:
+          - tests
+          - task-list-completed
+
+labels:
+  - name: "kodiak: merge.method = 'squash'"
+    color: '#ffa500'
+    description: Squash PR when merging
