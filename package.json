@@ -15,7 +15,7 @@
     "dev": "nodemon src/compile.ts & nodemon src/validation.ts",
     "format": "prettier --write 'src/**/*.{ts,js}'",
     "lint": "eslint --fix 'src/**/*.{ts,js}'",
-    "prepare": "husky install",
+    "postinstall": "husky",
     "sort": "sort-package-json package.json",
     "test": "jest --runInBand",
     "test:ci": "jest --ci --runInBand --reporters=default --reporters=jest-junit",
