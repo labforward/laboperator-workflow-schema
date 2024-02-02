@@ -1923,9 +1923,10 @@ export declare const schemas: {
                                                     description: string;
                                                     markdownDescription: string;
                                                 };
-                                                title: {
+                                                name: {
                                                     $ref: string;
                                                 };
+                                                title?: undefined;
                                             };
                                         };
                                     };
@@ -1946,6 +1947,31 @@ export declare const schemas: {
                                                     description: string;
                                                     markdownDescription: string;
                                                 };
+                                                title: {
+                                                    $ref: string;
+                                                };
+                                                name?: undefined;
+                                            };
+                                        };
+                                    };
+                                } | {
+                                    type: string;
+                                    required: string[];
+                                    properties: {
+                                        type: {
+                                            type: string;
+                                            enum: string[];
+                                        };
+                                        attributes: {
+                                            type: string;
+                                            additionalProperties: boolean;
+                                            properties: {
+                                                custom_attributes: {
+                                                    $ref: string;
+                                                    description: string;
+                                                    markdownDescription: string;
+                                                };
+                                                name?: undefined;
                                                 title?: undefined;
                                             };
                                         };
@@ -1961,7 +1987,18 @@ export declare const schemas: {
                                 id: string;
                                 type: string;
                                 attributes: {
+                                    name: string;
+                                    title?: undefined;
+                                    custom_attributes?: undefined;
+                                };
+                            };
+                        } | {
+                            update_resource: {
+                                id: string;
+                                type: string;
+                                attributes: {
                                     title: string;
+                                    name?: undefined;
                                     custom_attributes?: undefined;
                                 };
                             };
@@ -1971,6 +2008,7 @@ export declare const schemas: {
                                 type: string;
                                 attributes: {
                                     custom_attributes: string;
+                                    name?: undefined;
                                     title?: undefined;
                                 };
                             };
@@ -6056,9 +6094,10 @@ export declare const schemas: {
                                                     description: string;
                                                     markdownDescription: string;
                                                 };
-                                                title: {
+                                                name: {
                                                     $ref: string;
                                                 };
+                                                title?: undefined;
                                             };
                                         };
                                     };
@@ -6079,6 +6118,31 @@ export declare const schemas: {
                                                     description: string;
                                                     markdownDescription: string;
                                                 };
+                                                title: {
+                                                    $ref: string;
+                                                };
+                                                name?: undefined;
+                                            };
+                                        };
+                                    };
+                                } | {
+                                    type: string;
+                                    required: string[];
+                                    properties: {
+                                        type: {
+                                            type: string;
+                                            enum: string[];
+                                        };
+                                        attributes: {
+                                            type: string;
+                                            additionalProperties: boolean;
+                                            properties: {
+                                                custom_attributes: {
+                                                    $ref: string;
+                                                    description: string;
+                                                    markdownDescription: string;
+                                                };
+                                                name?: undefined;
                                                 title?: undefined;
                                             };
                                         };
@@ -6094,7 +6158,18 @@ export declare const schemas: {
                                 id: string;
                                 type: string;
                                 attributes: {
+                                    name: string;
+                                    title?: undefined;
+                                    custom_attributes?: undefined;
+                                };
+                            };
+                        } | {
+                            update_resource: {
+                                id: string;
+                                type: string;
+                                attributes: {
                                     title: string;
+                                    name?: undefined;
                                     custom_attributes?: undefined;
                                 };
                             };
@@ -6104,6 +6179,7 @@ export declare const schemas: {
                                 type: string;
                                 attributes: {
                                     custom_attributes: string;
+                                    name?: undefined;
                                     title?: undefined;
                                 };
                             };

@@ -2,7 +2,8 @@
 type: object
 title: Update Resource
 description: |
-  An action to update a resource. It can be used to update the value of custom attributes, and in case of Workflow Runs also update their title.
+  An action to update a resource. It can be used to update the value of custom attributes.
+  In case of Workflow Runs also update their title and name of Device.
 propertyNames:
   enum:
     - update_resource
@@ -21,6 +22,24 @@ additionalProperties:
             - workflow_run.data.id
             - deviceField.id
     - oneOf:
+        - type: object
+          required:
+            - type
+            - attributes
+          properties:
+            type:
+              type: string
+              enum: [device]
+            attributes:
+              type: object
+              additionalProperties: false
+              properties:
+                custom_attributes:
+                  $ref: '#/definitions/script'
+                  description: |
+                    To update a custom attribute, the script must resolve to a hash object with `name`, `type` and `value` attributes. The supported custom attribute data types are `number`, `text`, `boolean` (checkbox), `date`, `datetime`, `file`, `image`, `physicalQuantity`, `relation`, and `duration`.
+                name:
+                  $ref: '#/definitions/script'
         - type: object
           required:
             - type
@@ -54,7 +73,7 @@ additionalProperties:
                 - export
                 - measurement
                 - sample
-                - workflow_step_template 
+                - workflow_step_template
                 - workflow_template
             attributes:
               type: object
@@ -65,6 +84,11 @@ additionalProperties:
                   description: |
                     To update a custom attribute, the script must evaluate to a hash object with `name`, `type` and `value` attributes. The supported custom attribute data types are `number`, `text`, `boolean` (checkbox), `date`, `datetime`, `file`, `image`, `physicalQuantity`, `relation`, and `duration`.
 examples:
+  - update_resource:
+      id: balance.id
+      type: device
+      attributes:
+        name: deviceField.name
   - update_resource:
       id: workflow_run.data.id
       type: workflow_run
