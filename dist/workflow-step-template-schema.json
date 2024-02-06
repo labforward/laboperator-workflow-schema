@@ -1893,7 +1893,7 @@
                 "update-resource": {
                     "type": "object",
                     "title": "Update Resource",
-                    "description": "An action to update a resource. It can be used to update the value of custom attributes, and in case of Workflow Runs also update their title.\n",
+                    "description": "An action to update the value of custom attributes of a resource, as well as the title of a Workflow Run, or the name of a Device.\n",
                     "propertyNames": {
                         "enum": [
                             "update_resource",
@@ -1922,6 +1922,35 @@
                             },
                             {
                                 "oneOf": [
+                                    {
+                                        "type": "object",
+                                        "required": [
+                                            "type",
+                                            "attributes"
+                                        ],
+                                        "properties": {
+                                            "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "device"
+                                                ]
+                                            },
+                                            "attributes": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "custom_attributes": {
+                                                        "$ref": "#/definitions/script",
+                                                        "description": "To update a custom attribute, the script must resolve to a hash object with `name`, `type` and `value` attributes. The supported custom attribute data types are `number`, `text`, `boolean` (checkbox), `date`, `datetime`, `file`, `image`, `physicalQuantity`, `relation`, and `duration`.\n",
+                                                        "markdownDescription": "To update a custom attribute, the script must resolve to a hash object with `name`, `type` and `value` attributes. The supported custom attribute data types are `number`, `text`, `boolean` (checkbox), `date`, `datetime`, `file`, `image`, `physicalQuantity`, `relation`, and `duration`.\n\n\nSee more: [Update Resource Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/update-resource) "
+                                                    },
+                                                    "name": {
+                                                        "$ref": "#/definitions/script"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
                                     {
                                         "type": "object",
                                         "required": [
@@ -1964,7 +1993,6 @@
                                                     "collection",
                                                     "connector",
                                                     "dashboard",
-                                                    "device",
                                                     "export",
                                                     "measurement",
                                                     "sample",
@@ -1978,8 +2006,8 @@
                                                 "properties": {
                                                     "custom_attributes": {
                                                         "$ref": "#/definitions/script",
-                                                        "description": "To update a custom attribute, the script must evaluate to a hash object with `name`, `type` and `value` attributes. The supported custom attribute data types are `number`, `text`, `boolean` (checkbox), `date`, `datetime`, `file`, `image`, `physicalQuantity`, `relation`, and `duration`.\n",
-                                                        "markdownDescription": "To update a custom attribute, the script must evaluate to a hash object with `name`, `type` and `value` attributes. The supported custom attribute data types are `number`, `text`, `boolean` (checkbox), `date`, `datetime`, `file`, `image`, `physicalQuantity`, `relation`, and `duration`.\n\n\nSee more: [Update Resource Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/update-resource) "
+                                                        "description": "To update a custom attribute, the script must resolve to a hash object with `name`, `type` and `value` attributes. The supported custom attribute data types are `number`, `text`, `boolean` (checkbox), `date`, `datetime`, `file`, `image`, `physicalQuantity`, `relation`, and `duration`.\n",
+                                                        "markdownDescription": "To update a custom attribute, the script must resolve to a hash object with `name`, `type` and `value` attributes. The supported custom attribute data types are `number`, `text`, `boolean` (checkbox), `date`, `datetime`, `file`, `image`, `physicalQuantity`, `relation`, and `duration`.\n\n\nSee more: [Update Resource Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/update-resource) "
                                                     }
                                                 }
                                             }
@@ -1990,6 +2018,15 @@
                         ]
                     },
                     "examples": [
+                        {
+                            "update_resource": {
+                                "id": "balance.id",
+                                "type": "device",
+                                "attributes": {
+                                    "name": "deviceField.name"
+                                }
+                            }
+                        },
                         {
                             "update_resource": {
                                 "id": "workflow_run.data.id",
@@ -2009,7 +2046,7 @@
                             }
                         }
                     ],
-                    "markdownDescription": "An action to update a resource. It can be used to update the value of custom attributes, and in case of Workflow Runs also update their title.\n\n\nSee more: [Update Resource Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/update-resource) "
+                    "markdownDescription": "An action to update the value of custom attributes of a resource, as well as the title of a Workflow Run, or the name of a Device.\n\n\nSee more: [Update Resource Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/update-resource) "
                 },
                 "webhook": {
                     "type": "object",
