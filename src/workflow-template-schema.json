@@ -1840,6 +1840,12 @@
             "$ref": "#/definitions/workflow-template/trigger-objects/field-update"
           },
           {
+            "$ref": "#/definitions/workflow-template/trigger-objects/incident-close"
+          },
+          {
+            "$ref": "#/definitions/workflow-template/trigger-objects/incident-create"
+          },
+          {
             "$ref": "#/definitions/workflow-template/trigger-objects/manual"
           },
           {
@@ -2068,6 +2074,94 @@
             }
           },
           "markdownDescription": "Options to a FieldUpdate trigger.\n\n\nSee more: [Field Update Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/field-update) "
+        },
+        "incident-close": {
+          "type": "object",
+          "title": "IncidentClose Options",
+          "description": "Options to a IncidentClose trigger.\n",
+          "propertyNames": {
+            "enum": [
+              "IncidentClose",
+              "incident_close",
+              "INCIDENT_CLOSE",
+              "OnIncidentClose",
+              "on_incident_close",
+              "ON_INCIDENT_CLOSE"
+            ]
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "device",
+              "channel"
+            ],
+            "properties": {
+              "device": {
+                "$ref": "#/definitions/member-name",
+                "description": "A reference to a field that is a relationship to a device.\n",
+                "markdownDescription": "A reference to a field that is a relationship to a device.\n\n\nSee more: [Incident Close Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/incident-close) "
+              },
+              "channel": {
+                "type": "string",
+                "description": "Name of the channel that should be subscribed.\n",
+                "examples": [
+                  "weight"
+                ],
+                "markdownDescription": "Name of the channel that should be subscribed.\n\n\nSee more: [Incident Close Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/incident-close) "
+              },
+              "level": {
+                "type": "string",
+                "description": "Incident severity level\n",
+                "markdownDescription": "Incident severity level\n\n\nSee more: [Incident Close Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/incident-close) "
+              }
+            }
+          },
+          "markdownDescription": "Options to a IncidentClose trigger.\n\n\nSee more: [Incident Close Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/incident-close) "
+        },
+        "incident-create": {
+          "type": "object",
+          "title": "IncidentCreate Options",
+          "description": "Options to a IncidentCreate trigger.\n",
+          "propertyNames": {
+            "enum": [
+              "IncidentCreate",
+              "incident_create",
+              "INCIDENT_CREATE",
+              "OnIncidentCreate",
+              "on_incident_create",
+              "ON_INCIDENT_CREATE"
+            ]
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "device",
+              "channel"
+            ],
+            "properties": {
+              "device": {
+                "$ref": "#/definitions/member-name",
+                "description": "A reference to a field that is a relationship to a device.\n",
+                "markdownDescription": "A reference to a field that is a relationship to a device.\n\n\nSee more: [Incident Create Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/incident-create) "
+              },
+              "channel": {
+                "type": "string",
+                "description": "Name of the channel that should be subscribed.\n",
+                "examples": [
+                  "weight"
+                ],
+                "markdownDescription": "Name of the channel that should be subscribed.\n\n\nSee more: [Incident Create Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/incident-create) "
+              },
+              "level": {
+                "type": "string",
+                "description": "Incident severity level\n",
+                "markdownDescription": "Incident severity level\n\n\nSee more: [Incident Create Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/incident-create) "
+              }
+            }
+          },
+          "markdownDescription": "Options to a IncidentCreate trigger.\n\n\nSee more: [Incident Create Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/trigger-objects/incident-create) "
         },
         "manual": {
           "type": "object",

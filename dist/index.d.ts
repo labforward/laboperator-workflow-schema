@@ -1108,6 +1108,70 @@ export declare const schemas: {
                         };
                         markdownDescription: string;
                     };
+                    "incident-close": {
+                        type: string;
+                        title: string;
+                        description: string;
+                        propertyNames: {
+                            enum: string[];
+                        };
+                        additionalProperties: {
+                            type: string;
+                            additionalProperties: boolean;
+                            required: string[];
+                            properties: {
+                                device: {
+                                    $ref: string;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                                channel: {
+                                    type: string;
+                                    description: string;
+                                    examples: string[];
+                                    markdownDescription: string;
+                                };
+                                level: {
+                                    type: string;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                            };
+                        };
+                        markdownDescription: string;
+                    };
+                    "incident-create": {
+                        type: string;
+                        title: string;
+                        description: string;
+                        propertyNames: {
+                            enum: string[];
+                        };
+                        additionalProperties: {
+                            type: string;
+                            additionalProperties: boolean;
+                            required: string[];
+                            properties: {
+                                device: {
+                                    $ref: string;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                                channel: {
+                                    type: string;
+                                    description: string;
+                                    examples: string[];
+                                    markdownDescription: string;
+                                };
+                                level: {
+                                    type: string;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                            };
+                        };
+                        markdownDescription: string;
+                    };
                     manual: {
                         type: string;
                         title: string;
@@ -5272,6 +5336,70 @@ export declare const schemas: {
                             properties: {
                                 field: {
                                     $ref: string;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                            };
+                        };
+                        markdownDescription: string;
+                    };
+                    "incident-close": {
+                        type: string;
+                        title: string;
+                        description: string;
+                        propertyNames: {
+                            enum: string[];
+                        };
+                        additionalProperties: {
+                            type: string;
+                            additionalProperties: boolean;
+                            required: string[];
+                            properties: {
+                                device: {
+                                    $ref: string;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                                channel: {
+                                    type: string;
+                                    description: string;
+                                    examples: string[];
+                                    markdownDescription: string;
+                                };
+                                level: {
+                                    type: string;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                            };
+                        };
+                        markdownDescription: string;
+                    };
+                    "incident-create": {
+                        type: string;
+                        title: string;
+                        description: string;
+                        propertyNames: {
+                            enum: string[];
+                        };
+                        additionalProperties: {
+                            type: string;
+                            additionalProperties: boolean;
+                            required: string[];
+                            properties: {
+                                device: {
+                                    $ref: string;
+                                    description: string;
+                                    markdownDescription: string;
+                                };
+                                channel: {
+                                    type: string;
+                                    description: string;
+                                    examples: string[];
+                                    markdownDescription: string;
+                                };
+                                level: {
+                                    type: string;
                                     description: string;
                                     markdownDescription: string;
                                 };
