@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - [[CUB-4771]](https://labforward.atlassian.net/browse/CUB-4771) [Workflows] Add oidc interceptor to webhook schema
 - [[CUB-4985]](https://labforward.atlassian.net/browse/CUB-4985) [Workflows] Add sendEmail action to workflows
 - [[CUB-5083]](https://labforward.atlassian.net/browse/CUB-5083) [Workflows] Enable device name as an updatable property when using update_resources action
+- [[CUB-5078]](https://labforward.atlassian.net/browse/CUB-5078) [Workflows] Add on_incident as a trigger for automations (and workflows)
 
 ### Changed
 
