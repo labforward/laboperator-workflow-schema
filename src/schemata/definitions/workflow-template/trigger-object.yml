@@ -6,6 +6,8 @@ oneOf:
   - $ref: '#/definitions/workflow-template/trigger-objects/command-response'
   - $ref: '#/definitions/workflow-template/trigger-objects/data-point'
   - $ref: '#/definitions/workflow-template/trigger-objects/field-update'
+  - $ref: '#/definitions/workflow-template/trigger-objects/incident-close'
+  - $ref: '#/definitions/workflow-template/trigger-objects/incident-create'
   - $ref: '#/definitions/workflow-template/trigger-objects/manual'
   - $ref: '#/definitions/workflow-template/trigger-objects/scan'
   - $ref: '#/definitions/workflow-template/trigger-objects/timer-complete'
