@@ -46,16 +46,12 @@ properties:
       ```yml
       - - name: acetic anhydride
           density: 1.08
-          molar_mass: 102.09
         - name: 2-Hydroxybenzoic acid
           density: 1.44
-          molar_mass: 138.121
       - - name: salicylic acid
           density: 1.44
-          molar_mass: 138.12
         - name: 2,4,6-Trichlorphenol
           density: 1,68
-          molar_mass: 197,45
       ```
 
       2. Array of objects:
