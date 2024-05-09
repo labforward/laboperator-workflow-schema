@@ -45,7 +45,7 @@
     "@labforward/eslint-config-node": "~0.1.6",
     "@types/jest": "^29.5.12",
     "@types/lodash": "^4.17.1",
-    "@types/node": "^20.12.10",
+    "@types/node": "^20.12.11",
     "eslint": "^8.57.0",
     "eslint-plugin-jest": "^28.5.0",
     "fast-glob": "^3.3.2",
