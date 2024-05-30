@@ -883,7 +883,7 @@ __metadata:
     license-checker-rseidelsohn: "npm:^4.3.0"
     lint-staged: "npm:^15.2.5"
     lodash: "npm:^4.17.21"
-    nodemon: "npm:^3.1.1"
+    nodemon: "npm:^3.1.2"
     prettier: "npm:^3.2.5"
     sort-package-json: "npm:^2.10.0"
     ts-jest: "npm:^29.1.4"
@@ -4740,9 +4740,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemon@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "nodemon@npm:3.1.1"
+"nodemon@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "nodemon@npm:3.1.2"
   dependencies:
     chokidar: "npm:^3.5.2"
     debug: "npm:^4"
@@ -4756,7 +4756,7 @@ __metadata:
     undefsafe: "npm:^2.0.5"
   bin:
     nodemon: bin/nodemon.js
-  checksum: 3c0ae94a6832b3baef4631ce609e7e3499e5fae6633303c8aa29e91712fd85d64e3175165649bbf7947afa1e8ab57825a02eb18ebcfe32646a2cf6ab6c20b202
+  checksum: 7a091067d766768fb6660b796194b01748bba5dc3f1e3ed3dd5f804bfa305e207d24635755078ee5e7cc53848cea35204901e0a6e51ac64483bb8e9ecb237c95
   languageName: node
   linkType: hard
 
