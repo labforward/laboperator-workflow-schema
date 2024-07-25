@@ -893,7 +893,7 @@ __metadata:
     ts-jest: "npm:^29.2.3"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.5.4"
-    yaml: "npm:^2.4.5"
+    yaml: "npm:^2.5.0"
   languageName: unknown
   linkType: soft
 
@@ -6479,7 +6479,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:^2.4.5, yaml@npm:~2.4.2":
+"yaml@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "yaml@npm:2.5.0"
+  bin:
+    yaml: bin.mjs
+  checksum: 771a1df083c8217cf04ef49f87244ae2dd7d7457094425e793b8f056159f167602ce172aa32d6bca21f787d24ec724aee3cecde938f6643564117bd151452631
+  languageName: node
+  linkType: hard
+
+"yaml@npm:~2.4.2":
   version: 2.4.5
   resolution: "yaml@npm:2.4.5"
   bin:
