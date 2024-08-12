@@ -3541,6 +3541,12 @@
             },
             "changeReason": {
               "$ref": "#/definitions/workflow-template/change-reason"
+            },
+            "customOptions": {
+              "type": "boolean",
+              "default": false,
+              "description": "A flag indicating whether fields of type `string` or `number` that are configured with `enum` options can be updated with a value that is not among the specified options. If set to `true`, the user can both select from the specified options, as well as enter any custom value that satisfies the field schema. Fields that are not of type `string` or `number` ignore this setting.\n",
+              "markdownDescription": "A flag indicating whether fields of type `string` or `number` that are configured with `enum` options can be updated with a value that is not among the specified options. If set to `true`, the user can both select from the specified options, as well as enter any custom value that satisfies the field schema. Fields that are not of type `string` or `number` ignore this setting.\n\n\nSee more: [Field Schema](https://schema.laboperator.com/schemas/definitions/field) "
             }
           }
         },

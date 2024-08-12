@@ -3234,6 +3234,12 @@ export declare const schemas: {
                         changeReason: {
                             $ref: string;
                         };
+                        customOptions: {
+                            type: string;
+                            default: boolean;
+                            description: string;
+                            markdownDescription: string;
+                        };
                     };
                     oneOf?: undefined;
                 } | {
@@ -6722,6 +6728,12 @@ export declare const schemas: {
                         };
                         changeReason: {
                             $ref: string;
+                        };
+                        customOptions: {
+                            type: string;
+                            default: boolean;
+                            description: string;
+                            markdownDescription: string;
                         };
                     };
                     oneOf?: undefined;
