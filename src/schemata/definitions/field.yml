@@ -15,13 +15,18 @@ allOf:
       ui:options:
         type: object
         description: |
-          Display configuration options for certain field types and widget settings. If a field or widget does not support `ui:options`, the setting is ignored.
+          Configuration options for certain field types and widget settings. If a field or widget does not support `ui:options`, the setting is ignored.
         properties:
           label:
             type: boolean
             default: true
             description: |
               A flag indicating whether a field of type `boolean` has a display label. Setting this to `false` will display either only a checkbox or switch control element, without any visible label.
+          strictEnum:
+            type: boolean
+            default: true
+            description: |
+              A flag indicating whether fields of type `string` or `number` that are configured with `enum` options can be updated with a value that is not among the specified options. If set to `false`, the user can both select from the specified options, as well as enter any custom value that satisfies the field schema. Fields that are not of type `string` or `number` ignore this setting.
       readOnly:
         type: boolean
         default: false
@@ -60,11 +65,6 @@ allOf:
           A flag that is used to group fields during the workflow preparation stage. Fields with the same group name are displayed together in the order of definition. All fields without a specified group are displayed separately.
       changeReason:
         $ref: '#/definitions/workflow-template/change-reason'
-      customOptions:
-        type: boolean
-        default: false
-        description: |
-          A flag indicating whether fields of type `string` or `number` that are configured with `enum` options can be updated with a value that is not among the specified options. If set to `true`, the user can both select from the specified options, as well as enter any custom value that satisfies the field schema. Fields that are not of type `string` or `number` ignore this setting.
   - oneOf:
       - $ref: '#/definitions/jsonSchemaDraft7'
       - $ref: '#/definitions/field-schema/file'
