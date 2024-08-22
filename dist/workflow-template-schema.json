@@ -3726,16 +3726,22 @@
                         },
                         "ui:options": {
                             "type": "object",
-                            "description": "Display configuration options for certain field types and widget settings. If a field or widget does not support `ui:options`, the setting is ignored.\n",
+                            "description": "Configuration options for certain field types and widget settings. If a field or widget does not support `ui:options`, the setting is ignored.\n",
                             "properties": {
                                 "label": {
                                     "type": "boolean",
                                     "default": true,
                                     "description": "A flag indicating whether a field of type `boolean` has a display label. Setting this to `false` will display either only a checkbox or switch control element, without any visible label.\n",
                                     "markdownDescription": "A flag indicating whether a field of type `boolean` has a display label. Setting this to `false` will display either only a checkbox or switch control element, without any visible label.\n\n\nSee more: [Field Schema](https://schema.laboperator.com/schemas/definitions/field) "
+                                },
+                                "strictEnum": {
+                                    "type": "boolean",
+                                    "default": true,
+                                    "description": "A flag indicating whether fields of type `string` or `number` that are configured with `enum` options can be updated with a value that is not among the specified options. If set to `false`, the user can both select from the specified options, as well as enter any custom value that satisfies the field schema. Fields that are not of type `string` or `number` ignore this setting.\n",
+                                    "markdownDescription": "A flag indicating whether fields of type `string` or `number` that are configured with `enum` options can be updated with a value that is not among the specified options. If set to `false`, the user can both select from the specified options, as well as enter any custom value that satisfies the field schema. Fields that are not of type `string` or `number` ignore this setting.\n\n\nSee more: [Field Schema](https://schema.laboperator.com/schemas/definitions/field) "
                                 }
                             },
-                            "markdownDescription": "Display configuration options for certain field types and widget settings. If a field or widget does not support `ui:options`, the setting is ignored.\n\n\nSee more: [Field Schema](https://schema.laboperator.com/schemas/definitions/field) "
+                            "markdownDescription": "Configuration options for certain field types and widget settings. If a field or widget does not support `ui:options`, the setting is ignored.\n\n\nSee more: [Field Schema](https://schema.laboperator.com/schemas/definitions/field) "
                         },
                         "readOnly": {
                             "type": "boolean",
