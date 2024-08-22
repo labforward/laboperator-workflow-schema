@@ -32,6 +32,7 @@
     "./dist/workflow-step-template-schema.json": [
       "/*.step-template.yml",
       "/step-template.yml"
-    ]
+    ],
+    "http://json-schema.org/draft-07/schema": ["/src/schemata/**/*.yml"]
   }
 }

@@ -22,6 +22,11 @@ allOf:
             default: true
             description: |
               A flag indicating whether a field of type `boolean` has a display label. Setting this to `false` will display either only a checkbox or switch control element, without any visible label.
+          rows:
+            type: number
+            minimum: 0
+            description: |
+              The number of rows to display when a field of type `string` is configured to display a textarea element via the `ui:widget` setting.
       readOnly:
         type: boolean
         default: false
@@ -67,6 +72,53 @@ allOf:
       - $ref: '#/definitions/field-schema/relationship'
       - $ref: '#/definitions/field-schema/script'
       - $ref: '#/definitions/field-schema/timer'
+  # only allow text & textarea widgets for string fields
+  - if:
+      properties:
+        type:
+          const: string
+    then:
+      properties:
+        ui:widget:
+          enum: ['text', 'textarea']
+  # only allow checkbox & switch widgets for boolean fields
+  - if:
+      properties:
+        type:
+          const: boolean
+    then:
+      properties:
+        ui:widget:
+          enum: ['checkbox', 'switch']
+  # only allow `ui:options.rows` for textarea widgets
+  - if:
+      required: ['ui:options']
+      properties:
+        ui:options:
+          required: ['rows']
+    then:
+      required: [ui:widget]
+      properties:
+        ui:widget:
+          const: 'textarea'
+  # only allow `ui:options.label` for boolean fields
+  - if:
+      required: ['ui:options']
+      properties:
+        ui:options:
+          required: ['label']
+    then:
+      properties:
+        type:
+          const: boolean
+  # do not allow setting both `prepare` and `hidden` to `true`
+  - not:
+      required: [ 'prepare', 'hidden']
+      properties:
+        hidden:
+          const: true
+        prepare:
+          const: true
 examples:
   # enum options
   - type: string
