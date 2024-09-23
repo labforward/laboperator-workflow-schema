@@ -55,7 +55,7 @@
     "license-checker-rseidelsohn": "^4.4.2",
     "lint-staged": "^15.2.10",
     "lodash": "^4.17.21",
-    "nodemon": "^3.1.6",
+    "nodemon": "^3.1.7",
     "prettier": "^3.3.3",
     "sort-package-json": "^2.10.1",
     "ts-jest": "^29.2.5",
