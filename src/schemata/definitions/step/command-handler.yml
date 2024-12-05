@@ -1,0 +1,9 @@
+---
+type: object
+title: Command Handler
+description: |
+   A Command handler always consists of an [action](/schemas/definitions/workflow-template/actions/).
+required: [do]
+properties:
+  do:
+    $ref: '#/definitions/workflow-template/actions'

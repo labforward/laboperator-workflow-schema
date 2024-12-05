@@ -1643,6 +1643,16 @@ export declare const schemas: {
                                     description: string;
                                     markdownDescription: string;
                                 };
+                                onSuccess: {
+                                    description: string;
+                                    $ref: string;
+                                    markdownDescription: string;
+                                };
+                                onError: {
+                                    description: string;
+                                    $ref: string;
+                                    markdownDescription: string;
+                                };
                             };
                         };
                         markdownDescription: string;
@@ -3001,6 +3011,18 @@ export declare const schemas: {
                         })[];
                         markdownDescription: string;
                     };
+                };
+                "command-handler": {
+                    type: string;
+                    title: string;
+                    description: string;
+                    required: string[];
+                    properties: {
+                        do: {
+                            $ref: string;
+                        };
+                    };
+                    markdownDescription: string;
                 };
                 "webhook-handler": {
                     type: string;
@@ -4969,6 +4991,18 @@ export declare const schemas: {
                     }[];
                     markdownDescription: string;
                 };
+                "command-handler": {
+                    type: string;
+                    title: string;
+                    description: string;
+                    required: string[];
+                    properties: {
+                        do: {
+                            $ref: string;
+                        };
+                    };
+                    markdownDescription: string;
+                };
                 "webhook-handler": {
                     type: string;
                     title: string;
@@ -5882,6 +5916,16 @@ export declare const schemas: {
                                 command: {
                                     type: string;
                                     description: string;
+                                    markdownDescription: string;
+                                };
+                                onSuccess: {
+                                    description: string;
+                                    $ref: string;
+                                    markdownDescription: string;
+                                };
+                                onError: {
+                                    description: string;
+                                    $ref: string;
                                     markdownDescription: string;
                                 };
                             };
