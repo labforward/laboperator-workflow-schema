@@ -24,3 +24,9 @@ additionalProperties:
       description: |
         The command to execute. Available commands are device
         specific.
+    onSuccess:
+      description: The handler for success response
+      $ref: '#/definitions/step/command-handler'
+    onError:
+      description: The handler for error response
+      $ref: '#/definitions/step/command-handler'
