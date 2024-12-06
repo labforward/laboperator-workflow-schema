@@ -3017,6 +3017,7 @@ export declare const schemas: {
                     title: string;
                     description: string;
                     required: string[];
+                    additionalProperties: boolean;
                     properties: {
                         do: {
                             $ref: string;
@@ -4996,6 +4997,7 @@ export declare const schemas: {
                     title: string;
                     description: string;
                     required: string[];
+                    additionalProperties: boolean;
                     properties: {
                         do: {
                             $ref: string;

@@ -1447,6 +1447,7 @@
                 "required": [
                     "do"
                 ],
+                "additionalProperties": false,
                 "properties": {
                     "do": {
                         "$ref": "#/definitions/workflow-template/actions"
@@ -2766,14 +2767,14 @@
                                 "markdownDescription": "The command to execute. Available commands are device\nspecific.\n\n\nSee more: [Send Command Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-command) "
                             },
                             "onSuccess": {
-                                "description": "The handler for response status codes 2xx",
+                                "description": "The handler for success response",
                                 "$ref": "#/definitions/step/command-handler",
-                                "markdownDescription": "The handler for response status codes 2xx\n\nSee more: [Send Command Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-command) "
+                                "markdownDescription": "The handler for success response\n\nSee more: [Send Command Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-command) "
                             },
                             "onError": {
-                                "description": "The handler for response status codes 5xx",
+                                "description": "The handler for error response",
                                 "$ref": "#/definitions/step/command-handler",
-                                "markdownDescription": "The handler for response status codes 5xx\n\nSee more: [Send Command Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-command) "
+                                "markdownDescription": "The handler for error response\n\nSee more: [Send Command Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-command) "
                             }
                         }
                     },
