@@ -3019,7 +3019,13 @@ export declare const schemas: {
                     required: string[];
                     additionalProperties: boolean;
                     properties: {
+                        and: {
+                            $ref: string;
+                        };
                         do: {
+                            $ref: string;
+                        };
+                        else: {
                             $ref: string;
                         };
                     };
@@ -4999,7 +5005,13 @@ export declare const schemas: {
                     required: string[];
                     additionalProperties: boolean;
                     properties: {
+                        and: {
+                            $ref: string;
+                        };
                         do: {
+                            $ref: string;
+                        };
+                        else: {
                             $ref: string;
                         };
                     };

@@ -1449,7 +1449,13 @@
                 ],
                 "additionalProperties": false,
                 "properties": {
+                    "and": {
+                        "$ref": "#/definitions/script"
+                    },
                     "do": {
+                        "$ref": "#/definitions/workflow-template/actions"
+                    },
+                    "else": {
                         "$ref": "#/definitions/workflow-template/actions"
                     }
                 },
