@@ -1619,6 +1619,16 @@
                                 "type": "string",
                                 "description": "The command to execute. Available commands are device\nspecific.\n",
                                 "markdownDescription": "The command to execute. Available commands are device\nspecific.\n\n\nSee more: [Send Command Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-command) "
+                            },
+                            "onSuccess": {
+                                "description": "The handler for success response",
+                                "$ref": "#/definitions/step/command-handler",
+                                "markdownDescription": "The handler for success response\n\nSee more: [Send Command Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-command) "
+                            },
+                            "onError": {
+                                "description": "The handler for error response",
+                                "$ref": "#/definitions/step/command-handler",
+                                "markdownDescription": "The handler for error response\n\nSee more: [Send Command Schema](https://schema.laboperator.com/schemas/definitions/workflow-template/action-objects/send-command) "
                             }
                         }
                     },
@@ -3239,6 +3249,27 @@
                     ],
                     "markdownDescription": "Rules can be leveraged to dynamically change both the behavior and appearance of a table.\n\nWhen a rule condition is fulfilled, the `editable` and `selectable` behavior of cells, rows, columns, or tabs can be set. Likewise, the background color or text color can be changed to visualize a certain state or change of behavior to the user. For example:\n\n  - When a cell number value is negative, change the background color to red.\n  - When a cell number value is positive, change the background color to green, make it selectable, but no longer editable.\n  - When all cells in a column have no value, the column cells are not selectable or editable across all other tabs of the table.\n\n\nSee more: [Rules Schema](https://schema.laboperator.com/schemas/definitions/step/table-attributes/rules) "
                 }
+            },
+            "command-handler": {
+                "type": "object",
+                "title": "Command Handler",
+                "description": "A Command handler always consists of an [action](/schemas/definitions/workflow-template/actions/).\n",
+                "required": [
+                    "do"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "and": {
+                        "$ref": "#/definitions/script"
+                    },
+                    "do": {
+                        "$ref": "#/definitions/workflow-template/actions"
+                    },
+                    "else": {
+                        "$ref": "#/definitions/workflow-template/actions"
+                    }
+                },
+                "markdownDescription": "A Command handler always consists of an [action](https://schema.laboperator.com/schemas/definitions/workflow-template/actions/).\n\n\nSee more: [Command Handler Schema](https://schema.laboperator.com/schemas/definitions/step/command-handler) "
             },
             "webhook-handler": {
                 "type": "object",
