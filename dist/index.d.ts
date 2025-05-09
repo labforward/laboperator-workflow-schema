@@ -2514,6 +2514,35 @@ export declare const schemas: {
                     type: string;
                     title: string;
                     required: string[];
+                    oneOf: ({
+                        required: string[];
+                        properties: {
+                            transpose: {
+                                const: boolean;
+                            };
+                            selectable: {
+                                const: string[];
+                            };
+                        };
+                        not?: undefined;
+                    } | {
+                        required: string[];
+                        properties: {
+                            transpose: {
+                                const: boolean;
+                            };
+                            selectable?: undefined;
+                        };
+                        not?: undefined;
+                    } | {
+                        not: {
+                            anyOf: {
+                                required: string[];
+                            }[];
+                        };
+                        required?: undefined;
+                        properties?: undefined;
+                    })[];
                     properties: {
                         data: {
                             $ref: string;
@@ -4441,6 +4470,35 @@ export declare const schemas: {
                     type: string;
                     title: string;
                     required: string[];
+                    oneOf: ({
+                        required: string[];
+                        properties: {
+                            transpose: {
+                                const: boolean;
+                            };
+                            selectable: {
+                                const: string[];
+                            };
+                        };
+                        not?: undefined;
+                    } | {
+                        required: string[];
+                        properties: {
+                            transpose: {
+                                const: boolean;
+                            };
+                            selectable?: undefined;
+                        };
+                        not?: undefined;
+                    } | {
+                        not: {
+                            anyOf: {
+                                required: string[];
+                            }[];
+                        };
+                        required?: undefined;
+                        properties?: undefined;
+                    })[];
                     properties: {
                         data: {
                             $ref: string;
