@@ -928,7 +928,7 @@ __metadata:
     ts-jest: "npm:^29.4.0"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.8.3"
-    yaml: "npm:^2.8.0"
+    yaml: "npm:^2.8.1"
   languageName: unknown
   linkType: soft
 
