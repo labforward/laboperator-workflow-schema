@@ -67,7 +67,6 @@ additionalProperties:
                 - dashboard
                 - export
                 - measurement
-                - sample
                 - workflow_step_template
                 - workflow_template
             attributes:
@@ -85,7 +84,7 @@ examples:
       id: workflow_run.data.id
       type: workflow_run
       attributes:
-        title: sampleField.name
+        title: deviceField.name
   - update_resource:
       id: balance.id
       type: device
