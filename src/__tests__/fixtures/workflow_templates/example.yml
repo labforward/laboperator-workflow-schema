@@ -86,9 +86,9 @@ steps:
 
             ![music](https://source.unsplash.com/600x400/?music)
     fields:
-      sample:
+      device:
         type: relationship
-        resourceType: samples
+        resourceType: devices
       target:
         type: quantity
         unit: mg
@@ -96,7 +96,7 @@ steps:
         type: quantity
         unit: mg
     substeps:
-      - primary: Place the {{sample}} on the balance.
+      - primary: Tare the balance {{device}}.
         description: |
           Your fancy markdown body with formatting, images and what not else!
         confirm: true

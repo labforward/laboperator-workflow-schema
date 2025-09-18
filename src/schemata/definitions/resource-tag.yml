@@ -21,7 +21,6 @@ enum:
   - ports
   - protonotifications
   - roles
-  - samples
   - smart_views
   - users
   - versions
