@@ -2099,7 +2099,6 @@
                           "dashboard",
                           "export",
                           "measurement",
-                          "sample",
                           "workflow_step_template",
                           "workflow_template"
                         ]
@@ -2136,7 +2135,7 @@
                 "id": "workflow_run.data.id",
                 "type": "workflow_run",
                 "attributes": {
-                  "title": "sampleField.name"
+                  "title": "deviceField.name"
                 }
               }
             },
@@ -3933,7 +3932,6 @@
               "users",
               "devices",
               "measurements",
-              "samples",
               "channels",
               "collections",
               "attachments"
@@ -4234,7 +4232,6 @@
         "ports",
         "protonotifications",
         "roles",
-        "samples",
         "smart_views",
         "users",
         "versions",
