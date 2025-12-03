@@ -8,8 +8,8 @@ updates:
       timezone: 'Europe/Berlin'
     rebase-strategy: disabled
     labels:
-      - "dependencies"
-      - "automerge"
+      - 'dependencies'
+      - 'automerge'
       - "kodiak: merge.method = 'squash'"
     ignore:
       # Need to wait until every plugin support eslint 9
@@ -25,21 +25,21 @@ updates:
     groups:
       babel:
         patterns:
-          - "@babel/*"
-          - "babel-*"
-          - "browserslist"
+          - '@babel/*'
+          - 'babel-*'
+          - 'browserslist'
       eslint:
         patterns:
-          - "@eslint-*"
-          - "@eslint/*"
-          - "eslint-*"
-          - "eslint"
+          - '@eslint-*'
+          - '@eslint/*'
+          - 'eslint-*'
+          - 'eslint'
       jest:
         patterns:
-          - "@jest/"
-          - "jest-*"
-          - "jest"
-          - "@types/jest"
-      labforward:
+          - '@jest/'
+          - 'jest-*'
+          - 'jest'
+          - '@types/jest'
+      laboperator-gmbh:
         patterns:
-          - "@labforward/*"
+          - '@laboperator-gmbh/*'
