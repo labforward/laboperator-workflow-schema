@@ -26,4 +26,4 @@ Laboperator workflows are described by template files referred to as _Workflow T
 
 ## Language Server Validation
 
-To improve the experience of writing workflow templates, you can enable validation against the workflow schemas in your text editor by associating files with a JSON schema. See the [WIKI page](https://github.com/labforward/laboperator-workflow-schema/wiki) for instructions.
+To improve the experience of writing workflow templates, you can enable validation against the workflow schemas in your text editor by associating files with a JSON schema. See the [WIKI page](https://github.com/laboperator-gmbh/workflow-schema/wiki) for instructions.

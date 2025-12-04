@@ -1,5 +1,5 @@
 module.exports = {
-  extends: '@labforward/eslint-config-node',
+  extends: '@laboperator-gmbh/eslint-config-node',
   ignorePatterns: ['dist'],
   overrides: [
     {
