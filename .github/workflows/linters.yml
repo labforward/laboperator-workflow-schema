@@ -2,19 +2,17 @@ name: Linters
 
 on:
   pull_request:
-    branches-ignore:
-      - 'main'
+
 jobs:
   eslint:
     if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v6
+      - run: corepack enable
+      - uses: actions/setup-node@v5
         with:
-          node-version-file: ".nvmrc"
-
+          cache: yarn
       - run: yarn install
       - name: eslint
         uses: reviewdog/action-eslint@v1
