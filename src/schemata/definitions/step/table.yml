@@ -3,6 +3,21 @@ type: object
 title: Table Schema
 required:
   - data
+oneOf:
+  - required: ['transpose']
+    properties:
+      transpose:
+        const: true
+      selectable:
+        const: ['cells']
+  - required: ['selectable']
+    properties:
+      transpose:
+        const: false
+  - not:
+      anyOf:
+        - required: ['transpose']
+        - required: ['selectable']
 properties:
   data:
     $ref: '#/definitions/member-name'
@@ -170,7 +185,7 @@ properties:
     type: boolean
     default: false
     description: |
-      Display table in a transposed position, flipping the position of rows and columns. This is especially useful for tables with many columns, but only a single row.
+      Enabling this setting will display the table in a transposed position, flipping the position of rows and columns. This is especially useful for tables with many columns, but only a single or a few rows. Note that selectable rows are not supported on transposed tables.
   columns:
     $ref: '#/definitions/step/table-attributes/columns'
   state:
