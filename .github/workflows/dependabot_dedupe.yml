@@ -12,4 +12,4 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: laboperator-gmbh/github-actions/yarn-dedupe@v1
+      - uses: laboperator-gmbh/github-actions/yarn/dedupe@v1
