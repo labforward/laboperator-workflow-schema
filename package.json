@@ -45,7 +45,7 @@
     "@laboperator-gmbh/eslint-config-node": "~0.2.0",
     "@types/jest": "^30.0.0",
     "@types/lodash": "^4.17.21",
-    "@types/node": "^25.0.0",
+    "@types/node": "^25.0.1",
     "eslint": "^9.39.1",
     "eslint-plugin-jest": "^29.2.1",
     "fast-glob": "^3.3.3",
